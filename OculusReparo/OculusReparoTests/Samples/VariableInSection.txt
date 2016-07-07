@@ -1,0 +1,8 @@
+﻿person {
+    name: @name;
+}
+
+config {
+    @set name: bob;
+}
+

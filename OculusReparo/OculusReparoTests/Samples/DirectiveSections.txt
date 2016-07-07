@@ -1,0 +1,9 @@
+﻿@set name: bob;
+
+person @if iPhone {
+    name: @name;
+}
+
+person @if iPhone6 {
+    name: terry;
+}

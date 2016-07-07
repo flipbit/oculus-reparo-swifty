@@ -13,6 +13,31 @@
 		831D6C6B1D2CFFDF00C7F4EF /* OculusReparo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D6C6A1D2CFFDF00C7F4EF /* OculusReparo.swift */; };
 		831D6C6D1D2D1EEC00C7F4EF /* Reparo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D6C6C1D2D1EEC00C7F4EF /* Reparo.swift */; };
 		831D6C6F1D2D555100C7F4EF /* ReparoStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D6C6E1D2D555100C7F4EF /* ReparoStateMachineTests.swift */; };
+		831D6C711D2E868400C7F4EF /* ReparoParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D6C701D2E868400C7F4EF /* ReparoParserTests.swift */; };
+		831D6C731D2E87D700C7F4EF /* SingleEmptySection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C721D2E87D700C7F4EF /* SingleEmptySection.txt */; };
+		831D6C8C1D2E886300C7F4EF /* FunctionInclude.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C751D2E886300C7F4EF /* FunctionInclude.txt */; };
+		831D6C8D1D2E886300C7F4EF /* VariableExternal.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C761D2E886300C7F4EF /* VariableExternal.txt */; };
+		831D6C8E1D2E886300C7F4EF /* Replace.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C771D2E886300C7F4EF /* Replace.txt */; };
+		831D6C8F1D2E886300C7F4EF /* DirectiveSections.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C781D2E886300C7F4EF /* DirectiveSections.txt */; };
+		831D6C901D2E886300C7F4EF /* DirectiveNot.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C791D2E886300C7F4EF /* DirectiveNot.txt */; };
+		831D6C911D2E886300C7F4EF /* Directive.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C7A1D2E886300C7F4EF /* Directive.txt */; };
+		831D6C921D2E886300C7F4EF /* SingleSectionWithComments.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C7B1D2E886300C7F4EF /* SingleSectionWithComments.txt */; };
+		831D6C931D2E886300C7F4EF /* InvalidLineInRoot.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C7C1D2E886300C7F4EF /* InvalidLineInRoot.txt */; };
+		831D6C941D2E886300C7F4EF /* SingleSectionWithMultipleSubsection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C7D1D2E886300C7F4EF /* SingleSectionWithMultipleSubsection.txt */; };
+		831D6C951D2E886300C7F4EF /* Function.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C7E1D2E886300C7F4EF /* Function.txt */; };
+		831D6C961D2E886300C7F4EF /* InvalidLineInSection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C7F1D2E886300C7F4EF /* InvalidLineInSection.txt */; };
+		831D6C971D2E886300C7F4EF /* MultipleEmptySection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C801D2E886300C7F4EF /* MultipleEmptySection.txt */; };
+		831D6C981D2E886300C7F4EF /* MultipleEmptySectionAlternate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C811D2E886300C7F4EF /* MultipleEmptySectionAlternate.txt */; };
+		831D6C991D2E886300C7F4EF /* MultipleIncludeFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C821D2E886300C7F4EF /* MultipleIncludeFile.txt */; };
+		831D6C9A1D2E886300C7F4EF /* NestedIncludeFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C831D2E886300C7F4EF /* NestedIncludeFile.txt */; };
+		831D6C9B1D2E886300C7F4EF /* RecursiveIncludeFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C841D2E886300C7F4EF /* RecursiveIncludeFile.txt */; };
+		831D6C9C1D2E886300C7F4EF /* SingleEmptySectionAlternate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C851D2E886300C7F4EF /* SingleEmptySectionAlternate.txt */; };
+		831D6C9D1D2E886300C7F4EF /* SingleIncludeFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C861D2E886300C7F4EF /* SingleIncludeFile.txt */; };
+		831D6C9E1D2E886300C7F4EF /* SingleSection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C871D2E886300C7F4EF /* SingleSection.txt */; };
+		831D6C9F1D2E886300C7F4EF /* SingleSectionMultipleValues.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C881D2E886300C7F4EF /* SingleSectionMultipleValues.txt */; };
+		831D6CA01D2E886300C7F4EF /* SingleSectionWithSubsection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C891D2E886300C7F4EF /* SingleSectionWithSubsection.txt */; };
+		831D6CA11D2E886300C7F4EF /* Variable.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C8A1D2E886300C7F4EF /* Variable.txt */; };
+		831D6CA21D2E886300C7F4EF /* VariableInSection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C8B1D2E886300C7F4EF /* VariableInSection.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +60,31 @@
 		831D6C6A1D2CFFDF00C7F4EF /* OculusReparo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OculusReparo.swift; sourceTree = "<group>"; };
 		831D6C6C1D2D1EEC00C7F4EF /* Reparo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reparo.swift; sourceTree = "<group>"; };
 		831D6C6E1D2D555100C7F4EF /* ReparoStateMachineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReparoStateMachineTests.swift; sourceTree = "<group>"; };
+		831D6C701D2E868400C7F4EF /* ReparoParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReparoParserTests.swift; sourceTree = "<group>"; };
+		831D6C721D2E87D700C7F4EF /* SingleEmptySection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SingleEmptySection.txt; path = Samples/SingleEmptySection.txt; sourceTree = "<group>"; };
+		831D6C751D2E886300C7F4EF /* FunctionInclude.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FunctionInclude.txt; path = Samples/FunctionInclude.txt; sourceTree = "<group>"; };
+		831D6C761D2E886300C7F4EF /* VariableExternal.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VariableExternal.txt; path = Samples/VariableExternal.txt; sourceTree = "<group>"; };
+		831D6C771D2E886300C7F4EF /* Replace.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Replace.txt; path = Samples/Replace.txt; sourceTree = "<group>"; };
+		831D6C781D2E886300C7F4EF /* DirectiveSections.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DirectiveSections.txt; path = Samples/DirectiveSections.txt; sourceTree = "<group>"; };
+		831D6C791D2E886300C7F4EF /* DirectiveNot.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DirectiveNot.txt; path = Samples/DirectiveNot.txt; sourceTree = "<group>"; };
+		831D6C7A1D2E886300C7F4EF /* Directive.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Directive.txt; path = Samples/Directive.txt; sourceTree = "<group>"; };
+		831D6C7B1D2E886300C7F4EF /* SingleSectionWithComments.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SingleSectionWithComments.txt; path = Samples/SingleSectionWithComments.txt; sourceTree = "<group>"; };
+		831D6C7C1D2E886300C7F4EF /* InvalidLineInRoot.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = InvalidLineInRoot.txt; path = Samples/InvalidLineInRoot.txt; sourceTree = "<group>"; };
+		831D6C7D1D2E886300C7F4EF /* SingleSectionWithMultipleSubsection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SingleSectionWithMultipleSubsection.txt; path = Samples/SingleSectionWithMultipleSubsection.txt; sourceTree = "<group>"; };
+		831D6C7E1D2E886300C7F4EF /* Function.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Function.txt; path = Samples/Function.txt; sourceTree = "<group>"; };
+		831D6C7F1D2E886300C7F4EF /* InvalidLineInSection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = InvalidLineInSection.txt; path = Samples/InvalidLineInSection.txt; sourceTree = "<group>"; };
+		831D6C801D2E886300C7F4EF /* MultipleEmptySection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultipleEmptySection.txt; path = Samples/MultipleEmptySection.txt; sourceTree = "<group>"; };
+		831D6C811D2E886300C7F4EF /* MultipleEmptySectionAlternate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultipleEmptySectionAlternate.txt; path = Samples/MultipleEmptySectionAlternate.txt; sourceTree = "<group>"; };
+		831D6C821D2E886300C7F4EF /* MultipleIncludeFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultipleIncludeFile.txt; path = Samples/MultipleIncludeFile.txt; sourceTree = "<group>"; };
+		831D6C831D2E886300C7F4EF /* NestedIncludeFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NestedIncludeFile.txt; path = Samples/NestedIncludeFile.txt; sourceTree = "<group>"; };
+		831D6C841D2E886300C7F4EF /* RecursiveIncludeFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RecursiveIncludeFile.txt; path = Samples/RecursiveIncludeFile.txt; sourceTree = "<group>"; };
+		831D6C851D2E886300C7F4EF /* SingleEmptySectionAlternate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SingleEmptySectionAlternate.txt; path = Samples/SingleEmptySectionAlternate.txt; sourceTree = "<group>"; };
+		831D6C861D2E886300C7F4EF /* SingleIncludeFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SingleIncludeFile.txt; path = Samples/SingleIncludeFile.txt; sourceTree = "<group>"; };
+		831D6C871D2E886300C7F4EF /* SingleSection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SingleSection.txt; path = Samples/SingleSection.txt; sourceTree = "<group>"; };
+		831D6C881D2E886300C7F4EF /* SingleSectionMultipleValues.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SingleSectionMultipleValues.txt; path = Samples/SingleSectionMultipleValues.txt; sourceTree = "<group>"; };
+		831D6C891D2E886300C7F4EF /* SingleSectionWithSubsection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SingleSectionWithSubsection.txt; path = Samples/SingleSectionWithSubsection.txt; sourceTree = "<group>"; };
+		831D6C8A1D2E886300C7F4EF /* Variable.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Variable.txt; path = Samples/Variable.txt; sourceTree = "<group>"; };
+		831D6C8B1D2E886300C7F4EF /* VariableInSection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VariableInSection.txt; path = Samples/VariableInSection.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,11 +138,44 @@
 		831D6C5E1D2CFFAA00C7F4EF /* OculusReparoTests */ = {
 			isa = PBXGroup;
 			children = (
+				831D6C741D2E87E200C7F4EF /* Samples */,
 				831D6C5F1D2CFFAA00C7F4EF /* OculusReparoTests.swift */,
 				831D6C611D2CFFAA00C7F4EF /* Info.plist */,
 				831D6C6E1D2D555100C7F4EF /* ReparoStateMachineTests.swift */,
+				831D6C701D2E868400C7F4EF /* ReparoParserTests.swift */,
 			);
 			path = OculusReparoTests;
+			sourceTree = "<group>";
+		};
+		831D6C741D2E87E200C7F4EF /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				831D6C751D2E886300C7F4EF /* FunctionInclude.txt */,
+				831D6C761D2E886300C7F4EF /* VariableExternal.txt */,
+				831D6C771D2E886300C7F4EF /* Replace.txt */,
+				831D6C781D2E886300C7F4EF /* DirectiveSections.txt */,
+				831D6C791D2E886300C7F4EF /* DirectiveNot.txt */,
+				831D6C7A1D2E886300C7F4EF /* Directive.txt */,
+				831D6C7B1D2E886300C7F4EF /* SingleSectionWithComments.txt */,
+				831D6C7C1D2E886300C7F4EF /* InvalidLineInRoot.txt */,
+				831D6C7D1D2E886300C7F4EF /* SingleSectionWithMultipleSubsection.txt */,
+				831D6C7E1D2E886300C7F4EF /* Function.txt */,
+				831D6C7F1D2E886300C7F4EF /* InvalidLineInSection.txt */,
+				831D6C801D2E886300C7F4EF /* MultipleEmptySection.txt */,
+				831D6C811D2E886300C7F4EF /* MultipleEmptySectionAlternate.txt */,
+				831D6C821D2E886300C7F4EF /* MultipleIncludeFile.txt */,
+				831D6C831D2E886300C7F4EF /* NestedIncludeFile.txt */,
+				831D6C841D2E886300C7F4EF /* RecursiveIncludeFile.txt */,
+				831D6C851D2E886300C7F4EF /* SingleEmptySectionAlternate.txt */,
+				831D6C861D2E886300C7F4EF /* SingleIncludeFile.txt */,
+				831D6C871D2E886300C7F4EF /* SingleSection.txt */,
+				831D6C881D2E886300C7F4EF /* SingleSectionMultipleValues.txt */,
+				831D6C891D2E886300C7F4EF /* SingleSectionWithSubsection.txt */,
+				831D6C8A1D2E886300C7F4EF /* Variable.txt */,
+				831D6C8B1D2E886300C7F4EF /* VariableInSection.txt */,
+				831D6C721D2E87D700C7F4EF /* SingleEmptySection.txt */,
+			);
+			name = Samples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +276,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				831D6C901D2E886300C7F4EF /* DirectiveNot.txt in Resources */,
+				831D6C961D2E886300C7F4EF /* InvalidLineInSection.txt in Resources */,
+				831D6C731D2E87D700C7F4EF /* SingleEmptySection.txt in Resources */,
+				831D6C9C1D2E886300C7F4EF /* SingleEmptySectionAlternate.txt in Resources */,
+				831D6C8E1D2E886300C7F4EF /* Replace.txt in Resources */,
+				831D6CA21D2E886300C7F4EF /* VariableInSection.txt in Resources */,
+				831D6CA11D2E886300C7F4EF /* Variable.txt in Resources */,
+				831D6C971D2E886300C7F4EF /* MultipleEmptySection.txt in Resources */,
+				831D6C8F1D2E886300C7F4EF /* DirectiveSections.txt in Resources */,
+				831D6C9F1D2E886300C7F4EF /* SingleSectionMultipleValues.txt in Resources */,
+				831D6C921D2E886300C7F4EF /* SingleSectionWithComments.txt in Resources */,
+				831D6C941D2E886300C7F4EF /* SingleSectionWithMultipleSubsection.txt in Resources */,
+				831D6C931D2E886300C7F4EF /* InvalidLineInRoot.txt in Resources */,
+				831D6C8C1D2E886300C7F4EF /* FunctionInclude.txt in Resources */,
+				831D6C9A1D2E886300C7F4EF /* NestedIncludeFile.txt in Resources */,
+				831D6C8D1D2E886300C7F4EF /* VariableExternal.txt in Resources */,
+				831D6C981D2E886300C7F4EF /* MultipleEmptySectionAlternate.txt in Resources */,
+				831D6C9D1D2E886300C7F4EF /* SingleIncludeFile.txt in Resources */,
+				831D6C951D2E886300C7F4EF /* Function.txt in Resources */,
+				831D6CA01D2E886300C7F4EF /* SingleSectionWithSubsection.txt in Resources */,
+				831D6C991D2E886300C7F4EF /* MultipleIncludeFile.txt in Resources */,
+				831D6C911D2E886300C7F4EF /* Directive.txt in Resources */,
+				831D6C9E1D2E886300C7F4EF /* SingleSection.txt in Resources */,
+				831D6C9B1D2E886300C7F4EF /* RecursiveIncludeFile.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				831D6C6F1D2D555100C7F4EF /* ReparoStateMachineTests.swift in Sources */,
+				831D6C711D2E868400C7F4EF /* ReparoParserTests.swift in Sources */,
 				831D6C601D2CFFAA00C7F4EF /* OculusReparoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

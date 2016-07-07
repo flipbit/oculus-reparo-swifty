@@ -1,0 +1,13 @@
+﻿@set name: bob;
+
+@person;
+
+@person {
+    @name: alice;
+}
+
+@define person {
+    person {
+        name: @name;
+    }
+}

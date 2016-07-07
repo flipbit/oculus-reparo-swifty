@@ -47,12 +47,16 @@ public class Reparo {
     }
     
     public class Section : Line {
+        var lines: [Line]
+        
         override var isASection: Bool {
             return true
         }
         
         init(line: Line)
         {
+            lines = []
+            
             super.init(filename: line.filename, lineNumber: line.lineNumber)
             
             key = line.key
@@ -61,34 +65,58 @@ public class Reparo {
         }
     }
     
+    /**
+        Parser to read Reparo configuration files
+    */
     public class Parser {
+        /**
+            Parses the given string into a collection of lines
+         
+            - Parameter input:      The string to parse
+            - Parameter filename:   The filename of the string
+         
+            - Throws:   Reparo.InvalidConfigurationLine if the configuration is invalid
+         
+            - Returns:              A collection of configuration lines
+         */
         public func parseString(input: String, filename: String) throws -> [Line] {
             var lines: [Line] = []
             
             let machine = StateMachine(input: input, filename: filename)
             
-            while !machine.empty
-            {
-                let line = try machine.read()
+            while !machine.empty {
+                var line = try machine.read()
                 
-                if line == nil
-                {
+                if line == nil {
                     break
                 }
                 
-                if line is Section
-                {
-                    line = parseSection(line as Section, machine)
+                if let section = line as? Section {
+                    line = try parseSection(section, machine: machine)
                 }
                 
-                lines.append(line)
+                lines.append(line!)
             }
             
             return lines
         }
         
         private func parseSection(section: Section, machine: StateMachine) throws -> Section {
+            while !machine.empty {
+                var line = try machine.read()
+                
+                if line == nil {
+                    break
+                }
+                
+                if let section = line as? Section {
+                    line = try parseSection(section, machine: machine)
+                }
+                
+                section.lines.append(line!)
+            }
             
+            return section
         }
     }
     
