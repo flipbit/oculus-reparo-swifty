@@ -7,16 +7,35 @@
 //
 
 import Foundation
+import UIKit
+
+public protocol ReparoConfigurationTransform {
+    func transform(lines: [Reparo.Line], parser: Reparo.Parser) throws -> [Reparo.Line]
+}
+
+public protocol ReparoConfigurationReader {
+    func readConfigurationFile(filename: String) throws -> String?
+    
+    func readIncludeFile(filename: String) throws -> String?
+}
 
 public class Reparo {
     enum ReparoError: ErrorType {
         case InvalidConfigurationLine(String)
+        case InvalidColorString(String)
+        case MissingConfigurationFile(String)
+        case RecursiveIncludeDetected
     }
     
     public class Directive {
         var name: String
         var not: Bool
-        
+
+        init(name: String) {
+            self.name = name
+            self.not = false
+        }
+
         init(name: String, not: Bool) {
             self.name = name
             self.not = not
@@ -33,35 +52,233 @@ public class Reparo {
         var filename: String
         var lineNumber: Int
         var directives: [Directive]
+        var visible: Bool
+        var parent: Section?
+        public var index: Int
         
-        var isASection: Bool {
+        public var isASection: Bool {
             return false
         }
         
         init(filename: String, lineNumber: Int) {
             directives = []
+            visible = true
+            index = 0
             
             self.filename = filename
             self.lineNumber = lineNumber
         }
+        
+        public var sections: [Section] {
+            return []
+        }
+        
+        public var path: String {
+            if (parent != nil) {
+                return parent!.path + "/\(key!)[\(index)]"
+            }
+            else if key == nil {
+                return "/"
+            }
+            
+            return "/\(key!)[\(index)]"
+        }
     }
     
     public class Section : Line {
-        var lines: [Line]
+        private var _lines: [Line]
         
-        override var isASection: Bool {
+        public var lines: [Line] {
+            set { _lines = newValue }
+            get { return _lines.filter { line in line.visible == true } }
+        }
+        
+        override public var isASection: Bool {
             return true
         }
         
         init(line: Line)
         {
-            lines = []
+            _lines = []
             
             super.init(filename: line.filename, lineNumber: line.lineNumber)
             
             key = line.key
             value = line.value
             directives.appendContentsOf(line.directives)
+            visible = line.visible
+        }
+        
+        init(filename: String)
+        {
+            _lines = []
+            
+            super.init(filename: filename, lineNumber: 0)
+        }
+        
+        init(filename: String, lines: [Line])
+        {
+            _lines = lines
+            
+            super.init(filename: filename, lineNumber: 0)
+        }
+        
+        override public var sections: [Section] {
+            var results: [Section] = []
+            
+            for line in lines {
+                if line.visible {
+                    if let section = line as? Section {
+                        results.append(section)
+                    }
+                }
+            }
+            
+            return results
+        }
+        
+        func getValue(name: String) -> String? {
+            return getValue(name, ifMissing: nil)
+        }
+        
+        func getValue(name: String, ifMissing: String?) -> String? {
+            for line in lines {
+                if line.visible {
+                    if line.key == name {
+                        return line.value
+                    }
+                }
+            }
+            return ifMissing
+        }
+
+        func getFloat(name: String, ifMissing: Float) -> Float {
+            let value = getValue(name, ifMissing: String(ifMissing))
+            
+            return toFloat(value)
+        }
+        
+        func getCGFloat(name: String, ifMissing: CGFloat) -> CGFloat {
+            let value = getValue(name, ifMissing: String(ifMissing))
+            
+            return toCGFloat(value)
+        }
+
+        func getUIColor(name: String) throws -> UIColor? {
+            return try getUIColor(name, ifMissing: UIColor.clearColor())
+        }
+
+        func getUIColor(name: String, ifMissing: UIColor?) throws -> UIColor? {
+            if let value = getValue(name) {
+                return try toUIColor(value)
+            }
+
+            return ifMissing
+        }
+        
+        func getCGColor(name: String) throws -> CGColor? {
+            return try getUIColor(name, ifMissing: UIColor.clearColor())?.CGColor
+        }
+        
+        func getCGColor(name: String, ifMissing: UIColor?) throws -> CGColor? {
+            if let value = getValue(name) {
+                return try toUIColor(value).CGColor
+            }
+            
+            return ifMissing?.CGColor
+        }
+        
+        public func getSection(name: String) -> Section? {
+            return getSection(name, recurse: false)
+        }
+        
+        public func getSection(name: String, recurse: Bool) -> Section? {
+            var results = getSections(name, recurse: recurse)
+            
+            if results.count > 0 {
+                return results[0]
+            } else {
+                return nil
+            }
+        }
+        
+        public func getSections(name: String) -> [Section] {
+            return getSections(name, recurse: false)
+        }
+        
+        public func getSections(name: String, recurse: Bool) -> [Section] {
+            return getSections(name, recurse: recurse, search: lines)
+        }
+        
+        private func getSections(name: String, recurse: Bool, search: [Line]) -> [Section] {
+            var results: [Section] = []
+            
+            for line in search {
+                if line.visible {
+                    if let section = line as? Section {
+                        if (section.key == name) {
+                            results.append(section)
+                        }
+                    
+                        if recurse {
+                            let children = getSections(name, recurse: recurse, search: section.lines)
+                        
+                            results.appendContentsOf(children)
+                        }
+                    }
+                }
+            }
+            
+            return results
+        }
+        
+        private func toFloat(input: String?) -> Float {
+            if input != nil {
+                if let n = NSNumberFormatter().numberFromString(input!) {
+                    return Float(n)
+                }
+            }
+            
+            return Float(0)
+        }
+        
+        private func toCGFloat(input: String?) -> CGFloat {
+            if input != nil {
+                if let n = NSNumberFormatter().numberFromString(input!) {
+                    return CGFloat(n)
+                }
+            }
+            
+            return CGFloat(0)
+        }
+        
+        private func toUIColor(input: String?) throws -> UIColor {
+            if (input == nil) {
+                return UIColor.clearColor()
+            }
+            
+            let hex = input!.stringByTrimmingCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
+            var int = UInt32()
+            NSScanner(string: hex).scanHexInt(&int)
+            let a, r, g, b: UInt32
+            switch hex.characters.count {
+            case 3: // RGB (12-bit)
+                (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+            case 6: // RGB (24-bit)
+                (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+            case 8: // ARGB (32-bit)
+                (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+            default:
+                throw ReparoError.InvalidColorString("\(input!) is an invalid hex color string.")
+            }
+            
+            return UIColor(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
+        }
+    }
+    
+    public class Document : Section {
+        override public var path: String {
+            return ""
         }
     }
     
@@ -69,20 +286,58 @@ public class Reparo {
         Parser to read Reparo configuration files
     */
     public class Parser {
+        var directives: [String]
+        var transforms: [ReparoConfigurationTransform]
+        var reader: ReparoConfigurationReader
+        
+        init() {
+            directives = []
+            transforms = []
+            
+            transforms.append(IncludeTransform())
+            transforms.append(VariableTransform())
+            transforms.append(DirectiveTransform())
+            
+            reader = BundleConfigurationReader()
+        }
+        
+        convenience init(reader: ReparoConfigurationReader) {
+            self.init()
+            
+            self.reader = reader
+        }
+        
         /**
-            Parses the given string into a collection of lines
+         Parses the given string into a configuration document
          
-            - Parameter input:      The string to parse
-            - Parameter filename:   The filename of the string
+         - Parameter input:      The string to parse
+         - Parameter filename:   The filename of the string being parsed
          
-            - Throws:   Reparo.InvalidConfigurationLine if the configuration is invalid
+         - Throws:               Reparo.InvalidConfigurationLine if the configuration is invalid
          
-            - Returns:              A collection of configuration lines
+         - Returns:              A configuration document object
          */
-        public func parseString(input: String, filename: String) throws -> [Line] {
-            var lines: [Line] = []
+        public func parseString(input: String, filename: String) throws -> Document {
+            return try parseString(input, filename: filename, runTransforms: true)
+        }
+        
+        /**
+         Parses the given string into a configuration document
+         
+         - Parameter input:      The string to parse
+         - Parameter filename:   The filename of the string being parsed
+         - Parameter transform:  Flag indicating whether to transform the configuration
+         
+         - Throws:               Reparo.InvalidConfigurationLine if the configuration is invalid
+         
+         - Returns:              A configuration document object
+         */
+        public func parseString(input: String, filename: String, runTransforms: Bool) throws -> Document {
+            var document = Document(filename: filename)
             
             let machine = StateMachine(input: input, filename: filename)
+            
+            var index = 1
             
             while !machine.empty {
                 var line = try machine.read()
@@ -95,28 +350,232 @@ public class Reparo {
                     line = try parseSection(section, machine: machine)
                 }
                 
-                lines.append(line!)
+                line!.parent = document
+                line!.index = index
+                
+                document.lines.append(line!)
+                
+                index += 1
+            }
+            
+            if (runTransforms) {
+                document = try transform(document)
+            }
+            
+            return document
+        }
+        
+        /**
+         Parses the given file into a configuration document
+         
+         - Parameter filename:  The filename to parse
+         
+         - Throws:              Reparo.InvalidConfigurationLine if the configuration is invalid
+         
+         - Returns:             A configuration document object
+         */
+        public func parseFile(filename: String) throws -> Document {
+            return try parseFile(filename, runTransforms: true)
+        }
+        
+        public func parseFile(filename: String, runTransforms: Bool) throws -> Document {
+            if let input = try reader.readConfigurationFile(filename) {
+                return try parseString(input, filename: filename, runTransforms: runTransforms)
+            } else {
+                throw ReparoError.MissingConfigurationFile(filename)
+            }
+        }
+        
+        public func transform(document: Document) throws -> Document {
+            let transformed = document
+            for transform in transforms {
+                transformed.lines = try transform.transform(transformed.lines, parser: self)
+            }
+            
+            return transformed
+        }
+        
+        private func parseSection(section: Section, machine: StateMachine) throws -> Section {
+            var index = 1
+            while !machine.empty {
+                var line = try machine.read()
+                
+                if line == nil {
+                    break
+                }
+                
+                if let section = line as? Section {
+                    line = try parseSection(section, machine: machine)
+                }
+                
+                line!.parent = section
+                line!.index = index
+                
+                section.lines.append(line!)
+                index += 1
+            }
+            
+            return section
+        }
+    }
+    
+    public class BundleConfigurationReader : ReparoConfigurationReader {
+        public func readConfigurationFile(filename: String) throws -> String? {
+            let path = getPath(filename)
+            return try read(path)
+        }
+        
+        public func readIncludeFile(filename: String) throws -> String? {
+            let path = getPath(filename)
+            return try read(path)
+        }
+        
+        private func getPath(filename: String) -> String {
+            let bundlePath = NSBundle(forClass: self.dynamicType).resourcePath!
+            let url = NSURL(fileURLWithPath: bundlePath)
+            return url.URLByAppendingPathComponent(filename).path!
+        }
+        
+        private func read(filename: String) throws -> String? {
+            return try NSString(contentsOfFile: filename, encoding: NSUTF8StringEncoding) as String
+        }
+    }
+    
+    public class VariableTransform : ReparoConfigurationTransform {
+        private var variables: [String: String]
+        
+        init() {
+            variables = [String: String]()
+        }
+        
+        public func transform(lines: [Line], parser: Parser) throws -> [Line] {
+            for line in lines {
+                assign(line)
+                line.value = substitute(line.value)
+                
+                if let section = line as? Section {
+                    try transform(section.lines, parser: parser)
+                }
             }
             
             return lines
         }
         
-        private func parseSection(section: Section, machine: StateMachine) throws -> Section {
-            while !machine.empty {
-                var line = try machine.read()
+        func assign(line: Line) {
+            if let key = line.key {
+                if key.hasPrefix("@set") && key.characters.count > 5 {
+                    var name = key.substringFromIndex(key.startIndex.advancedBy(5))
+                    name = name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                    if let value = line.value {
+                        variables[name] = value
+                    }
+                }
+            }
+        }
+        
+        func substitute(value: String?) -> String? {
+            if value != nil {
+                for key in variables.keys {
+                    if (value! == "@" + key) {
+                        return variables[key]
+                    }
+                }
                 
-                if line == nil {
-                    break
+                return value
+            }
+            
+            return nil
+        }
+    }
+    
+    public class DirectiveTransform : ReparoConfigurationTransform {
+        public func transform(lines: [Line], parser: Parser) throws -> [Line] {
+            var transformed: [Line] = []
+            for line in lines {
+                if line.directives.count > 0 {
+                    var include = true
+                    
+                    for directive in line.directives {
+                        let matches = parser.directives.filter { d in d == directive.name }.count
+                        
+                        include = matches > 0
+                        
+                        if directive.not {
+                            include = !include
+                        }
+                        
+                        if !include {
+                            break
+                        }
+                    }
+                    
+                    if !include {
+                        continue
+                    }
                 }
                 
                 if let section = line as? Section {
-                    line = try parseSection(section, machine: machine)
+                    section.lines = try transform(section.lines, parser: parser)
+                    
+                    transformed.append(section)
+                } else {
+                    transformed.append(line)
                 }
-                
-                section.lines.append(line!)
             }
             
-            return section
+            return transformed
+        }
+    }
+    
+    public class IncludeTransform : ReparoConfigurationTransform {
+        var includeCount = 0
+        var includeLimit = 0
+        public func transform(lines: [Line], parser: Parser) throws -> [Line] {
+            includeCount = 1
+            includeLimit = 0
+            
+            var transformed: [Line] = lines
+            while (includeCount > 0) {
+                transformed = try expand(transformed, parser: parser)
+                
+                if (includeLimit > 255) {
+                    throw ReparoError.RecursiveIncludeDetected
+                }
+            }
+            
+            return transformed
+        }
+        
+        private func expand (lines: [Line], parser: Parser) throws -> [Line] {
+            includeCount = 0
+            includeLimit = includeLimit + 1
+            
+            var transformed: [Line] = []
+
+            for line in lines {
+                if line.key != nil && line.key!.hasPrefix("@include") {
+                    if let filename = line.value {
+                        let input = try parser.reader.readIncludeFile(filename)
+                        
+                        if input == nil {
+                            throw ReparoError.MissingConfigurationFile(filename)
+                        }
+                    
+                        let include = try parser.parseString(input!, filename: filename, runTransforms: false)
+                    
+                        transformed.appendContentsOf(include.lines)
+                        
+                        includeCount = includeCount + 1
+                    }
+                } else if let section = line as? Section {
+                    section.lines = try expand(section.lines, parser: parser)
+                    transformed.append(section)
+                } else {
+                    transformed.append(line)
+                }
+            }
+            
+            return transformed
         }
     }
     

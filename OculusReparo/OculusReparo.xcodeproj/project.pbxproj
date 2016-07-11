@@ -38,6 +38,24 @@
 		831D6CA01D2E886300C7F4EF /* SingleSectionWithSubsection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C891D2E886300C7F4EF /* SingleSectionWithSubsection.txt */; };
 		831D6CA11D2E886300C7F4EF /* Variable.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C8A1D2E886300C7F4EF /* Variable.txt */; };
 		831D6CA21D2E886300C7F4EF /* VariableInSection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 831D6C8B1D2E886300C7F4EF /* VariableInSection.txt */; };
+		83740AB61D2EB5FF00FDA018 /* ReparoVariableTransformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AB51D2EB5FF00FDA018 /* ReparoVariableTransformTests.swift */; };
+		83740AB81D2EC2D000FDA018 /* PositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AB71D2EC2D000FDA018 /* PositionTests.swift */; };
+		83740AC51D2FDB2900FDA018 /* ReparoDirectiveTransformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AC41D2FDB2900FDA018 /* ReparoDirectiveTransformTests.swift */; };
+		83740AC71D2FEB7C00FDA018 /* ReparoIncludeTransformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AC61D2FEB7C00FDA018 /* ReparoIncludeTransformTests.swift */; };
+		83740AC91D2FECDC00FDA018 /* SampleReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AC81D2FECDC00FDA018 /* SampleReader.swift */; };
+		83740ACD1D32686400FDA018 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740ACC1D32686400FDA018 /* ViewState.swift */; };
+		83740ACF1D3268D400FDA018 /* OculusReparoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740ACE1D3268D400FDA018 /* OculusReparoError.swift */; };
+		83740AD11D32690C00FDA018 /* Complier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AD01D32690C00FDA018 /* Complier.swift */; };
+		83740AD51D326F1C00FDA018 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AD41D326F1C00FDA018 /* ViewBuilder.swift */; };
+		83740AD81D32700A00FDA018 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AD71D32700A00FDA018 /* Builder.swift */; };
+		83740ADE1D32757F00FDA018 /* ButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740ADD1D32757F00FDA018 /* ButtonBuilder.swift */; };
+		83740AE11D3275BB00FDA018 /* LabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740ADF1D3275BB00FDA018 /* LabelBuilder.swift */; };
+		83740AE21D3275BB00FDA018 /* SliderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AE01D3275BB00FDA018 /* SliderBuilder.swift */; };
+		83740AE41D3275E800FDA018 /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AE31D3275E800FDA018 /* Hardware.swift */; };
+		83740AE61D32766F00FDA018 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AE51D32766F00FDA018 /* Position.swift */; };
+		83740AEA1D32798700FDA018 /* BuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AE91D32798700FDA018 /* BuilderProtocol.swift */; };
+		83740AEC1D3296F000FDA018 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AEB1D3296F000FDA018 /* Animation.swift */; };
+		83740AF51D32F42A00FDA018 /* ImageViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83740AF41D32F42A00FDA018 /* ImageViewBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +103,24 @@
 		831D6C891D2E886300C7F4EF /* SingleSectionWithSubsection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SingleSectionWithSubsection.txt; path = Samples/SingleSectionWithSubsection.txt; sourceTree = "<group>"; };
 		831D6C8A1D2E886300C7F4EF /* Variable.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Variable.txt; path = Samples/Variable.txt; sourceTree = "<group>"; };
 		831D6C8B1D2E886300C7F4EF /* VariableInSection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VariableInSection.txt; path = Samples/VariableInSection.txt; sourceTree = "<group>"; };
+		83740AB51D2EB5FF00FDA018 /* ReparoVariableTransformTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReparoVariableTransformTests.swift; sourceTree = "<group>"; };
+		83740AB71D2EC2D000FDA018 /* PositionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionTests.swift; sourceTree = "<group>"; };
+		83740AC41D2FDB2900FDA018 /* ReparoDirectiveTransformTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReparoDirectiveTransformTests.swift; sourceTree = "<group>"; };
+		83740AC61D2FEB7C00FDA018 /* ReparoIncludeTransformTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReparoIncludeTransformTests.swift; sourceTree = "<group>"; };
+		83740AC81D2FECDC00FDA018 /* SampleReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleReader.swift; sourceTree = "<group>"; };
+		83740ACC1D32686400FDA018 /* ViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		83740ACE1D3268D400FDA018 /* OculusReparoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OculusReparoError.swift; sourceTree = "<group>"; };
+		83740AD01D32690C00FDA018 /* Complier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Complier.swift; sourceTree = "<group>"; };
+		83740AD41D326F1C00FDA018 /* ViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewBuilder.swift; path = Builders/ViewBuilder.swift; sourceTree = "<group>"; };
+		83740AD71D32700A00FDA018 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Builder.swift; path = Builders/Builder.swift; sourceTree = "<group>"; };
+		83740ADD1D32757F00FDA018 /* ButtonBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonBuilder.swift; path = Builders/ButtonBuilder.swift; sourceTree = "<group>"; };
+		83740ADF1D3275BB00FDA018 /* LabelBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabelBuilder.swift; path = Builders/LabelBuilder.swift; sourceTree = "<group>"; };
+		83740AE01D3275BB00FDA018 /* SliderBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderBuilder.swift; path = Builders/SliderBuilder.swift; sourceTree = "<group>"; };
+		83740AE31D3275E800FDA018 /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
+		83740AE51D32766F00FDA018 /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		83740AE91D32798700FDA018 /* BuilderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuilderProtocol.swift; path = Builders/BuilderProtocol.swift; sourceTree = "<group>"; };
+		83740AEB1D3296F000FDA018 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		83740AF41D32F42A00FDA018 /* ImageViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewBuilder.swift; path = Builders/ImageViewBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,10 +163,16 @@
 		831D6C521D2CFFAA00C7F4EF /* OculusReparo */ = {
 			isa = PBXGroup;
 			children = (
+				83740AD61D326F2600FDA018 /* Builders */,
 				831D6C531D2CFFAA00C7F4EF /* OculusReparo.h */,
 				831D6C551D2CFFAA00C7F4EF /* Info.plist */,
 				831D6C6A1D2CFFDF00C7F4EF /* OculusReparo.swift */,
 				831D6C6C1D2D1EEC00C7F4EF /* Reparo.swift */,
+				83740ACC1D32686400FDA018 /* ViewState.swift */,
+				83740ACE1D3268D400FDA018 /* OculusReparoError.swift */,
+				83740AE31D3275E800FDA018 /* Hardware.swift */,
+				83740AE51D32766F00FDA018 /* Position.swift */,
+				83740AEB1D3296F000FDA018 /* Animation.swift */,
 			);
 			path = OculusReparo;
 			sourceTree = "<group>";
@@ -143,6 +185,12 @@
 				831D6C611D2CFFAA00C7F4EF /* Info.plist */,
 				831D6C6E1D2D555100C7F4EF /* ReparoStateMachineTests.swift */,
 				831D6C701D2E868400C7F4EF /* ReparoParserTests.swift */,
+				83740AB51D2EB5FF00FDA018 /* ReparoVariableTransformTests.swift */,
+				83740AB71D2EC2D000FDA018 /* PositionTests.swift */,
+				83740AC41D2FDB2900FDA018 /* ReparoDirectiveTransformTests.swift */,
+				83740AC61D2FEB7C00FDA018 /* ReparoIncludeTransformTests.swift */,
+				83740AC81D2FECDC00FDA018 /* SampleReader.swift */,
+				83740AD01D32690C00FDA018 /* Complier.swift */,
 			);
 			path = OculusReparoTests;
 			sourceTree = "<group>";
@@ -176,6 +224,20 @@
 				831D6C721D2E87D700C7F4EF /* SingleEmptySection.txt */,
 			);
 			name = Samples;
+			sourceTree = "<group>";
+		};
+		83740AD61D326F2600FDA018 /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				83740AE91D32798700FDA018 /* BuilderProtocol.swift */,
+				83740AD71D32700A00FDA018 /* Builder.swift */,
+				83740AD41D326F1C00FDA018 /* ViewBuilder.swift */,
+				83740ADF1D3275BB00FDA018 /* LabelBuilder.swift */,
+				83740AE01D3275BB00FDA018 /* SliderBuilder.swift */,
+				83740ADD1D32757F00FDA018 /* ButtonBuilder.swift */,
+				83740AF41D32F42A00FDA018 /* ImageViewBuilder.swift */,
+			);
+			name = Builders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,8 +372,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83740AE61D32766F00FDA018 /* Position.swift in Sources */,
+				83740ACF1D3268D400FDA018 /* OculusReparoError.swift in Sources */,
 				831D6C6D1D2D1EEC00C7F4EF /* Reparo.swift in Sources */,
 				831D6C6B1D2CFFDF00C7F4EF /* OculusReparo.swift in Sources */,
+				83740ADE1D32757F00FDA018 /* ButtonBuilder.swift in Sources */,
+				83740AE21D3275BB00FDA018 /* SliderBuilder.swift in Sources */,
+				83740AE11D3275BB00FDA018 /* LabelBuilder.swift in Sources */,
+				83740AD51D326F1C00FDA018 /* ViewBuilder.swift in Sources */,
+				83740AE41D3275E800FDA018 /* Hardware.swift in Sources */,
+				83740AEA1D32798700FDA018 /* BuilderProtocol.swift in Sources */,
+				83740ACD1D32686400FDA018 /* ViewState.swift in Sources */,
+				83740AD81D32700A00FDA018 /* Builder.swift in Sources */,
+				83740AF51D32F42A00FDA018 /* ImageViewBuilder.swift in Sources */,
+				83740AEC1D3296F000FDA018 /* Animation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +395,13 @@
 			files = (
 				831D6C6F1D2D555100C7F4EF /* ReparoStateMachineTests.swift in Sources */,
 				831D6C711D2E868400C7F4EF /* ReparoParserTests.swift in Sources */,
+				83740AB81D2EC2D000FDA018 /* PositionTests.swift in Sources */,
 				831D6C601D2CFFAA00C7F4EF /* OculusReparoTests.swift in Sources */,
+				83740AB61D2EB5FF00FDA018 /* ReparoVariableTransformTests.swift in Sources */,
+				83740AC91D2FECDC00FDA018 /* SampleReader.swift in Sources */,
+				83740AC71D2FEB7C00FDA018 /* ReparoIncludeTransformTests.swift in Sources */,
+				83740AD11D32690C00FDA018 /* Complier.swift in Sources */,
+				83740AC51D2FDB2900FDA018 /* ReparoDirectiveTransformTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +581,7 @@
 				831D6C661D2CFFAA00C7F4EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		831D6C671D2CFFAA00C7F4EF /* Build configuration list for PBXNativeTarget "OculusReparoTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +590,7 @@
 				831D6C691D2CFFAA00C7F4EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
