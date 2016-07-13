@@ -1,3 +1,0 @@
-﻿first {
-    font-weight: "bold";
-}

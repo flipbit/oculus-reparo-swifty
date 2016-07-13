@@ -112,6 +112,11 @@ extension OculusReparo {
         var horizontalAlignment: HorizontalAlignment
         var verticalAlignment: VerticalAlignment
         
+        var paddingTop: String?
+        var paddingLeft: String?
+        var paddingRight: String?
+        var paddingBottom: String?
+        
         init(parent: UIView) {
             top = "0"
             left = "0"
@@ -141,6 +146,11 @@ extension OculusReparo {
                 verticalAlignment = VerticalAlignment.Top
             }
             
+            paddingTop = section.getValue("padding-top", ifMissing: "0")
+            paddingLeft = section.getValue("padding-left", ifMissing: "0")
+            paddingRight = section.getValue("padding-right", ifMissing: "0")
+            paddingBottom = section.getValue("padding-bottom", ifMissing: "0")
+            
             self.parent = parent
             
             if let alignment = section.getValue("align") {
@@ -152,8 +162,8 @@ extension OculusReparo {
             // Get dimensions (absolute or percentage)
             var x = getDimension(left, parent: parent.frame.size.width)
             var y = getDimension(top, parent: parent.frame.size.height)
-            let w = getDimension(width, parent: parent.frame.size.width)
-            let h = getDimension(height, parent: parent.frame.size.height)
+            var w = getDimension(width, parent: parent.frame.size.width)
+            var h = getDimension(height, parent: parent.frame.size.height)
             
             // Set relative x value
             if left != nil && left!.hasPrefix("+") {
@@ -204,6 +214,26 @@ extension OculusReparo {
                 y = parent.frame.height - y - h;
                 break;
             }
+            
+            // Set padding
+            let paddingTop = getDimension(self.paddingTop, parent: parent.frame.size.height)
+            let paddingLeft = getDimension(self.paddingLeft, parent: parent.frame.size.width)
+            let paddingRight = getDimension(self.paddingRight, parent: parent.frame.size.width)
+            let paddingBottom = getDimension(self.paddingBottom, parent: parent.frame.size.height)
+
+            // Top
+            y += paddingTop
+            h -= paddingTop
+        
+            // Left
+            x += paddingLeft
+            w -= paddingLeft
+        
+            // Right
+            w -= paddingRight
+        
+            // Bottom
+            h -= paddingBottom
             
             return CGRect(x: x, y: y, width: w, height: h)
         }
@@ -590,6 +620,23 @@ extension OculusReparo {
             
             label.text = layout.getValue("text")
             label.textColor = try layout.getUIColor("text-color")
+            
+            if let align = layout.getValue("align") {
+                switch align.lowercaseString {
+                case "left":
+                    label.textAlignment = NSTextAlignment.Left
+                case "center":
+                    label.textAlignment = NSTextAlignment.Center
+                case "right":
+                    label.textAlignment = NSTextAlignment.Right
+                case "justified":
+                    label.textAlignment = NSTextAlignment.Justified
+                case "natural":
+                    label.textAlignment = NSTextAlignment.Natural
+                default:
+                    break;
+                }
+            }
             
             return label;
         }

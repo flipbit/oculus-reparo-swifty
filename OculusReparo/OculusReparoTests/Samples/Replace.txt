@@ -1,7 +1,0 @@
-﻿person {
-    name: bob;
-
-    @iPhone {
-        name: alice;
-    }
-}

@@ -1,6 +1,0 @@
-﻿# Comment
-first {
-    font-weight: "bold";
-    # Comment
-    text-align: center;
-}

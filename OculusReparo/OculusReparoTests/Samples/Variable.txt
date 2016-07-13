@@ -1,5 +1,0 @@
-﻿@set name: bob;
-
-person {
-    name: @name;
-}

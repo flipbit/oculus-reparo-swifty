@@ -1,3 +1,0 @@
-﻿first;
-second;
-third;

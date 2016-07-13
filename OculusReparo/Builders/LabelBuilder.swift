@@ -20,6 +20,23 @@ extension OculusReparo {
             label.text = layout.getValue("text")
             label.textColor = try layout.getUIColor("text-color")
             
+            if let align = layout.getValue("text-alignment") {
+                switch align.lowercaseString {
+                case "left":
+                    label.textAlignment = NSTextAlignment.Left
+                case "center":
+                    label.textAlignment = NSTextAlignment.Center
+                case "right":
+                    label.textAlignment = NSTextAlignment.Right
+                case "justified":
+                    label.textAlignment = NSTextAlignment.Justified
+                case "natural":
+                    label.textAlignment = NSTextAlignment.Natural
+                default:
+                    break;
+                }
+            }
+            
             return label;
         }
     }

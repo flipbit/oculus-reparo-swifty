@@ -1,8 +1,0 @@
-﻿first {
-    font-weight: "bold";
-    text-align: center;
-
-    second {
-        font-size: 12;
-    }
-}
