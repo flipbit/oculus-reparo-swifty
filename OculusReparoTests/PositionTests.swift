@@ -20,7 +20,7 @@ class PositionTests: XCTestCase {
     }
     
     func testParseFrameFillParentByDefault() {
-        let position = OculusReparo.Position(parent: view!)
+        let position = Position(parent: view!)
         
         let frame = position.toFrame()
         
@@ -31,7 +31,7 @@ class PositionTests: XCTestCase {
     }
     
     func testParseFrameWithAbsoluteValues() {
-        let position = OculusReparo.Position(parent: view!)
+        let position = Position(parent: view!)
         
         position.top = "25"
         position.left = "35"
@@ -47,7 +47,7 @@ class PositionTests: XCTestCase {
     }
     
     func testParseFrameWithPercentageValues() {
-        let position = OculusReparo.Position(parent: view!)
+        let position = Position(parent: view!)
         
         position.top = "10%"
         position.left = "20%"
@@ -63,14 +63,14 @@ class PositionTests: XCTestCase {
     }
     
     func testParseAlignments() {
-        let position = OculusReparo.Position(parent: view!)
+        let position = Position(parent: view!)
         
         position.top = "50%"
         position.left = "50%"
         position.height = "50"
         position.width = "100"
-        position.horizontalAlignment = OculusReparo.Position.HorizontalAlignment.Center
-        position.verticalAlignment = OculusReparo.Position.VerticalAlignment.Middle
+        position.horizontalAlignment = Position.HorizontalAlignment.Center
+        position.verticalAlignment = Position.VerticalAlignment.Middle
         
         let frame = position.toFrame()
         
@@ -85,7 +85,7 @@ class PositionTests: XCTestCase {
         child.frame = CGRect(x: 50, y: 50, width: 50, height: 50)
         view!.addSubview(child)
         
-        let position = OculusReparo.Position(parent: view!)
+        let position = Position(parent: view!)
         
         position.top = "+10"
         position.left = "+10"

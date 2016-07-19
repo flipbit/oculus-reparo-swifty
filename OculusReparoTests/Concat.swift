@@ -1,26 +1,33 @@
 import XCTest
 @testable import OculusReparo
 
-class compiler: XCTestCase {
+class concat: XCTestCase {
     
-    func testCompile() {
+    func testConcat() {
         // Change this to your checkout location
-        let path = "/Users/chris/Source/oculus-reparo-swifty/OculusReparo/OculusReparo/"
+        let path = "/Users/chris/Source/oculus-reparo-swifty/OculusReparo/"
+        
         var files: [String] = []
         files.append("Builders/BuilderProtocol.swift")
-        files.append("OculusReparo.swift")
+        files.append("Layout.swift")
         files.append("Position.swift")
         files.append("Hardware.swift")
-        files.append("ViewState.swift")
         files.append("Animation.swift")
-        files.append("OculusReparoError.swift")
+        files.append("Convert.swift")
+        files.append("LayoutError.swift")
         files.append("Builders/Builder.swift")
-        files.append("Builders/ViewBuilder.swift")
-        files.append("Builders/LabelBuilder.swift")
-        files.append("Builders/SliderBuilder.swift")
-        files.append("Builders/ButtonBuilder.swift")
-        files.append("Builders/ImageViewBuilder.swift")
-        let output = NSURL(fileURLWithPath: path + "OculusReparoFull.swift")
+        files.append("Builders/UIViewBuilder.swift")
+        files.append("Builders/UILabelBuilder.swift")
+        files.append("Builders/UISliderBuilder.swift")
+        files.append("Builders/UIButtonBuilder.swift")
+        files.append("Builders/UIImageViewBuilder.swift")
+        files.append("Builders/UITableViewBuilder.swift")
+        files.append("Builders/UIScrollViewBuilder.swift")
+        files.append("Extensions.swift")
+        files.append("../Reparo/Reparo/Concat/Reparo.swift")
+        
+        let output = NSURL(fileURLWithPath: path + "Concat/OculusReparo.swift")
+        
         try! createHeader(output)
 
         for file in files {
@@ -36,11 +43,18 @@ class compiler: XCTestCase {
         XCTAssertTrue(true)
     }
     private func createHeader(url: NSURL) throws {
+        let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
         let fileManager = NSFileManager.defaultManager()
         try fileManager.removeItemAtURL(url)
         
         try appendLineToURL("//", fileURL: url)
-        try appendLineToURL("// Oculus Reparo View Layout", fileURL: url)
+        try appendLineToURL("// OculusReparo View Layouts", fileURL: url)
+        try appendLineToURL("//", fileURL: url)
+        try appendLineToURL("// For usage see:", fileURL: url)
+        try appendLineToURL("//", fileURL: url)
+        try appendLineToURL("// https://github.com/flipbit/oculus-reparo-swifty", fileURL: url)
+        try appendLineToURL("//", fileURL: url)
+        try appendLineToURL("// This file was auto generated on: \(timestamp)", fileURL: url)
         try appendLineToURL("//", fileURL: url)
         try appendLineToURL("import Foundation", fileURL: url)
         try appendLineToURL("import UIKit", fileURL: url)

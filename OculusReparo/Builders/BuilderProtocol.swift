@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public protocol BuilderProtocol {
-    func canBuild(layout: Reparo.Section) -> Bool
+    func canBuild(layout: Section) -> Bool
     
-    func build(layout: Reparo.Section, state: OculusReparo.ViewState, parent: UIView) throws -> UIView
+    func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView
 }
