@@ -5,7 +5,7 @@
 //
 // https://github.com/flipbit/oculus-reparo-swifty
 //
-// This file was auto generated on: 18 Jul 2016, 18:08
+// This file was auto generated on: Jul 21, 2016, 2:27 PM
 //
 import Foundation
 import UIKit
@@ -587,7 +587,7 @@ public class Hardware {
         case iPhone5 = "iPhone5"
         case iPhone6 = "iPhone6"
         case iPhone6Plus = "iPhone6Plus"
-        case iPad = "iPad"
+        case iPad = "ipad"
         case iPadPro = "iPadPro"
         case AppleTV = "AppleTV"
         case Simulator = "Simulator"
@@ -1271,6 +1271,10 @@ public class Line {
         return false
     }
     
+    public var isEndOfSection: Bool {
+        return key == "}"
+    }    
+    
     init(filename: String, lineNumber: Int) {
         directives = []
         index = 0
@@ -1284,14 +1288,13 @@ public class Line {
     }
     
     public var path: String {
+        let key = self.key ?? ""
+        
         if (parent != nil) {
-            return parent!.path + "/\(key!)[\(index)]"
-        }
-        else if key == nil {
-            return "/"
+            return parent!.path + "/\(key)[\(index)]"
         }
         
-        return "/\(key!)[\(index)]"
+        return "/\(key)[\(index)]"
     }
     
     public func clone() -> Line {
@@ -1646,6 +1649,7 @@ public class Parser {
         transforms.append(VariableTransform())
         transforms.append(DirectiveTransform())
         transforms.append(ReduceTransform())
+        transforms.append(ReduceSectionTransform())
         
         reader = BundleReader()
     }
@@ -1654,6 +1658,37 @@ public class Parser {
         self.init()
         
         self.reader = reader
+    }
+    
+    /**
+     Parses the given file into a configuration document
+     
+     - Parameter filename:  The filename to parse
+     
+     - Throws:              Reparo.InvalidConfigurationLine if the configuration is invalid
+     
+     - Returns:             A configuration document object
+     */
+    public func parseFile(filename: String) throws -> Document {
+        return try parseFile(filename, runTransforms: true)
+    }
+    
+    /**
+     Parses the given file into a configuration document
+     
+     - Parameter filename:      The filename to parse
+     - Parameter runTransforms: A flag indicating whether to run the configuration transforms
+     
+     - Throws:              Reparo.InvalidConfigurationLine if the configuration is invalid
+     
+     - Returns:             A configuration document object
+     */
+    public func parseFile(filename: String, runTransforms: Bool) throws -> Document {
+        if let input = try reader.readFile(filename) {
+            return try parseString(input, filename: filename, runTransforms: runTransforms)
+        } else {
+            throw ReparoError.MissingConfigurationFile(filename)
+        }
     }
     
     /**
@@ -1706,7 +1741,7 @@ public class Parser {
             
             index += 1
         }
-        
+                
         if (runTransforms) {
             document = try transform(document)
         }
@@ -1714,25 +1749,41 @@ public class Parser {
         return document
     }
     
-    /**
-     Parses the given file into a configuration document
-     
-     - Parameter filename:  The filename to parse
-     
-     - Throws:              Reparo.InvalidConfigurationLine if the configuration is invalid
-     
-     - Returns:             A configuration document object
-     */
-    public func parseFile(filename: String) throws -> Document {
-        return try parseFile(filename, runTransforms: true)
-    }
-    
-    public func parseFile(filename: String, runTransforms: Bool) throws -> Document {
-        if let input = try reader.readFile(filename) {
-            return try parseString(input, filename: filename, runTransforms: runTransforms)
-        } else {
-            throw ReparoError.MissingConfigurationFile(filename)
+    private func parseSection(section: Section, machine: StateMachine) throws -> Section {
+        var index = 1
+        var seenEnd = false
+        while !machine.empty {
+            var line = try machine.read()
+            
+            if line == nil {
+                throw ReparoError.MissingSectionEnd("Section end is missing: \(section.key) Line: \(section.lineNumber)")
+            }
+            
+            if line!.isEndOfSection {
+                seenEnd = true
+                break
+            }
+            
+            if let section = line as? Section {
+                line = try parseSection(section, machine: machine)
+            }
+            
+            line!.parent = section
+            line!.index = index
+            
+            section.lines.append(line!)
+            index += 1
         }
+        
+        if !seenEnd {
+            if section.key != nil {
+                throw ReparoError.MissingSectionEnd("Section end is missing: \(section.key) Line: \(section.lineNumber)")
+            } else {
+                throw ReparoError.MissingSectionEnd("Section end is missing: Line: \(section.lineNumber)")
+            }
+        }
+        
+        return section
     }
     
     public func transform(document: Document) throws -> Document {
@@ -1748,29 +1799,6 @@ public class Parser {
         }
         
         return transformed
-    }
-    
-    private func parseSection(section: Section, machine: StateMachine) throws -> Section {
-        var index = 1
-        while !machine.empty {
-            var line = try machine.read()
-            
-            if line == nil {
-                break
-            }
-            
-            if let section = line as? Section {
-                line = try parseSection(section, machine: machine)
-            }
-            
-            line!.parent = section
-            line!.index = index
-            
-            section.lines.append(line!)
-            index += 1
-        }
-        
-        return section
     }
 }
 
@@ -1941,7 +1969,9 @@ public class StateMachine {
             {
                 state = State.Push
                 
-                return nil
+                line?.key = "}"
+                
+                return line
             }
             else
             {
@@ -2551,6 +2581,65 @@ public class ReduceTransform : ReparoTransform {
     }
 }
 
+public class ReduceSectionTransform : ReparoTransform {
+    public func transform(lines: [Line], parser: Parser) throws -> [Line] {
+        var transformed: [Line] = []
+        
+        for line in lines {
+            // Don't include duplicate sections if they have directives
+            if hasMultipleKeys(lines, key: line.key) {
+                if line.directives.count < maxDirectiveCount(lines, key: line.key) {
+                    continue
+                }
+            }
+            
+            if let section = line as? Section {
+                section.lines = try transform(section.lines, parser: parser)
+                
+                transformed.append(section)
+            } else {
+                transformed.append(line)
+            }
+        }
+        
+        return transformed
+    }
+    
+    func hasMultipleKeys(lines: [Line], key: String?) -> Bool {
+        guard let key = key else {
+            return false
+        }
+        
+        var count = 0
+        
+        for line in lines {
+            if line.key == key {
+                count += 1
+            }
+        }
+        
+        return count > 1
+    }
+    
+    func maxDirectiveCount(lines: [Line], key: String?) -> Int {
+        guard let key = key else {
+            return 0
+        }
+        
+        var count = 0
+        
+        for line in lines {
+            if line.key == key {
+                if line.directives.count > count {
+                    count = line.directives.count
+                }
+            }
+        }
+        
+        return count
+    }
+}
+
 public class Convert {
     static func toFloat(input: String?) -> Float? {
         if let input = input {
@@ -2622,6 +2711,7 @@ enum ReparoError: ErrorType {
     case InvalidColorString(String)
     case MissingConfigurationFile(String)
     case RecursiveIncludeDetected
+    case MissingSectionEnd(String)
 }
 
 
