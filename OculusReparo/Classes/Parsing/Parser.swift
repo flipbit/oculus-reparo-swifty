@@ -113,7 +113,7 @@ public class Parser {
         var index = 1
         var seenEnd = false
         while !machine.empty {
-            var data = try machine.read()
+            let data = try machine.read()
 
             if data.endOfSection {
                 seenEnd = true
@@ -205,7 +205,7 @@ public class Parser {
                 }
             }
 
-            if var section = line as? Section {
+            if let section = line as? Section {
                 transformed = try transform(section, scope: local)
             }
             
