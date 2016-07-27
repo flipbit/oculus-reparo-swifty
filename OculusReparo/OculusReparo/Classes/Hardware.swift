@@ -51,7 +51,7 @@ public class Hardware {
         case iPhone5 = "iPhone5"
         case iPhone6 = "iPhone6"
         case iPhone6Plus = "iPhone6Plus"
-        case iPad = "iPad"
+        case iPad = "ipad"
         case iPadPro = "iPadPro"
         case AppleTV = "AppleTV"
         case Simulator = "Simulator"
