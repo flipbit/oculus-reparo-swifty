@@ -22,4 +22,12 @@ public class Document : Section {
         
         return string
     }
+    
+    public func debug() {
+        let lines = toString().componentsSeparatedByString("\n")
+        
+        for line in lines {
+            print(line)
+        }
+    }
 }

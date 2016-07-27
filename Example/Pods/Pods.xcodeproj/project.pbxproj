@@ -67,50 +67,25 @@
 		800A161E9B82DEEDA41B7F1A746B24C4 /* ObjCMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75D143FA2C1D4F42F8F03369239006 /* ObjCMatcher.swift */; };
 		8040A37FF5BBDF1964CAB8C0068ED315 /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC325F77555916EE55065F37EA4C575 /* BeGreaterThanOrEqualTo.swift */; };
 		81E6453ECE511335537301CD3B1C1B82 /* ExceptionCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50105FCC804A51F7EDCB8C8F84AF9A /* ExceptionCapture.swift */; };
-		83C514961D48B4B800A81038 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514771D48B4B800A81038 /* Builder.swift */; };
-		83C514971D48B4B800A81038 /* BuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514781D48B4B800A81038 /* BuilderProtocol.swift */; };
-		83C514981D48B4B800A81038 /* UIButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514791D48B4B800A81038 /* UIButtonBuilder.swift */; };
-		83C514991D48B4B800A81038 /* UIImageViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5147A1D48B4B800A81038 /* UIImageViewBuilder.swift */; };
-		83C5149A1D48B4B800A81038 /* UILabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5147B1D48B4B800A81038 /* UILabelBuilder.swift */; };
-		83C5149B1D48B4B800A81038 /* UIScrollViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5147C1D48B4B800A81038 /* UIScrollViewBuilder.swift */; };
-		83C5149C1D48B4B800A81038 /* UISliderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5147D1D48B4B800A81038 /* UISliderBuilder.swift */; };
-		83C5149D1D48B4B800A81038 /* UITableViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5147E1D48B4B800A81038 /* UITableViewBuilder.swift */; };
-		83C5149E1D48B4B800A81038 /* UIViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5147F1D48B4B800A81038 /* UIViewBuilder.swift */; };
-		83C5149F1D48B4B800A81038 /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514801D48B4B800A81038 /* Convert.swift */; };
-		83C514A01D48B4B800A81038 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514811D48B4B800A81038 /* Extensions.swift */; };
-		83C514A11D48B4B800A81038 /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514821D48B4B800A81038 /* Hardware.swift */; };
-		83C514A21D48B4B800A81038 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514831D48B4B800A81038 /* Layout.swift */; };
-		83C514A31D48B4B800A81038 /* LayoutError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514841D48B4B800A81038 /* LayoutError.swift */; };
-		83C514A41D48B4B800A81038 /* BundleReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514861D48B4B800A81038 /* BundleReader.swift */; };
-		83C514A51D48B4B800A81038 /* Directive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514871D48B4B800A81038 /* Directive.swift */; };
-		83C514A61D48B4B800A81038 /* DirectiveTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514881D48B4B800A81038 /* DirectiveTransform.swift */; };
-		83C514A71D48B4B800A81038 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514891D48B4B800A81038 /* Document.swift */; };
-		83C514A81D48B4B800A81038 /* FunctionTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148A1D48B4B800A81038 /* FunctionTransform.swift */; };
-		83C514A91D48B4B800A81038 /* IncludeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148B1D48B4B800A81038 /* IncludeTransform.swift */; };
-		83C514AA1D48B4B800A81038 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148C1D48B4B800A81038 /* Line.swift */; };
-		83C514AB1D48B4B800A81038 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148D1D48B4B800A81038 /* Parser.swift */; };
-		83C514AC1D48B4B800A81038 /* ReduceTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148E1D48B4B800A81038 /* ReduceTransform.swift */; };
-		83C514AD1D48B4B800A81038 /* ReparoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148F1D48B4B800A81038 /* ReparoError.swift */; };
-		83C514AE1D48B4B800A81038 /* ReparoReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514901D48B4B800A81038 /* ReparoReader.swift */; };
-		83C514AF1D48B4B800A81038 /* ReparoTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514911D48B4B800A81038 /* ReparoTransform.swift */; };
-		83C514B01D48B4B800A81038 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514921D48B4B800A81038 /* Section.swift */; };
-		83C514B11D48B4B800A81038 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514931D48B4B800A81038 /* StateMachine.swift */; };
-		83C514B21D48B4B800A81038 /* VariableTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514941D48B4B800A81038 /* VariableTransform.swift */; };
-		83C514B31D48B4B800A81038 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514951D48B4B800A81038 /* Position.swift */; };
+		835AB9D01D48C98E00004461 /* OculusReparo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A28EE6936D80C76C31C4B6CDB93584 /* OculusReparo.framework */; };
+		835AB9D71D48E2EB00004461 /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AB9D61D48E2EB00004461 /* Scope.swift */; };
+		835AB9D91D48EB5A00004461 /* Expansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AB9D81D48EB5A00004461 /* Expansion.swift */; };
+		835AB9DE1D49000A00004461 /* FunctionExpansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AB9DD1D49000A00004461 /* FunctionExpansion.swift */; };
+		835AB9E11D4901F100004461 /* DefineVariableTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AB9E01D4901F100004461 /* DefineVariableTransform.swift */; };
 		83C514B41D48B7D600A81038 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514831D48B4B800A81038 /* Layout.swift */; };
 		83C514B51D48B7EB00A81038 /* LayoutError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514841D48B4B800A81038 /* LayoutError.swift */; };
 		83C514B61D48B7EE00A81038 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514951D48B4B800A81038 /* Position.swift */; };
-		83C514B71D48B7F500A81038 /* VariableTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514941D48B4B800A81038 /* VariableTransform.swift */; };
+		83C514B71D48B7F500A81038 /* ReplaceVariableTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514941D48B4B800A81038 /* ReplaceVariableTransform.swift */; };
 		83C514B81D48B7F800A81038 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514931D48B4B800A81038 /* StateMachine.swift */; };
 		83C514B91D48B7FB00A81038 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514921D48B4B800A81038 /* Section.swift */; };
-		83C514BA1D48B7FE00A81038 /* ReparoTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514911D48B4B800A81038 /* ReparoTransform.swift */; };
+		83C514BA1D48B7FE00A81038 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514911D48B4B800A81038 /* Transform.swift */; };
 		83C514BB1D48B80200A81038 /* ReparoReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514901D48B4B800A81038 /* ReparoReader.swift */; };
 		83C514BC1D48B80500A81038 /* ReparoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148F1D48B4B800A81038 /* ReparoError.swift */; };
 		83C514BD1D48B80800A81038 /* ReduceTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148E1D48B4B800A81038 /* ReduceTransform.swift */; };
 		83C514BE1D48B80B00A81038 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148D1D48B4B800A81038 /* Parser.swift */; };
 		83C514BF1D48B80E00A81038 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148C1D48B4B800A81038 /* Line.swift */; };
-		83C514C01D48B81100A81038 /* IncludeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148B1D48B4B800A81038 /* IncludeTransform.swift */; };
-		83C514C11D48B81400A81038 /* FunctionTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148A1D48B4B800A81038 /* FunctionTransform.swift */; };
+		83C514C01D48B81100A81038 /* IncludeExpansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148B1D48B4B800A81038 /* IncludeExpansion.swift */; };
+		83C514C11D48B81400A81038 /* DefineFunctionTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5148A1D48B4B800A81038 /* DefineFunctionTransform.swift */; };
 		83C514C21D48B81700A81038 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514891D48B4B800A81038 /* Document.swift */; };
 		83C514C31D48B81900A81038 /* DirectiveTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514881D48B4B800A81038 /* DirectiveTransform.swift */; };
 		83C514C41D48B81C00A81038 /* Directive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C514871D48B4B800A81038 /* Directive.swift */; };
@@ -251,6 +226,10 @@
 		75752235C59671F25A86BF987E354AFE /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
 		7EB79662DFF8CAC9A93BB403631D5490 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/Quick/Quick.h; sourceTree = "<group>"; };
 		7FECB7BA22714038546A0E8DD513114B /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Quick/Configuration/Configuration.swift; sourceTree = "<group>"; };
+		835AB9D61D48E2EB00004461 /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scope.swift; sourceTree = "<group>"; };
+		835AB9D81D48EB5A00004461 /* Expansion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expansion.swift; sourceTree = "<group>"; };
+		835AB9DD1D49000A00004461 /* FunctionExpansion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionExpansion.swift; sourceTree = "<group>"; };
+		835AB9E01D4901F100004461 /* DefineVariableTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefineVariableTransform.swift; sourceTree = "<group>"; };
 		83C514771D48B4B800A81038 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		83C514781D48B4B800A81038 /* BuilderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuilderProtocol.swift; sourceTree = "<group>"; };
 		83C514791D48B4B800A81038 /* UIButtonBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonBuilder.swift; sourceTree = "<group>"; };
@@ -269,17 +248,17 @@
 		83C514871D48B4B800A81038 /* Directive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directive.swift; sourceTree = "<group>"; };
 		83C514881D48B4B800A81038 /* DirectiveTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectiveTransform.swift; sourceTree = "<group>"; };
 		83C514891D48B4B800A81038 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		83C5148A1D48B4B800A81038 /* FunctionTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionTransform.swift; sourceTree = "<group>"; };
-		83C5148B1D48B4B800A81038 /* IncludeTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncludeTransform.swift; sourceTree = "<group>"; };
+		83C5148A1D48B4B800A81038 /* DefineFunctionTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefineFunctionTransform.swift; sourceTree = "<group>"; };
+		83C5148B1D48B4B800A81038 /* IncludeExpansion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncludeExpansion.swift; sourceTree = "<group>"; };
 		83C5148C1D48B4B800A81038 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		83C5148D1D48B4B800A81038 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		83C5148E1D48B4B800A81038 /* ReduceTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReduceTransform.swift; sourceTree = "<group>"; };
 		83C5148F1D48B4B800A81038 /* ReparoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReparoError.swift; sourceTree = "<group>"; };
 		83C514901D48B4B800A81038 /* ReparoReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReparoReader.swift; sourceTree = "<group>"; };
-		83C514911D48B4B800A81038 /* ReparoTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReparoTransform.swift; sourceTree = "<group>"; };
+		83C514911D48B4B800A81038 /* Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		83C514921D48B4B800A81038 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		83C514931D48B4B800A81038 /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
-		83C514941D48B4B800A81038 /* VariableTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableTransform.swift; sourceTree = "<group>"; };
+		83C514941D48B4B800A81038 /* ReplaceVariableTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceVariableTransform.swift; sourceTree = "<group>"; };
 		83C514951D48B4B800A81038 /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		85564484FA6ABBE76C0B73863EFFFCDE /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
 		85DB1EA0AF858FB106A80D8E62810AFE /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -376,6 +355,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				835AB9D01D48C98E00004461 /* OculusReparo.framework in Frameworks */,
 				AD8E8C55A4AC1F1D9DD3A38163ADB102 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +472,29 @@
 			path = "Example/Pods/Target Support Files/OculusReparo";
 			sourceTree = "<group>";
 		};
+		835AB9D31D48D88A00004461 /* Transforms */ = {
+			isa = PBXGroup;
+			children = (
+				83C5148A1D48B4B800A81038 /* DefineFunctionTransform.swift */,
+				835AB9E01D4901F100004461 /* DefineVariableTransform.swift */,
+				83C514881D48B4B800A81038 /* DirectiveTransform.swift */,
+				83C5148E1D48B4B800A81038 /* ReduceTransform.swift */,
+				83C514941D48B4B800A81038 /* ReplaceVariableTransform.swift */,
+				83C514911D48B4B800A81038 /* Transform.swift */,
+			);
+			name = Transforms;
+			sourceTree = "<group>";
+		};
+		835AB9DF1D49003F00004461 /* Expansions */ = {
+			isa = PBXGroup;
+			children = (
+				835AB9D81D48EB5A00004461 /* Expansion.swift */,
+				835AB9DD1D49000A00004461 /* FunctionExpansion.swift */,
+				83C5148B1D48B4B800A81038 /* IncludeExpansion.swift */,
+			);
+			name = Expansions;
+			sourceTree = "<group>";
+		};
 		83C514761D48B4B800A81038 /* Builders */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,21 +514,18 @@
 		83C514851D48B4B800A81038 /* Parsing */ = {
 			isa = PBXGroup;
 			children = (
+				835AB9DF1D49003F00004461 /* Expansions */,
+				835AB9D31D48D88A00004461 /* Transforms */,
 				83C514861D48B4B800A81038 /* BundleReader.swift */,
 				83C514871D48B4B800A81038 /* Directive.swift */,
-				83C514881D48B4B800A81038 /* DirectiveTransform.swift */,
 				83C514891D48B4B800A81038 /* Document.swift */,
-				83C5148A1D48B4B800A81038 /* FunctionTransform.swift */,
-				83C5148B1D48B4B800A81038 /* IncludeTransform.swift */,
 				83C5148C1D48B4B800A81038 /* Line.swift */,
 				83C5148D1D48B4B800A81038 /* Parser.swift */,
-				83C5148E1D48B4B800A81038 /* ReduceTransform.swift */,
 				83C5148F1D48B4B800A81038 /* ReparoError.swift */,
 				83C514901D48B4B800A81038 /* ReparoReader.swift */,
-				83C514911D48B4B800A81038 /* ReparoTransform.swift */,
 				83C514921D48B4B800A81038 /* Section.swift */,
 				83C514931D48B4B800A81038 /* StateMachine.swift */,
-				83C514941D48B4B800A81038 /* VariableTransform.swift */,
+				835AB9D61D48E2EB00004461 /* Scope.swift */,
 			);
 			path = Parsing;
 			sourceTree = "<group>";
@@ -881,58 +881,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83C514B31D48B4B800A81038 /* Position.swift in Sources */,
 				C12E0930E021F1894B60BC6AFA8F2409 /* AdapterProtocols.swift in Sources */,
-				83C514A91D48B4B800A81038 /* IncludeTransform.swift in Sources */,
 				13CC849FA70CADF802470B6A90DCDF79 /* AllPass.swift in Sources */,
 				7CC86ABC7F4135EE12A755B023F134CE /* AssertionDispatcher.swift in Sources */,
 				4E5A721963877AA3A6AA3D80DAA4E5E9 /* AssertionRecorder.swift in Sources */,
 				7DC9B169B5FCC3EE99F6D36EC530FE1E /* Async.swift in Sources */,
-				83C514981D48B4B800A81038 /* UIButtonBuilder.swift in Sources */,
 				B9D2E426B5CA226D60A78A71FA289D4C /* AsyncMatcherWrapper.swift in Sources */,
-				83C514A01D48B4B800A81038 /* Extensions.swift in Sources */,
 				FB09A16A6662F2689D4AA89538DBF1C1 /* BeAKindOf.swift in Sources */,
-				83C514A71D48B4B800A81038 /* Document.swift in Sources */,
-				83C514AF1D48B4B800A81038 /* ReparoTransform.swift in Sources */,
-				83C5149A1D48B4B800A81038 /* UILabelBuilder.swift in Sources */,
 				A2CABD326609AD67377700A148785E09 /* BeAnInstanceOf.swift in Sources */,
 				7734BABBECE0071CF5D4430515B938BF /* BeCloseTo.swift in Sources */,
 				E9A500611CF699885DE8A6BAB4E6B392 /* BeEmpty.swift in Sources */,
 				30AACAA8D51DC8C429577D9B67BB016C /* BeginWith.swift in Sources */,
-				83C514A61D48B4B800A81038 /* DirectiveTransform.swift in Sources */,
-				83C5149B1D48B4B800A81038 /* UIScrollViewBuilder.swift in Sources */,
 				7EBD6B630F4536CB673DC0B455CCB16D /* BeGreaterThan.swift in Sources */,
 				8040A37FF5BBDF1964CAB8C0068ED315 /* BeGreaterThanOrEqualTo.swift in Sources */,
-				83C514A21D48B4B800A81038 /* Layout.swift in Sources */,
-				83C514971D48B4B800A81038 /* BuilderProtocol.swift in Sources */,
-				83C514AD1D48B4B800A81038 /* ReparoError.swift in Sources */,
-				83C514AC1D48B4B800A81038 /* ReduceTransform.swift in Sources */,
 				7202A0B871C57B7857341D88C2883A3A /* BeIdenticalTo.swift in Sources */,
 				7F40FC3F4DE4EA4702F41F01A12A7353 /* BeLessThan.swift in Sources */,
 				E6F6FF9554A6C7EABD6B92B691751DAD /* BeLessThanOrEqual.swift in Sources */,
-				83C514A41D48B4B800A81038 /* BundleReader.swift in Sources */,
-				83C514A11D48B4B800A81038 /* Hardware.swift in Sources */,
 				9B5DE58927557CE87968C051D2A1C47E /* BeLogical.swift in Sources */,
 				4AF6C26A30D865059C24DC5317786B76 /* BeNil.swift in Sources */,
 				31629295E87A24C98238C66D41983C49 /* BeVoid.swift in Sources */,
 				DCA54337E8687685A293CC24A97F936C /* Contain.swift in Sources */,
-				83C514991D48B4B800A81038 /* UIImageViewBuilder.swift in Sources */,
 				9F08F74CB8740CF0EFF26746EEB0C930 /* CurrentTestCaseTracker.m in Sources */,
 				6ED0409031540D9B2AD7B061B608B0C9 /* DSL+Wait.swift in Sources */,
 				68527A7545342CBB4F923DC8543F7B20 /* DSL.m in Sources */,
 				135B6326D35C977854AA0C12B3F6CB7D /* DSL.swift in Sources */,
 				5104AE2989305145BF446E633B567924 /* EndWith.swift in Sources */,
-				83C514A81D48B4B800A81038 /* FunctionTransform.swift in Sources */,
-				83C514B01D48B4B800A81038 /* Section.swift in Sources */,
-				83C514A31D48B4B800A81038 /* LayoutError.swift in Sources */,
-				83C514AE1D48B4B800A81038 /* ReparoReader.swift in Sources */,
 				5EF5C00C6AECE1FCFFF118577817F5CE /* Equal.swift in Sources */,
 				81E6453ECE511335537301CD3B1C1B82 /* ExceptionCapture.swift in Sources */,
 				F85A9207A8601CE7F835CEC56790616F /* Expectation.swift in Sources */,
 				CD0A671D2A8DD31D50449BB358C56134 /* Expression.swift in Sources */,
-				83C514B21D48B4B800A81038 /* VariableTransform.swift in Sources */,
 				38F5CE4B4C59A81734A93E32D35B696E /* FailureMessage.swift in Sources */,
-				83C514AB1D48B4B800A81038 /* Parser.swift in Sources */,
 				63BBD83995BA60FA7D2E6AD4138C0D71 /* Functional.swift in Sources */,
 				A55EC200F57C00E9A78D8A9DA4545338 /* HaveCount.swift in Sources */,
 				03A9FD93E86C0CD07A37D7BF34A02F09 /* Match.swift in Sources */,
@@ -941,23 +919,15 @@
 				DF0216DBDE0084F6C87FE9275A4E9F0D /* Nimble-dummy.m in Sources */,
 				775646739B95E828ECE349F6A39534F4 /* NimbleEnvironment.swift in Sources */,
 				C81FFEEC76399EF3C7C1EE349C810E76 /* NimbleXCTestHandler.swift in Sources */,
-				83C5149D1D48B4B800A81038 /* UITableViewBuilder.swift in Sources */,
-				83C514AA1D48B4B800A81038 /* Line.swift in Sources */,
 				1ED8C77E9422C66BBF56E6C10D5826F0 /* NMBExceptionCapture.m in Sources */,
 				486B74C8EFEB68AD25CE128F3051E432 /* ObjCExpectation.swift in Sources */,
-				83C5149F1D48B4B800A81038 /* Convert.swift in Sources */,
-				83C5149E1D48B4B800A81038 /* UIViewBuilder.swift in Sources */,
 				800A161E9B82DEEDA41B7F1A746B24C4 /* ObjCMatcher.swift in Sources */,
-				83C5149C1D48B4B800A81038 /* UISliderBuilder.swift in Sources */,
 				3D1BB98DEA422D8F173613EC715488B9 /* PostNotification.swift in Sources */,
 				112614F21939902B59102E6E876ADCBC /* RaisesException.swift in Sources */,
 				415F29FE4E9D970954C46CD3CF4AE345 /* SatisfyAnyOf.swift in Sources */,
 				96ED0CCA721955637A88FE0C9737EC56 /* SourceLocation.swift in Sources */,
 				A374A2729E32469085C5025EC7115EB8 /* Stringers.swift in Sources */,
 				B43EDBC7DA15A429006C67B63D45ACFD /* ThrowError.swift in Sources */,
-				83C514961D48B4B800A81038 /* Builder.swift in Sources */,
-				83C514B11D48B4B800A81038 /* StateMachine.swift in Sources */,
-				83C514A51D48B4B800A81038 /* Directive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1012,8 +982,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				835AB9D71D48E2EB00004461 /* Scope.swift in Sources */,
+				835AB9D91D48EB5A00004461 /* Expansion.swift in Sources */,
 				A74C85BABCA3C8B559E1A052E0B25ACA /* OculusReparo-dummy.m in Sources */,
-				83C514C01D48B81100A81038 /* IncludeTransform.swift in Sources */,
+				83C514C01D48B81100A81038 /* IncludeExpansion.swift in Sources */,
 				83C514B81D48B7F800A81038 /* StateMachine.swift in Sources */,
 				83C514C31D48B81900A81038 /* DirectiveTransform.swift in Sources */,
 				83C514B51D48B7EB00A81038 /* LayoutError.swift in Sources */,
@@ -1022,10 +994,10 @@
 				83C514CC1D48B83C00A81038 /* UIScrollViewBuilder.swift in Sources */,
 				83C514C61D48B82700A81038 /* Hardware.swift in Sources */,
 				83C514B91D48B7FB00A81038 /* Section.swift in Sources */,
-				83C514C11D48B81400A81038 /* FunctionTransform.swift in Sources */,
+				83C514C11D48B81400A81038 /* DefineFunctionTransform.swift in Sources */,
 				83C514C91D48B83200A81038 /* UIViewBuilder.swift in Sources */,
 				83C514CA1D48B83600A81038 /* UITableViewBuilder.swift in Sources */,
-				83C514B71D48B7F500A81038 /* VariableTransform.swift in Sources */,
+				83C514B71D48B7F500A81038 /* ReplaceVariableTransform.swift in Sources */,
 				83C514CB1D48B83900A81038 /* UISliderBuilder.swift in Sources */,
 				83C514D01D48B84800A81038 /* BuilderProtocol.swift in Sources */,
 				83C514C21D48B81700A81038 /* Document.swift in Sources */,
@@ -1038,9 +1010,11 @@
 				83C514CD1D48B83F00A81038 /* UILabelBuilder.swift in Sources */,
 				83C514D11D48B84B00A81038 /* Builder.swift in Sources */,
 				83C514BE1D48B80B00A81038 /* Parser.swift in Sources */,
-				83C514BA1D48B7FE00A81038 /* ReparoTransform.swift in Sources */,
+				83C514BA1D48B7FE00A81038 /* Transform.swift in Sources */,
+				835AB9DE1D49000A00004461 /* FunctionExpansion.swift in Sources */,
 				83C514B61D48B7EE00A81038 /* Position.swift in Sources */,
 				83C514C81D48B82D00A81038 /* Convert.swift in Sources */,
+				835AB9E11D4901F100004461 /* DefineVariableTransform.swift in Sources */,
 				83C514B41D48B7D600A81038 /* Layout.swift in Sources */,
 				83C514C41D48B81C00A81038 /* Directive.swift in Sources */,
 			);

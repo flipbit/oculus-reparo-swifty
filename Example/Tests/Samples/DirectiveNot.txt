@@ -1,0 +1,4 @@
+﻿person {
+    name: alice @if iPad;
+    name: charles @if !iPad;
+}

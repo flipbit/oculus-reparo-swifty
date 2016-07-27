@@ -31,6 +31,7 @@ public class StateMachine {
         case SingleQuote
         case EndQuote
         case Push
+        case EndOfSection
     }
 
     /**
@@ -41,7 +42,7 @@ public class StateMachine {
      
      - Throws:               Reparo.InvalidConfigurationLine if the configuration is invalid
      */
-    init(input: String, filename: String) {
+    public init(input: String, filename: String) {
         values = input.characters.map { String($0) }
         lineNumber = 1
         state = State.Key
@@ -58,9 +59,9 @@ public class StateMachine {
      
      - Returns:              A configuration line object
      */
-    func read() throws -> Line? {
+    public func read() throws -> (line: Line?, endOfSection: Bool, endOfDocument: Bool) {
         if (values.count == 0) {
-            return nil
+            return (line: nil, endOfSection: false, endOfDocument: true)
         }
         
         var line: Line? = Line(filename: filename, lineNumber: lineNumber)
@@ -107,10 +108,19 @@ public class StateMachine {
                 break
             }
             
-            if (state == State.Push)
+            if (state == State.Push || state == State.EndOfSection)
             {
                 break
             }
+        }
+
+        // End of section
+        if (state == State.EndOfSection)
+        {
+            // Reset state
+            state = State.Key
+            
+            return (line: nil, endOfSection: true, endOfDocument: empty)
         }
         
         // Empty data if not a section
@@ -131,14 +141,14 @@ public class StateMachine {
             state = State.Key
         }
         
-        return line
+        return (line: line, endOfSection: false, endOfDocument: empty)
     }
     
     /**
      Returns a value indicating whether the state machine has processed all configuration
      lines.
      */
-    var empty: Bool {
+    public var empty: Bool {
         return values.count == 0
     }
     
@@ -172,9 +182,7 @@ public class StateMachine {
         {
             if nilOrEmpty(line?.key)
             {
-                state = State.Push
-                
-                line?.key = "}"
+                state = State.EndOfSection
                 
                 return line
             }
@@ -259,11 +267,13 @@ public class StateMachine {
             
             // Double quote
         else if next == "\"" && nilOrEmpty(line?.value) {
+            line?.quoted = true
             state = State.DoubleQuote
         }
             
             // Single quote
         else if next == "'" && nilOrEmpty(line?.value) {
+            line?.quoted = true
             state = State.SingleQuote
         }
 

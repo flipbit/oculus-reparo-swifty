@@ -1,0 +1,7 @@
+﻿person @if iPhone {
+    name: bob;
+}
+
+person @if iPhone6 {
+    name: terry;
+}

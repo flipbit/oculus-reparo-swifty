@@ -16,18 +16,16 @@ public class Line {
     public var directives: [Directive]
     public var parent: Section?
     public var index: Int
+    public var quoted: Bool
     
     public var isASection: Bool {
         return false
     }
-    
-    public var isEndOfSection: Bool {
-        return key == "}"
-    }    
-    
-    init(filename: String, lineNumber: Int) {
+        
+    public init(filename: String, lineNumber: Int) {
         directives = []
         index = 0
+        quoted =  false
         
         self.filename = filename
         self.lineNumber = lineNumber

@@ -1,0 +1,15 @@
+﻿first {
+    font-weight: "bold";
+    text-align: center;
+
+    second {
+        font-size: 12;
+        third {
+            font-size: 13;
+        }
+    }
+
+    fourth {
+        font-size: 14;
+    }
+}

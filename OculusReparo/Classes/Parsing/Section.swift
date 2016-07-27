@@ -15,7 +15,7 @@ public class Section : Line {
         return true
     }
     
-    init(line: Line)
+    public init(line: Line)
     {
         lines = []
         
@@ -27,14 +27,14 @@ public class Section : Line {
         directives.appendContentsOf(line.directives)
     }
     
-    init(filename: String)
+    public init(filename: String)
     {
         lines = []
         
         super.init(filename: filename, lineNumber: 0)
     }
     
-    init(filename: String, lines: [Line])
+    public init(filename: String, lines: [Line])
     {
         self.lines = lines
         
@@ -110,8 +110,15 @@ public class Section : Line {
         
         return clone
     }
+    
+    public func addLine(line: Line) {
+        line.parent = self
+        line.index = lines.count + 1
+        
+        lines.append(line)
+    }
 
-    func hasValue(name: String) -> Bool {
+    public func hasValue(name: String) -> Bool {
         for line in lines {
             if line.key == name {
                 return true
@@ -121,11 +128,11 @@ public class Section : Line {
         return false
     }
     
-    func getValue(name: String) -> String? {
+    public func getValue(name: String) -> String? {
         return getValue(name, ifMissing: nil)
     }
     
-    func getValue(name: String, ifMissing: String?) -> String? {
+    public func getValue(name: String, ifMissing: String?) -> String? {
         for line in lines {
             if line.key == name {
                 return line.value
@@ -134,35 +141,35 @@ public class Section : Line {
         return ifMissing
     }
     
-    func getFloat(name: String) -> Float? {
+    public func getFloat(name: String) -> Float? {
         let value = getValue(name)
         
         return Convert.toFloat(value)
     }
     
-    func getFloat(name: String, ifMissing: Float) -> Float {
+    public func getFloat(name: String, ifMissing: Float) -> Float {
         let value = getValue(name)
         
         return Convert.toFloat(value, ifMissing: ifMissing)
     }
     
-    func getCGFloat(name: String) -> CGFloat? {
+    public func getCGFloat(name: String) -> CGFloat? {
         let value = getValue(name)
         
         return Convert.toCGFloat(value)
     }
     
-    func getCGFloat(name: String, ifMissing: CGFloat) -> CGFloat {
+    public func getCGFloat(name: String, ifMissing: CGFloat) -> CGFloat {
         let value = getValue(name)
         
         return Convert.toCGFloat(value, ifMissing: ifMissing)
     }
     
-    func getUIColor(name: String) throws -> UIColor? {
+    public func getUIColor(name: String) throws -> UIColor? {
         return try getUIColor(name, ifMissing: UIColor.clearColor())
     }
     
-    func getUIColor(name: String, ifMissing: UIColor?) throws -> UIColor? {
+    public func getUIColor(name: String, ifMissing: UIColor?) throws -> UIColor? {
         if let value = getValue(name) {
             return try Convert.toUIColor(value)
         }
@@ -170,11 +177,11 @@ public class Section : Line {
         return ifMissing
     }
     
-    func getCGColor(name: String) throws -> CGColor? {
+    public func getCGColor(name: String) throws -> CGColor? {
         return try getUIColor(name, ifMissing: UIColor.clearColor())?.CGColor
     }
     
-    func getCGColor(name: String, ifMissing: UIColor?) throws -> CGColor? {
+    public func getCGColor(name: String, ifMissing: UIColor?) throws -> CGColor? {
         if let value = getValue(name) {
             return try Convert.toUIColor(value).CGColor
         }
@@ -182,11 +189,11 @@ public class Section : Line {
         return ifMissing?.CGColor
     }
 
-    func getBool(name: String) throws -> Bool {
+    public func getBool(name: String) throws -> Bool {
         return try getBool(name, ifMissing: false)
     }
     
-    func getBool(name: String, ifMissing: Bool) throws -> Bool {
+    public func getBool(name: String, ifMissing: Bool) throws -> Bool {
         if hasValue(name) {
             if let value = getValue(name) {
                 switch value.lowercaseString {

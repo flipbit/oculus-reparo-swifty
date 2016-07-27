@@ -9,20 +9,20 @@
 import Foundation
 
 public class Directive {
-    var name: String
-    var not: Bool
+    public var name: String
+    public var not: Bool
     
-    init(name: String) {
+    public init(name: String) {
         self.name = name
         self.not = false
     }
     
-    init(name: String, not: Bool) {
+    public init(name: String, not: Bool) {
         self.name = name
         self.not = not
     }
     
-    func clone() -> Directive {
+    public func clone() -> Directive {
         return Directive(name: name, not: not)
     }
 }

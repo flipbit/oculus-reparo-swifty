@@ -1,7 +1,9 @@
 import Foundation
 
-public class ReduceTransform : ReparoTransform {
-    public func transform(lines: [Line], parser: Parser) throws -> [Line] {
+public class ReduceTransform : Transform {
+    public func transform(line: Line, scope: Scope) throws -> (line: Line?, scope: Scope) {
+        return (line, scope)
+        /*
         var transformed: [Line] = []
         var reduced: [Line] = []
         for line in lines {            
@@ -90,5 +92,6 @@ public class ReduceSectionTransform : ReparoTransform {
         }
         
         return count
+        */
     }
 }

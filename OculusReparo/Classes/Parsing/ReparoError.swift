@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ReparoError: ErrorType {
+public enum ReparoError: ErrorType {
     case InvalidConfigurationLine(String)
     case InvalidColorString(String)
     case MissingConfigurationFile(String)
