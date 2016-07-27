@@ -1,0 +1,9 @@
+view {
+    position {
+        height: 100;
+        width: 100;
+        align: center middle;
+    }
+
+    background-color: f00;
+}

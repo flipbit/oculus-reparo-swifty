@@ -1,0 +1,22 @@
+{
+  "name": "OculusReparo",
+  "version": "0.1.0",
+  "summary": "A short description of OculusReparo.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/OculusReparo",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Chris Wood": "chris@flipbit.co.uk"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/OculusReparo.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "OculusReparo/Classes/**/*"
+}

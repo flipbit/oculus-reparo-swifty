@@ -1,0 +1,6 @@
+framework module OculusReparo {
+  umbrella header "OculusReparo-umbrella.h"
+
+  export *
+  module * { export * }
+}
