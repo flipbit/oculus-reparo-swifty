@@ -82,6 +82,7 @@
 		8040A37FF5BBDF1964CAB8C0068ED315 /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC325F77555916EE55065F37EA4C575 /* BeGreaterThanOrEqualTo.swift */; };
 		81E6453ECE511335537301CD3B1C1B82 /* ExceptionCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50105FCC804A51F7EDCB8C8F84AF9A /* ExceptionCapture.swift */; };
 		82E7BD15D21D4A6EA2CEB24DDDAC472E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748DC8A093F4037070D79081F0E17379 /* Document.swift */; };
+		835AB9E61D49222A00004461 /* CellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AB9E51D49222A00004461 /* CellBuilder.swift */; };
 		84A537ECF91F91ADBB9B3887C6E8F5CB /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20DCF7CE92AB9AD6D4F202C8CC19A7 /* Builder.swift */; };
 		854DD056C040A0BF4376AE78F57A4219 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC405455F8E20BD0434D9D3E3D2879A /* Foundation.framework */; };
 		86FB708FCFE6121A82BB09E5ADD84554 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = A2ADFE64923497AA07A24FC59913A587 /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -243,6 +244,7 @@
 		7EB79662DFF8CAC9A93BB403631D5490 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/Quick/Quick.h; sourceTree = "<group>"; };
 		7F953C695FA053277682CD80A5975416 /* BundleReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BundleReader.swift; sourceTree = "<group>"; };
 		7FECB7BA22714038546A0E8DD513114B /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Quick/Configuration/Configuration.swift; sourceTree = "<group>"; };
+		835AB9E51D49222A00004461 /* CellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellBuilder.swift; sourceTree = "<group>"; };
 		85564484FA6ABBE76C0B73863EFFFCDE /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
 		85DB1EA0AF858FB106A80D8E62810AFE /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		875A7681674D572B7002D69BBCD1BA09 /* Example.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Sources/Quick/Example.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				36A12591010029D4F6AF59D3C5A8B8CD /* UISliderBuilder.swift */,
 				3F9FFED6918942D36D2BD7478BABB12D /* UITableViewBuilder.swift */,
 				C4F39E0A5BA3AEBEC599C10B2F9A5F13 /* UIViewBuilder.swift */,
+				835AB9E51D49222A00004461 /* CellBuilder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				84A537ECF91F91ADBB9B3887C6E8F5CB /* Builder.swift in Sources */,
 				7DA60E69903F8E8FD767BC5AE870B8AB /* BuilderProtocol.swift in Sources */,
 				0CF29213ADA882AEB829FC68CD575263 /* BundleReader.swift in Sources */,
+				835AB9E61D49222A00004461 /* CellBuilder.swift in Sources */,
 				E60E23E03FEB547245B76AEE5C972103 /* Convert.swift in Sources */,
 				C140017B5A755314A03ED507C3E854B7 /* DefineFunctionTransform.swift in Sources */,
 				88A3E8AB28981386915F13444D0FEB30 /* DefineVariableTransform.swift in Sources */,
@@ -1042,7 +1046,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/OculusReparo/OculusReparo-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/OculusReparo/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/OculusReparo/OculusReparo.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1278,7 +1282,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/OculusReparo/OculusReparo-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/OculusReparo/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/OculusReparo/OculusReparo.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;

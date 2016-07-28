@@ -1,0 +1,3 @@
+﻿@each: names {
+    name: @name;
+}

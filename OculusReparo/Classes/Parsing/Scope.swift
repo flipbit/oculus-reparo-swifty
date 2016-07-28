@@ -1,7 +1,7 @@
 import Foundation
 
 public class Scope {
-    var variables: [String: String]
+    var variables: [String: AnyObject]
     var directives: [String]
     var functions: [String: [Line]]
     var depth = 0

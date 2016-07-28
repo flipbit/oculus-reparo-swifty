@@ -20,6 +20,23 @@ class VariableTransformSpec: BaseParserSpec {
                 
                 expect(person.getValue("name")).to(equal("@name"))
             }
+            
+            it("complex values are parsed") {
+                parser.variables.removeAll()
+                parser.variables["person"] = Model(name: "jude")
+                
+                let config = try! parser.parseFile("VariableComplex")
+                
+                expect(config.getValue("name")).to(equal("jude"))
+            }
+        }
+    }
+    
+    class Model : NSObject {
+        var name: String
+        
+        init(name: String) {
+            self.name = name
         }
     }
 }

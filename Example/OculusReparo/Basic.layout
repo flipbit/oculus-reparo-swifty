@@ -1,9 +1,18 @@
-view {
+table {
     position {
-        height: 100;
-        width: 100;
-        align: center middle;
+        height: 100%;
+        width: 100%;
     }
 
-    background-color: f00;
+    id: table;
+    set-delegate;
+
+    cells {
+        @each: items {
+            cell {
+                text: @item.text;
+                accessory: disclosure-indicator;
+            }
+        }
+    }
 }

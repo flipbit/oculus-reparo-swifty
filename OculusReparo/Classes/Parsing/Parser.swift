@@ -2,7 +2,7 @@
  Parser to read Reparo configuration files
  */
 public class Parser {
-    public var variables: [String: String]
+    public var variables: [String: AnyObject]
     public var directives: [String]
     public var transforms: [Transform]
     public var expansions: [Expansion]
@@ -22,6 +22,7 @@ public class Parser {
         
         expansions.append(IncludeExpansion())
         expansions.append(FunctionExpansion())
+        expansions.append(EachExpansion())
         
         reader = BundleReader()
     }

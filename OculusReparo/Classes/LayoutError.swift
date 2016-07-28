@@ -15,4 +15,5 @@ enum LayoutError: ErrorType {
     case UnknownFontWeight(String)
     case InvalidInsetFormat(String)
     case InvalidTextAlignment(String)
+    case InvalidConfiguration(String)
 }

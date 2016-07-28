@@ -1,6 +1,5 @@
 # OculusReparo
 
-[![CI Status](http://img.shields.io/travis/Chris Wood/OculusReparo.svg?style=flat)](https://travis-ci.org/Chris Wood/OculusReparo)
 [![Version](https://img.shields.io/cocoapods/v/OculusReparo.svg?style=flat)](http://cocoapods.org/pods/OculusReparo)
 [![License](https://img.shields.io/cocoapods/l/OculusReparo.svg?style=flat)](http://cocoapods.org/pods/OculusReparo)
 [![Platform](https://img.shields.io/cocoapods/p/OculusReparo.svg?style=flat)](http://cocoapods.org/pods/OculusReparo)

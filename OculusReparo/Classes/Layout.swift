@@ -11,15 +11,18 @@ import UIKit
 
 public class Layout {
     static var builders: [BuilderProtocol] = []
+    static var cellBuilders: [CellBuilderProtocol] = []
     static private var initialized = false
 
     public var views: [String: UIView]
-    public var variables: [String: String]
+    public var variables: [String: AnyObject]
     public var directives: [String]
     public var model: NSObject?
     public var eventTarget: AnyObject?
     public var view: UIView?
     public var filename: String?
+    
+    var dataSources = [UITableViewDataSource]()
     
     public init() {
         variables = [:]
@@ -28,6 +31,7 @@ public class Layout {
         
         // append default builders
         if !Layout.initialized {
+            // View builders
             Layout.builders.append(UIViewBuilder())
             Layout.builders.append(UILabelBuilder())
             Layout.builders.append(UISliderBuilder())
@@ -35,6 +39,10 @@ public class Layout {
             Layout.builders.append(UIImageViewBuilder())
             Layout.builders.append(UITableViewBuilder())
             Layout.builders.append(UIScrollViewBuilder())
+            
+            // Cell builders
+            Layout.cellBuilders.append(UITableViewCellBuilder())
+                
             Layout.initialized = true
         }
         
@@ -279,5 +287,5 @@ public class Layout {
                 break
             }
         }
-    }
+    }    
 }

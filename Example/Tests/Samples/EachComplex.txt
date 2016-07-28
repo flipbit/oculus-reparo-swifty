@@ -1,0 +1,6 @@
+﻿@each: persons {
+    person {
+        name: @person.name;
+        age: @person.age;
+    }
+}

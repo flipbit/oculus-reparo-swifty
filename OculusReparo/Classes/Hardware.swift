@@ -1,63 +1,6 @@
-//
-//  Hardware.swift
-//  OculusReparo
-//
-//  Created by Chris on 10/07/2016.
-//  Copyright © 2016 flipbit.co.uk. All rights reserved.
-//
-
 import Foundation
 
 public class Hardware {
-    public enum Device : String {
-        case iPodTouch5 = "iPod Touch 5"
-        case iPodTouch6 = "iPod Touch 6"
-        case iPhone4 = "iPhone 4"
-        case iPhone4s = "iPhone 4s"
-        case iPhone5 = "iPhone 5"
-        case iPhone5c = "iPhone 5c"
-        case iPhone5s = "iPhone 5s"
-        case iPhone6 = "iPhone 6"
-        case iPhone6Plus = "iPhone 6 Plus"
-        case iPhone6s = "iPhone 6s"
-        case iPhone6sPlus = "iPhone 6s Plus"
-        case iPhoneSE = "iPhone SE"
-        case iPad2 = "iPad 2"
-        case iPad3 = "iPad 3"
-        case iPad4 = "iPad 4"
-        case iPadAir = "iPad Air"
-        case iPadAir2 = "iPad Air 2"
-        case iPadMini = "iPad Mini"
-        case iPadMini2 = "iPad Mini 2"
-        case iPadMini3 = "iPad Mini 3"
-        case iPadMini4 = "iPad Mini 4"
-        case iPadPro = "iPad Pro"
-        case AppleTV = "Apple TV"
-        case Simulator = "Simulator"
-        case Unknown = "Unknown"
-    }
-    
-    public enum DeviceType : String {
-        case iPodTouch = "iPodTouch"
-        case iPhone = "iPhone"
-        case iPad = "iPad"
-        case AppleTV = "Apple TV"
-        case Simulator = "Simulator"
-        case Unknown = "Unknown"
-    }
-    
-    public enum ScreenSize : String {
-        case iPhone = "iPhone"
-        case iPhone5 = "iPhone5"
-        case iPhone6 = "iPhone6"
-        case iPhone6Plus = "iPhone6Plus"
-        case iPad = "ipad"
-        case iPadPro = "iPadPro"
-        case AppleTV = "AppleTV"
-        case Simulator = "Simulator"
-        case Unknown = "Unknown"
-    }
-    
     static private var deviceInstance: Device?
     
     static var device: Device {
@@ -174,4 +117,53 @@ public class Hardware {
             return "landscape"
         }
     }
+}
+
+public enum Device : String {
+    case iPodTouch5 = "ipod-touch-5"
+    case iPodTouch6 = "iPod-touch-6"
+    case iPhone4 = "iphone-4"
+    case iPhone4s = "iphone-4s"
+    case iPhone5 = "iphone-5"
+    case iPhone5c = "iphone-5c"
+    case iPhone5s = "iphone-5s"
+    case iPhone6 = "iphone-6"
+    case iPhone6Plus = "iphone-6-plus"
+    case iPhone6s = "iphone-6s"
+    case iPhone6sPlus = "iphone-6s-plus"
+    case iPhoneSE = "iphone-se"
+    case iPad2 = "ipad-2"
+    case iPad3 = "ipad-3"
+    case iPad4 = "ipad-4"
+    case iPadAir = "ipad-air"
+    case iPadAir2 = "ipad-air-2"
+    case iPadMini = "ipad-mini"
+    case iPadMini2 = "ipad-mini-2"
+    case iPadMini3 = "ipad-mini-3"
+    case iPadMini4 = "ipad-mini-4"
+    case iPadPro = "ipad-pro"
+    case AppleTV = "apple-tv"
+    case Simulator = "simulator"
+    case Unknown = "unknown"
+}
+
+public enum DeviceType : String {
+    case iPodTouch = "ipod-touch"
+    case iPhone = "iphone"
+    case iPad = "ipad"
+    case AppleTV = "apple-tv"
+    case Simulator = "simulator"
+    case Unknown = "unknown"
+}
+
+public enum ScreenSize : String {
+    case iPhone = "iphone"
+    case iPhone5 = "iphone-5"
+    case iPhone6 = "iphone-6"
+    case iPhone6Plus = "iphone-6-plus"
+    case iPad = "ipad"
+    case iPadPro = "ipad-pro"
+    case AppleTV = "apple-tv"
+    case Simulator = "simulator"
+    case Unknown = "unknown"
 }
