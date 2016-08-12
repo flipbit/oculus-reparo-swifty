@@ -87,6 +87,8 @@ extension UIView {
             result = true
         } catch LayoutError.MissingRootView {
             layout.handleLayoutError("Controller root view is not set")
+        } catch LayoutError.InvalidConfiguration(let message) {
+            layout.handleLayoutError(message)
         } catch LayoutError.MissingViewPosition(let message) {
             layout.handleLayoutError(message)
         } catch LayoutError.MissingModelProperty(let message) {

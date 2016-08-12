@@ -21,7 +21,11 @@ public class Line {
     public var isASection: Bool {
         return false
     }
-        
+    
+    public convenience init() {
+        self.init(filename: "", lineNumber: 0)
+    }
+    
     public init(filename: String, lineNumber: Int) {
         directives = []
         index = 0

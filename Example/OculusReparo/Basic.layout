@@ -5,14 +5,4 @@ table {
     }
 
     id: table;
-    set-delegate;
-
-    cells {
-        @each: items {
-            cell {
-                text: @item.text;
-                accessory: disclosure-indicator;
-            }
-        }
-    }
 }

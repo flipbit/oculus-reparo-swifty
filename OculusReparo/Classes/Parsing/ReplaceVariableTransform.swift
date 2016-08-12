@@ -50,6 +50,9 @@ public class ReplaceVariableTransform : Transform {
             } else if character == "@" && name != "" {
                 names.append(name)
                 name = ""
+            } else if character == "_" && name != "" {
+                names.append(name)
+                name = ""
             } else if character == " " && name == "" {
                 // nothing
             } else if character == "@" && name == "" {

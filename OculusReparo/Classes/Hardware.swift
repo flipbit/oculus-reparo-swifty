@@ -46,7 +46,7 @@ public class Hardware {
         
         return deviceInstance!
     }
-    static var deviceType: DeviceType {
+    public static var deviceType: DeviceType {
         switch device {
         case Device.AppleTV:                return DeviceType.AppleTV
         case Device.iPad2:                  return DeviceType.iPad

@@ -1,12 +1,12 @@
 import Foundation
 
-public class UITableViewBuilder : Builder, BuilderProtocol {
+public class UICollectionViewBuilder : Builder, UIViewBuilderProtocol {
     public func canBuild(layout: Section) -> Bool {
-        return layout.key == "table"
+        return layout.key == "collection"
     }
     
     public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
-        let table: UITableView = try initialize(layout, instance: instance, parent: parent)
+        let table: UICollectionView = try initialize(layout, instance: instance, parent: parent)
         
         table.bounces = try layout.getBool("bounces", ifMissing: true)
         table.scrollEnabled = try layout.getBool("scroll-enabled", ifMissing: true)
@@ -50,5 +50,5 @@ public class UITableViewBuilder : Builder, BuilderProtocol {
         
         return nil
     }
-
+    
 }

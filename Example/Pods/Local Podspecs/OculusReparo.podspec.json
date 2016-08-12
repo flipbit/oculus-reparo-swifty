@@ -1,9 +1,9 @@
 {
   "name": "OculusReparo",
   "version": "0.1.0",
-  "summary": "A short description of OculusReparo.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/OculusReparo",
+  "summary": "Swifty layout helpers for UIKit.",
+  "description": "OculusReparo enables you to write view layouts in plain text files, then bind them to controllers\nand model objects.",
+  "homepage": "https://github.com/flipbit/oculus-reparo-swifty",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,11 @@
     "Chris Wood": "chris@flipbit.co.uk"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/OculusReparo.git",
+    "git": "https://github.com/flipbit/oculus-reparo-swifty.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
   "source_files": "OculusReparo/Classes/**/*"
 }

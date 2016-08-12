@@ -1,26 +1,28 @@
-//
-//  OculusReparo.swift
-//  OculusReparo
-//
-//  Created by Chris on 06/07/2016.
-//  Copyright © 2016 flipbit.co.uk. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
 public class Layout {
-    static var builders: [BuilderProtocol] = []
-    static var cellBuilders: [CellBuilderProtocol] = []
+    static public var layerBuilders: [LayerBuilder] = []
+    static public var viewBuilders: [ViewBuilder] = []
+    static public var imageLoader: UIImageLoader = MainBundleImageLoader()
     static private var initialized = false
 
+    private var _laidOut = false
+    public var laidOut: Bool {
+        return _laidOut
+    }
+    
     public var views: [String: UIView]
+    public var layers: [String: CALayer]
     public var variables: [String: AnyObject]
     public var directives: [String]
     public var model: NSObject?
     public var eventTarget: AnyObject?
     public var view: UIView?
     public var filename: String?
+    public var screenSize: CGRect
+    public var enableAutoRotation = false
+    public var enableAutoResizing = false
     
     var dataSources = [UITableViewDataSource]()
     
@@ -28,20 +30,31 @@ public class Layout {
         variables = [:]
         directives = []
         views = [:]
+        layers = [:]
+
+        // Set screen size
+        if let window = UIApplication.sharedApplication().keyWindow {
+            screenSize = window.bounds
+        } else {
+            screenSize = CGRectZero
+        }
+
         
         // append default builders
         if !Layout.initialized {
             // View builders
-            Layout.builders.append(UIViewBuilder())
-            Layout.builders.append(UILabelBuilder())
-            Layout.builders.append(UISliderBuilder())
-            Layout.builders.append(UIButtonBuilder())
-            Layout.builders.append(UIImageViewBuilder())
-            Layout.builders.append(UITableViewBuilder())
-            Layout.builders.append(UIScrollViewBuilder())
-            
-            // Cell builders
-            Layout.cellBuilders.append(UITableViewCellBuilder())
+            Layout.viewBuilders.append(UIViewBuilder())
+            Layout.viewBuilders.append(UILabelBuilder())
+            Layout.viewBuilders.append(UISliderBuilder())
+            Layout.viewBuilders.append(UIButtonBuilder())
+            Layout.viewBuilders.append(UIImageViewBuilder())
+            Layout.viewBuilders.append(UITableViewBuilder())
+            Layout.viewBuilders.append(UIScrollViewBuilder())
+            Layout.viewBuilders.append(UITextFieldBuilder())
+            Layout.viewBuilders.append(UICollectionViewBuilder())
+
+            // Layer builders
+            Layout.layerBuilders.append(CALayerBuilder())
                 
             Layout.initialized = true
         }
@@ -51,6 +64,11 @@ public class Layout {
         directives.append("device-type:" + Hardware.deviceType.rawValue)
         directives.append("screen:" + Hardware.screenSize.rawValue)
         directives.append(Hardware.orientation)
+        
+        // register for orientation changes
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserver(self, selector: #selector(rotate), name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
 
     public convenience init(filename: String, view: UIView) {
@@ -74,6 +92,14 @@ public class Layout {
         
         self.filename = filename
     }
+    
+    deinit {
+        // unregister orientation changes
+        NSNotificationCenter
+            .defaultCenter()
+            .removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
+
+    }
 
     public func apply() throws {
         try apply(filename!)
@@ -86,19 +112,17 @@ public class Layout {
         
         self.filename = filename
         
-        let parser = Parser()
-        parser.directives = directives
-        parser.variables = variables
+        let parser = Parser(layout: self)
         
         let layout = try parser.parseFile(filename)
-        
-        debug(layout)
-        
+                
         try setProperties(layout, view: view)
         
         for section in layout.sections {
             try build(section, parent: view)
         }
+        
+        _laidOut = true
     }
     
     func debug(layout: Document) {
@@ -118,30 +142,6 @@ public class Layout {
         print("----------")
         print("")
     }
-    
-    /*
-    public func animateIn(filename: String, state: ViewState) throws -> ViewState {
-        let parser = Reparo.Parser()
-        parser.directives = state.directives
-        let layout = try parser.parseFile(filename)
-        
-        try animateIn(layout.sections, state: state)
-        
-        return state
-    }
-    
-    private func animateIn(layout: [Reparo.Section], state: ViewState) throws -> ViewState {
-        for section in layout {
-            if let view = state.findView(section) {
-                Animation().animateIn(section, view: view)
-            }
-            
-            try animateIn(section.sections, state: state)
-        }
-        
-        return state
-    }
-    */
     
     public func clearDirective(directive: String) {
         let index = directives.indexOf(directive)
@@ -183,6 +183,18 @@ public class Layout {
     
     public func hasView(viewId: String) -> Bool {
         return views[viewId] != nil
+    }
+    
+    public func findLayer(layerId: String) -> CALayer? {
+        if layers[layerId] != nil {
+            return layers[layerId]
+        }
+        
+        return nil
+    }
+    
+    public func hasLayer(layerId: String) -> Bool {
+        return layers[layerId] != nil
     }
     
     public func handleLayoutError(message: String) {
@@ -249,34 +261,41 @@ public class Layout {
     /**
      Registers the given builder
     */
-    static public func register(builder: BuilderProtocol) {
-        Layout.builders.append(builder)
-    }
-    
-    public func enableAutorotation() {
-        NSNotificationCenter
-            .defaultCenter()
-            .addObserver(self, selector: #selector(rotate), name: UIDeviceOrientationDidChangeNotification, object: nil)
+    static public func register(builder: ViewBuilder) {
+        Layout.viewBuilders.append(builder)
     }
     
     @objc private func rotate() throws {
-        clearDirective("landscape")
-        clearDirective("portrait")
-        directives.append(Hardware.orientation)
-        
-        if let filename = filename {
-            try apply(filename)
+        if enableAutoRotation {
+            clearDirective("landscape")
+            clearDirective("portrait")
+            directives.append(Hardware.orientation)
+            
+            if let window = UIApplication.sharedApplication().keyWindow {
+                screenSize = window.bounds
+            }
+            
+            if let filename = filename {
+                try apply(filename)
+            }
         }
-    }    
+    }
     
     private func setProperties(layout: Section, view: UIView) throws {
         if let properties = layout.getSection("layout") {
             view.backgroundColor = try properties.getUIColor("background-color")
+            
+            var width = view.frame.width, height = view.frame.height
+            
+            width = try properties.getCGFloat("width", ifMissing: width)
+            height = try properties.getCGFloat("height", ifMissing: height)
+            
+            view.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: width, height: height)
         }
     }
     
     private func build(layout: Section, parent: UIView) throws {
-        for builder in Layout.builders {
+        for builder in Layout.viewBuilders {
             if (builder.canBuild(layout)) {
                 let view = try builder.build(layout, instance: self, parent: parent)
                 
@@ -287,5 +306,13 @@ public class Layout {
                 break
             }
         }
-    }    
+        
+        for builder in Layout.layerBuilders {
+            if (builder.canBuild(layout)) {
+                let layer = try builder.build(layout, instance: self, parent: parent)
+                
+                break
+            }
+        }
+    }
 }

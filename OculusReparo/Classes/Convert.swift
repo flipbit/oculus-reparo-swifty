@@ -85,8 +85,12 @@ public class Convert {
     }
     
     public static func getTextAlignment(alignment: String?) throws -> NSTextAlignment {
+        return try getTextAlignment(alignment, or: NSTextAlignment.Center)
+    }
+    
+    public static func getTextAlignment(alignment: String?, or: NSTextAlignment) throws -> NSTextAlignment {
         guard let alignment = alignment?.lowercaseString else {
-            return NSTextAlignment.Center
+            return or
         }
         
         switch alignment {

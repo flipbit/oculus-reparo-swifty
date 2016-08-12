@@ -119,12 +119,7 @@ public class Position {
         // Set relative y value
         if top != nil && top!.hasPrefix("+") {
             for child in parent.subviews.reverse() {
-                if child.hidden {
-                    continue;
-                }
-                
-                y = y + child.frame.origin.y + child.frame.height;
-                
+                y = y + child.frame.origin.y + child.frame.height;                
                 break;
             }
         }

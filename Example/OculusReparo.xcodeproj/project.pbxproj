@@ -14,6 +14,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		7A9A1596DEF2E0435D96E2D6 /* Pods_OculusReparo_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47434D0ED904A0AB337E96F /* Pods_OculusReparo_Tests.framework */; };
+		8336F6F61D535C850009E629 /* ScopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8336F6F51D535C850009E629 /* ScopeTests.swift */; };
+		8336F6F81D5365580009E629 /* DirectiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8336F6F71D5365580009E629 /* DirectiveTests.swift */; };
 		835AB9AF1D48C0AB00004461 /* DirectiveTransformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AB9721D48C09300004461 /* DirectiveTransformTests.swift */; };
 		835AB9B01D48C0AF00004461 /* IncludeExpansionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AB9731D48C09300004461 /* IncludeExpansionTests.swift */; };
 		835AB9B11D48C0B300004461 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AB9741D48C09300004461 /* ParserTests.swift */; };
@@ -85,6 +87,8 @@
 		607FACE51AFB9204008FA782 /* OculusReparo_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OculusReparo_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F5D6BCA652E92CD696172D7 /* Pods-OculusReparo_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OculusReparo_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OculusReparo_Tests/Pods-OculusReparo_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		8336F6F51D535C850009E629 /* ScopeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScopeTests.swift; sourceTree = "<group>"; };
+		8336F6F71D5365580009E629 /* DirectiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectiveTests.swift; sourceTree = "<group>"; };
 		835AB9721D48C09300004461 /* DirectiveTransformTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectiveTransformTests.swift; sourceTree = "<group>"; };
 		835AB9731D48C09300004461 /* IncludeExpansionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncludeExpansionTests.swift; sourceTree = "<group>"; };
 		835AB9741D48C09300004461 /* ParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 				835AB9751D48C09300004461 /* SampleReader.swift */,
 				835AB98F1D48C09300004461 /* StateMachineTests.swift */,
 				835AB9D11D48D28900004461 /* LineTests.swift */,
+				8336F6F51D535C850009E629 /* ScopeTests.swift */,
+				8336F6F71D5365580009E629 /* DirectiveTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -554,11 +560,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8336F6F61D535C850009E629 /* ScopeTests.swift in Sources */,
 				835AB9EA1D4972B300004461 /* EachExpansionTests.swift in Sources */,
 				835AB9D51D48DD9100004461 /* BaseParserSpec.swift in Sources */,
 				835AB9DB1D48F7E600004461 /* FunctionExpansionTests.swift in Sources */,
 				835AB9B11D48C0B300004461 /* ParserTests.swift in Sources */,
 				835AB9D21D48D28900004461 /* LineTests.swift in Sources */,
+				8336F6F81D5365580009E629 /* DirectiveTests.swift in Sources */,
 				835AB9AF1D48C0AB00004461 /* DirectiveTransformTests.swift in Sources */,
 				835AB9B01D48C0AF00004461 /* IncludeExpansionTests.swift in Sources */,
 				835AB9B21D48C0B700004461 /* SampleReader.swift in Sources */,
@@ -691,6 +699,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -705,6 +714,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

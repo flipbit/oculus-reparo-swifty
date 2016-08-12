@@ -1,3 +1,5 @@
+import UIKit
+
 /**
  Parser to read Reparo configuration files
  */
@@ -6,6 +8,7 @@ public class Parser {
     public var directives: [String]
     public var transforms: [Transform]
     public var expansions: [Expansion]
+    public var screenSize: CGRect
     public var reader: ReparoReader
     
     public init() {
@@ -13,11 +16,12 @@ public class Parser {
         directives = []
         transforms = []
         expansions = []
+        screenSize = UIScreen.mainScreen().bounds
         
+        transforms.append(DirectiveTransform())
         transforms.append(DefineFunctionTransform())
         transforms.append(DefineVariableTransform())
         transforms.append(ReplaceVariableTransform())
-        transforms.append(DirectiveTransform())
         transforms.append(ReduceTransform())
         
         expansions.append(IncludeExpansion())
@@ -31,6 +35,14 @@ public class Parser {
         self.init()
         
         self.reader = reader
+    }
+
+    public convenience init(layout: Layout) {
+        self.init()
+        
+        self.variables = layout.variables
+        self.directives = layout.directives
+        self.screenSize = layout.screenSize
     }
     
     /**
