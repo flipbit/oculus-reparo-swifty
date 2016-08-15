@@ -2,7 +2,7 @@
 
 Oculus Reparo allows you write simple view layouts in plain text, and use them to build your iOS application views.
 
-```css
+```sass
 view {
     position {
         align: center middle;
@@ -16,9 +16,9 @@ view {
 ```
 
 Produces the following view:
-
-![Oculus Reparo Basic Layout Screenshot](https://raw.githubusercontent.com/flipbit/oculus-reparo-swifty/master/Assets/Screenshots/basic.png)
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/flipbit/oculus-reparo-swifty/master/Assets/Screenshots/basic.png" />
+</p>
 Oculus Reparo supports:
 
 * UIViews and CALayers
