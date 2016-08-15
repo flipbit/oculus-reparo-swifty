@@ -1,0 +1,75 @@
+@set red:   ff3b30;
+@set amber: ff9500;
+@set green: 4cd964;
+@set grey:  8e8e93;
+
+button {
+    position {
+        top: 20             @if portrait;
+        top: 0              @if landscape;
+        left: 0;
+        width: 100;
+        height: 44;
+    }
+
+    font-size: 17;
+    font-weight: regular;
+    text-alignment: left;
+
+    title: Back;
+    title-color: @grey;
+    
+    on-touch: onBack;
+
+    image-bundle: BackwardDisclosure22x22;
+    tint-color: @grey;
+    image-edge-insets: 0 7.5 0 7.5;
+}
+
+view {
+    position @if portrait {
+        align: center middle;
+        height: 300;
+        width: 80;
+    }
+
+    position @if landscape {
+        align: center middle;
+        height: 80;
+        width: 300;
+    }
+
+    @define: light {
+        layer {
+            position {
+                top: @position      @if portrait;
+                left: 0             @if portrait;
+                top: 0              @if landscape;
+                left: @position     @if landscape;
+                width: 80;
+                height: 80;
+            }
+
+            background-color: @color;
+            corner-radius: 40;
+        }
+    }
+    
+    /* Red */
+    @light {
+        position: 0;
+        color: @red;
+    }
+
+    /* Amber */
+    @light {
+        position: +20;
+        color: @amber;
+    }
+
+    /* Green */
+    @light {
+        position: 200;
+        color: @green;
+    }
+}

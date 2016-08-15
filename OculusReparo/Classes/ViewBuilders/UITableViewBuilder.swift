@@ -19,6 +19,19 @@ public class UITableViewBuilder : ViewBuilder {
             }
         }
         
+        if instance.laidOut {
+            if let indexes = table.indexPathsForVisibleRows {
+                for index in indexes {
+                    if let cell = table.cellForRowAtIndexPath(index) {
+                        if cell.frame.width != table.frame.width {
+                            cell.frame = CGRect(x: cell.frame.origin.x, y: cell.frame.origin.y, width: table.frame.width, height: cell.frame.height)
+                            cell.setNeedsDisplay()
+                        }
+                    }
+                }
+            }
+        }
+        
         return table;
     }
 }

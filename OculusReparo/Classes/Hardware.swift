@@ -112,7 +112,7 @@ public class Hardware {
     
     static var orientation: String {
         if UIDevice.currentDevice().orientation.isPortrait {
-            return "portait"
+            return "portrait"
         } else {
             return "landscape"
         }

@@ -2,28 +2,19 @@ import Foundation
 import UIKit
 import OculusReparo
 
-class ExampleController : UIViewController {
+class ExampleController : LayoutViewController {
     var viewname: String?
-    var layout: Layout?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillLayout() {
+        layout.filename  = viewname
+        layout.debugger = LayoutDebugger()
         
-        layout = Layout(filename: viewname!, controller: self)
-        
-        try! layout!.apply()
-        
-        layout?.enableAutoRotation = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    func onBack() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
         
-        
-        if let window = UIApplication.sharedApplication().keyWindow {
-            print ("trait change key window \(window.frame.width)x\(window.frame.height)")
-            layout?.screenSize = window.frame
-            try! layout?.apply()
-        }
-        
+        navigationController?.popViewControllerAnimated(true)
     }
 }

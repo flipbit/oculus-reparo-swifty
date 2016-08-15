@@ -13,7 +13,16 @@ public class Position {
         case Bottom = "bottom"
     }
     
-    private var parent: UIView
+    private var parentView: UIView?
+    private var parentLayer: CALayer?
+    
+    private var parentFrame: CGRect {
+        if parentView != nil {
+            return parentView!.frame
+        } else {
+            return parentLayer!.frame
+        }
+    }
     
     var top: String?
     var left: String?
@@ -31,19 +40,41 @@ public class Position {
     var offsetLeft: String?
     var offsetWidth: String?
     var offsetHeight: String?
-    
-    init(parent: UIView) {
+
+    init() {
         top = "0"
         left = "0"
         width = "100%"
         height = "100%"
         horizontalAlignment = HorizontalAlignment.Left
         verticalAlignment = VerticalAlignment.Top
-        
-        self.parent = parent
     }
     
-    init(section: Section, parent: UIView) throws {
+    convenience init(parent: UIView) {
+        self.init()
+        
+        parentView = parent
+    }
+    
+    convenience init(parent: CALayer) {
+        self.init()
+        
+        parentLayer = parent
+    }
+    
+    convenience init(section: Section, parent: CALayer) throws {
+        try self.init(section: section)
+        
+        parentLayer = parent
+    }
+    
+    convenience init(section: Section, parent: UIView) throws {
+        try self.init(section: section)
+        
+        parentView = parent
+    }
+    
+    init(section: Section) throws {
         top = section.getValue("top", ifMissing: "0")
         left = section.getValue("left", ifMissing: "0")
         width = section.getValue("width", ifMissing: "100%")
@@ -89,47 +120,34 @@ public class Position {
         offsetWidth = section.getValue("offset-width", ifMissing: offsetWidth)
         offsetHeight = section.getValue("offset-height", ifMissing: offsetHeight)
         
-        self.parent = parent
-        
         if let alignment = section.getValue("align") {
             setAlignment(alignment)
         }
     }
     
-    func toFrame() -> CGRect {
+    func toFrame(lastSiblingFrame: CGRect) -> CGRect {
         // Get dimensions (absolute or percentage)
-        var x = getDimension(left, parent: parent.frame.size.width)
-        var y = getDimension(top, parent: parent.frame.size.height)
-        var w = getDimension(width, parent: parent.frame.size.width)
-        var h = getDimension(height, parent: parent.frame.size.height)
+        var x = getDimension(left, parent: parentFrame.size.width)
+        var y = getDimension(top, parent: parentFrame.size.height)
+        var w = getDimension(width, parent: parentFrame.size.width)
+        var h = getDimension(height, parent: parentFrame.size.height)
         
         // Set relative x value
         if left != nil && left!.hasPrefix("+") {
-            for child in parent.subviews.reverse() {
-                if child.hidden {
-                    continue;
-                }
-                
-                x = x + child.frame.origin.x + child.frame.width;
-                
-                break;
-            }
+            x = x + lastSiblingFrame.origin.x + lastSiblingFrame.width;
         }
         
         // Set relative y value
         if top != nil && top!.hasPrefix("+") {
-            for child in parent.subviews.reverse() {
-                y = y + child.frame.origin.y + child.frame.height;                
-                break;
-            }
+            y = y + lastSiblingFrame.origin.y + lastSiblingFrame.height;
         }
         
         // Set fills
         if width == "fill" {
-            w = parent.frame.width - x
+            w = parentFrame.width - x
         }        
         if height == "fill" {
-            h = parent.frame.height - y
+            h = parentFrame.height - y
         }
         
         // Set horizontal alignment
@@ -137,10 +155,10 @@ public class Position {
         case HorizontalAlignment.Left:
             break;
         case HorizontalAlignment.Center:
-            x = (parent.frame.size.width / 2) - (w / 2);
+            x = (parentFrame.size.width / 2) - (w / 2);
             break;
         case HorizontalAlignment.Right:
-            x = parent.frame.width - w - x;
+            x = parentFrame.width - w - x;
             break;
         }
         
@@ -149,18 +167,18 @@ public class Position {
         case VerticalAlignment.Top:
             break;
         case VerticalAlignment.Middle:
-            y = (parent.frame.height / 2) - (h / 2);
+            y = (parentFrame.height / 2) - (h / 2);
             break;
         case VerticalAlignment.Bottom:
-            y = parent.frame.height - y - h;
+            y = parentFrame.height - y - h;
             break;
         }
         
         // Set padding
-        let paddingTop = getDimension(self.paddingTop, parent: parent.frame.size.height)
-        let paddingLeft = getDimension(self.paddingLeft, parent: parent.frame.size.width)
-        let paddingRight = getDimension(self.paddingRight, parent: parent.frame.size.width)
-        let paddingBottom = getDimension(self.paddingBottom, parent: parent.frame.size.height)
+        let paddingTop = getDimension(self.paddingTop, parent: parentFrame.size.height)
+        let paddingLeft = getDimension(self.paddingLeft, parent: parentFrame.size.width)
+        let paddingRight = getDimension(self.paddingRight, parent: parentFrame.size.width)
+        let paddingBottom = getDimension(self.paddingBottom, parent: parentFrame.size.height)
 
         // Top
         y += paddingTop
@@ -177,10 +195,10 @@ public class Position {
         h -= paddingBottom
 
         // Set offsets
-        let offsetTop = getDimension(self.offsetTop, parent: parent.frame.size.height)
-        let offsetLeft = getDimension(self.offsetLeft, parent: parent.frame.size.width)
-        let offsetWidth = getDimension(self.offsetWidth, parent: parent.frame.size.width)
-        let offsetHeight = getDimension(self.offsetHeight, parent: parent.frame.size.height)
+        let offsetTop = getDimension(self.offsetTop, parent: parentFrame.size.height)
+        let offsetLeft = getDimension(self.offsetLeft, parent: parentFrame.size.width)
+        let offsetWidth = getDimension(self.offsetWidth, parent: parentFrame.size.width)
+        let offsetHeight = getDimension(self.offsetHeight, parent: parentFrame.size.height)
         
         y += offsetTop
         x += offsetLeft
@@ -206,6 +224,84 @@ public class Position {
         }
         
         return result
+    }
+    
+    public func getLastSiblingViewFrame(view: UIView) -> CGRect {
+        var last: UIView?
+        
+        // Check parent view sublayers
+        if let parent = parentView  {
+            for sibling in parent.subviews {
+                if sibling === view {
+                    if last == nil {
+                        return CGRectZero
+                    } else {
+                        return last!.frame
+                    }
+                } else {
+                    last = sibling
+                }
+            }
+        }
+        
+        if let parent = parentView {
+            if parent.subviews.count > 0 {
+                return parent.subviews.last!.frame
+            }
+        }
+                
+        return CGRectZero
+    }
+    
+    public func getLastSiblingLayerFrame(layer: CALayer) -> CGRect {
+        var last: CALayer?
+        
+        // Check parent view sublayers
+        if let parent = parentView,siblings = parent.layer.sublayers  {
+            for sibling in siblings {
+                if sibling === layer {
+                    if last == nil {
+                        return CGRectZero
+                    } else {
+                        return last!.frame
+                    }
+                } else {
+                    last = sibling
+                }
+            }
+        }
+
+        // Check parent layer sublayers
+        if let parent = parentLayer, siblings = parent.sublayers {
+            for sibling in siblings {
+                if sibling === layer {
+                    if last == nil {
+                        return CGRectZero
+                    } else {
+                        return last!.frame
+                    }
+                } else {
+                    last = sibling
+                }
+            }
+        }
+        
+        // Doesn't exist: Check for parent view siblings
+        if let parent = parentView,siblings = parent.layer.sublayers  {
+            if siblings.count > 0 {
+                return siblings.last!.frame
+            }
+        }
+        
+        // Doesn't exist: Check for parent layer siblings
+        if let parent = parentLayer, siblings = parent.sublayers {
+            if siblings.count > 0 {
+                return siblings.last!.frame
+            }
+        }
+        
+        // Return empty rect
+        return CGRectZero
     }
     
     private func setAlignment(alignment: String) {

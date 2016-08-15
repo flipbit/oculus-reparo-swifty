@@ -15,7 +15,6 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
         layout = Layout(filename: "Menu.layout", controller: self)
         
         layout?.variables["items"] = items
-        layout?.enableAutoRotation = true
         
         try! layout!.apply()
         
@@ -63,6 +62,19 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 navigationController?.pushViewController(controller, animated: true)
             }
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if layout!.needsLayout {
+            print("Layout out subviews...")
+            try! layout?.apply()
+        }
+    }
+    
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+        if layout!.needsLayout {
+            try! layout?.apply()
         }
     }
 }
@@ -116,7 +128,8 @@ class MenuItem: NSObject {
 
         case MenuType.Positioning:
             return [
-                MenuItem(text: "Basic", layout: "Basic.layout")
+                MenuItem(text: "Basic", layout: "Basic.layout"),
+                MenuItem(text: "Traffic Lights", layout: "TrafficLights.layout")
             ]
         }
     }

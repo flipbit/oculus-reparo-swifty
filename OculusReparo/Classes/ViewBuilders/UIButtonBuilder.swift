@@ -39,7 +39,7 @@ public class UIButtonBuilder : ViewBuilder {
             button.setTitleColor(color, forState: UIControlState.Normal)
         }
         
-        if let touched = layout.getValue("touched"), eventTarget = instance.eventTarget {
+        if let touched = layout.getValue("on-touch"), eventTarget = instance.eventTarget {
             button.addTarget(eventTarget, action: Selector(touched), forControlEvents: UIControlEvents.TouchUpInside)
             button.addTarget(eventTarget, action: Selector(touched), forControlEvents: UIControlEvents.TouchUpOutside)
         }

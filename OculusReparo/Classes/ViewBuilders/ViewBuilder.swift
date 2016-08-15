@@ -27,15 +27,19 @@ public class ViewBuilder {
                 throw LayoutError.InvalidConfiguration("Duplicate view id: \(id)")
             }
             view = instance.findView(id) as! T
+            instance.debugger?.info("Found view: \(id)")
         } else {
             view = T()
-            instance.views[id] = view
+            let fragment = LayoutViewFragment(view: view, id: id, configuration: layout)
+            instance.viewFragments[id] = fragment
             
             if let model = instance.model where layout.hasValue("id") {
                 if model.respondsToSelector(Selector("\(id)")) {
                     model.setValue(view, forKey: id)
                 }
             }
+            
+            instance.debugger?.info("Created view: \(id)")
         }
 
         return try initialize(view, layout: layout, instance: instance, parent: parent)
@@ -48,7 +52,8 @@ public class ViewBuilder {
         }
         
         if !instance.hasView(id) {
-            instance.views[id] = view
+            let fragment = LayoutViewFragment(view: view, id: id, configuration: layout)
+            instance.viewFragments[id] = fragment
             
             if let model = instance.model where layout.hasValue("id") {
                 if model.respondsToSelector(Selector("\(id)")) {
@@ -57,7 +62,7 @@ public class ViewBuilder {
             }
         }
         
-        view.frame = try getFrame(layout, parent: parent)
+        view.frame = try getFrame(layout, view: view, parent: parent, instance: instance)
         view.backgroundColor = try layout.getUIColor("background-color")
         view.layer.zPosition = layout.getCGFloat("z-position", ifMissing: 0)
         view.layer.cornerRadius = layout.getCGFloat("corner-radius", ifMissing: 0)
@@ -93,7 +98,15 @@ public class ViewBuilder {
         return try Position(section: config!, parent: parent)
     }
     
-    public func getFrame(layout: Section, parent: UIView) throws -> CGRect {
-        return try getPosition(layout, parent: parent).toFrame()
-    }        
+    public func getFrame(layout: Section, view: UIView, parent: UIView, instance: Layout) throws -> CGRect {
+        let position = try getPosition(layout, parent: parent)
+        
+        let lastSiblingFrame = position.getLastSiblingViewFrame(view)
+        
+        let frame = try position.toFrame(lastSiblingFrame)
+        
+        instance.debugger?.info(" -> Set frame: \(frame)")
+
+        return frame
+    }
 }

@@ -13,9 +13,9 @@ public class UICollectionViewBuilder : ViewBuilder {
         flow.itemSize = CGSize(width: 100, height: 100)
         flow.scrollDirection = .Horizontal
         
-        let frame = try getFrame(layout, parent: parent)
+        let collection = UICollectionView(frame: CGRectZero, collectionViewLayout: flow)
         
-        let collection = UICollectionView(frame: frame, collectionViewLayout: flow)
+        collection.frame = try getFrame(layout, view: collection, parent: parent, instance: instance)
         
         try initialize(collection, layout: layout, instance: instance, parent: parent)
         

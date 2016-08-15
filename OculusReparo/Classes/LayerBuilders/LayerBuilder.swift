@@ -23,12 +23,15 @@ public class LayerBuilder {
         
         if instance.hasLayer(layerId) {
             layer = instance.findLayer(layerId) as! T
+            instance.debugger?.info("Found layer: \(layerId)")
         } else {
             layer = T()
-            instance.layers[layerId] = layer
+            let fragment = LayoutLayerFragment(layer: layer, id: layerId, configuration: layout)
+            instance.layerFragments[layerId] = fragment
+            instance.debugger?.info("Created layer: \(layerId)")
         }
         
-        layer.frame = try getFrame(layout, parent: parent)
+        layer.frame = try getFrame(layout, layer: layer, parent: parent, instance: instance)
         layer.backgroundColor = try layout.getCGColor("background-color")
         layer.zPosition = layout.getCGFloat("z-position", ifMissing: 10)
         layer.cornerRadius = layout.getCGFloat("corner-radius", ifMissing: 0)
@@ -54,7 +57,15 @@ public class LayerBuilder {
         return try Position(section: config!, parent: parent)
     }
     
-    public func getFrame(layout: Section, parent: UIView) throws -> CGRect {
-        return try getPosition(layout, parent: parent).toFrame()
+    public func getFrame(layout: Section, layer: CALayer, parent: UIView, instance: Layout) throws -> CGRect {
+        let position = try getPosition(layout, parent: parent)
+        
+        let lastSiblingFrame = position.getLastSiblingLayerFrame(layer)
+        
+        let frame = try position.toFrame(lastSiblingFrame)
+        
+        instance.debugger?.info(" -> Set frame: \(frame)")
+        
+        return frame
     }
 }

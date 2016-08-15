@@ -7,36 +7,70 @@ public class Layout {
     static public var imageLoader: UIImageLoader = MainBundleImageLoader()
     static private var initialized = false
 
+    private var orientation = Hardware.orientation
+    
     private var _laidOut = false
     public var laidOut: Bool {
         return _laidOut
     }
+
+    private var _screenSizeOverridden = false
+    private var _screenSize: CGRect
+    public var screenSize: CGRect {
+        get {
+            return _screenSize
+        }
+        set {
+            _screenSize =  newValue
+            _screenSizeOverridden = true
+        }
+    }
+
     
-    public var views: [String: UIView]
-    public var layers: [String: CALayer]
     public var variables: [String: AnyObject]
     public var directives: [String]
     public var model: NSObject?
     public var eventTarget: AnyObject?
     public var view: UIView?
     public var filename: String?
-    public var screenSize: CGRect
-    public var enableAutoRotation = false
-    public var enableAutoResizing = false
+    public var debugger: LayoutDebugger?
+    
+    public var viewFragments = [String: LayoutViewFragment]()
+    public var layerFragments = [String: LayoutLayerFragment]()
+    
+    public var needsLayout: Bool {
+        if laidOut == false {
+            return true
+        }
+        
+        if let window = UIApplication.sharedApplication().keyWindow {
+            if window.bounds.height != screenSize.height {
+                return true
+            }
+            
+            if window.bounds.width != screenSize.width {
+                return true
+            }
+        }
+        
+        if orientation != Hardware.orientation {
+            return true
+        }
+        
+        return false
+    }
     
     var dataSources = [UITableViewDataSource]()
     
     public init() {
         variables = [:]
         directives = []
-        views = [:]
-        layers = [:]
 
         // Set screen size
         if let window = UIApplication.sharedApplication().keyWindow {
-            screenSize = window.bounds
+            _screenSize = window.bounds
         } else {
-            screenSize = CGRectZero
+            _screenSize = CGRectZero
         }
 
         
@@ -64,11 +98,6 @@ public class Layout {
         directives.append("device-type:" + Hardware.deviceType.rawValue)
         directives.append("screen:" + Hardware.screenSize.rawValue)
         directives.append(Hardware.orientation)
-        
-        // register for orientation changes
-        NSNotificationCenter
-            .defaultCenter()
-            .addObserver(self, selector: #selector(rotate), name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
 
     public convenience init(filename: String, view: UIView) {
@@ -93,14 +122,6 @@ public class Layout {
         self.filename = filename
     }
     
-    deinit {
-        // unregister orientation changes
-        NSNotificationCenter
-            .defaultCenter()
-            .removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
-
-    }
-
     public func apply() throws {
         try apply(filename!)
     }
@@ -109,6 +130,27 @@ public class Layout {
         guard let view = view else {
             throw LayoutError.MissingRootView
         }
+        
+        // Update screen size
+        if _screenSizeOverridden == false {
+            if let window = UIApplication.sharedApplication().keyWindow {
+                _screenSize = window.bounds
+            }
+        }
+        
+        orientation = Hardware.orientation
+        
+        debugger?.info("Laying out view:")
+        debugger?.info("Screen Orientation : \(orientation)")
+        debugger?.info("Screen Height      : \(screenSize.height)")
+        debugger?.info("Screen Width       : \(screenSize.width)")
+        debugger?.info("View Height        : \(view.frame.height)")
+        debugger?.info("View Width         : \(view.frame.width)")
+        
+        debugger?.info("\(directives.count) Directives:")
+        for directive in directives {
+            debugger?.info("  \(directive)")
+        }                
         
         self.filename = filename
         
@@ -174,27 +216,27 @@ public class Layout {
     }
     
     public func findView(viewId: String) -> UIView? {
-        if views[viewId] != nil {
-            return views[viewId]
+        if viewFragments[viewId] != nil {
+            return viewFragments[viewId]?.view
         }
         
         return nil
     }
     
     public func hasView(viewId: String) -> Bool {
-        return views[viewId] != nil
+        return viewFragments[viewId] != nil
     }
     
     public func findLayer(layerId: String) -> CALayer? {
-        if layers[layerId] != nil {
-            return layers[layerId]
+        if layerFragments[layerId] != nil {
+            return layerFragments[layerId]?.layer
         }
         
         return nil
     }
     
     public func hasLayer(layerId: String) -> Bool {
-        return layers[layerId] != nil
+        return layerFragments[layerId] != nil
     }
     
     public func handleLayoutError(message: String) {
@@ -263,22 +305,6 @@ public class Layout {
     */
     static public func register(builder: ViewBuilder) {
         Layout.viewBuilders.append(builder)
-    }
-    
-    @objc private func rotate() throws {
-        if enableAutoRotation {
-            clearDirective("landscape")
-            clearDirective("portrait")
-            directives.append(Hardware.orientation)
-            
-            if let window = UIApplication.sharedApplication().keyWindow {
-                screenSize = window.bounds
-            }
-            
-            if let filename = filename {
-                try apply(filename)
-            }
-        }
     }
     
     private func setProperties(layout: Section, view: UIView) throws {
