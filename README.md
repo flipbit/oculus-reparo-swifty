@@ -17,7 +17,7 @@ view {
 
 Produces the following view:
 
-[[https://github.com/flipbit/oculus-reparo-swift/blob/master/Assets/Screenshots/basic.png|alt=Oculus Reparo Basic Layout Screenshot]]
+![Oculus Reparo Basic Layout Screenshot](https://raw.githubusercontent.com/flipbit/oculus-reparo-swifty/master/Assets/Screenshots/basic.png)
 
 Oculus Reparo supports:
 
