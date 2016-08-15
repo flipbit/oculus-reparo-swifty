@@ -1,0 +1,10 @@
+view {
+    position {
+        align: center middle;
+        height: 100;
+        width: 100;
+    }
+
+    background-color: 0076ff;
+    corner-radius: 10;
+}
