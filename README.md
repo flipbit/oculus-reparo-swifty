@@ -1,14 +1,53 @@
-# OculusReparo
+## Oculus Reparo - A Swifty UIKit Layout Manager
 
-[![Version](https://img.shields.io/cocoapods/v/OculusReparo.svg?style=flat)](http://cocoapods.org/pods/OculusReparo)
-[![License](https://img.shields.io/cocoapods/l/OculusReparo.svg?style=flat)](http://cocoapods.org/pods/OculusReparo)
-[![Platform](https://img.shields.io/cocoapods/p/OculusReparo.svg?style=flat)](http://cocoapods.org/pods/OculusReparo)
+Oculus Reparo allows you write simple view layouts in plain text, and use them to build your iOS application views.
 
-## Example
+```css
+view {
+    position {
+        align: center middle;
+        height: 100;
+        width: 100;
+    }
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+    background-color: 0076ff;
+    corner-radius: 10;
+}
+```
 
-## Requirements
+Produces the following view:
+
+[[https://github.com/flipbit/oculus-reparo-swift/blob/master/Assets/Screenshots/basic.png|alt=Oculus Reparo Basic Layout Screenshot]]
+
+Oculus Reparo supports:
+
+* UIViews and CALayers
+* Nesting elements
+* Model binding
+* Event binding
+* Device, screen resolution and orientation detection
+* Variables
+* Include files
+* Functions
+* Extension hooks to support custom UIView and CALayer types, layout loading, image loading and functions.
+
+## Usage
+
+Using OculusReparo is simple, create an instance of the class, supply a view name and call the apply() function to build your view.
+
+```swift
+import OculusReparo
+
+class OculusReparoController : UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        layout = Layout(filename: "hello-world.layout", controller: self)
+        
+        try! layout!.apply()
+    }
+}
+```
 
 ## Installation
 
@@ -19,10 +58,14 @@ it, simply add the following line to your Podfile:
 pod "OculusReparo"
 ```
 
-## Author
+## Supported UIView elements:
 
-Chris Wood, chris@flipbit.co.uk
+* UIView
+* UILabel
+* UIButton
+* UISlider
+* UIScrollView
 
-## License
+## Supported CALayer elements:
 
-OculusReparo is available under the MIT license. See the LICENSE file for more info.
+* CALayer
