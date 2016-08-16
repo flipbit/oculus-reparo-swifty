@@ -99,7 +99,7 @@ button {
 }
 ```
 
-A LayoutViewController is supplied out of the box to help you render your view, however you can manage the view lifecycle yourself if you want full control over the screen size and orientation changes.
+A [LayoutViewController](https://github.com/flipbit/oculus-reparo-swifty/blob/master/OculusReparo/Classes/LayoutViewController.swift) is supplied out of the box to help you render your view, however you can manage the view lifecycle yourself if you want full control over the screen size and orientation changes.
 
 ```swift
 import UIKit
