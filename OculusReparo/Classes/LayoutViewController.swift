@@ -15,7 +15,7 @@ public class LayoutViewController : UIViewController {
         if layout.needsLayout {
             viewWillLayout()
             do {
-                try! layout.apply()
+                try layout.apply()
                 viewDidLayout()
             } catch {
                 print("Layout error")
@@ -45,7 +45,12 @@ public class LayoutViewController : UIViewController {
         layout.directives.append(Hardware.orientation)
 
         if layout.needsLayout {
-            try! layout.apply()
+            do {
+                try layout.apply()
+                viewDidLayout()
+            } catch {
+                print("Layout error")
+            }
         } else {
             Layout.debugger?.info("No changes required.")
         }

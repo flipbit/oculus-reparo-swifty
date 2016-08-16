@@ -6,7 +6,7 @@ public class CALayerBuilder : LayerBuilder {
         return layout.key == "layer"
     }
     
-    override public func build(layout: Section, instance: Layout, parent: UIView) throws -> CALayer {
+    override public func build(layout: Section, instance: Layout, parent: CALayer) throws -> CALayer {
         let layer: CALayer = try initialize(layout, instance: instance, parent: parent)
         
         return layer;

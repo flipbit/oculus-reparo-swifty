@@ -6,14 +6,16 @@ public class LayerBuilder {
     }
     
     public func canBuild(layout: Section) -> Bool {
+        assertionFailure("You must override the canBuild() method")
         return false
     }
     
-    public func build(layout: Section, instance: Layout, parent: UIView) throws -> CALayer {
+    public func build(layout: Section, instance: Layout, parent: CALayer) throws -> CALayer {
+        assertionFailure("You must override the build() method")
         return CALayer()
     }
     
-    public func initialize<T: CALayer>(layout: Section, instance: Layout, parent: UIView) throws -> T {
+    public func initialize<T: CALayer>(layout: Section, instance: Layout, parent: CALayer) throws -> T {
         var layer: T
         
         var layerId = layout.path
@@ -47,28 +49,24 @@ public class LayerBuilder {
         layer.hidden = try layout.getBool("hidden")
         
         if layer.superlayer == nil {
-            parent.layer.addSublayer(layer)
+            parent.addSublayer(layer)
         }
         
         return layer
     }
     
-    public func getPosition(layout: Section, parent: UIView) throws -> Position {
-        let config = layout.getSection("position")
-        
-        if config == nil {
+    public func getPosition(layout: Section, parent: CALayer) throws -> Position {
+        guard let config = layout.getSection("position") else {
             throw LayoutError.MissingViewPosition("[\(layout.key) is missing a Position section (line: \(layout.lineNumber))")
         }
         
-        return try Position(section: config!, parent: parent)
+        return try Position(section: config, parent: parent)
     }
     
-    public func getFrame(layout: Section, layer: CALayer, parent: UIView, instance: Layout) throws -> CGRect {
+    public func getFrame(layout: Section, layer: CALayer, parent: CALayer, instance: Layout) throws -> CGRect {
         let position = try getPosition(layout, parent: parent)
-        
         let lastSiblingFrame = position.getLastSiblingLayerFrame(layer)
-        
-        let frame = try position.toFrame(lastSiblingFrame)
+        let frame = position.toFrame(lastSiblingFrame)
         
         Layout.debugger?.info(" -> Set frame: \(frame)")
         

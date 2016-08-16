@@ -3,23 +3,26 @@ import UIKit
 import OculusReparo
 
 class TrafficLightsController : LayoutViewController {
-    var red: CALayer?                           // Mapped automatically to our view
+    var red: CALayer?                               // Mapped automatically from our view
     var amber: CALayer?
     var green: CALayer?
     
     override func viewWillLayout() {
-        layout.filename  = "TrafficLights.layout"
-        layout.model = self
+        layout.filename  = "TrafficLights.layout"   // The name of our text file
+        layout.model = self                         // Sets object to map to
     }
     
     override func viewDidLayout() {
+        // Start a timer
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(onTimer), userInfo: nil, repeats: true)
     }
     
+    // Invoked from the view
     func onBack() {
         navigationController?.popViewControllerAnimated(true)        
     }
     
+    // Animate our lights
     func onTimer(timer: NSTimer) {
         if red?.opacity == 1 {
             red?.opacity = 0.5

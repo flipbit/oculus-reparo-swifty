@@ -88,34 +88,27 @@ public class ViewBuilder {
             parent.addSubview(view)
         }
         
-        if layout.hasValue("center-anchor") {
-            let constrain = view.centerXAnchor.constraintEqualToAnchor(view.superview!.centerXAnchor, constant: 200)
-            
-            constrain.active = true
-        }
-        
         return view
     }
 
-    public func getPosition(layout: Section, parent: UIView) throws -> Position {
-        var config = layout.getSection("position")
-        
-        if config == nil {
-            config = Section(filename: "")
+    public func getPosition(layout: Section, parent: UIView) throws -> Position? {
+        if let config = layout.getSection("position") {
+            return try Position(section: config, parent: parent)
         }
         
-        return try Position(section: config!, parent: parent)
+        return nil
     }
     
     public func getFrame(layout: Section, view: UIView, parent: UIView, instance: Layout) throws -> CGRect {
-        let position = try getPosition(layout, parent: parent)
+        var frame = CGRectZero
         
-        let lastSiblingFrame = position.getLastSiblingViewFrame(view)
-        
-        let frame = try position.toFrame(lastSiblingFrame)
+        if let position = try getPosition(layout, parent: parent) {
+            let lastSiblingFrame = position.getLastSiblingViewFrame(view)
+            frame = position.toFrame(lastSiblingFrame)
+        }
         
         Layout.debugger?.info(" -> Set frame: \(frame)")
-
+        
         return frame
     }
 }

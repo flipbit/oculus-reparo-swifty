@@ -398,8 +398,8 @@ public class Layout {
             
             var width = view.frame.width, height = view.frame.height
             
-            width = try properties.getCGFloat("width", ifMissing: width)
-            height = try properties.getCGFloat("height", ifMissing: height)
+            width = properties.getCGFloat("width", ifMissing: width)
+            height = properties.getCGFloat("height", ifMissing: height)
             
             view.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: width, height: height)
         }
@@ -420,7 +420,25 @@ public class Layout {
         
         for builder in Layout.layerBuilders {
             if (builder.canBuild(layout)) {
+                let layer = try builder.build(layout, instance: self, parent: parent.layer)
+
+                for section in layout.sections {
+                    try build(section, parent: layer)
+                }
+                
+                break
+            }
+        }
+    }
+    
+    private func build(layout: Section, parent: CALayer) throws {
+        for builder in Layout.layerBuilders {
+            if (builder.canBuild(layout)) {
                 let layer = try builder.build(layout, instance: self, parent: parent)
+                
+                for section in layout.sections {
+                    try build(section, parent: layer)
+                }
                 
                 break
             }
