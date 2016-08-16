@@ -14,9 +14,10 @@ view {
     corner-radius: 10;
 
     center-y;
-    anchor-left: 10;
-    anchor-right: -10;
+    anchor-left: 10;        /* Fill whole window - width position */
+    anchor-right: -10;      /* element is ommitted */
 
+    /* Label - anchored to view bottom */
     label {
         position {
             height: 25;
@@ -33,6 +34,7 @@ view {
         font-weight: Bold;
     }
 
+    /* Inner view - offset in outer view */
     view {
         position {
             height: 100;
@@ -47,6 +49,7 @@ view {
         anchor-top: 10;
         anchor-left: 10;
 
+        /* Label - anchored to view bottom */
         label {
             position {
                 height: 25;
@@ -63,6 +66,7 @@ view {
             font-weight: Bold;
         }
 
+        /* Green circle - offset in the inner view */
         view {
             position {
                 height: 20;
@@ -76,6 +80,7 @@ view {
             corner-radius: 10;
         }
 
+        /* Red circle - centered in the inner view */
         view {
             position {
                 height: 20;
@@ -89,6 +94,7 @@ view {
             corner-radius: 10;
         }
 
+        /* Amber circle - centered using the outer view */
         view {
             position {
                 height: 20;

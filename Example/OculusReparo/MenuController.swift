@@ -137,7 +137,9 @@ class MenuItem: NSObject {
         case MenuType.AutoLayout:
         return [
             MenuItem(text: "Anchors", layout: "AutoLayout.layout"),
-            MenuItem(text: "Centering", layout: "AutoLayout.Centering.layout")
+            MenuItem(text: "Centering", layout: "AutoLayout.Centering.layout"),
+            MenuItem(text: "Top, Bottom, Left and Right Anchors", layout: "AutoLayout.Anchoring.layout"),
+            MenuItem(text: "Offsetting using Anchors", layout: "AutoLayout.Offsets.layout")
         ]
         }
     }
