@@ -3,7 +3,7 @@ import UIKit
 import OculusReparo
 
 class TrafficLightsController : LayoutViewController {
-    var red: CALayer?
+    var red: CALayer?                           // Mapped automatically to our view
     var amber: CALayer?
     var green: CALayer?
     

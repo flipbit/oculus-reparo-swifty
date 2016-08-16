@@ -4,31 +4,6 @@
 @set green: #4cd964;
 @set grey:  #8e8e93;
 
-/* Add a UIButton */
-button {
-    /* Set it's position */
-    position {
-        top: 20             @if portrait;       /* Let's move the button depending */
-        top: 0              @if landscape;      /* on the screen's orientation */
-        left: 0;
-        width: 100;
-        height: 44;
-    }
-
-    font-size: 17;                              /* Font parameters */
-    font-weight: regular;
-    text-alignment: left;
-
-    title: Back;                                /* Title */
-    title-color: @grey;
-    
-    on-touch: onBack;                           /* Objective C Selector */
-
-    image-bundle: BackwardDisclosure22x22;      /* Image parameters */
-    tint-color: @grey;
-    image-edge-insets: 0 7.5 0 7.5;
-}
-
 /* Add a UIView */
 view {
     position @if portrait {                     /* Position if portrait */
@@ -83,4 +58,29 @@ view {
         position: +20;
         color: @green;
     }
+}
+
+/* Add a UIButton */
+button {
+    /* Set it's position */
+    position {
+        top: 20             @if portrait;       /* Let's move the button depending */
+        top: 0              @if landscape;      /* on the screen's orientation */
+        left: 0;
+        width: 100;
+        height: 44;
+    }
+
+    font-size: 17;                              /* Font parameters */
+    font-weight: regular;
+    text-alignment: left;
+
+    title: Back;                                /* Title */
+    title-color: @grey;
+    
+    on-touch: onBack;                           /* Objective C Selector */
+
+    image-bundle: BackwardDisclosure22x22;      /* Image parameters */
+    tint-color: @grey;
+    image-edge-insets: 0 7.5 0 7.5;
 }
