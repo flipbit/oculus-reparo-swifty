@@ -1,6 +1,14 @@
 ## Oculus Reparo - A Swifty UIKit Layout Manager
 
-Oculus Reparo allows you write simple view layouts in plain text, and use them to build your iOS application views.
+Oculus Reparo allows you to define view layouts in plain text files.
+
+Let's build a simple animated traffic light:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/flipbit/oculus-reparo-swifty/master/Assets/Screenshots/traffic-lights.gif" />
+</p>
+
+Include the follow text file in your main application bundle:
 
 ```sass
 /* Let's define some variables */
@@ -8,31 +16,6 @@ Oculus Reparo allows you write simple view layouts in plain text, and use them t
 @set amber: #ff9500;
 @set green: #4cd964;
 @set grey:  #8e8e93;
-
-/* Add a UIButton */
-button {
-    /* Set it's position */
-    position {
-        top: 20             @if portrait;       /* Let's move the button depending */
-        top: 0              @if landscape;      /* on the screen's orientation */
-        left: 0;
-        width: 100;
-        height: 44;
-    }
-
-    font-size:              17;                 /* Font parameters */
-    font-weight:            regular;
-    text-alignment:         left;
-
-    title: Back;                                /* Title */
-    title-color:            @grey;
-    
-    on-touch:               onBack;             /* Objective C Selector */
-
-    tint-color:             @grey;              /* Image parameters */
-    image-edge-insets:      0 7.5 0 7.5;
-    image-bundle:           BackwardDisclosure22x22;
-}
 
 /* Add a UIView */
 view {
@@ -89,29 +72,60 @@ view {
         color: @green;
     }
 }
+
+/* Add a UIButton */
+button {
+    /* Set it's position */
+    position {
+        top: 20             @if portrait;       /* Let's move the button depending */
+        top: 0              @if landscape;      /* on the screen's orientation */
+        left: 0;
+        width: 100;
+        height: 44;
+    }
+
+    font-size: 17;                              /* Font parameters */
+    font-weight: regular;
+    text-alignment: left;
+
+    title: Back;                                /* Title */
+    title-color: @grey;
+    
+    on-touch: onBack;                           /* Objective C Selector */
+
+    image-bundle: BackwardDisclosure22x22;      /* Image parameters */
+    tint-color: @grey;
+    image-edge-insets: 0 7.5 0 7.5;
+}
 ```
 
 A LayoutViewController is supplied out of the box to help you render your view, however you can manage the view lifecycle yourself if you want full control over the screen size and orientation changes.
 
 ```swift
+import UIKit
+import OculusReparo
+
 class TrafficLightsController : LayoutViewController {
-    var red: CALayer?
+    var red: CALayer?                               // Mapped automatically from our view
     var amber: CALayer?
     var green: CALayer?
     
     override func viewWillLayout() {
-        layout.filename  = "TrafficLights.layout"
-        layout.model = self
+        layout.filename  = "TrafficLights.layout"   // The name of our text file
+        layout.model = self                         // Sets object to map to
     }
     
     override func viewDidLayout() {
+        // Start a timer
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(onTimer), userInfo: nil, repeats: true)
     }
     
+    // Invoked from the view
     func onBack() {
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewControllerAnimated(true)        
     }
     
+    // Animate our lights
     func onTimer(timer: NSTimer) {
         if red?.opacity == 1 {
             red?.opacity = 0.5
@@ -131,9 +145,7 @@ class TrafficLightsController : LayoutViewController {
 }
 ```
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/flipbit/oculus-reparo-swifty/master/Assets/Screenshots/traffic-lights.gif" />
-</p>
+
 
 ## Supported Featues
 
@@ -142,7 +154,7 @@ class TrafficLightsController : LayoutViewController {
 * Model binding
 * Event binding
 * Screen resolution and orientation detection
-* Auto Layout
+* [Auto Layout](https://github.com/flipbit/oculus-reparo-swifty/wiki/Auto-Layout)
 * Variables
 * Include files
 * Functions
