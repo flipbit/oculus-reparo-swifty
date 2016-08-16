@@ -1,0 +1,24 @@
+@set amber: #ff9500;
+@set green: #4cd964;
+
+view {
+    position {
+        align: center middle;
+        height: 300;
+        width: 300;
+    }
+
+    background-color: @amber;
+
+    view {
+        position {
+            height: 100;
+            width: 100;
+        }
+
+        background-color: @green;
+
+        center-x;
+        center-y;
+    }
+}

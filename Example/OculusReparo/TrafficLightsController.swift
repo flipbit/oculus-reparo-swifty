@@ -13,13 +13,11 @@ class TrafficLightsController : LayoutViewController {
     }
     
     override func viewDidLayout() {
-        navigationController?.setNavigationBarHidden(true, animated: true)
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(onTimer), userInfo: nil, repeats: true)
     }
     
     func onBack() {
-        navigationController?.popViewControllerAnimated(true)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.popViewControllerAnimated(true)        
     }
     
     func onTimer(timer: NSTimer) {

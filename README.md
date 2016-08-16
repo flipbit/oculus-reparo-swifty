@@ -109,7 +109,7 @@ class TrafficLightsController : LayoutViewController {
     }
     
     func onBack() {
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     func onTimer(timer: NSTimer) {

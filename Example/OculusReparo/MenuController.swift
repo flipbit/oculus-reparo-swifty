@@ -136,7 +136,8 @@ class MenuItem: NSObject {
         
         case MenuType.AutoLayout:
         return [
-            MenuItem(text: "Anchors", layout: "AutoLayout.layout")
+            MenuItem(text: "Anchors", layout: "AutoLayout.layout"),
+            MenuItem(text: "Centering", layout: "AutoLayout.Centering.layout")
         ]
         }
     }

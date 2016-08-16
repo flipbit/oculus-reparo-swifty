@@ -64,6 +64,7 @@
 		83A0AE1B1D622AFA009A01D7 /* AutoLayout.layout in Resources */ = {isa = PBXBuildFile; fileRef = 83A0AE1A1D622AFA009A01D7 /* AutoLayout.layout */; };
 		83A0AE1F1D634DC1009A01D7 /* ConvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0AE1E1D634DC1009A01D7 /* ConvertTests.swift */; };
 		83A0AE211D636663009A01D7 /* TrafficLightsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0AE201D636663009A01D7 /* TrafficLightsController.swift */; };
+		83A0AE231D6376FE009A01D7 /* AutoLayout.Centering.layout in Resources */ = {isa = PBXBuildFile; fileRef = 83A0AE221D6376FE009A01D7 /* AutoLayout.Centering.layout */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		83A0AE1A1D622AFA009A01D7 /* AutoLayout.layout */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AutoLayout.layout; path = Layouts/AutoLayout.layout; sourceTree = "<group>"; };
 		83A0AE1E1D634DC1009A01D7 /* ConvertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertTests.swift; sourceTree = "<group>"; };
 		83A0AE201D636663009A01D7 /* TrafficLightsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficLightsController.swift; sourceTree = "<group>"; };
+		83A0AE221D6376FE009A01D7 /* AutoLayout.Centering.layout */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AutoLayout.Centering.layout; path = Layouts/AutoLayout.Centering.layout; sourceTree = "<group>"; };
 		A72F17BE580D8CF2CE57171E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E47434D0ED904A0AB337E96F /* Pods_OculusReparo_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OculusReparo_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -317,6 +319,7 @@
 		83C514D41D48B8E400A81038 /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				83A0AE221D6376FE009A01D7 /* AutoLayout.Centering.layout */,
 				83A0AE1A1D622AFA009A01D7 /* AutoLayout.layout */,
 				83A0AE0E1D61E8FB009A01D7 /* TrafficLights.layout */,
 				83A0AE061D61DC6B009A01D7 /* _Variables.layout */,
@@ -432,6 +435,7 @@
 				83A0AE1B1D622AFA009A01D7 /* AutoLayout.layout in Resources */,
 				83A0AE0D1D61DDC4009A01D7 /* Menu.layout in Resources */,
 				83A0AE0A1D61DC6B009A01D7 /* Basic.layout in Resources */,
+				83A0AE231D6376FE009A01D7 /* AutoLayout.Centering.layout in Resources */,
 				83A0AE0B1D61DC6B009A01D7 /* PositionPadding.layout in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
