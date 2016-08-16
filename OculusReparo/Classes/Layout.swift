@@ -5,6 +5,8 @@ public class Layout {
     static public var layerBuilders: [LayerBuilder] = []
     static public var viewBuilders: [ViewBuilder] = []
     static public var imageLoader: UIImageLoader = MainBundleImageLoader()
+    static public var debugger: LayoutDebugger?
+    
     static private var initialized = false
 
     private var orientation = Hardware.orientation
@@ -33,7 +35,7 @@ public class Layout {
     public var eventTarget: AnyObject?
     public var view: UIView?
     public var filename: String?
-    public var debugger: LayoutDebugger?
+    
     
     public var viewFragments = [String: LayoutViewFragment]()
     public var layerFragments = [String: LayoutLayerFragment]()
@@ -140,16 +142,16 @@ public class Layout {
         
         orientation = Hardware.orientation
         
-        debugger?.info("Laying out view:")
-        debugger?.info("Screen Orientation : \(orientation)")
-        debugger?.info("Screen Height      : \(screenSize.height)")
-        debugger?.info("Screen Width       : \(screenSize.width)")
-        debugger?.info("View Height        : \(view.frame.height)")
-        debugger?.info("View Width         : \(view.frame.width)")
+        Layout.debugger?.info("Laying out view:")
+        Layout.debugger?.info("Screen Orientation : \(orientation)")
+        Layout.debugger?.info("Screen Height      : \(screenSize.height)")
+        Layout.debugger?.info("Screen Width       : \(screenSize.width)")
+        Layout.debugger?.info("View Height        : \(view.frame.height)")
+        Layout.debugger?.info("View Width         : \(view.frame.width)")
         
-        debugger?.info("\(directives.count) Directives:")
+        Layout.debugger?.info("\(directives.count) Directives:")
         for directive in directives {
-            debugger?.info("  \(directive)")
+            Layout.debugger?.info("  \(directive)")
         }                
         
         self.filename = filename
@@ -164,7 +166,90 @@ public class Layout {
             try build(section, parent: view)
         }
         
+        if _laidOut == false {
+            try addConstraints()
+        }
+        
         _laidOut = true
+    }
+    
+    public func addConstraints() throws {
+        for key in viewFragments.keys {
+            if let fragment = viewFragments[key] {
+                try addConstraints(fragment)
+            }
+        }
+    }
+    
+    public func addConstraints(fragment: LayoutViewFragment) throws {
+        let config = fragment.configuration, view = fragment.view
+        
+        let tlbr = [AnchorType.Top, AnchorType.Left, AnchorType.Bottom, AnchorType.Right, AnchorType.CenterX, AnchorType.CenterY]
+        
+        for anchor in tlbr {
+            if let section = config.getSection(anchor.rawValue) {
+                let anchorToViewId = section.getValue("to", ifMissing: "@parent") ?? "@parent"
+                let constant = section.getCGFloat("constant", ifMissing: 0)
+                let to = try Convert.getViewIdAndAnchor(anchorToViewId, defaultIdView: "@parent", defaultAnchor: anchor)
+                var parent = view.superview
+                
+                if to.viewId != "@parent" {
+                    parent = findView(to.viewId)
+                }
+                
+                if parent == nil {
+                    throw LayoutError.InvalidConfiguration("Unable to find view to anchor to: \(to.viewId)")
+                }
+                
+                addConstraint(on: view, to: parent!, onAnchor: anchor, toAnchor: to.anchor, constant: constant)
+            }
+            
+            else if config.hasValue(anchor.rawValue) {
+                let constant = config.getCGFloat(anchor.rawValue, ifMissing: 0)
+                let parent = view.superview!
+                
+                addConstraint(on: view, to: parent, onAnchor: anchor, toAnchor: anchor, constant: constant)
+            }
+        }
+    }
+    
+    func addConstraint(on on: UIView, to: UIView, onAnchor: AnchorType, toAnchor: AnchorType, constant: CGFloat) {
+        let onAnchor = getAnchor(on, anchor: onAnchor)
+        let toAnchor = getAnchor(to, anchor: toAnchor)
+        
+        if on.translatesAutoresizingMaskIntoConstraints {
+            on.translatesAutoresizingMaskIntoConstraints = false
+            
+            if on.frame != CGRectZero {
+                if on.frame.height != 0 {
+                    on.heightAnchor.constraintEqualToConstant(on.frame.height).active = true
+                }
+                if on.frame.width != 0 {
+                    on.widthAnchor.constraintEqualToConstant(on.frame.width).active = true
+                }
+                on.frame = CGRectZero
+            }
+        }
+        
+        onAnchor.constraintEqualToAnchor(toAnchor, constant: constant).active = true
+    }
+    
+    func getAnchor(view: UIView, anchor: AnchorType) -> NSLayoutAnchor {
+        switch (anchor) {
+        case .Bottom:
+            return view.bottomAnchor
+        case .Left:
+            return view.leftAnchor
+        case .Right:
+            return view.rightAnchor
+        case .Top:
+            return view.topAnchor
+        case .CenterY:
+            return view.centerYAnchor
+        case .CenterX:
+            return view.centerXAnchor
+        }
+        
     }
     
     func debug(layout: Document) {

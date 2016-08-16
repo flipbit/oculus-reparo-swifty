@@ -51,7 +51,10 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
         let item = items[indexPath.row]
         
         if let layout = item.layout {
-            if let controller = storyboard?.instantiateViewControllerWithIdentifier("Example") as? ExampleController {
+            if layout == "TrafficLights.layout" {
+                let controller = storyboard?.instantiateViewControllerWithIdentifier("TrafficLights")
+                navigationController?.pushViewController(controller!, animated: true)
+            } else if let controller = storyboard?.instantiateViewControllerWithIdentifier("Example") as? ExampleController {
                 controller.viewname = layout
                 
                 navigationController?.pushViewController(controller, animated: true)
@@ -114,6 +117,7 @@ class MenuItem: NSObject {
     enum MenuType : String {
         case Main = "Main"
         case Positioning = "Positioning"
+        case AutoLayout = "Auto Layout"
     }
     
     static func GetMenuItems(menu: MenuType) -> [MenuItem] {
@@ -121,9 +125,7 @@ class MenuItem: NSObject {
         case MenuType.Main:
             return [
                 MenuItem(text: "Positioning", menu: MenuType.Positioning),
-                MenuItem(text: "Controls", layout: "PositionPadding.layout"),
-                MenuItem(text: "Binding", layout: "PositionPadding.layout"),
-                MenuItem(text: "Extensions", layout: "PositionPadding.layout")
+                MenuItem(text: "Auto Layout", menu: MenuType.AutoLayout)
             ]
 
         case MenuType.Positioning:
@@ -131,6 +133,11 @@ class MenuItem: NSObject {
                 MenuItem(text: "Basic", layout: "Basic.layout"),
                 MenuItem(text: "Traffic Lights", layout: "TrafficLights.layout")
             ]
+        
+        case MenuType.AutoLayout:
+        return [
+            MenuItem(text: "Anchors", layout: "AutoLayout.layout")
+        ]
         }
     }
 }

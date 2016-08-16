@@ -1,0 +1,105 @@
+@set red:   #ff3b30;
+@set amber: #ff9500;
+@set green: #4cd964;
+@set grey:  #8e8e93;
+
+view {
+    position {
+        height: 260;
+    }
+
+    id: outer;
+    border-width: 2;
+    border-color: @grey;
+    corner-radius: 10;
+
+    center-y;
+    anchor-left: 10;
+    anchor-right: -10;
+
+    label {
+        position {
+            height: 25;
+            width: 300;
+        }
+
+        anchor-top { to: @parent.bottom; }
+        anchor-left;
+
+        text: Outer;
+        text-alignment: left;
+        text-color: @grey;
+        font-size: 15;
+        font-weight: Bold;
+    }
+
+    view {
+        position {
+            height: 100;
+            width: 100;
+        }
+
+        id: inner;
+        border-width: 2;
+        border-color: @grey;
+        corner-radius: 10;
+
+        anchor-top: 10;
+        anchor-left: 10;
+
+        label {
+            position {
+                height: 25;
+                width: 150;
+            }
+
+            anchor-top { to: @parent.bottom; }
+            anchor-left;
+
+            text: Inner;
+            text-alignment: left;
+            text-color: @grey;
+            font-size: 15;
+            font-weight: Bold;
+        }
+
+        view {
+            position {
+                height: 20;
+                width: 20;
+            }
+
+            anchor-top: 10;
+            anchor-left: 10;
+
+            background-color: @green;
+            corner-radius: 10;
+        }
+
+        view {
+            position {
+                height: 20;
+                width: 20;
+            }
+
+            center-x;
+            center-y;
+
+            background-color: @red;
+            corner-radius: 10;
+        }
+
+        view {
+            position {
+                height: 20;
+                width: 20;
+            }
+
+            center-x { to: outer; }
+            center-y { to: outer.bottom; constant: -20; }
+
+            background-color: @amber;
+            corner-radius: 10;
+        }
+    }
+}

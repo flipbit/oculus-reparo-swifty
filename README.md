@@ -4,10 +4,10 @@ Oculus Reparo allows you write simple view layouts in plain text, and use them t
 
 ```sass
 /* Let's define some variables */
-@set red:   ff3b30;
-@set amber: ff9500;
-@set green: 4cd964;
-@set grey:  8e8e93;
+@set red:   #ff3b30;
+@set amber: #ff9500;
+@set green: #4cd964;
+@set grey:  #8e8e93;
 
 /* Add a UIButton */
 button {
@@ -20,18 +20,18 @@ button {
         height: 44;
     }
 
-    font-size: 17;                              /* Font parameters */
-    font-weight: regular;
-    text-alignment: left;
+    font-size:              17;                 /* Font parameters */
+    font-weight:            regular;
+    text-alignment:         left;
 
     title: Back;                                /* Title */
-    title-color: @grey;
+    title-color:            @grey;
     
-    on-touch: onBack;                           /* Objective C Selector */
+    on-touch:               onBack;             /* Objective C Selector */
 
-    image-bundle: BackwardDisclosure22x22;      /* Image parameters */
-    tint-color: @grey;
-    image-edge-insets: 0 7.5 0 7.5;
+    tint-color:             @grey;              /* Image parameters */
+    image-edge-insets:      0 7.5 0 7.5;
+    image-bundle:           BackwardDisclosure22x22;
 }
 
 /* Add a UIView */
@@ -49,7 +49,7 @@ view {
     }
 
     /* Define a mixin */
-    @define: light {
+    @define: traffic-light {
         /* Add a CALayer */
         layer {
             position {
@@ -61,64 +61,92 @@ view {
                 height: 80;
             }
 
+            id: @id;
             background-color: @color;
             corner-radius: 40;
+            opacity: 0.5;
         }
     }
     
     /* Include red light... */
-    @light {
+    @traffic-light {
+        id: red;
         position: 0;
         color: @red;
     }
 
     /* Include amber light */
-    @light {
+    @traffic-light {
+        id: amber;
         position: +20;
         color: @amber;
     }
 
     /* Include green light */
-    @light {
-        position: 200;
+    @traffic-light {
+        id: green;
+        position: +20;
         color: @green;
     }
 }
 ```
 
-Produces the following views in portrait / landscape:
+A LayoutViewController is supplied out of the box to help you render your view, however you can manage the view lifecycle yourself if you want full control over the screen size and orientation changes.
+
+```swift
+class TrafficLightsController : LayoutViewController {
+    var red: CALayer?
+    var amber: CALayer?
+    var green: CALayer?
+    
+    override func viewWillLayout() {
+        layout.filename  = "TrafficLights.layout"
+        layout.model = self
+    }
+    
+    override func viewDidLayout() {
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(onTimer), userInfo: nil, repeats: true)
+    }
+    
+    func onBack() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func onTimer(timer: NSTimer) {
+        if red?.opacity == 1 {
+            red?.opacity = 0.5
+            amber?.opacity = 1
+        }
+
+        else if amber?.opacity == 1 {
+            amber?.opacity = 0.5
+            green?.opacity = 1
+        }
+
+        else {
+            green?.opacity = 0.5
+            red?.opacity = 1
+        }
+    }
+}
+```
+
 <p align="center">
-  <img src="https://raw.githubusercontent.com/flipbit/oculus-reparo-swifty/master/Assets/Screenshots/TrafficLights.png" />
+  <img src="https://raw.githubusercontent.com/flipbit/oculus-reparo-swifty/master/Assets/Screenshots/traffic-lights.gif" />
 </p>
-Oculus Reparo supports:
+
+## Supported Featues
 
 * UIViews and CALayers
 * Nesting elements
 * Model binding
 * Event binding
-* Device, screen resolution and orientation detection
+* Screen resolution and orientation detection
+* Auto Layout
 * Variables
 * Include files
 * Functions
-* Extension hooks to support custom UIView and CALayer types, layout loading, image loading and functions.
-
-## Usage
-
-Using OculusReparo is simple, create an instance of the class, supply a view name and call the apply() function to build your view.
-
-```swift
-import OculusReparo
-
-class OculusReparoController : UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        layout = Layout(filename: "hello-world.layout", controller: self)
-        
-        try! layout!.apply()
-    }
-}
-```
+* Extension hooks
 
 ## Installation
 
@@ -129,14 +157,3 @@ it, simply add the following line to your Podfile:
 pod "OculusReparo"
 ```
 
-## Supported UIView elements:
-
-* UIView
-* UILabel
-* UIButton
-* UISlider
-* UIScrollView
-
-## Supported CALayer elements:
-
-* CALayer

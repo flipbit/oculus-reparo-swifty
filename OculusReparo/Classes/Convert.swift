@@ -185,4 +185,31 @@ public class Convert {
         
         return NSString(format:"#%06x", rgb) as String
     }
+    
+    public static func getViewIdAndAnchor(input: String?, defaultIdView: String, defaultAnchor: AnchorType) throws -> (viewId: String, anchor: AnchorType) {
+        // nil check
+        guard let input = input else {
+            return (defaultIdView, defaultAnchor)
+        }
+        
+        // check if anchor supplied
+        guard let index = input.rangeOfString(".") else {
+            return (input, defaultAnchor)
+        }
+        
+        let viewId = input.substringToIndex(index.startIndex)
+        var anchorRaw = input.substringFromIndex(index.endIndex).lowercaseString
+        
+        if anchorRaw.containsString("center") == false {
+            anchorRaw = "anchor-" + anchorRaw
+        }
+        
+        if let anchor = AnchorType(rawValue: anchorRaw) {
+            return (viewId, anchor)
+        } else {
+            throw LayoutError.InvalidConfiguration("Invalid Anchor Type: \(anchorRaw)")
+        }
+        
+        
+    }
 }

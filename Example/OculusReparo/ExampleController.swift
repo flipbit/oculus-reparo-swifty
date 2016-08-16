@@ -7,7 +7,6 @@ class ExampleController : LayoutViewController {
     
     override func viewWillLayout() {
         layout.filename  = viewname
-        layout.debugger = LayoutDebugger()
         
         navigationController?.setNavigationBarHidden(true, animated: true)
     }

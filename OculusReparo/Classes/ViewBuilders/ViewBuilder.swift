@@ -27,7 +27,7 @@ public class ViewBuilder {
                 throw LayoutError.InvalidConfiguration("Duplicate view id: \(id)")
             }
             view = instance.findView(id) as! T
-            instance.debugger?.info("Found view: \(id)")
+            Layout.debugger?.info("Found view: \(id)")
         } else {
             view = T()
             let fragment = LayoutViewFragment(view: view, id: id, configuration: layout)
@@ -39,7 +39,7 @@ public class ViewBuilder {
                 }
             }
             
-            instance.debugger?.info("Created view: \(id)")
+            Layout.debugger?.info("Created view: \(id)")
         }
 
         return try initialize(view, layout: layout, instance: instance, parent: parent)
@@ -61,8 +61,17 @@ public class ViewBuilder {
                 }
             }
         }
+
+        // Set frame on initial layout
+        if instance.laidOut == false {
+            view.frame = try getFrame(layout, view: view, parent: parent, instance: instance)
+        }
         
-        view.frame = try getFrame(layout, view: view, parent: parent, instance: instance)
+        // Only set frame if no constraints have been applied on subsequent layouts
+        if instance.laidOut && view.translatesAutoresizingMaskIntoConstraints == true {
+            view.frame = try getFrame(layout, view: view, parent: parent, instance: instance)
+        }
+
         view.backgroundColor = try layout.getUIColor("background-color")
         view.layer.zPosition = layout.getCGFloat("z-position", ifMissing: 0)
         view.layer.cornerRadius = layout.getCGFloat("corner-radius", ifMissing: 0)
@@ -89,10 +98,10 @@ public class ViewBuilder {
     }
 
     public func getPosition(layout: Section, parent: UIView) throws -> Position {
-        let config = layout.getSection("position")
+        var config = layout.getSection("position")
         
         if config == nil {
-            throw LayoutError.MissingViewPosition("[\(layout.key) is missing a Position section (line: \(layout.lineNumber))")
+            config = Section(filename: "")
         }
         
         return try Position(section: config!, parent: parent)
@@ -105,7 +114,7 @@ public class ViewBuilder {
         
         let frame = try position.toFrame(lastSiblingFrame)
         
-        instance.debugger?.info(" -> Set frame: \(frame)")
+        Layout.debugger?.info(" -> Set frame: \(frame)")
 
         return frame
     }

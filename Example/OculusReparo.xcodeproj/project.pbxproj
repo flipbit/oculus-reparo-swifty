@@ -61,6 +61,9 @@
 		83A0AE0B1D61DC6B009A01D7 /* PositionPadding.layout in Resources */ = {isa = PBXBuildFile; fileRef = 83A0AE081D61DC6B009A01D7 /* PositionPadding.layout */; };
 		83A0AE0D1D61DDC4009A01D7 /* Menu.layout in Resources */ = {isa = PBXBuildFile; fileRef = 83A0AE0C1D61DDC4009A01D7 /* Menu.layout */; };
 		83A0AE0F1D61E8FB009A01D7 /* TrafficLights.layout in Resources */ = {isa = PBXBuildFile; fileRef = 83A0AE0E1D61E8FB009A01D7 /* TrafficLights.layout */; };
+		83A0AE1B1D622AFA009A01D7 /* AutoLayout.layout in Resources */ = {isa = PBXBuildFile; fileRef = 83A0AE1A1D622AFA009A01D7 /* AutoLayout.layout */; };
+		83A0AE1F1D634DC1009A01D7 /* ConvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0AE1E1D634DC1009A01D7 /* ConvertTests.swift */; };
+		83A0AE211D636663009A01D7 /* TrafficLightsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0AE201D636663009A01D7 /* TrafficLightsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +140,9 @@
 		83A0AE081D61DC6B009A01D7 /* PositionPadding.layout */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PositionPadding.layout; path = Layouts/PositionPadding.layout; sourceTree = "<group>"; };
 		83A0AE0C1D61DDC4009A01D7 /* Menu.layout */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Menu.layout; path = Layouts/Menu.layout; sourceTree = "<group>"; };
 		83A0AE0E1D61E8FB009A01D7 /* TrafficLights.layout */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TrafficLights.layout; path = Layouts/TrafficLights.layout; sourceTree = "<group>"; };
+		83A0AE1A1D622AFA009A01D7 /* AutoLayout.layout */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AutoLayout.layout; path = Layouts/AutoLayout.layout; sourceTree = "<group>"; };
+		83A0AE1E1D634DC1009A01D7 /* ConvertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertTests.swift; sourceTree = "<group>"; };
+		83A0AE201D636663009A01D7 /* TrafficLightsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficLightsController.swift; sourceTree = "<group>"; };
 		A72F17BE580D8CF2CE57171E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E47434D0ED904A0AB337E96F /* Pods_OculusReparo_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OculusReparo_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -197,6 +203,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				839656BD1D4985C200666915 /* ExampleController.swift */,
 				607FACD71AFB9204008FA782 /* MenuController.swift */,
+				83A0AE201D636663009A01D7 /* TrafficLightsController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -230,6 +237,7 @@
 				835AB9D11D48D28900004461 /* LineTests.swift */,
 				8336F6F51D535C850009E629 /* ScopeTests.swift */,
 				8336F6F71D5365580009E629 /* DirectiveTests.swift */,
+				83A0AE1E1D634DC1009A01D7 /* ConvertTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 		83C514D41D48B8E400A81038 /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				83A0AE1A1D622AFA009A01D7 /* AutoLayout.layout */,
 				83A0AE0E1D61E8FB009A01D7 /* TrafficLights.layout */,
 				83A0AE061D61DC6B009A01D7 /* _Variables.layout */,
 				83A0AE071D61DC6B009A01D7 /* Basic.layout */,
@@ -420,6 +429,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				83A0AE0F1D61E8FB009A01D7 /* TrafficLights.layout in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				83A0AE1B1D622AFA009A01D7 /* AutoLayout.layout in Resources */,
 				83A0AE0D1D61DDC4009A01D7 /* Menu.layout in Resources */,
 				83A0AE0A1D61DC6B009A01D7 /* Basic.layout in Resources */,
 				83A0AE0B1D61DC6B009A01D7 /* PositionPadding.layout in Resources */,
@@ -564,6 +574,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* MenuController.swift in Sources */,
 				839656BE1D4985C200666915 /* ExampleController.swift in Sources */,
+				83A0AE211D636663009A01D7 /* TrafficLightsController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +592,7 @@
 				8336F6F81D5365580009E629 /* DirectiveTests.swift in Sources */,
 				835AB9AF1D48C0AB00004461 /* DirectiveTransformTests.swift in Sources */,
 				835AB9B01D48C0AF00004461 /* IncludeExpansionTests.swift in Sources */,
+				83A0AE1F1D634DC1009A01D7 /* ConvertTests.swift in Sources */,
 				835AB9B21D48C0B700004461 /* SampleReader.swift in Sources */,
 				835AB9CE1D48C3F700004461 /* BaseParserTests.swift in Sources */,
 				835AB9B31D48C0BB00004461 /* StateMachineTests.swift in Sources */,

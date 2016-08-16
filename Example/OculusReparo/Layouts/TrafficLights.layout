@@ -1,45 +1,51 @@
-@set red:   ff3b30;
-@set amber: ff9500;
-@set green: 4cd964;
-@set grey:  8e8e93;
+/* Let's define some variables */
+@set red:   #ff3b30;
+@set amber: #ff9500;
+@set green: #4cd964;
+@set grey:  #8e8e93;
 
+/* Add a UIButton */
 button {
+    /* Set it's position */
     position {
-        top: 20             @if portrait;
-        top: 0              @if landscape;
+        top: 20             @if portrait;       /* Let's move the button depending */
+        top: 0              @if landscape;      /* on the screen's orientation */
         left: 0;
         width: 100;
         height: 44;
     }
 
-    font-size: 17;
+    font-size: 17;                              /* Font parameters */
     font-weight: regular;
     text-alignment: left;
 
-    title: Back;
+    title: Back;                                /* Title */
     title-color: @grey;
     
-    on-touch: onBack;
+    on-touch: onBack;                           /* Objective C Selector */
 
-    image-bundle: BackwardDisclosure22x22;
+    image-bundle: BackwardDisclosure22x22;      /* Image parameters */
     tint-color: @grey;
     image-edge-insets: 0 7.5 0 7.5;
 }
 
+/* Add a UIView */
 view {
-    position @if portrait {
+    position @if portrait {                     /* Position if portrait */
         align: center middle;
         height: 300;
         width: 80;
     }
 
-    position @if landscape {
+    position @if landscape {                    /* Position if landscape */
         align: center middle;
         height: 80;
         width: 300;
     }
 
-    @define: light {
+    /* Define a mixin */
+    @define: traffic-light {
+        /* Add a CALayer */
         layer {
             position {
                 top: @position      @if portrait;
@@ -50,26 +56,31 @@ view {
                 height: 80;
             }
 
+            id: @id;
             background-color: @color;
             corner-radius: 40;
+            opacity: 0.5;
         }
     }
     
-    /* Red */
-    @light {
+    /* Include red light... */
+    @traffic-light {
+        id: red;
         position: 0;
         color: @red;
     }
 
-    /* Amber */
-    @light {
+    /* Include amber light */
+    @traffic-light {
+        id: amber;
         position: +20;
         color: @amber;
     }
 
-    /* Green */
-    @light {
-        position: 200;
+    /* Include green light */
+    @traffic-light {
+        id: green;
+        position: +20;
         color: @green;
     }
 }

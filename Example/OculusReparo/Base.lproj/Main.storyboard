@@ -41,6 +41,24 @@
             </objects>
             <point key="canvasLocation" x="1534" y="1337"/>
         </scene>
+        <!--Traffic Lights Controller-->
+        <scene sceneID="coI-h3-89O">
+            <objects>
+                <viewController storyboardIdentifier="TrafficLights" id="o2f-GU-8uf" customClass="TrafficLightsController" customModule="OculusReparo_Example" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gG6-u4-Nwa"/>
+                        <viewControllerLayoutGuide type="bottom" id="MAf-pX-FT2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="auc-lD-Sbm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rxz-KK-QU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2948" y="1348"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="xmL-ya-Lfy">
             <objects>

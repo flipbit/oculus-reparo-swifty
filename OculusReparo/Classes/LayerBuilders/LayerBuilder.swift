@@ -23,12 +23,18 @@ public class LayerBuilder {
         
         if instance.hasLayer(layerId) {
             layer = instance.findLayer(layerId) as! T
-            instance.debugger?.info("Found layer: \(layerId)")
+            Layout.debugger?.info("Found layer: \(layerId)")
         } else {
             layer = T()
             let fragment = LayoutLayerFragment(layer: layer, id: layerId, configuration: layout)
             instance.layerFragments[layerId] = fragment
-            instance.debugger?.info("Created layer: \(layerId)")
+            Layout.debugger?.info("Created layer: \(layerId)")
+            
+            if let model = instance.model where layout.hasValue("id") {
+                if model.respondsToSelector(Selector("\(layerId)")) {
+                    model.setValue(layer, forKey: layerId)
+                }
+            }
         }
         
         layer.frame = try getFrame(layout, layer: layer, parent: parent, instance: instance)
@@ -64,7 +70,7 @@ public class LayerBuilder {
         
         let frame = try position.toFrame(lastSiblingFrame)
         
-        instance.debugger?.info(" -> Set frame: \(frame)")
+        Layout.debugger?.info(" -> Set frame: \(frame)")
         
         return frame
     }
