@@ -21,17 +21,17 @@ public class StateMachine {
     private var directive: Directive?
     
     private enum State {
-        case Key
-        case Value
-        case Semicolon
-        case IfDirective
-        case SingleLineComment
-        case MultiLineComment
-        case DoubleQuote
-        case SingleQuote
-        case EndQuote
-        case Push
-        case EndOfSection
+        case key
+        case value
+        case semicolon
+        case ifDirective
+        case singleLineComment
+        case multiLineComment
+        case doubleQuote
+        case singleQuote
+        case endQuote
+        case push
+        case endOfSection
     }
 
     /**
@@ -45,8 +45,8 @@ public class StateMachine {
     public init(input: String, filename: String) {
         values = input.characters.map { String($0) }
         lineNumber = 1
-        state = State.Key
-        popState = State.Key
+        state = State.key
+        popState = State.key
         next = ""
         self.filename = filename
     }
@@ -69,7 +69,7 @@ public class StateMachine {
         while (values.count > 0)
         {
             next = values[0]
-            values.removeAtIndex(0)
+            values.remove(at: 0)
             
             if newline() {
                 lineNumber = lineNumber + 1
@@ -80,65 +80,65 @@ public class StateMachine {
             }
             
             switch state {
-            case State.Key:
+            case State.key:
                 line = try readKey(line)
                 break
-            case State.Value:
+            case State.value:
                 line = try readValue(line)
                 break
-            case State.IfDirective:
+            case State.ifDirective:
                 line = readIfDirective(line)
                 break
-            case State.SingleLineComment:
+            case State.singleLineComment:
                 line = readSingleLineComment(line)
                 break
-            case State.MultiLineComment:
+            case State.multiLineComment:
                 line = readMultiLineComment(line)
                 break
-            case State.SingleQuote:
+            case State.singleQuote:
                 line = readSingleQuote(line)
                 break
-            case State.DoubleQuote:
+            case State.doubleQuote:
                 line = readDoubleQuote(line)
                 break
-            case State.EndQuote:
+            case State.endQuote:
                 line = try readEndQuote(line)
                 break
             default:
                 break
             }
             
-            if (state == State.Push || state == State.EndOfSection)
+            if (state == State.push || state == State.endOfSection)
             {
                 break
             }
         }
 
         // End of section
-        if (state == State.EndOfSection)
+        if (state == State.endOfSection)
         {
             // Reset state
-            state = State.Key
+            state = State.key
             
             return (line: nil, endOfSection: true, endOfDocument: empty)
         }
         
         // Empty data if not a section
-        if let l = line where l.key == nil && l.value == nil && !l.isASection {
+        if let l = line  where l.key == nil && l.value == nil && !l.isASection {
             line = nil
         }
             
             // Ran out of data...
-        else if state == State.Key || state == State.Value
+        else if state == State.key || state == State.value
         {
-            throw ReparoError.InvalidConfigurationLine("Invalid configuration line: \(lineNumber)")
+            throw ReparoError.invalidConfigurationLine("Invalid configuration line: \(lineNumber)")
         }
         
         
         // Reset state
-        if state == State.Push
+        if state == State.push
         {
-            state = State.Key
+            state = State.key
         }
         
         return (line: line, endOfSection: false, endOfDocument: empty)
@@ -154,25 +154,25 @@ public class StateMachine {
     
     private func readKey(line: Line?) throws -> Line? {
         if next == ";" {
-            state = State.Push
+            state = State.push
         }
         else if next == ":" {
             line?.key = trim(line?.key)
             
-            state = State.Value
+            state = State.value
         }
         else if peek("@if")
         {
-            state = State.IfDirective
+            state = State.ifDirective
             
-            values.removeAtIndex(0)
-            values.removeAtIndex(0)
+            values.remove(at: 0)
+            values.remove(at: 0)
             
             line?.key = trim(line?.key)
         }
         else if next == "{"
         {
-            state = State.Push
+            state = State.push
             
             line?.key = trim(line?.key)
             
@@ -182,42 +182,42 @@ public class StateMachine {
         {
             if nilOrEmpty(line?.key)
             {
-                state = State.EndOfSection
+                state = State.endOfSection
                 
                 return line
             }
             else
             {
-                throw ReparoError.InvalidConfigurationLine("Unexpected end of section character ('}') : \(lineNumber)")
+                throw ReparoError.invalidConfigurationLine("Unexpected end of section character ('}') : \(lineNumber)")
             }
         }
         else if next == "#"
         {
             if line?.key == nil || line?.key == ""
             {
-                state = State.SingleLineComment
+                state = State.singleLineComment
                 
                 return nil
             }
             else
             {
-                throw ReparoError.InvalidConfigurationLine("Unexpected start of comment character ('#'): \(lineNumber)")
+                throw ReparoError.invalidConfigurationLine("Unexpected start of comment character ('#'): \(lineNumber)")
             }
         }
         else if peek("/*")
         {
-            values.removeAtIndex(0)
+            values.remove(at: 0)
             
             popState = state
             
-            state = State.MultiLineComment
+            state = State.multiLineComment
         }
         else if whitespaceOrNewLine() && nilOrEmpty(line?.key) {
             // ignore
         }
             
         else if newline() {
-            throw ReparoError.InvalidConfigurationLine("Unexpected new line in configuration key: \(lineNumber)")
+            throw ReparoError.invalidConfigurationLine("Unexpected new line in configuration key: \(lineNumber)")
         }
             
             
@@ -237,7 +237,7 @@ public class StateMachine {
         if next == ";" {
             line?.value = trim(line?.value)
             
-            state = State.Push
+            state = State.push
         }
             
             // Ignore leading whitespace
@@ -248,39 +248,39 @@ public class StateMachine {
             
             // Test for directive
         else if peek("@if") {
-            values.removeAtIndex(0)
-            values.removeAtIndex(0)
+            values.remove(at: 0)
+            values.remove(at: 0)
             
             line?.value = trim(line?.value)
             
-            state =  State.IfDirective
+            state =  State.ifDirective
         }
             
             // Multiline comment
         else if peek("/*") {
-            values.removeAtIndex(0)
+            values.remove(at: 0)
             
             popState = state
             
-            state = State.MultiLineComment
+            state = State.multiLineComment
         }
             
             // Double quote
         else if next == "\"" && nilOrEmpty(line?.value) {
             line?.quoted = true
-            state = State.DoubleQuote
+            state = State.doubleQuote
         }
             
             // Single quote
         else if next == "'" && nilOrEmpty(line?.value) {
             line?.quoted = true
-            state = State.SingleQuote
+            state = State.singleQuote
         }
 
             // New section
         else if next == "{"
         {
-            state = State.Push
+            state = State.push
             
             line?.value = trim(line?.value)
             
@@ -289,7 +289,7 @@ public class StateMachine {
             
             // Invalid newline check
         else if newline() {
-            throw ReparoError.InvalidConfigurationLine("Unexpected new line in configuration value: \(lineNumber)")
+            throw ReparoError.invalidConfigurationLine("Unexpected new line in configuration value: \(lineNumber)")
         }
             
             // Initialize value
@@ -313,7 +313,7 @@ public class StateMachine {
                 directive = nil
             }
             
-            state = State.Push
+            state = State.push
         }
             
         else if next == "{" {
@@ -323,7 +323,7 @@ public class StateMachine {
                 directive = nil
             }
             
-            state = State.Push
+            state = State.push
             
             return Section(line: line!)
         }
@@ -358,7 +358,7 @@ public class StateMachine {
     
     private func readSingleLineComment(line: Line?) -> Line? {
         if newline() {
-            state = State.Key
+            state = State.key
             
             return Line(filename: filename, lineNumber: lineNumber)
         }
@@ -368,7 +368,7 @@ public class StateMachine {
     
     private func readMultiLineComment(line: Line?) -> Line? {
         if peek("*/") {
-            values.removeAtIndex(0)
+            values.remove(at: 0)
             
             state = popState
         }
@@ -378,12 +378,12 @@ public class StateMachine {
     
     private func readDoubleQuote(line: Line?) -> Line? {
         if peek("\"\"") {
-            values.removeAtIndex(0)
+            values.remove(at: 0)
             
             line!.value! = line!.value! + next
         }
         else if next == "\"" {
-            state = State.EndQuote
+            state = State.endQuote
         }
         else if line!.value == nil {
             line!.value = next
@@ -397,12 +397,12 @@ public class StateMachine {
     
     private func readSingleQuote(line: Line?) -> Line? {
         if peek("''") {
-            values.removeAtIndex(0)
+            values.remove(at: 0)
             
             line!.value! = line!.value! + next
         }
         else if next == "'" {
-            state = State.EndQuote
+            state = State.endQuote
         }
         else if line!.value == nil {
             line!.value = next
@@ -419,16 +419,16 @@ public class StateMachine {
             // ignore
         }
         else if next == ";" {
-            state = State.Push
+            state = State.push
         }
         else if peek("@if") {
-            values.removeAtIndex(0)
-            values.removeAtIndex(0)
+            values.remove(at: 0)
+            values.remove(at: 0)
             
-            state = State.IfDirective
+            state = State.ifDirective
         }
         else {
-            throw ReparoError.InvalidConfigurationLine("Unexpected character after quoted value: \(next) \(lineNumber)")
+            throw ReparoError.invalidConfigurationLine("Unexpected character after quoted value: \(next) \(lineNumber)")
         }
         
         return line
@@ -491,6 +491,6 @@ public class StateMachine {
     }
     
     private func trim(input: String?) -> String? {
-        return input?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return input?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 }

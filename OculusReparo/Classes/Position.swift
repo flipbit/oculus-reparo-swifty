@@ -234,7 +234,7 @@ public class Position {
             for sibling in parent.subviews {
                 if sibling === view {
                     if last == nil {
-                        return CGRectZero
+                        return CGRect.zero
                     } else {
                         return last!.frame
                     }
@@ -250,18 +250,18 @@ public class Position {
             }
         }
                 
-        return CGRectZero
+        return CGRect.zero
     }
     
     public func getLastSiblingLayerFrame(layer: CALayer) -> CGRect {
         var last: CALayer?
         
         // Check parent view sublayers
-        if let parent = parentView,siblings = parent.layer.sublayers  {
+        if let parent = parentView,let siblings = parent.layer.sublayers  {
             for sibling in siblings {
                 if sibling === layer {
                     if last == nil {
-                        return CGRectZero
+                        return CGRect.zero
                     } else {
                         return last!.frame
                     }
@@ -272,11 +272,11 @@ public class Position {
         }
 
         // Check parent layer sublayers
-        if let parent = parentLayer, siblings = parent.sublayers {
+        if let parent = parentLayer, let siblings = parent.sublayers {
             for sibling in siblings {
                 if sibling === layer {
                     if last == nil {
-                        return CGRectZero
+                        return CGRect.zero
                     } else {
                         return last!.frame
                     }
@@ -287,21 +287,21 @@ public class Position {
         }
         
         // Doesn't exist: Check for parent view siblings
-        if let parent = parentView,siblings = parent.layer.sublayers  {
+        if let parent = parentView,let siblings = parent.layer.sublayers  {
             if siblings.count > 0 {
                 return siblings.last!.frame
             }
         }
         
         // Doesn't exist: Check for parent layer siblings
-        if let parent = parentLayer, siblings = parent.sublayers {
+        if let parent = parentLayer, let siblings = parent.sublayers {
             if siblings.count > 0 {
                 return siblings.last!.frame
             }
         }
         
         // Return empty rect
-        return CGRectZero
+        return CGRect.zero
     }
     
     private func setAlignment(alignment: String) {

@@ -23,7 +23,7 @@ public class UIImageViewBuilder : ViewBuilder {
                 if color != nil {
                     imageView.tintColor = color
                     
-                    image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                    image = image.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
                 }
                 
                 imageView.image = image

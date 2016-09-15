@@ -75,26 +75,26 @@ public class Directive {
             equality = Equality.Equal
             toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(1))
         }
-
-        // Greater than or equal
+            
+            // Greater than or equal
         else if toProcess.hasPrefix(">=") {
             equality = Equality.GreaterThanOrEqual
             toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(2))
         }
             
-        // Greater than
+            // Greater than
         else if toProcess.hasPrefix(">") {
             equality = Equality.GreaterThan
             toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(1))
         }
             
-        // Less than or equal
+            // Less than or equal
         else if toProcess.hasPrefix("<=") {
             equality = Equality.LessThanOrEqual
             toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(2))
         }
             
-        // Less than
+            // Less than
         else if toProcess.hasPrefix("<") {
             equality = Equality.LessThan
             toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(1))
@@ -121,7 +121,7 @@ public class Directive {
         return (dimension, equality, value)
     }
     
-    public func satisfiedBy(screenSize: CGRect) throws -> Bool {
+    public func satisfiedBy(screenSize: CGSize) throws -> Bool {
         let parts = try getResolutionParts()
         
         var toCompare: CGFloat
@@ -149,7 +149,7 @@ public class Directive {
     func trim(value: String) -> String {
         return value.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
-
+    
     func keepNumerics(value: String) -> String {
         return value.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "1234567890.").invertedSet)
     }

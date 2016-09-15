@@ -1,6 +1,6 @@
 /**
  Performs variable substitution configuration
-*/
+ */
 public class ReplaceVariableTransform : Transform {
     /**
      Performs variable substitution on the given configuration lines
@@ -41,7 +41,7 @@ public class ReplaceVariableTransform : Transform {
     
     func getVariableNames(value: String) -> [String] {
         var names = [String]()
-
+        
         var name = ""
         for character in value.characters {
             if character == " " && name != "" {
@@ -71,7 +71,7 @@ public class ReplaceVariableTransform : Transform {
     
     func walk(path: String, object: AnyObject) throws -> String {
         let parts = path.componentsSeparatedByString(".")
-
+        
         return try walk(parts, object: object)
     }
     
@@ -103,4 +103,3 @@ public class ReplaceVariableTransform : Transform {
         return try walk(remaining, object: value)
     }
 }
-

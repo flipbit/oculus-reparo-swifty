@@ -21,8 +21,8 @@ public class FunctionExpansion : Expansion {
         // Add function arguments
         if let arguments = line as? Section {
             for argument in arguments.lines {
-                if let key = argument.key, value = argument.value {
-                    scope.variables[key] = value
+                if let key = argument.key, let value = argument.value {
+                    scope.variables[key] = value as AnyObject?
                 }
             }
         }

@@ -32,7 +32,7 @@ public class LayerBuilder {
             instance.layerFragments[layerId] = fragment
             Layout.debugger?.info("Created layer: \(layerId)")
             
-            if let model = instance.model where layout.hasValue("id") {
+            if let model = instance.model  where layout.hasValue("id") {
                 if model.respondsToSelector(Selector("\(layerId)")) {
                     model.setValue(layer, forKey: layerId)
                 }

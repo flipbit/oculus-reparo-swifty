@@ -12,8 +12,8 @@ public class UITextFieldBuilder : ViewBuilder {
         
         label.text = layout.getValue("text") ?? ""
         label.textColor = try layout.getUIColor("text-color")
-        label.font = UIFont.systemFontOfSize(size, weight: weight)
-        label.textAlignment = try Convert.getTextAlignment(layout.getValue("text-alignment"), or: NSTextAlignment.Left)
+        label.font = UIFont.systemFont(ofSize: size, weight: weight)
+        label.textAlignment = try Convert.getTextAlignment(layout.getValue("text-alignment"), or: NSTextAlignment.left)
         label.placeholder = layout.getValue("placeholder") ?? ""
         
         return label;

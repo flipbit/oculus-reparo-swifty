@@ -4,14 +4,14 @@ public class Scope {
     public var variables: [String: AnyObject]
     public var directives: [String]
     public var functions: [String: [Line]]
-    public var screenSize: CGRect
+    public var screenSize: CGSize
     var depth = 0
     
     public init() {
         variables = [:]
         directives = []
         functions = [:]
-        screenSize = CGRectZero
+        screenSize = CGSize.zero
     }
     
     public init(parser: Parser) {

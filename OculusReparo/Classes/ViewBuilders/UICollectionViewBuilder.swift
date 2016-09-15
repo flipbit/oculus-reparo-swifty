@@ -11,16 +11,16 @@ public class UICollectionViewBuilder : ViewBuilder {
         let flow = UICollectionViewFlowLayout()
         flow.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         flow.itemSize = CGSize(width: 100, height: 100)
-        flow.scrollDirection = .Horizontal
+        flow.scrollDirection = .horizontal
         
-        let collection = UICollectionView(frame: CGRectZero, collectionViewLayout: flow)
+        let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: flow)
         
         collection.frame = try getFrame(layout, view: collection, parent: parent, instance: instance)
         
         try initialize(collection, layout: layout, instance: instance, parent: parent)
         
         collection.bounces = try layout.getBool("bounces", ifMissing: true)
-        collection.scrollEnabled = try layout.getBool("scroll-enabled", ifMissing: true)
+        collection.isScrollEnabled = try layout.getBool("scroll-enabled", ifMissing: true)
         
         return collection;
     }

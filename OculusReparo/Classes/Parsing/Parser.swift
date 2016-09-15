@@ -8,7 +8,7 @@ public class Parser {
     public var directives: [String]
     public var transforms: [Transform]
     public var expansions: [Expansion]
-    public var screenSize: CGRect
+    public var screenSize: CGSize
     public var reader: ReparoReader
     
     public init() {
@@ -16,7 +16,7 @@ public class Parser {
         directives = []
         transforms = []
         expansions = []
-        screenSize = UIScreen.mainScreen().bounds
+        screenSize = CGSize.zero
         
         transforms.append(DirectiveTransform())
         transforms.append(DefineFunctionTransform())
@@ -42,7 +42,7 @@ public class Parser {
         
         self.variables = layout.variables
         self.directives = layout.directives
-        self.screenSize = layout.screenSize
+        self.screenSize = layout.bounds
     }
     
     /**

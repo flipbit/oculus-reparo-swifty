@@ -22,7 +22,7 @@ public class BundleReader : ReparoReader {
     private func getPath(filename: String) -> String {
         let bundlePath = NSBundle.mainBundle().resourcePath! //NSBundle(forClass: self.dynamicType).resourcePath!
         let url = NSURL(fileURLWithPath: bundlePath)
-        return url.URLByAppendingPathComponent(filename).path!
+        return url.URLByAppendingPathComponent(filename)!.path!
     }
     
     private func read(filename: String) throws -> String? {

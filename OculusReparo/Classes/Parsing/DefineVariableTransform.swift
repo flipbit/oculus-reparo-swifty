@@ -15,7 +15,7 @@ public class DefineVariableTransform : Transform {
                 var name = key.substringFromIndex(key.startIndex.advancedBy(5))
                 name = name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                 if let value = line.value {
-                    scope.variables[name] = value
+                    scope.variables[name] = value as AnyObject?
                 }
                 
                 return (nil, scope)

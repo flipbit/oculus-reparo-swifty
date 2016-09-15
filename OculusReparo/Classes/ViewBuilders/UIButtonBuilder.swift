@@ -19,15 +19,15 @@ public class UIButtonBuilder : ViewBuilder {
         // Font
         let size = layout.getCGFloat("font-size", ifMissing: 17)
         let weight = try Convert.getFontWeight(layout.getValue("font-weight"))
-        button.titleLabel?.font = UIFont.systemFontOfSize(size, weight: weight)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: size, weight: weight)
         
         if let title = layout.getValue("title") {
-            button.setTitle(title, forState: UIControlState.Normal)
+            button.setTitle(title, forState: UIControlState())
         }
 
         if let bundle = layout.getValue("image-bundle") {
             if let image = try Layout.imageLoader.loadImage(named: bundle) {
-                button.setImage(image, forState: UIControlState.Normal)
+                button.setImage(image, forState: UIControlState())
             }
         }
         
@@ -36,12 +36,12 @@ public class UIButtonBuilder : ViewBuilder {
         }
         
         if let color = try layout.getUIColor("title-color") {
-            button.setTitleColor(color, forState: UIControlState.Normal)
+            button.setTitleColor(color, forState: UIControlState())
         }
         
-        if let touched = layout.getValue("on-touch"), eventTarget = instance.eventTarget {
-            button.addTarget(eventTarget, action: Selector(touched), forControlEvents: UIControlEvents.TouchUpInside)
-            button.addTarget(eventTarget, action: Selector(touched), forControlEvents: UIControlEvents.TouchUpOutside)
+        if let touched = layout.getValue("on-touch"), let eventTarget = instance.eventTarget {
+            button.addTarget(eventTarget, action: Selector(touched), forControlEvents: UIControlEvents.touchUpInside)
+            button.addTarget(eventTarget, action: Selector(touched), forControlEvents: UIControlEvents.touchUpOutside)
         }
         
         if let insets = try Convert.getEdgeInsets(layout.getValue("title-edge-insets")) {
@@ -53,9 +53,11 @@ public class UIButtonBuilder : ViewBuilder {
         }
         
         if let align = layout.getValue("text-alignment") {
-            switch align.lowercaseString {
+            switch align.lowercased() {
             case "left":
-                button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+                button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+            case "right":
+                button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
             default:
                 break;
             }

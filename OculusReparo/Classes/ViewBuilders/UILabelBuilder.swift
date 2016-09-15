@@ -11,9 +11,10 @@ public class UILabelBuilder : ViewBuilder {
         let size = layout.getCGFloat("font-size", ifMissing: 17)
         let weight = try Convert.getFontWeight(layout.getValue("font-weight"))
         
+        label.numberOfLines = Int(layout.getValue("lines", ifMissing: "0")!)!
         label.text = layout.getValue("text")
         label.textColor = try layout.getUIColor("text-color")
-        label.font = UIFont.systemFontOfSize(size, weight: weight)
+        label.font = UIFont.systemFont(ofSize: size, weight: weight)
         label.textAlignment = try Convert.getTextAlignment(layout.getValue("text-alignment"))
         
         return label;

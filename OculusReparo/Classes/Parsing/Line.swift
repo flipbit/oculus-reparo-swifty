@@ -65,7 +65,7 @@ public class Line {
     }
     
     public func toString(pad: Int = 0) -> String {
-        var string = String(count: pad, repeatedValue: (" " as Character))
+        var string = String(repeating: String((" " as Character)), count: pad)
         
         if key != nil {
             string += key!

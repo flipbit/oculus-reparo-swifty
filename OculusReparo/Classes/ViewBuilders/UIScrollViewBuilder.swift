@@ -10,8 +10,8 @@ public class UIScrollViewBuilder : ViewBuilder {
         let scroll: UIScrollView = try initialize(layout, instance: instance, parent: parent)
         
         scroll.bounces = try layout.getBool("bounces", ifMissing: true)
-        scroll.scrollEnabled = try layout.getBool("scroll-enabled", ifMissing: true)
-        scroll.pagingEnabled = try layout.getBool("paging-enabled")
+        scroll.isScrollEnabled = try layout.getBool("scroll-enabled", ifMissing: true)
+        scroll.isPagingEnabled = try layout.getBool("paging-enabled")
         scroll.showsVerticalScrollIndicator = try layout.getBool("shows-vertical-scroll-indicator", ifMissing: true)
         scroll.showsHorizontalScrollIndicator = try layout.getBool("shows-horizontal-scroll-indicator", ifMissing: true)
 

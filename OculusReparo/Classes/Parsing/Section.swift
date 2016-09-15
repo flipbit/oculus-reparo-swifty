@@ -24,7 +24,7 @@ public class Section : Line {
         key = line.key
         value = line.value
         index = line.index
-        directives.appendContentsOf(line.directives)
+        directives.append(line.directives)
     }
     
     public init(filename: String)
@@ -62,7 +62,7 @@ public class Section : Line {
     }
     
     override public func toString(pad: Int = 0) -> String {
-        var string = String(count: pad, repeatedValue: (" " as Character))
+        var string = String(repeating: String((" " as Character)), count: pad)
         
         if key != nil {
             string += key!
@@ -92,7 +92,7 @@ public class Section : Line {
             string += "\(line.toString(pad + 4))\n"
         }
         
-        string += String(count: pad, repeatedValue: (" " as Character)) + "}"
+        string += String(repeating: String((" " as Character)), count: pad) + "}"
         
         return string
     }
@@ -247,7 +247,7 @@ public class Section : Line {
                 if recurse {
                     let children = getSections(name, recurse: recurse, search: section.lines)
                     
-                    results.appendContentsOf(children)
+                    results.append(children)
                 }
             }
         }

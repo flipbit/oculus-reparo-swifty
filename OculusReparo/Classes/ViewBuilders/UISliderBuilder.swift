@@ -11,39 +11,39 @@ public class UISliderBuilder : ViewBuilder {
         slider.minimumValue = layout.getFloat("minimum-value", ifMissing: 0)
         slider.maximumValue = layout.getFloat("maximum-value", ifMissing: 100)
         slider.value = layout.getFloat("value", ifMissing: 0)
-        slider.continuous = try layout.getBool("continuous", ifMissing: false)
+        slider.isContinuous = try layout.getBool("continuous", ifMissing: false)
         
         if let color = try layout.getUIColor("tint-color") {
                 slider.tintColor = color
         }
         
-        if let changed = layout.getValue("changed"), eventTarget = instance.eventTarget {
-            slider.addTarget(eventTarget, action: Selector(changed), forControlEvents: UIControlEvents.ValueChanged)
+        if let changed = layout.getValue("changed"), let eventTarget = instance.eventTarget {
+            slider.addTarget(eventTarget, action: Selector(changed), forControlEvents: UIControlEvents.valueChanged)
         }
         
-        if let changed = layout.getValue("touch-up-inside"), eventTarget = instance.eventTarget {
-            slider.addTarget(eventTarget, action: Selector(changed), forControlEvents: UIControlEvents.TouchUpInside)
+        if let changed = layout.getValue("touch-up-inside"), let eventTarget = instance.eventTarget {
+            slider.addTarget(eventTarget, action: Selector(changed), forControlEvents: UIControlEvents.touchUpInside)
         }
         
-        if let changed = layout.getValue("touch-up-outside"), eventTarget = instance.eventTarget {
-            slider.addTarget(eventTarget, action: Selector(changed), forControlEvents: UIControlEvents.TouchUpOutside)
+        if let changed = layout.getValue("touch-up-outside"), let eventTarget = instance.eventTarget {
+            slider.addTarget(eventTarget, action: Selector(changed), forControlEvents: UIControlEvents.touchUpOutside)
         }
         
         if let image = layout.getValue("thumb-image") {
             if let image = try Layout.imageLoader.loadImage(named: image) {
-                slider.setThumbImage(image, forState: .Normal)
+                slider.setThumbImage(image, forState: UIControlState())
             }
         }
 
         if let image = layout.getValue("maximum-track-image") {
             if let image = try Layout.imageLoader.loadImage(named: image) {
-                slider.setMaximumTrackImage(image, forState: .Normal)
+                slider.setMaximumTrackImage(image, forState: UIControlState())
             }
         }
         
         if let image = layout.getValue("minimum-track-image") {
             if let image = try Layout.imageLoader.loadImage(named: image) {
-                slider.setMinimumTrackImage(image, forState: .Normal)
+                slider.setMinimumTrackImage(image, forState: UIControlState())
             }
         }
         

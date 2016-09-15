@@ -11,7 +11,7 @@ public class ViewBuilder {
     }
     
     public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
-        throw LayoutError.InvalidConfiguration("You must override the build() method")
+        throw LayoutError.invalidConfiguration("You must override the build() method")
     }
     
     public func initialize<T: UIView>(layout: Section, instance: Layout, parent: UIView) throws -> T {
@@ -24,7 +24,7 @@ public class ViewBuilder {
         
         if instance.hasView(id) {
             if instance.laidOut == false {
-                throw LayoutError.InvalidConfiguration("Duplicate view id: \(id)")
+                throw LayoutError.invalidConfiguration("Duplicate view id: \(id)")
             }
             view = instance.findView(id) as! T
             Layout.debugger?.info("Found view: \(id)")
@@ -33,8 +33,8 @@ public class ViewBuilder {
             let fragment = LayoutViewFragment(view: view, id: id, configuration: layout)
             instance.viewFragments[id] = fragment
             
-            if let model = instance.model where layout.hasValue("id") {
-                if model.respondsToSelector(Selector("\(id)")) {
+            if let model = instance.model  where layout.hasValue("id") {
+                if model.responds(to: Selector("\(id)")) {
                     model.setValue(view, forKey: id)
                 }
             }
@@ -55,8 +55,8 @@ public class ViewBuilder {
             let fragment = LayoutViewFragment(view: view, id: id, configuration: layout)
             instance.viewFragments[id] = fragment
             
-            if let model = instance.model where layout.hasValue("id") {
-                if model.respondsToSelector(Selector("\(id)")) {
+            if let model = instance.model  where layout.hasValue("id") {
+                if model.responds(to: Selector("\(id)")) {
                     model.setValue(view, forKey: id)
                 }
             }
@@ -79,8 +79,8 @@ public class ViewBuilder {
         view.layer.borderWidth = layout.getCGFloat("border-width", ifMissing: 0)
         view.layer.opacity = layout.getFloat("opacity", ifMissing: 1)
         view.clipsToBounds = try layout.getBool("clips-to-bounds")
-        view.hidden = try layout.getBool("hidden")
-        view.userInteractionEnabled = try layout.getBool("user-interaction-enabled", ifMissing: true)
+        view.isHidden = try layout.getBool("hidden")
+        view.isUserInteractionEnabled = try layout.getBool("user-interaction-enabled", ifMissing: true)
         view.accessibilityIdentifier = layout.getValue("accessibility-identifier")
         
         
@@ -100,7 +100,7 @@ public class ViewBuilder {
     }
     
     public func getFrame(layout: Section, view: UIView, parent: UIView, instance: Layout) throws -> CGRect {
-        var frame = CGRectZero
+        var frame = CGRect.zero
         
         if let position = try getPosition(layout, parent: parent) {
             let lastSiblingFrame = position.getLastSiblingViewFrame(view)
