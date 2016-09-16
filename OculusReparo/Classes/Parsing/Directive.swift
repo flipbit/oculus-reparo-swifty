@@ -121,7 +121,7 @@ public class Directive {
         return (dimension, equality, value)
     }
     
-    public func satisfiedBy(screenSize: CGRect) throws -> Bool {
+    public func satisfiedBy(screenSize: CGSize) throws -> Bool {
         let parts = try getResolutionParts()
         
         var toCompare: CGFloat

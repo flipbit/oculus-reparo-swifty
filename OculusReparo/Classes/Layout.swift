@@ -16,18 +16,7 @@ public class Layout {
         return _laidOut
     }
 
-    private var _screenSizeOverridden = false
-    private var _screenSize: CGRect
-    public var screenSize: CGRect {
-        get {
-            return _screenSize
-        }
-        set {
-            _screenSize =  newValue
-            _screenSizeOverridden = true
-        }
-    }
-
+    public var bounds: CGSize = CGSizeZero
     
     public var variables: [String: AnyObject]
     public var directives: [String]
@@ -45,12 +34,12 @@ public class Layout {
             return true
         }
         
-        if let window = UIApplication.sharedApplication().keyWindow {
-            if window.bounds.height != screenSize.height {
+        if let view = view {
+            if view.bounds.height != bounds.height {
                 return true
             }
             
-            if window.bounds.width != screenSize.width {
+            if view.bounds.width != bounds.width {
                 return true
             }
         }
@@ -67,14 +56,6 @@ public class Layout {
     public init() {
         variables = [:]
         directives = []
-
-        // Set screen size
-        if let window = UIApplication.sharedApplication().keyWindow {
-            _screenSize = window.bounds
-        } else {
-            _screenSize = CGRectZero
-        }
-
         
         // append default builders
         if !Layout.initialized {
@@ -133,19 +114,12 @@ public class Layout {
             throw LayoutError.MissingRootView
         }
         
-        // Update screen size
-        if _screenSizeOverridden == false {
-            if let window = UIApplication.sharedApplication().keyWindow {
-                _screenSize = window.bounds
-            }
-        }
         
+        bounds = view.bounds.size
         orientation = Hardware.orientation
         
         Layout.debugger?.info("Laying out view:")
         Layout.debugger?.info("Screen Orientation : \(orientation)")
-        Layout.debugger?.info("Screen Height      : \(screenSize.height)")
-        Layout.debugger?.info("Screen Width       : \(screenSize.width)")
         Layout.debugger?.info("View Height        : \(view.frame.height)")
         Layout.debugger?.info("View Width         : \(view.frame.width)")
         
@@ -191,17 +165,27 @@ public class Layout {
                 let anchorToViewId = section.getValue("to", ifMissing: "@parent") ?? "@parent"
                 let constant = section.getCGFloat("constant", ifMissing: 0)
                 let to = try Convert.getViewIdAndAnchor(anchorToViewId, defaultIdView: "@parent", defaultAnchor: anchor)
-                var parent = view.superview
+                var anchorToView: UIView?
                 
-                if to.viewId != "@parent" {
-                    parent = findView(to.viewId)
+                switch to.viewId.lowercaseString {
+                case "@parent":
+                    anchorToView = view.superview
+                    
+                case "@next":
+                    anchorToView = findNextSubview(view)
+                    
+                case "@last":
+                    anchorToView = findLastSubview(view)
+                    
+                default:
+                    anchorToView = findView(to.viewId)
                 }
                 
-                if parent == nil {
+                if anchorToView == nil {
                     throw LayoutError.InvalidConfiguration("Unable to find view to anchor to: \(to.viewId)")
                 }
                 
-                addConstraint(on: view, to: parent!, onAnchor: anchor, toAnchor: to.anchor, constant: constant)
+                addConstraint(on: view, to: anchorToView!, onAnchor: anchor, toAnchor: to.anchor, constant: constant)
             }
             
             else if config.hasValue(anchor.rawValue) {
@@ -213,6 +197,44 @@ public class Layout {
         }
     }
     
+    func findNextSubview(view: UIView) -> UIView? {
+        guard let superview = view.superview else {
+            return nil
+        }
+        
+        var next = false
+        
+        for subview in superview.subviews {
+            if subview === view {
+                next = true
+            }
+            
+            else if next {
+                return subview
+            }
+        }
+        
+        return nil
+    }
+
+    func findLastSubview(view: UIView) -> UIView? {
+        guard let superview = view.superview else {
+            return nil
+        }
+        
+        var last: UIView? = nil
+        
+        for subview in superview.subviews {
+            if subview === view {
+                return last
+            }
+                
+            last = subview
+        }
+        
+        return nil
+    }
+
     func addConstraint(on on: UIView, to: UIView, onAnchor: AnchorType, toAnchor: AnchorType, constant: CGFloat) {
         let onAnchor = getAnchor(on, anchor: onAnchor)
         let toAnchor = getAnchor(to, anchor: toAnchor)
@@ -298,6 +320,10 @@ public class Layout {
     
     public func addVariable(name: String, value: Float) {
         variables[name] = String(value)
+    }
+    
+    public func find<T>(viewId: String) -> T {
+        return findView(viewId) as! T
     }
     
     public func findView(viewId: String) -> UIView? {

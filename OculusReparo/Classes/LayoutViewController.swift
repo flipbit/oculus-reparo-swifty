@@ -2,20 +2,30 @@ import Foundation
 import UIKit
 
 public class LayoutViewController : UIViewController {
-    public var layout = Layout(filename: "")
+    public let layout = Layout()
     
-    public override func viewDidLoad() {
-        layout.view = self.view
-        layout.eventTarget = self
+    public func getViewName() -> String {
+        let type = String(self.dynamicType)
+        
+        return type.stringByReplacingOccurrencesOfString("Controller", withString: "") + ".txt"
     }
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()        
         
         if layout.needsLayout {
+            if layout.view == nil {
+                layout.view = view
+                layout.eventTarget = self
+            }
+            
+            if layout.filename == nil {
+                layout.filename = getViewName()
+            }
+            
             viewWillLayout()
             do {
-                try layout.apply()
+                try! layout.apply()
                 viewDidLayout()
             } catch {
                 print("Layout error")

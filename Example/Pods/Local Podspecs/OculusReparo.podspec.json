@@ -1,6 +1,6 @@
 {
   "name": "OculusReparo",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "summary": "Swifty layout helpers for UIKit.",
   "description": "OculusReparo enables you to write view layouts in plain text files, then bind them to controllers\nand model objects.",
   "homepage": "https://github.com/flipbit/oculus-reparo-swifty",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/flipbit/oculus-reparo-swifty.git",
-    "tag": "0.1.0"
+    "tag": "0.2.1"
   },
   "platforms": {
     "ios": "9.0"

@@ -70,31 +70,31 @@ class DirectiveSpec: QuickSpec {
             it("is satisfied by resolution height") {
                 let directive = Directive(name: "height = 100")
 
-                expect(try! directive.satisfiedBy(CGRect(x: 0, y: 0, width: 100, height: 100))).to(equal(true))
+                expect(try! directive.satisfiedBy(CGSize(width: 100, height: 100))).to(equal(true))
             }
             
             it("is satisfied by resolution width") {
                 let directive = Directive(name: "width > 100")
                 
-                expect(try! directive.satisfiedBy(CGRect(x: 0, y: 0, width: 200, height: 100))).to(equal(true))
+                expect(try! directive.satisfiedBy(CGSize(width: 200, height: 100))).to(equal(true))
             }
             
             it("is not satisfied by resolution height") {
                 let directive = Directive(name: "height <= 100")
                 
-                expect(try! directive.satisfiedBy(CGRect(x: 0, y: 0, width: 100, height: 200))).to(equal(false))
+                expect(try! directive.satisfiedBy(CGSize(width: 100, height: 200))).to(equal(false))
             }
             
             it("is not satisfied by resolution width") {
                 let directive = Directive(name: "width >= 100")
                 
-                expect(try! directive.satisfiedBy(CGRect(x: 0, y: 0, width: 50, height: 100))).to(equal(false))
+                expect(try! directive.satisfiedBy(CGSize(width: 50, height: 100))).to(equal(false))
             }
             
             it("is not satisfied by resolution width") {
                 let directive = Directive(name: "width < 1000")
                 
-                expect(try! directive.satisfiedBy(CGRect(x: 0, y: 0, width: 1000, height: 100))).to(equal(false))
+                expect(try! directive.satisfiedBy(CGSize(width: 1000, height: 100))).to(equal(false))
             }
         }
     }

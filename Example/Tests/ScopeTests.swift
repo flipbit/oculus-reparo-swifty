@@ -135,7 +135,7 @@ class ScopeSpec: QuickSpec {
         
         describe("when a scope has a 100x100 screen size") {
             let scope = Scope()
-            scope.screenSize = CGRect(x: 0, y: 0, width: 100, height: 100)
+            scope.screenSize = CGSize(width: 100, height: 100)
             
             it("is satisfied by a line with no directvies") {
                 let line = Line()

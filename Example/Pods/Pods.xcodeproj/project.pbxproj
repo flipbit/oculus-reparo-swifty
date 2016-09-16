@@ -9,142 +9,143 @@
 /* Begin PBXBuildFile section */
 		02D3D4796D30D863F17AAD2252DFE3FF /* Pods-OculusReparo_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 87753BB512044B604C66CAA35E311188 /* Pods-OculusReparo_Tests-dummy.m */; };
 		03A9FD93E86C0CD07A37D7BF34A02F09 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AE9C10DA93BFE440F17876611232E1 /* Match.swift */; };
+		03E441AACA10462E015360F053CBF494 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFD423BF35321818930BEE263BD5195 /* Extensions.swift */; };
 		05EA02656831ACCCC648247634260269 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC405455F8E20BD0434D9D3E3D2879A /* Foundation.framework */; };
+		0BEC48F05C1752B14C41C37541302DD7 /* LayoutDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807921A7DFE3803196F391A1F0E438E2 /* LayoutDebugger.swift */; };
+		0FA05AFB8F96527DD42F3809727341A8 /* ReplaceVariableTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D913EF90D750F7CEAB0D30A84679B3 /* ReplaceVariableTransform.swift */; };
 		10D693CEBC756B1417C67E4440930964 /* NSBundle+CurrentTestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B16739831A57E59BFE39E8BF50128C /* NSBundle+CurrentTestBundle.swift */; };
 		112614F21939902B59102E6E876ADCBC /* RaisesException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A414C35360A25163AA8D7D17AB68C77 /* RaisesException.swift */; };
 		11F07557005FEDEBF4EF86370941BFA3 /* HooksPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C369DE47B8FBDDF56994EF084D14F12 /* HooksPhase.swift */; };
-		1221A974777808F4836E66FB87A7049E /* UIImageViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431B20AB9115CC7DE72ACAA0A682DAD /* UIImageViewBuilder.swift */; };
 		135B6326D35C977854AA0C12B3F6CB7D /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E4E84747227302312F1E22D114789 /* DSL.swift */; };
 		13CC849FA70CADF802470B6A90DCDF79 /* AllPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD566EC508F35AEBD09410C38B0113 /* AllPass.swift */; };
+		1450D2D580B0CEBAC7149EDA78C5187C /* ReparoReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9619980F72A57994E7FC04C742BF883 /* ReparoReader.swift */; };
 		1462609A820C4811AB51BF65C1D7BEFA /* QCKDSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 7005B0ADF96C275382B45359AE1A0FDC /* QCKDSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		15DD5AF34CB5178DC68354CFE925CC36 /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177DEE94DCFDA231DF1D4C0CDD5B3649 /* Hardware.swift */; };
+		151D0FCA9E1666ACB7965985D76803BE /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33D4E4AADC9CDD3B71B66BB569421 /* Hardware.swift */; };
 		180FF4D4E2F3BD948F3F044EA18F7391 /* QuickSelectedTestSuiteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03925EC2DD9F80DCD0C2E5301B52DC9C /* QuickSelectedTestSuiteBuilder.swift */; };
 		1BEE4740FDE2053905FCA27E7200C2FB /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E2353FC0C41320250E7132DE6734F885 /* QuickConfiguration.m */; };
 		1ED8C77E9422C66BBF56E6C10D5826F0 /* NMBExceptionCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = D365431FBA3C40A9570E9266B44005D7 /* NMBExceptionCapture.m */; };
 		1F0E4ABB9581BB32E5E1C23FE71C45F2 /* ErrorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B7C1953D52C630B7CEA85DC7D30371 /* ErrorUtility.swift */; };
-		1F34B704773720153810D1AE6A74D3AA /* DefineFunctionTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF168354A5B08EE4ADB9E83591A1339 /* DefineFunctionTransform.swift */; };
 		1F9EEE2DE34C4EF8A319D7C77CE7C772 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FECB7BA22714038546A0E8DD513114B /* Configuration.swift */; };
-		2179B75F9404F636991F7771136F3528 /* ReparoReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D71249C7265ED531BDE5E9DF3C9960 /* ReparoReader.swift */; };
+		20C0288E03C18DC89CC5B56A9BF133BD /* LayoutFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA92B939CB185B856DC28E21B367D70 /* LayoutFragment.swift */; };
 		2276327906DDC1F64CA531F0B1F08B0B /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E738963C2EB4542069F1E6586836C9 /* QCKDSL.m */; };
 		23626BC4DDA1A2E90A155728F57802FF /* DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DC1174FD42CD6684C5DE79AC08B57C5 /* DSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2389E9D3967E8B52D397047BFD81A118 /* Callsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07B6CC006238186A56EEC6E8D3CD88 /* Callsite.swift */; };
+		24F9E2B85BAF27A32870B4569FAA73EF /* BundleReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7685952F67124D80BACEA531B07C4 /* BundleReader.swift */; };
 		26657619B71B1E19466C50A43C2B8F8E /* QuickConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4DEBAA391B6F9E5C9294F4DE25CA96 /* QuickConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26715A0CE2E870BED25510850C5A2E28 /* ExampleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D34ECCB9113A10197320CD540DDA73 /* ExampleMetadata.swift */; };
-		281AE0E5AB0040AFC4E0D9ECA98D8028 /* UILabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F780B7F51C75D7F9AF2148BE0EC689E /* UILabelBuilder.swift */; };
-		2CA8B0F5ADF6178EFFEFA4DE91954529 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1A5CB5865D9CA04DA2B742593BDE85 /* Layout.swift */; };
-		2D23F42FB02F90254D6E269FE1EC117E /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A62338C9CB5FE9EF9ECAFD8DC40E9 /* ViewBuilder.swift */; };
+		2B9679B145D1C8B0AC7276BED7708353 /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616820360728BB1DA8EA21E8509827F /* Scope.swift */; };
+		2DF9211438D09EB6BC3CB0C2FFD0FA4D /* LayoutLayerFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DD8765D44BF640A7BFFE12D8B0C397 /* LayoutLayerFragment.swift */; };
+		2E1AAECC6D414677271DB647FB74EA49 /* LayoutError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4DFBC7C720F21B115C27BFB174131D /* LayoutError.swift */; };
 		2ED3DA05BFD4CF179920AC821E5154E2 /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = DE3C8A356B44398ECE2F664B378A6443 /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		30AACAA8D51DC8C429577D9B67BB016C /* BeginWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203A5C5D36EAB5C74A7CA2C7F3E57854 /* BeginWith.swift */; };
 		31629295E87A24C98238C66D41983C49 /* BeVoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB2D871B9C6D5C6EE2172BB9AFD2627 /* BeVoid.swift */; };
-		34CEA5AC39358F21C61273CD27EECCBA /* DefineVariableTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4692885F948F6FC5BA833E97B2B223D /* DefineVariableTransform.swift */; };
 		36B7A13B455D907DEAA0AFC8709CF01B /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17FBDF6FF6B666A3D102EDD81DFE416 /* Filter.swift */; };
-		37782F1CF13741BCDBD9D10282C5128E /* CALayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5EA0B2A8B55E7D8706D6426182DC8 /* CALayerBuilder.swift */; };
-		38AE50B415B173124F14E629E618D85D /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1202E9479776D6A27A512B44101EF41 /* Parser.swift */; };
 		38F5CE4B4C59A81734A93E32D35B696E /* FailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562213D0385708961C195D0CF8C45E /* FailureMessage.swift */; };
-		3ACE3FECF8F3C34D43DF364B4FF71525 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC405455F8E20BD0434D9D3E3D2879A /* Foundation.framework */; };
-		3B8F867D14F5237081FD10ACF3142E34 /* LayoutViewFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F7391995E027028CC8DF36A716C9A /* LayoutViewFragment.swift */; };
+		3B36ACA3E7E43A0BCC72481E096DA207 /* UISliderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA26605BB480E558C3D60CF68F08B00 /* UISliderBuilder.swift */; };
 		3D1BB98DEA422D8F173613EC715488B9 /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BF65FFEC8A084057E63EDF139D2BD1 /* PostNotification.swift */; };
 		3EE8E53E4CEE8E12C95CDB30D8B764C2 /* Quick.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB79662DFF8CAC9A93BB403631D5490 /* Quick.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		40830F9599C0C0C46013955F6E9983D9 /* UITextFieldBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D403CB5A1B6F8217501516FDDA0903F /* UITextFieldBuilder.swift */; };
 		415F29FE4E9D970954C46CD3CF4AE345 /* SatisfyAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C873CB5F43A0FA130C9B9FF74B6B0 /* SatisfyAnyOf.swift */; };
+		4406F6B198E0F0AFBF446148E5F777AE /* UIScrollViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FD6D5869A523AC71F62BE25D215D9 /* UIScrollViewBuilder.swift */; };
+		440D4E1E4F36F02634CD117B04ACA2F0 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7585DD69C9C987D10B99A2B854EB8DC /* Parser.swift */; };
+		44ED98A7F8EC8CD601BF88D50ED55DB7 /* UIImageViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4F17411AF72FCE6ACA58C45D9B100 /* UIImageViewBuilder.swift */; };
 		47275A1C80013EFDBF47FF4C967F447B /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBC862576E582DF711B25DC28CFCDBE /* QuickTestSuite.swift */; };
 		47CBCE8837CE75AE1B7484A63CE387ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC405455F8E20BD0434D9D3E3D2879A /* Foundation.framework */; };
+		47E8EFE500C530DB8517E6FABED375F1 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF275DAF5D282A6FC5FBF17A31CC3572 /* Line.swift */; };
 		486B74C8EFEB68AD25CE128F3051E432 /* ObjCExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129290F935182407C183EB04C0C2C90 /* ObjCExpectation.swift */; };
 		499CE7BF62B4C3E5D2FB2F406E03EE5D /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEDCA8E96FF6E3C7A604705D4D34B06 /* World.swift */; };
+		4A8371AF49A41A35F455AAA0C244E533 /* ReparoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF459C3DC0E47DAB4DD30B2F101552BC /* ReparoError.swift */; };
 		4AEF883A8EAE691CF66585E7E819E12E /* Quick-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 702D610886AA829A76EF79A25B88E1AC /* Quick-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AF6C26A30D865059C24DC5317786B76 /* BeNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2748FABD1661E3A75F8B07E115CF96 /* BeNil.swift */; };
-		4CBC45F5401B6A9E879D58DC33A8C7B1 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105B8E90F33284C72CAAFCB69A0A9966 /* Section.swift */; };
+		4B2C3DFC4E6F49AA5EFE591C526A4F00 /* CALayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE218FB89311A4AD13824B6F8DA104B /* CALayerBuilder.swift */; };
 		4CDC6B043B365C1AD777D1B551E7B6D3 /* ExampleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBACEB31F87FDB2A294186DEFA980590 /* ExampleGroup.swift */; };
 		4E5A721963877AA3A6AA3D80DAA4E5E9 /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDAA753452F6B96DE24D2CF7D396628 /* AssertionRecorder.swift */; };
 		4E7BA47A5CB41C046E38963B2D868E0E /* Pods-OculusReparo_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C330F1E2CFB8B48DC6C68479E27C5D /* Pods-OculusReparo_Example-dummy.m */; };
+		4E8B1C29849CCEB739E0B781F459F4E0 /* UILayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8246D50EEABEA2A98ED841A9B5438 /* UILayoutView.swift */; };
 		5104AE2989305145BF446E633B567924 /* EndWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5DB72110FF4FE8D16C90A617EFD92 /* EndWith.swift */; };
-		58ED51ED020534A0F510F478D4605695 /* BundleReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DFB74193EAC6E3FED26ED067E9C045 /* BundleReader.swift */; };
+		5352A8CF83D3EB2B3A096DCA8F4CDD38 /* UITextFieldBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF21B598BE0E795ADC83FCBC1795DE /* UITextFieldBuilder.swift */; };
+		5852B6C41BF0B46C4DFF8D5D08422785 /* UILabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4EC5E7DB6B5782104A5E09B22DF53 /* UILabelBuilder.swift */; };
 		58FEBDDBF5A77B1723CA573E01E9F1F3 /* QuickSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A1177F46842A02EE1A9A945434E453FF /* QuickSpec.m */; };
-		59B7FFC0F7732D4E930406E52D758939 /* OculusReparo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB2248FE8DB88649A6735B74B9B7AF7 /* OculusReparo-dummy.m */; };
 		59E6297524439F3D9E0A16858FC038DA /* World.h in Headers */ = {isa = PBXBuildFile; fileRef = B973D705E425F6A8CF2906380774F7EC /* World.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		5E6C53DF7AA0A3591BB30D4D3978A277 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C560E0FBA1C6505E35DA82B12C43E1 /* StateMachine.swift */; };
+		5C73AEC251F5FD45219501CA661B9C6D /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9063BD40FF547C61129A7BA633E2D /* Transform.swift */; };
 		5EF5C00C6AECE1FCFFF118577817F5CE /* Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D3661DD977D936FA0FEA7FDE08D852 /* Equal.swift */; };
 		5FCE3F99DA1C49EEF4F26381E8A91CFC /* NSString+QCKSelectorName.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83F0092F039C6F7AFC5D9D1E55E3BE /* NSString+QCKSelectorName.m */; };
-		60131ACA450C3D5640D09A52DA22F298 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE37C6EC3FFDA066EBE0601F6CA28C /* Line.swift */; };
 		63BBD83995BA60FA7D2E6AD4138C0D71 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354B5315AD30C24D1172D4F1524B068D /* Functional.swift */; };
 		64539BE196D1741570018FFF86F14133 /* MatcherFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971FBD63640E42D5B13E199D80A38E44 /* MatcherFunc.swift */; };
 		68527A7545342CBB4F923DC8543F7B20 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89F15C3F95B9AD5D5608775C0DF7BD /* DSL.m */; };
 		6C3AEF0E823B6208F34B3F064276D8C6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89BF7315BAB3516AF2A51041DC39C3B /* XCTest.framework */; };
-		6CB33E2C8CB32911DCF1C1304FE3270C /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C70EB9DD988CB5F235345515C17BF31 /* Convert.swift */; };
 		6ED0409031540D9B2AD7B061B608B0C9 /* DSL+Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752235C59671F25A86BF987E354AFE /* DSL+Wait.swift */; };
-		71A777CB04E61EBD4FBDA7C99ACD8576 /* UISliderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C860FAD755027E9A2101397C77D9E7F /* UISliderBuilder.swift */; };
 		7202A0B871C57B7857341D88C2883A3A /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020CA039BDF669709230645FC23F7C77 /* BeIdenticalTo.swift */; };
-		7325FA03D9C2C971A6CAC10C12E97121 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C593B077D10B1F726EEB3F82A49ED /* Position.swift */; };
 		7414F33B097F0D68B37E1769EEC7A36C /* Pods-OculusReparo_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A75A1DC8BB2B55416458DDFEE5624C6 /* Pods-OculusReparo_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		756823775874E982277FD64F39E42235 /* LayoutError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E2D04C29B22D1CA4F29422FD1C2947 /* LayoutError.swift */; };
-		7731D01C240A813A5D6219C377641CD2 /* UIViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF86245371D3DB7619410378515DD0 /* UIViewBuilder.swift */; };
 		7734BABBECE0071CF5D4430515B938BF /* BeCloseTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE93FA4667205AEE386C8648ABDC57E /* BeCloseTo.swift */; };
 		775646739B95E828ECE349F6A39534F4 /* NimbleEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E85327D01378E8AB714335E9E7CE7F /* NimbleEnvironment.swift */; };
-		7831A01E0A37B780D1760B5B6E43330A /* DirectiveTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E85635F4B4BAA40E00A8B2055ADEB9 /* DirectiveTransform.swift */; };
+		77A7A14EDF1E2E7ED27FEA047FBB14A8 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79ACB64D17A975BD3D4CEFAC385EE86 /* Layout.swift */; };
 		78550B03BE0C9DFBFC25EF67E14CFAAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC405455F8E20BD0434D9D3E3D2879A /* Foundation.framework */; };
+		789B30194DC318452D377FB6F5538B83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC405455F8E20BD0434D9D3E3D2879A /* Foundation.framework */; };
+		7C369377C01EFC89D98E37C9FFFC3488 /* DirectiveTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3674373150CB068B50C232791E210F30 /* DirectiveTransform.swift */; };
 		7CC86ABC7F4135EE12A755B023F134CE /* AssertionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3267C4CAF13D33F026B9104C33238 /* AssertionDispatcher.swift */; };
 		7D11DB6F237D34BA2237A2588F79DE70 /* World+DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FCFFDCC88E9151397B8D50F79E36E /* World+DSL.swift */; };
 		7DC9B169B5FCC3EE99F6D36EC530FE1E /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D924A98F0691CB7100035FC7C2958D3 /* Async.swift */; };
 		7EBD6B630F4536CB673DC0B455CCB16D /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6988794BE3149D9E7253F7D057A0A92 /* BeGreaterThan.swift */; };
 		7F40FC3F4DE4EA4702F41F01A12A7353 /* BeLessThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9EA115D167F4132613835B0AA5585 /* BeLessThan.swift */; };
-		7F9B43774B860974A2438F35A4CD923F /* UITableViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8576E7D6245220882CAFCFCE5DB12 /* UITableViewBuilder.swift */; };
 		800A161E9B82DEEDA41B7F1A746B24C4 /* ObjCMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75D143FA2C1D4F42F8F03369239006 /* ObjCMatcher.swift */; };
 		8040A37FF5BBDF1964CAB8C0068ED315 /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC325F77555916EE55065F37EA4C575 /* BeGreaterThanOrEqualTo.swift */; };
-		8197597BBDEEDEED5EF3FABEC6EAADF4 /* UICollectionViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A86200DB20FF71B7563A71A4EC88F1 /* UICollectionViewBuilder.swift */; };
+		806DAE481869D56A9D3B869AF030715C /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B48A0A961E794A3945CAC5E3A6AD37 /* Convert.swift */; };
 		81E6453ECE511335537301CD3B1C1B82 /* ExceptionCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50105FCC804A51F7EDCB8C8F84AF9A /* ExceptionCapture.swift */; };
-		83A0AE1D1D634D3B009A01D7 /* AnchorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0AE1C1D634D3B009A01D7 /* AnchorType.swift */; };
 		86FB708FCFE6121A82BB09E5ADD84554 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = A2ADFE64923497AA07A24FC59913A587 /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		873553006D5885F013C08E08D66C01DA /* UIButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C63E839C5AE53669457D70C8C7E97DD /* UIButtonBuilder.swift */; };
 		8C050F3A78B281514053EEE0A3A97EFE /* SuiteHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D772AF03D0B82E63647D129AEA9CCF1B /* SuiteHooks.swift */; };
 		8C0F8293253124E3CBEC6B92A75C1AF5 /* NSString+QCKSelectorName.h in Headers */ = {isa = PBXBuildFile; fileRef = 91EB10846A1D5A8B9A3BA28C5457DF56 /* NSString+QCKSelectorName.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		91ED5B067FCA3CBD48E3114672941051 /* MatcherProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1FD51C6442C713FB319C1C9A49AB19 /* MatcherProtocols.swift */; };
-		9267D47A7E934072D5F587EB433573CD /* IncludeExpansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B920B1399072AF777626DA567FAA005 /* IncludeExpansion.swift */; };
 		9383C6403DC67B2B740F87DDA9634E4C /* ExampleHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3FFEFA87108503C1154659236D755 /* ExampleHooks.swift */; };
 		96319445B0431155A43E41301A44D0FA /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875A7681674D572B7002D69BBCD1BA09 /* Example.swift */; };
 		96ED0CCA721955637A88FE0C9737EC56 /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85564484FA6ABBE76C0B73863EFFFCDE /* SourceLocation.swift */; };
-		977E80424A64C2E4205B58C8167F5A2F /* LayoutLayerFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7433B78C0273CB39EC326C52FF67D51 /* LayoutLayerFragment.swift */; };
 		9781F8CB4629937C5E7643DEBF3A8371 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414114D9FD8600FA208D6152470C2DF0 /* DSL.swift */; };
+		993FDA12085CC02C8280032DA61E71A4 /* ReduceTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF818A96C8F5BF14AEBB732310C6D8D /* ReduceTransform.swift */; };
 		9A0D713B4B113AA21C1647092D646A32 /* Pods-OculusReparo_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F35E56FCD05618D7E5E2DE1AEAFA327 /* Pods-OculusReparo_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B5DE58927557CE87968C051D2A1C47E /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29528E2ADACEB31F5B2380DA50612C1 /* BeLogical.swift */; };
+		9CAAF8B098CEBC75831FC079B1B52A67 /* LayoutViewFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3768712790A4B1CDE372BFF6A5C8C142 /* LayoutViewFragment.swift */; };
+		9DE283C4023395C4527F8CFF01B896B0 /* DefineVariableTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA726622A31F532AFA131C85CE6774 /* DefineVariableTransform.swift */; };
 		9F08F74CB8740CF0EFF26746EEB0C930 /* CurrentTestCaseTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9759ABA2939945FD31FB478AE32D9E15 /* CurrentTestCaseTracker.m */; };
-		9F440A6CCA40F44E478CCEF97945B87D /* OculusReparo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 693030146ADAF9753A768EF1981CFBCA /* OculusReparo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A1DB92B3CC5253FBBA7A56868B36E687 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E06011CB0F89265942CA8B400B3EFBA /* ViewBuilder.swift */; };
 		A22F265E7673EB0688863B7A4E547172 /* XCTestSuite+QuickTestSuiteBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DDC9824ED21BCC218F3C3E3E907AED /* XCTestSuite+QuickTestSuiteBuilder.m */; };
 		A2CABD326609AD67377700A148785E09 /* BeAnInstanceOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34071C41916A37E669FEEBA855F42C2 /* BeAnInstanceOf.swift */; };
 		A374A2729E32469085C5025EC7115EB8 /* Stringers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF762208E123E2F61AEE13E62DCA565 /* Stringers.swift */; };
+		A37B5B0058FB4F5D36CBFDE1F6C2E9B1 /* UIViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1ABEB056600C419AC8D58D0B0B265D /* UIViewBuilder.swift */; };
 		A55EC200F57C00E9A78D8A9DA4545338 /* HaveCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1A6A09F31564DDB5769E5567558BD /* HaveCount.swift */; };
 		A6311C33E6E07282BAFA65AE61DD569F /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CFDED63B2CD5BC846E14E3354AC73 /* Closures.swift */; };
-		A7D5771153C9CCE739A604F89F5D4079 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07B4A68BF88D022606654589756C4C5 /* Document.swift */; };
-		AB1C7BCA40E2669854C2A7D2A19B4A83 /* UIImageReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0A83A983A33A9D4603078B7D255735 /* UIImageReader.swift */; };
+		AD6837AFC36D2DA58A444FCCADFC805E /* FunctionExpansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DC5658E6A38B7880498DC288F9CF32 /* FunctionExpansion.swift */; };
 		AD8E8C55A4AC1F1D9DD3A38163ADB102 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC405455F8E20BD0434D9D3E3D2879A /* Foundation.framework */; };
-		ADD4EBE0156339BF8667A6D8F7892AFD /* Directive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D8E4AF4778C6FD6CDB16089B5280CC /* Directive.swift */; };
 		B2FF8801086C94EA459B6C3922D31BF6 /* QuickSpec.h in Headers */ = {isa = PBXBuildFile; fileRef = 3973F89F7C13EAD4855CFC68BCC8511E /* QuickSpec.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B39A89197437F1D58269B0071A867E7E /* UITableViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6F45921DFC6B9F13BB349A31A2BF26 /* UITableViewBuilder.swift */; };
 		B43EDBC7DA15A429006C67B63D45ACFD /* ThrowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E904D9C3B8ED32F61307B82AF1DE02 /* ThrowError.swift */; };
+		B7172B85B1BC2C030955F75B9793A69D /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F092FECE39DD4C0F35B57B47988A7B /* Position.swift */; };
 		B9D2E426B5CA226D60A78A71FA289D4C /* AsyncMatcherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9341EE27FCA41AD8B88193EC0C839859 /* AsyncMatcherWrapper.swift */; };
-		BA893E25E786B204474C516DFAF1FC4C /* LayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9701ADE91949FF6E65CB0561D25C41 /* LayerBuilder.swift */; };
+		BAF6772BE703758A78318CD80E03CBF2 /* UIButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F7623358A56D15C47113D066A9500D /* UIButtonBuilder.swift */; };
+		BB4A87D555E9CAF44FC244D18AE4A4A3 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678E03399BD28140FD88F8E728B305DF /* StateMachine.swift */; };
+		BC50D0E5D1F65A5D6AB6C11478A3FC5F /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802E1DD1C5A42B8EE4DCC75D3248C95 /* Section.swift */; };
 		C12E0930E021F1894B60BC6AFA8F2409 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ADCB0AE00199FEACED77BDE119552F /* AdapterProtocols.swift */; };
-		C1FEB3C47324D739435210AD41D9F18F /* ReparoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02933FF4378A2831FE7F7F0CACA9EADC /* ReparoError.swift */; };
 		C2776128990CAECD9CCA5707AF96639F /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED85DFD58F13E73CC6080D18D5C1E10 /* Quick-dummy.m */; };
-		C7107969F536803938434D76421EF882 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D1234777EE0C6D13BFF33B13BED792 /* Extensions.swift */; };
 		C81FFEEC76399EF3C7C1EE349C810E76 /* NimbleXCTestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DE7320F652DCF39EB6A1476F0C761B /* NimbleXCTestHandler.swift */; };
+		C9E3B093621934A7261F9E3384D08CB0 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = A385D5A8956E2D732EDF65D76DFD5B63 /* Document.swift */; };
 		CD0A671D2A8DD31D50449BB358C56134 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41006CFFEC28B4197817C14B5D087239 /* Expression.swift */; };
+		CE6378A63DFD08B08408EE1CF9B86D82 /* DefineFunctionTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD36E3661336BD46D0D4E3E23E48E71A /* DefineFunctionTransform.swift */; };
+		D0C885C2D1F6E9563DFB3679C85D111B /* OculusReparo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB2248FE8DB88649A6735B74B9B7AF7 /* OculusReparo-dummy.m */; };
 		D41F628A81153A978EB209E4FE925700 /* Nimble.h in Headers */ = {isa = PBXBuildFile; fileRef = BE582507271FE02BA93C412C422D4ED8 /* Nimble.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D5DFE7E1A770E682DB33E2287168F346 /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986D690C919C6E7682CC806F507F6C8E /* Scope.swift */; };
-		DBD6B6061AC410BAF65B446EED6F32E6 /* ReduceTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29B7802921C42585E0F9FD1A17A3FF /* ReduceTransform.swift */; };
-		DBE9AD6DDE0A7974575F296D57677BCA /* UIScrollViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEAC4B1ABA5E4066147377A0E226216 /* UIScrollViewBuilder.swift */; };
+		D5B12A7D997F73B5B516ED9FDE5EB279 /* LayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94361E5861B3F84C131DE0DE45C4C05 /* LayerBuilder.swift */; };
+		D90DC59A4BD2051DFBA36BB639DFC2A3 /* LayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0283B17B2C7FDC5F9B399CD44ACAACC /* LayoutViewController.swift */; };
+		D9531B5D0272121755FFD8A858D97DC6 /* IncludeExpansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA490C98606BCD3AB022BE25AF69977 /* IncludeExpansion.swift */; };
+		DA8B065C5FBEFC24ED4509695D5C50D1 /* UIImageReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1933F35D089E20B4D0B11F058CBEB4 /* UIImageReader.swift */; };
 		DCA54337E8687685A293CC24A97F936C /* Contain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65AB889028901EAF2823A40F21B4F5B /* Contain.swift */; };
+		DEAC93381099070994911CC5107F1F76 /* Expansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6EE386B9B63C438B1E5FA10281796 /* Expansion.swift */; };
 		DF0216DBDE0084F6C87FE9275A4E9F0D /* Nimble-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFF847D8C75EDD1CE2BA21A60D08E00 /* Nimble-dummy.m */; };
-		E0D49E6626F05E1A1D2A0530D86B8B73 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7BDEA8B39583A8F7FB1D2D7621DC0A /* Transform.swift */; };
-		E4FD4932A9AAEE6EF68F5599B5DB8273 /* Expansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D47B42A18CAA6072A088977DFF443D /* Expansion.swift */; };
 		E642EF9ABD33F7C6BABD79754152DC76 /* String+FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBE690E9186E686698A8A8A71C5355 /* String+FileName.swift */; };
 		E6F6FF9554A6C7EABD6B92B691751DAD /* BeLessThanOrEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CA5402AFA68BE2A5F70E09014318D /* BeLessThanOrEqual.swift */; };
-		E87227AA4F2A1A3DA60E297436ECE827 /* LayoutDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0027C941C3E59FC46986129E0B3D78 /* LayoutDebugger.swift */; };
+		E7823FEE686491DC4688F9664B70154B /* OculusReparo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 693030146ADAF9753A768EF1981CFBCA /* OculusReparo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E909D0D33037F3C642BBB8D47FC642B3 /* Nimble-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EA1C305082DBF75710A818FFBD2714D2 /* Nimble-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E9A500611CF699885DE8A6BAB4E6B392 /* BeEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111139F990D8CA088F1437E67693E8D /* BeEmpty.swift */; };
-		ED77361AC82184A6615550FE37CEDA61 /* ReplaceVariableTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B996A64688E7336D7CA9631294F0D69 /* ReplaceVariableTransform.swift */; };
-		EFF3FC6F0E35BC104E7C57D5F2B0DBEB /* LayoutFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A15C42CC99608BBBCDEDB5767FA04B /* LayoutFragment.swift */; };
-		F1BBD0AC1713DDF4FD075323762859B4 /* LayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD40037A631557C86C2B550EFF7AD69 /* LayoutViewController.swift */; };
+		F1F465196DC068CC85BD8E681F9DBA6A /* Directive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EABEE563602F598FA75D96039FD2967 /* Directive.swift */; };
+		F3509CA06AAC785A17DBA7E245314B5A /* AnchorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870982A81D12D99024FD7A01A1E00053 /* AnchorType.swift */; };
+		F3E4B2C3303DEE7B31A1BB1211E09C7C /* UICollectionViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8B68EFF530B580647382D61D0BB54 /* UICollectionViewBuilder.swift */; };
 		F85A9207A8601CE7F835CEC56790616F /* Expectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465DCF8ECE9AE4DD3DECD5656849CE /* Expectation.swift */; };
-		F9309D81030FCCA4B18D227172C3AE4B /* FunctionExpansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730C8A420368F3098764D8390E16BA22 /* FunctionExpansion.swift */; };
 		FB09A16A6662F2689D4AA89538DBF1C1 /* BeAKindOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B6394838D23DE3BD6C1113A355553 /* BeAKindOf.swift */; };
 /* End PBXBuildFile section */
 
@@ -167,37 +168,34 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F275B71EED2A93235CCC4FEE8E51E293;
+			remoteGlobalIDString = 10BE0B0DB5A4D2B76275B4A2CBD95C76;
 			remoteInfo = OculusReparo;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00C33D4E4AADC9CDD3B71B66BB569421 /* Hardware.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
+		00FF21B598BE0E795ADC83FCBC1795DE /* UITextFieldBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITextFieldBuilder.swift; sourceTree = "<group>"; };
 		01E904D9C3B8ED32F61307B82AF1DE02 /* ThrowError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowError.swift; path = Sources/Nimble/Matchers/ThrowError.swift; sourceTree = "<group>"; };
 		020CA039BDF669709230645FC23F7C77 /* BeIdenticalTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeIdenticalTo.swift; path = Sources/Nimble/Matchers/BeIdenticalTo.swift; sourceTree = "<group>"; };
-		02933FF4378A2831FE7F7F0CACA9EADC /* ReparoError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReparoError.swift; sourceTree = "<group>"; };
-		02E85635F4B4BAA40E00A8B2055ADEB9 /* DirectiveTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DirectiveTransform.swift; sourceTree = "<group>"; };
 		03925EC2DD9F80DCD0C2E5301B52DC9C /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
 		03AD566EC508F35AEBD09410C38B0113 /* AllPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AllPass.swift; path = Sources/Nimble/Matchers/AllPass.swift; sourceTree = "<group>"; };
-		04DF86245371D3DB7619410378515DD0 /* UIViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIViewBuilder.swift; sourceTree = "<group>"; };
+		06D9063BD40FF547C61129A7BA633E2D /* Transform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		09A8E1ED592D4943C0EBE61E585F0161 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0C860FAD755027E9A2101397C77D9E7F /* UISliderBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UISliderBuilder.swift; sourceTree = "<group>"; };
 		0CFF847D8C75EDD1CE2BA21A60D08E00 /* Nimble-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nimble-dummy.m"; sourceTree = "<group>"; };
+		0D1933F35D089E20B4D0B11F058CBEB4 /* UIImageReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIImageReader.swift; sourceTree = "<group>"; };
 		0D41325567E6C7D82167D5BC7D63C26F /* Pods-OculusReparo_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-OculusReparo_Tests.modulemap"; sourceTree = "<group>"; };
 		0F2748FABD1661E3A75F8B07E115CF96 /* BeNil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeNil.swift; path = Sources/Nimble/Matchers/BeNil.swift; sourceTree = "<group>"; };
-		0F780B7F51C75D7F9AF2148BE0EC689E /* UILabelBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UILabelBuilder.swift; sourceTree = "<group>"; };
-		105B8E90F33284C72CAAFCB69A0A9966 /* Section.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		10D913EF90D750F7CEAB0D30A84679B3 /* ReplaceVariableTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceVariableTransform.swift; sourceTree = "<group>"; };
 		10E309170683B7FC6EAEB257A6399C31 /* Pods-OculusReparo_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OculusReparo_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		129FDE14146199A668FDD9724A8B36B3 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12FD8C45CF9591F32C21657E578112C9 /* Quick-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-prefix.pch"; sourceTree = "<group>"; };
-		134C593B077D10B1F726EEB3F82A49ED /* Position.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
-		13D47B42A18CAA6072A088977DFF443D /* Expansion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Expansion.swift; sourceTree = "<group>"; };
+		13E6EE386B9B63C438B1E5FA10281796 /* Expansion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Expansion.swift; sourceTree = "<group>"; };
 		14E1DC94DD47A6F91084F3EAA92AF552 /* Quick.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Quick.modulemap; sourceTree = "<group>"; };
-		177DEE94DCFDA231DF1D4C0CDD5B3649 /* Hardware.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
+		15E8246D50EEABEA2A98ED841A9B5438 /* UILayoutView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UILayoutView.swift; sourceTree = "<group>"; };
 		18D110A87EF135293B27C04BD720A8E8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		19A15C42CC99608BBBCDEDB5767FA04B /* LayoutFragment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutFragment.swift; sourceTree = "<group>"; };
+		1A1ABEB056600C419AC8D58D0B0B265D /* UIViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIViewBuilder.swift; sourceTree = "<group>"; };
 		1C369DE47B8FBDDF56994EF084D14F12 /* HooksPhase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HooksPhase.swift; path = Sources/Quick/Hooks/HooksPhase.swift; sourceTree = "<group>"; };
-		1D0027C941C3E59FC46986129E0B3D78 /* LayoutDebugger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutDebugger.swift; sourceTree = "<group>"; };
 		1F35E56FCD05618D7E5E2DE1AEAFA327 /* Pods-OculusReparo_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OculusReparo_Tests-umbrella.h"; sourceTree = "<group>"; };
 		203A5C5D36EAB5C74A7CA2C7F3E57854 /* BeginWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeginWith.swift; path = Sources/Nimble/Matchers/BeginWith.swift; sourceTree = "<group>"; };
 		21E2CFD367D621869D901C5A8FB84750 /* Pods-OculusReparo_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OculusReparo_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -209,133 +207,137 @@
 		2AEDCA8E96FF6E3C7A604705D4D34B06 /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
 		2D4DEBAA391B6F9E5C9294F4DE25CA96 /* QuickConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickConfiguration.h; path = Sources/Quick/Configuration/QuickConfiguration.h; sourceTree = "<group>"; };
 		30B16739831A57E59BFE39E8BF50128C /* NSBundle+CurrentTestBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSBundle+CurrentTestBundle.swift"; path = "Sources/Quick/NSBundle+CurrentTestBundle.swift"; sourceTree = "<group>"; };
-		30D71249C7265ED531BDE5E9DF3C9960 /* ReparoReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReparoReader.swift; sourceTree = "<group>"; };
 		313AB39D5913E6E923B1EAF51E3711E7 /* Pods-OculusReparo_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OculusReparo_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		315AE5733A275CEDA9474CBB163377CC /* Pods-OculusReparo_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-OculusReparo_Example.modulemap"; sourceTree = "<group>"; };
 		333B752C14354B43DB4EFD14903AAD7D /* OculusReparo-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OculusReparo-prefix.pch"; sourceTree = "<group>"; };
-		33A8576E7D6245220882CAFCFCE5DB12 /* UITableViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITableViewBuilder.swift; sourceTree = "<group>"; };
 		354B5315AD30C24D1172D4F1524B068D /* Functional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functional.swift; path = Sources/Nimble/Utils/Functional.swift; sourceTree = "<group>"; };
 		3605D5494D0412B0231368E997D5994A /* Pods_OculusReparo_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OculusReparo_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3674373150CB068B50C232791E210F30 /* DirectiveTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DirectiveTransform.swift; sourceTree = "<group>"; };
+		3768712790A4B1CDE372BFF6A5C8C142 /* LayoutViewFragment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutViewFragment.swift; sourceTree = "<group>"; };
 		3967E353C11023B5BFA469EDF600CA68 /* Nimble.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Nimble.modulemap; sourceTree = "<group>"; };
 		3973F89F7C13EAD4855CFC68BCC8511E /* QuickSpec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickSpec.h; path = Sources/Quick/QuickSpec.h; sourceTree = "<group>"; };
 		3A75A1DC8BB2B55416458DDFEE5624C6 /* Pods-OculusReparo_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OculusReparo_Example-umbrella.h"; sourceTree = "<group>"; };
-		3C63E839C5AE53669457D70C8C7E97DD /* UIButtonBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIButtonBuilder.swift; sourceTree = "<group>"; };
-		3C70EB9DD988CB5F235345515C17BF31 /* Convert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
+		3DA26605BB480E558C3D60CF68F08B00 /* UISliderBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UISliderBuilder.swift; sourceTree = "<group>"; };
 		3DF1A6A09F31564DDB5769E5567558BD /* HaveCount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HaveCount.swift; path = Sources/Nimble/Matchers/HaveCount.swift; sourceTree = "<group>"; };
 		3F8F619D92D71FED493B6ABC720242E0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F9CA5402AFA68BE2A5F70E09014318D /* BeLessThanOrEqual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThanOrEqual.swift; path = Sources/Nimble/Matchers/BeLessThanOrEqual.swift; sourceTree = "<group>"; };
+		3FE218FB89311A4AD13824B6F8DA104B /* CALayerBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CALayerBuilder.swift; sourceTree = "<group>"; };
 		41006CFFEC28B4197817C14B5D087239 /* Expression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Sources/Nimble/Expression.swift; sourceTree = "<group>"; };
 		414114D9FD8600FA208D6152470C2DF0 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Quick/DSL/DSL.swift; sourceTree = "<group>"; };
 		45D3661DD977D936FA0FEA7FDE08D852 /* Equal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Equal.swift; path = Sources/Nimble/Matchers/Equal.swift; sourceTree = "<group>"; };
-		4B29B7802921C42585E0F9FD1A17A3FF /* ReduceTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReduceTransform.swift; sourceTree = "<group>"; };
 		4CB2248FE8DB88649A6735B74B9B7AF7 /* OculusReparo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OculusReparo-dummy.m"; sourceTree = "<group>"; };
 		4EBC862576E582DF711B25DC28CFCDBE /* QuickTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestSuite.swift; path = Sources/Quick/QuickTestSuite.swift; sourceTree = "<group>"; };
-		4F7BDEA8B39583A8F7FB1D2D7621DC0A /* Transform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		51465DCF8ECE9AE4DD3DECD5656849CE /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
-		52BE37C6EC3FFDA066EBE0601F6CA28C /* Line.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		55D1234777EE0C6D13BFF33B13BED792 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		56A5EA0B2A8B55E7D8706D6426182DC8 /* CALayerBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CALayerBuilder.swift; sourceTree = "<group>"; };
 		59A28EE6936D80C76C31C4B6CDB93584 /* OculusReparo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OculusReparo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B920B1399072AF777626DA567FAA005 /* IncludeExpansion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IncludeExpansion.swift; sourceTree = "<group>"; };
+		5BC4F17411AF72FCE6ACA58C45D9B100 /* UIImageViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIImageViewBuilder.swift; sourceTree = "<group>"; };
 		5C8C873CB5F43A0FA130C9B9FF74B6B0 /* SatisfyAnyOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAnyOf.swift; path = Sources/Nimble/Matchers/SatisfyAnyOf.swift; sourceTree = "<group>"; };
 		5CE93FA4667205AEE386C8648ABDC57E /* BeCloseTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeCloseTo.swift; path = Sources/Nimble/Matchers/BeCloseTo.swift; sourceTree = "<group>"; };
-		61E2D04C29B22D1CA4F29422FD1C2947 /* LayoutError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutError.swift; sourceTree = "<group>"; };
 		627E4E84747227302312F1E22D114789 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Nimble/DSL.swift; sourceTree = "<group>"; };
 		62ADCB0AE00199FEACED77BDE119552F /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
+		62C7685952F67124D80BACEA531B07C4 /* BundleReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BundleReader.swift; sourceTree = "<group>"; };
 		62C9EA115D167F4132613835B0AA5585 /* BeLessThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThan.swift; path = Sources/Nimble/Matchers/BeLessThan.swift; sourceTree = "<group>"; };
-		62DFB74193EAC6E3FED26ED067E9C045 /* BundleReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BundleReader.swift; sourceTree = "<group>"; };
 		66A3FFEFA87108503C1154659236D755 /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
 		66CBE690E9186E686698A8A8A71C5355 /* String+FileName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+FileName.swift"; path = "Sources/Quick/String+FileName.swift"; sourceTree = "<group>"; };
-		67D8E4AF4778C6FD6CDB16089B5280CC /* Directive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Directive.swift; sourceTree = "<group>"; };
+		678E03399BD28140FD88F8E728B305DF /* StateMachine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		67F092FECE39DD4C0F35B57B47988A7B /* Position.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		693030146ADAF9753A768EF1981CFBCA /* OculusReparo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OculusReparo-umbrella.h"; sourceTree = "<group>"; };
 		69E738963C2EB4542069F1E6586836C9 /* QCKDSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QCKDSL.m; path = Sources/Quick/DSL/QCKDSL.m; sourceTree = "<group>"; };
 		6A5B6394838D23DE3BD6C1113A355553 /* BeAKindOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAKindOf.swift; path = Sources/Nimble/Matchers/BeAKindOf.swift; sourceTree = "<group>"; };
 		6B72B68D5EB6A41B872931E894807A27 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B7C56F7FF6CC9866E94DE4FF2344868 /* Pods_OculusReparo_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OculusReparo_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B9701ADE91949FF6E65CB0561D25C41 /* LayerBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayerBuilder.swift; sourceTree = "<group>"; };
+		6BFD423BF35321818930BEE263BD5195 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6CF762208E123E2F61AEE13E62DCA565 /* Stringers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stringers.swift; path = Sources/Nimble/Utils/Stringers.swift; sourceTree = "<group>"; };
-		6D403CB5A1B6F8217501516FDDA0903F /* UITextFieldBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITextFieldBuilder.swift; sourceTree = "<group>"; };
+		6E06011CB0F89265942CA8B400B3EFBA /* ViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
 		6E41FA87EDBD1C96BC0118C75B945871 /* Pods-OculusReparo_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OculusReparo_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		6F0A83A983A33A9D4603078B7D255735 /* UIImageReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIImageReader.swift; sourceTree = "<group>"; };
 		7005B0ADF96C275382B45359AE1A0FDC /* QCKDSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QCKDSL.h; path = Sources/Quick/DSL/QCKDSL.h; sourceTree = "<group>"; };
 		702D610886AA829A76EF79A25B88E1AC /* Quick-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-umbrella.h"; sourceTree = "<group>"; };
-		730C8A420368F3098764D8390E16BA22 /* FunctionExpansion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FunctionExpansion.swift; sourceTree = "<group>"; };
+		70DD8765D44BF640A7BFFE12D8B0C397 /* LayoutLayerFragment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutLayerFragment.swift; sourceTree = "<group>"; };
+		72B4EC5E7DB6B5782104A5E09B22DF53 /* UILabelBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UILabelBuilder.swift; sourceTree = "<group>"; };
 		75752235C59671F25A86BF987E354AFE /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
+		7802E1DD1C5A42B8EE4DCC75D3248C95 /* Section.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		7CA490C98606BCD3AB022BE25AF69977 /* IncludeExpansion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IncludeExpansion.swift; sourceTree = "<group>"; };
+		7CA92B939CB185B856DC28E21B367D70 /* LayoutFragment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutFragment.swift; sourceTree = "<group>"; };
 		7EB79662DFF8CAC9A93BB403631D5490 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/Quick/Quick.h; sourceTree = "<group>"; };
 		7FECB7BA22714038546A0E8DD513114B /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Quick/Configuration/Configuration.swift; sourceTree = "<group>"; };
-		83A0AE1C1D634D3B009A01D7 /* AnchorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorType.swift; sourceTree = "<group>"; };
-		8431B20AB9115CC7DE72ACAA0A682DAD /* UIImageViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIImageViewBuilder.swift; sourceTree = "<group>"; };
+		807921A7DFE3803196F391A1F0E438E2 /* LayoutDebugger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutDebugger.swift; sourceTree = "<group>"; };
 		85564484FA6ABBE76C0B73863EFFFCDE /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
 		85DB1EA0AF858FB106A80D8E62810AFE /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85FA726622A31F532AFA131C85CE6774 /* DefineVariableTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefineVariableTransform.swift; sourceTree = "<group>"; };
+		870982A81D12D99024FD7A01A1E00053 /* AnchorType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnchorType.swift; sourceTree = "<group>"; };
 		875A7681674D572B7002D69BBCD1BA09 /* Example.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Sources/Quick/Example.swift; sourceTree = "<group>"; };
 		87753BB512044B604C66CAA35E311188 /* Pods-OculusReparo_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OculusReparo_Tests-dummy.m"; sourceTree = "<group>"; };
 		89C330F1E2CFB8B48DC6C68479E27C5D /* Pods-OculusReparo_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OculusReparo_Example-dummy.m"; sourceTree = "<group>"; };
+		89DC5658E6A38B7880498DC288F9CF32 /* FunctionExpansion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FunctionExpansion.swift; sourceTree = "<group>"; };
 		8A562213D0385708961C195D0CF8C45E /* FailureMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FailureMessage.swift; path = Sources/Nimble/FailureMessage.swift; sourceTree = "<group>"; };
 		8A83F0092F039C6F7AFC5D9D1E55E3BE /* NSString+QCKSelectorName.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+QCKSelectorName.m"; path = "Sources/Quick/NSString+QCKSelectorName.m"; sourceTree = "<group>"; };
-		8AEAC4B1ABA5E4066147377A0E226216 /* UIScrollViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIScrollViewBuilder.swift; sourceTree = "<group>"; };
 		8D924A98F0691CB7100035FC7C2958D3 /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Sources/Nimble/Utils/Async.swift; sourceTree = "<group>"; };
+		8EABEE563602F598FA75D96039FD2967 /* Directive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Directive.swift; sourceTree = "<group>"; };
 		8ED85DFD58F13E73CC6080D18D5C1E10 /* Quick-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Quick-dummy.m"; sourceTree = "<group>"; };
 		8EE5DB72110FF4FE8D16C90A617EFD92 /* EndWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EndWith.swift; path = Sources/Nimble/Matchers/EndWith.swift; sourceTree = "<group>"; };
 		8F50105FCC804A51F7EDCB8C8F84AF9A /* ExceptionCapture.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExceptionCapture.swift; path = Sources/Nimble/Utils/ExceptionCapture.swift; sourceTree = "<group>"; };
 		9111139F990D8CA088F1437E67693E8D /* BeEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeEmpty.swift; path = Sources/Nimble/Matchers/BeEmpty.swift; sourceTree = "<group>"; };
+		91B48A0A961E794A3945CAC5E3A6AD37 /* Convert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
 		91B7C1953D52C630B7CEA85DC7D30371 /* ErrorUtility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorUtility.swift; path = Sources/Quick/ErrorUtility.swift; sourceTree = "<group>"; };
 		91EB10846A1D5A8B9A3BA28C5457DF56 /* NSString+QCKSelectorName.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+QCKSelectorName.h"; path = "Sources/Quick/NSString+QCKSelectorName.h"; sourceTree = "<group>"; };
 		9341EE27FCA41AD8B88193EC0C839859 /* AsyncMatcherWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncMatcherWrapper.swift; path = Sources/Nimble/Wrappers/AsyncMatcherWrapper.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		953F7391995E027028CC8DF36A716C9A /* LayoutViewFragment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutViewFragment.swift; sourceTree = "<group>"; };
 		971FBD63640E42D5B13E199D80A38E44 /* MatcherFunc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherFunc.swift; path = Sources/Nimble/Wrappers/MatcherFunc.swift; sourceTree = "<group>"; };
 		9759ABA2939945FD31FB478AE32D9E15 /* CurrentTestCaseTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CurrentTestCaseTracker.m; path = Sources/Nimble/objc/CurrentTestCaseTracker.m; sourceTree = "<group>"; };
-		986D690C919C6E7682CC806F507F6C8E /* Scope.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Scope.swift; sourceTree = "<group>"; };
-		99A86200DB20FF71B7563A71A4EC88F1 /* UICollectionViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UICollectionViewBuilder.swift; sourceTree = "<group>"; };
-		9B996A64688E7336D7CA9631294F0D69 /* ReplaceVariableTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceVariableTransform.swift; sourceTree = "<group>"; };
-		9D1A62338C9CB5FE9EF9ECAFD8DC40E9 /* ViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
 		9DC1174FD42CD6684C5DE79AC08B57C5 /* DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DSL.h; path = Sources/Nimble/objc/DSL.h; sourceTree = "<group>"; };
-		9E1A5CB5865D9CA04DA2B742593BDE85 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		A0C560E0FBA1C6505E35DA82B12C43E1 /* StateMachine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		A1177F46842A02EE1A9A945434E453FF /* QuickSpec.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpec.m; path = Sources/Quick/QuickSpec.m; sourceTree = "<group>"; };
 		A129290F935182407C183EB04C0C2C90 /* ObjCExpectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjCExpectation.swift; path = Sources/Nimble/ObjCExpectation.swift; sourceTree = "<group>"; };
 		A2ADFE64923497AA07A24FC59913A587 /* NMBExceptionCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBExceptionCapture.h; path = Sources/Nimble/objc/NMBExceptionCapture.h; sourceTree = "<group>"; };
+		A385D5A8956E2D732EDF65D76DFD5B63 /* Document.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		A4AE9C10DA93BFE440F17876611232E1 /* Match.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Sources/Nimble/Matchers/Match.swift; sourceTree = "<group>"; };
 		A4D34ECCB9113A10197320CD540DDA73 /* ExampleMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleMetadata.swift; path = Sources/Quick/ExampleMetadata.swift; sourceTree = "<group>"; };
 		A7345F113216AE508FD1BC321C4B434F /* Pods-OculusReparo_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OculusReparo_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A7585DD69C9C987D10B99A2B854EB8DC /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		A79ACB64D17A975BD3D4CEFAC385EE86 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		A7E85327D01378E8AB714335E9E7CE7F /* NimbleEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleEnvironment.swift; path = Sources/Nimble/Adapters/NimbleEnvironment.swift; sourceTree = "<group>"; };
+		A9619980F72A57994E7FC04C742BF883 /* ReparoReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReparoReader.swift; sourceTree = "<group>"; };
 		AAC325F77555916EE55065F37EA4C575 /* BeGreaterThanOrEqualTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThanOrEqualTo.swift; path = Sources/Nimble/Matchers/BeGreaterThanOrEqualTo.swift; sourceTree = "<group>"; };
 		AAC405455F8E20BD0434D9D3E3D2879A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		AD36E3661336BD46D0D4E3E23E48E71A /* DefineFunctionTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefineFunctionTransform.swift; sourceTree = "<group>"; };
+		AE6F45921DFC6B9F13BB349A31A2BF26 /* UITableViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITableViewBuilder.swift; sourceTree = "<group>"; };
 		AE8CFDED63B2CD5BC846E14E3354AC73 /* Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Closures.swift; path = Sources/Quick/Hooks/Closures.swift; sourceTree = "<group>"; };
-		B07B4A68BF88D022606654589756C4C5 /* Document.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		AF459C3DC0E47DAB4DD30B2F101552BC /* ReparoError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReparoError.swift; sourceTree = "<group>"; };
+		B1F7623358A56D15C47113D066A9500D /* UIButtonBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIButtonBuilder.swift; sourceTree = "<group>"; };
 		B33A68A2CE37D85EB9307E95ED9C869C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34E89998E6D365DCADE6FC97C0433A9 /* Pods-OculusReparo_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OculusReparo_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B616820360728BB1DA8EA21E8509827F /* Scope.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Scope.swift; sourceTree = "<group>"; };
 		B65AB889028901EAF2823A40F21B4F5B /* Contain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Contain.swift; path = Sources/Nimble/Matchers/Contain.swift; sourceTree = "<group>"; };
 		B6988794BE3149D9E7253F7D057A0A92 /* BeGreaterThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThan.swift; path = Sources/Nimble/Matchers/BeGreaterThan.swift; sourceTree = "<group>"; };
-		B7433B78C0273CB39EC326C52FF67D51 /* LayoutLayerFragment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutLayerFragment.swift; sourceTree = "<group>"; };
 		B89BF7315BAB3516AF2A51041DC39C3B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B973D705E425F6A8CF2906380774F7EC /* World.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = World.h; path = Sources/Quick/World.h; sourceTree = "<group>"; };
+		BB3FD6D5869A523AC71F62BE25D215D9 /* UIScrollViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIScrollViewBuilder.swift; sourceTree = "<group>"; };
 		BBACEB31F87FDB2A294186DEFA980590 /* ExampleGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleGroup.swift; path = Sources/Quick/ExampleGroup.swift; sourceTree = "<group>"; };
-		BCF168354A5B08EE4ADB9E83591A1339 /* DefineFunctionTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefineFunctionTransform.swift; sourceTree = "<group>"; };
 		BE582507271FE02BA93C412C422D4ED8 /* Nimble.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Nimble.h; path = Sources/Nimble/Nimble.h; sourceTree = "<group>"; };
 		BEDAA753452F6B96DE24D2CF7D396628 /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		C34071C41916A37E669FEEBA855F42C2 /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
 		C5DDC9824ED21BCC218F3C3E3E907AED /* XCTestSuite+QuickTestSuiteBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestSuite+QuickTestSuiteBuilder.m"; path = "Sources/Quick/XCTestSuite+QuickTestSuiteBuilder.m"; sourceTree = "<group>"; };
 		CA6E7F1DDB6E2265F2CF44AFAC978079 /* OculusReparo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = OculusReparo.modulemap; sourceTree = "<group>"; };
 		CB75D143FA2C1D4F42F8F03369239006 /* ObjCMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjCMatcher.swift; path = Sources/Nimble/Wrappers/ObjCMatcher.swift; sourceTree = "<group>"; };
-		CDD40037A631557C86C2B550EFF7AD69 /* LayoutViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutViewController.swift; sourceTree = "<group>"; };
 		CF3E0386A7813995C54F0D6AAC532C0E /* Pods-OculusReparo_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OculusReparo_Example-frameworks.sh"; sourceTree = "<group>"; };
 		D29528E2ADACEB31F5B2380DA50612C1 /* BeLogical.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLogical.swift; path = Sources/Nimble/Matchers/BeLogical.swift; sourceTree = "<group>"; };
 		D365431FBA3C40A9570E9266B44005D7 /* NMBExceptionCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBExceptionCapture.m; path = Sources/Nimble/objc/NMBExceptionCapture.m; sourceTree = "<group>"; };
-		D4692885F948F6FC5BA833E97B2B223D /* DefineVariableTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefineVariableTransform.swift; sourceTree = "<group>"; };
 		D772AF03D0B82E63647D129AEA9CCF1B /* SuiteHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SuiteHooks.swift; path = Sources/Quick/Hooks/SuiteHooks.swift; sourceTree = "<group>"; };
 		D887D239389CF68F7B83BE3F216B270B /* Pods-OculusReparo_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OculusReparo_Tests-resources.sh"; sourceTree = "<group>"; };
 		D90C7EF12BFF57324CAB1F99C968C0BF /* Quick.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Quick.xcconfig; sourceTree = "<group>"; };
+		D94361E5861B3F84C131DE0DE45C4C05 /* LayerBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayerBuilder.swift; sourceTree = "<group>"; };
 		DC07B6CC006238186A56EEC6E8D3CD88 /* Callsite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Callsite.swift; path = Sources/Quick/Callsite.swift; sourceTree = "<group>"; };
 		DC1FD51C6442C713FB319C1C9A49AB19 /* MatcherProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherProtocols.swift; path = Sources/Nimble/Matchers/MatcherProtocols.swift; sourceTree = "<group>"; };
+		DDF818A96C8F5BF14AEBB732310C6D8D /* ReduceTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReduceTransform.swift; sourceTree = "<group>"; };
 		DE3C8A356B44398ECE2F664B378A6443 /* World+DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "World+DSL.h"; path = "Sources/Quick/DSL/World+DSL.h"; sourceTree = "<group>"; };
+		E0283B17B2C7FDC5F9B399CD44ACAACC /* LayoutViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutViewController.swift; sourceTree = "<group>"; };
 		E052842F42DC8D0E94098F30B97904DB /* Pods-OculusReparo_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OculusReparo_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		E1202E9479776D6A27A512B44101EF41 /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		E124D19BC9A195791938A5946C03B103 /* Nimble.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.xcconfig; sourceTree = "<group>"; };
 		E2353FC0C41320250E7132DE6734F885 /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/Quick/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
 		E2DE7320F652DCF39EB6A1476F0C761B /* NimbleXCTestHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleXCTestHandler.swift; path = Sources/Nimble/Adapters/NimbleXCTestHandler.swift; sourceTree = "<group>"; };
 		E7E7531F4FA4F8184AC55D09CA41DBA7 /* Pods-OculusReparo_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OculusReparo_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		EA1C305082DBF75710A818FFBD2714D2 /* Nimble-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-umbrella.h"; sourceTree = "<group>"; };
+		EA4DFBC7C720F21B115C27BFB174131D /* LayoutError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutError.swift; sourceTree = "<group>"; };
+		EAA8B68EFF530B580647382D61D0BB54 /* UICollectionViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UICollectionViewBuilder.swift; sourceTree = "<group>"; };
+		EF275DAF5D282A6FC5FBF17A31CC3572 /* Line.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		EFB2D871B9C6D5C6EE2172BB9AFD2627 /* BeVoid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeVoid.swift; path = Sources/Nimble/Matchers/BeVoid.swift; sourceTree = "<group>"; };
 		F17FBDF6FF6B666A3D102EDD81DFE416 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
 		F4D3267C4CAF13D33F026B9104C33238 /* AssertionDispatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionDispatcher.swift; path = Sources/Nimble/Adapters/AssertionDispatcher.swift; sourceTree = "<group>"; };
@@ -345,6 +347,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		39BD0154E4E4F64D9FA487846F0A4F4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				789B30194DC318452D377FB6F5538B83 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BD524FEEEC0C192E21507846453A716 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,14 +369,6 @@
 			files = (
 				05EA02656831ACCCC648247634260269 /* Foundation.framework in Frameworks */,
 				6C3AEF0E823B6208F34B3F064276D8C6 /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BD82FC9042181D997FD5839F3191219D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3ACE3FECF8F3C34D43DF364B4FF71525 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,12 +391,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		38720564CDCCD53B94181F70C466504D /* OculusReparo */ = {
+		3912E4855844D9D02FEF87E8BCD743F5 /* ViewBuilders */ = {
 			isa = PBXGroup;
 			children = (
-				ACF54AA56F9CF2C6109824A0B8E660A2 /* Classes */,
+				B1F7623358A56D15C47113D066A9500D /* UIButtonBuilder.swift */,
+				EAA8B68EFF530B580647382D61D0BB54 /* UICollectionViewBuilder.swift */,
+				5BC4F17411AF72FCE6ACA58C45D9B100 /* UIImageViewBuilder.swift */,
+				72B4EC5E7DB6B5782104A5E09B22DF53 /* UILabelBuilder.swift */,
+				BB3FD6D5869A523AC71F62BE25D215D9 /* UIScrollViewBuilder.swift */,
+				3DA26605BB480E558C3D60CF68F08B00 /* UISliderBuilder.swift */,
+				AE6F45921DFC6B9F13BB349A31A2BF26 /* UITableViewBuilder.swift */,
+				00FF21B598BE0E795ADC83FCBC1795DE /* UITextFieldBuilder.swift */,
+				1A1ABEB056600C419AC8D58D0B0B265D /* UIViewBuilder.swift */,
+				6E06011CB0F89265942CA8B400B3EFBA /* ViewBuilder.swift */,
 			);
-			path = OculusReparo;
+			path = ViewBuilders;
 			sourceTree = "<group>";
 		};
 		3DA718426B574401281FFA751D33D9BF /* Nimble */ = {
@@ -462,31 +473,48 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4C0ABF7010155C5D33351E404677C1B4 /* OculusReparo */ = {
+			isa = PBXGroup;
+			children = (
+				C8E5D1054A12636E3A9A6291B1B1EA6E /* Classes */,
+			);
+			path = OculusReparo;
+			sourceTree = "<group>";
+		};
 		603EFBC25E45FD05943183D14B257CA5 /* OculusReparo */ = {
 			isa = PBXGroup;
 			children = (
-				38720564CDCCD53B94181F70C466504D /* OculusReparo */,
+				4C0ABF7010155C5D33351E404677C1B4 /* OculusReparo */,
 				7F1374F2DEB75FE3E3A755C85DAA7886 /* Support Files */,
 			);
 			name = OculusReparo;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		67B397A58EED491CBAE682E70346A22D /* ViewBuilders */ = {
+		7BB3521C58751EE15EE4C1FB1C5E8AF7 /* Parsing */ = {
 			isa = PBXGroup;
 			children = (
-				3C63E839C5AE53669457D70C8C7E97DD /* UIButtonBuilder.swift */,
-				99A86200DB20FF71B7563A71A4EC88F1 /* UICollectionViewBuilder.swift */,
-				8431B20AB9115CC7DE72ACAA0A682DAD /* UIImageViewBuilder.swift */,
-				0F780B7F51C75D7F9AF2148BE0EC689E /* UILabelBuilder.swift */,
-				8AEAC4B1ABA5E4066147377A0E226216 /* UIScrollViewBuilder.swift */,
-				0C860FAD755027E9A2101397C77D9E7F /* UISliderBuilder.swift */,
-				33A8576E7D6245220882CAFCFCE5DB12 /* UITableViewBuilder.swift */,
-				6D403CB5A1B6F8217501516FDDA0903F /* UITextFieldBuilder.swift */,
-				04DF86245371D3DB7619410378515DD0 /* UIViewBuilder.swift */,
-				9D1A62338C9CB5FE9EF9ECAFD8DC40E9 /* ViewBuilder.swift */,
+				62C7685952F67124D80BACEA531B07C4 /* BundleReader.swift */,
+				AD36E3661336BD46D0D4E3E23E48E71A /* DefineFunctionTransform.swift */,
+				85FA726622A31F532AFA131C85CE6774 /* DefineVariableTransform.swift */,
+				8EABEE563602F598FA75D96039FD2967 /* Directive.swift */,
+				3674373150CB068B50C232791E210F30 /* DirectiveTransform.swift */,
+				A385D5A8956E2D732EDF65D76DFD5B63 /* Document.swift */,
+				13E6EE386B9B63C438B1E5FA10281796 /* Expansion.swift */,
+				89DC5658E6A38B7880498DC288F9CF32 /* FunctionExpansion.swift */,
+				7CA490C98606BCD3AB022BE25AF69977 /* IncludeExpansion.swift */,
+				EF275DAF5D282A6FC5FBF17A31CC3572 /* Line.swift */,
+				A7585DD69C9C987D10B99A2B854EB8DC /* Parser.swift */,
+				DDF818A96C8F5BF14AEBB732310C6D8D /* ReduceTransform.swift */,
+				AF459C3DC0E47DAB4DD30B2F101552BC /* ReparoError.swift */,
+				A9619980F72A57994E7FC04C742BF883 /* ReparoReader.swift */,
+				10D913EF90D750F7CEAB0D30A84679B3 /* ReplaceVariableTransform.swift */,
+				B616820360728BB1DA8EA21E8509827F /* Scope.swift */,
+				7802E1DD1C5A42B8EE4DCC75D3248C95 /* Section.swift */,
+				678E03399BD28140FD88F8E728B305DF /* StateMachine.swift */,
+				06D9063BD40FF547C61129A7BA633E2D /* Transform.swift */,
 			);
-			path = ViewBuilders;
+			path = Parsing;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -529,70 +557,12 @@
 			path = "../Target Support Files/Quick";
 			sourceTree = "<group>";
 		};
-		8F53AFA669C39898BAFD5D6C77C0E226 /* Parsing */ = {
-			isa = PBXGroup;
-			children = (
-				62DFB74193EAC6E3FED26ED067E9C045 /* BundleReader.swift */,
-				BCF168354A5B08EE4ADB9E83591A1339 /* DefineFunctionTransform.swift */,
-				D4692885F948F6FC5BA833E97B2B223D /* DefineVariableTransform.swift */,
-				67D8E4AF4778C6FD6CDB16089B5280CC /* Directive.swift */,
-				02E85635F4B4BAA40E00A8B2055ADEB9 /* DirectiveTransform.swift */,
-				B07B4A68BF88D022606654589756C4C5 /* Document.swift */,
-				13D47B42A18CAA6072A088977DFF443D /* Expansion.swift */,
-				730C8A420368F3098764D8390E16BA22 /* FunctionExpansion.swift */,
-				5B920B1399072AF777626DA567FAA005 /* IncludeExpansion.swift */,
-				52BE37C6EC3FFDA066EBE0601F6CA28C /* Line.swift */,
-				E1202E9479776D6A27A512B44101EF41 /* Parser.swift */,
-				4B29B7802921C42585E0F9FD1A17A3FF /* ReduceTransform.swift */,
-				02933FF4378A2831FE7F7F0CACA9EADC /* ReparoError.swift */,
-				30D71249C7265ED531BDE5E9DF3C9960 /* ReparoReader.swift */,
-				9B996A64688E7336D7CA9631294F0D69 /* ReplaceVariableTransform.swift */,
-				986D690C919C6E7682CC806F507F6C8E /* Scope.swift */,
-				105B8E90F33284C72CAAFCB69A0A9966 /* Section.swift */,
-				A0C560E0FBA1C6505E35DA82B12C43E1 /* StateMachine.swift */,
-				4F7BDEA8B39583A8F7FB1D2D7621DC0A /* Transform.swift */,
-			);
-			path = Parsing;
-			sourceTree = "<group>";
-		};
 		91589E99CE1EC3E0A931B29E32FFF196 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
 				603EFBC25E45FD05943183D14B257CA5 /* OculusReparo */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		9EC5F0966F31DEC456BE3A302726F172 /* LayerBuilders */ = {
-			isa = PBXGroup;
-			children = (
-				56A5EA0B2A8B55E7D8706D6426182DC8 /* CALayerBuilder.swift */,
-				6B9701ADE91949FF6E65CB0561D25C41 /* LayerBuilder.swift */,
-			);
-			path = LayerBuilders;
-			sourceTree = "<group>";
-		};
-		ACF54AA56F9CF2C6109824A0B8E660A2 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				83A0AE1C1D634D3B009A01D7 /* AnchorType.swift */,
-				3C70EB9DD988CB5F235345515C17BF31 /* Convert.swift */,
-				55D1234777EE0C6D13BFF33B13BED792 /* Extensions.swift */,
-				177DEE94DCFDA231DF1D4C0CDD5B3649 /* Hardware.swift */,
-				9E1A5CB5865D9CA04DA2B742593BDE85 /* Layout.swift */,
-				1D0027C941C3E59FC46986129E0B3D78 /* LayoutDebugger.swift */,
-				61E2D04C29B22D1CA4F29422FD1C2947 /* LayoutError.swift */,
-				19A15C42CC99608BBBCDEDB5767FA04B /* LayoutFragment.swift */,
-				B7433B78C0273CB39EC326C52FF67D51 /* LayoutLayerFragment.swift */,
-				CDD40037A631557C86C2B550EFF7AD69 /* LayoutViewController.swift */,
-				953F7391995E027028CC8DF36A716C9A /* LayoutViewFragment.swift */,
-				134C593B077D10B1F726EEB3F82A49ED /* Position.swift */,
-				6F0A83A983A33A9D4603078B7D255735 /* UIImageReader.swift */,
-				9EC5F0966F31DEC456BE3A302726F172 /* LayerBuilders */,
-				8F53AFA669C39898BAFD5D6C77C0E226 /* Parsing */,
-				67B397A58EED491CBAE682E70346A22D /* ViewBuilders */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		B2F3226D3D4A34C6FDC47A7E7567F3E3 /* Pods */ = {
@@ -614,6 +584,30 @@
 				85DB1EA0AF858FB106A80D8E62810AFE /* Quick.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C8E5D1054A12636E3A9A6291B1B1EA6E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				870982A81D12D99024FD7A01A1E00053 /* AnchorType.swift */,
+				91B48A0A961E794A3945CAC5E3A6AD37 /* Convert.swift */,
+				6BFD423BF35321818930BEE263BD5195 /* Extensions.swift */,
+				00C33D4E4AADC9CDD3B71B66BB569421 /* Hardware.swift */,
+				A79ACB64D17A975BD3D4CEFAC385EE86 /* Layout.swift */,
+				807921A7DFE3803196F391A1F0E438E2 /* LayoutDebugger.swift */,
+				EA4DFBC7C720F21B115C27BFB174131D /* LayoutError.swift */,
+				7CA92B939CB185B856DC28E21B367D70 /* LayoutFragment.swift */,
+				70DD8765D44BF640A7BFFE12D8B0C397 /* LayoutLayerFragment.swift */,
+				E0283B17B2C7FDC5F9B399CD44ACAACC /* LayoutViewController.swift */,
+				3768712790A4B1CDE372BFF6A5C8C142 /* LayoutViewFragment.swift */,
+				67F092FECE39DD4C0F35B57B47988A7B /* Position.swift */,
+				0D1933F35D089E20B4D0B11F058CBEB4 /* UIImageReader.swift */,
+				15E8246D50EEABEA2A98ED841A9B5438 /* UILayoutView.swift */,
+				D8BDCFF1CC76C86701A265BFF991D9E4 /* LayerBuilders */,
+				7BB3521C58751EE15EE4C1FB1C5E8AF7 /* Parsing */,
+				3912E4855844D9D02FEF87E8BCD743F5 /* ViewBuilders */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		CADC3EC948F24F3C262060ABA5F66D9A /* Quick */ = {
@@ -681,6 +675,15 @@
 			path = "Target Support Files/Pods-OculusReparo_Tests";
 			sourceTree = "<group>";
 		};
+		D8BDCFF1CC76C86701A265BFF991D9E4 /* LayerBuilders */ = {
+			isa = PBXGroup;
+			children = (
+				3FE218FB89311A4AD13824B6F8DA104B /* CALayerBuilder.swift */,
+				D94361E5861B3F84C131DE0DE45C4C05 /* LayerBuilder.swift */,
+			);
+			path = LayerBuilders;
+			sourceTree = "<group>";
+		};
 		DEBE5E44720359A50F8CAB57130300F7 /* Pods-OculusReparo_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -725,11 +728,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4E6AF6B4BA7D93E1AFA15E9B80D64B95 /* Headers */ = {
+		0F0133C91CA61BC555019EF394C25F98 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F440A6CCA40F44E478CCEF97945B87D /* OculusReparo-umbrella.h in Headers */,
+				E7823FEE686491DC4688F9664B70154B /* OculusReparo-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +781,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		10BE0B0DB5A4D2B76275B4A2CBD95C76 /* OculusReparo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 006A84CB53EDB3C2F4E6A6891242E8C5 /* Build configuration list for PBXNativeTarget "OculusReparo" */;
+			buildPhases = (
+				3E4492CA6049E1A55983CCE1CF8DDC0E /* Sources */,
+				39BD0154E4E4F64D9FA487846F0A4F4B /* Frameworks */,
+				0F0133C91CA61BC555019EF394C25F98 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OculusReparo;
+			productName = OculusReparo;
+			productReference = 59A28EE6936D80C76C31C4B6CDB93584 /* OculusReparo.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		275FAE384850E8A57B5E988F82131770 /* Pods-OculusReparo_Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 155ACC40E9805E951418B25BD305E800 /* Build configuration list for PBXNativeTarget "Pods-OculusReparo_Tests" */;
@@ -832,23 +852,6 @@
 			productReference = 6B7C56F7FF6CC9866E94DE4FF2344868 /* Pods_OculusReparo_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		F275B71EED2A93235CCC4FEE8E51E293 /* OculusReparo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 73EF70965B97E29E69AC5A16C8A53575 /* Build configuration list for PBXNativeTarget "OculusReparo" */;
-			buildPhases = (
-				62B33EC0DE13D0D2103FF11AA36BD2A7 /* Sources */,
-				BD82FC9042181D997FD5839F3191219D /* Frameworks */,
-				4E6AF6B4BA7D93E1AFA15E9B80D64B95 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OculusReparo;
-			productName = OculusReparo;
-			productReference = 59A28EE6936D80C76C31C4B6CDB93584 /* OculusReparo.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		FF61C7C740C1B196A3B33F37B77DBC68 /* Nimble */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5FE57A1C8E467D246D7D1BCB203A09DC /* Build configuration list for PBXNativeTarget "Nimble" */;
@@ -888,7 +891,7 @@
 			projectRoot = "";
 			targets = (
 				FF61C7C740C1B196A3B33F37B77DBC68 /* Nimble */,
-				F275B71EED2A93235CCC4FEE8E51E293 /* OculusReparo */,
+				10BE0B0DB5A4D2B76275B4A2CBD95C76 /* OculusReparo */,
 				368614F85B01B76B5D2D5211B93DF651 /* Pods-OculusReparo_Example */,
 				275FAE384850E8A57B5E988F82131770 /* Pods-OculusReparo_Tests */,
 				2A7A3D29F788263AC32C967569D1C5F8 /* Quick */,
@@ -951,55 +954,56 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		62B33EC0DE13D0D2103FF11AA36BD2A7 /* Sources */ = {
+		3E4492CA6049E1A55983CCE1CF8DDC0E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58ED51ED020534A0F510F478D4605695 /* BundleReader.swift in Sources */,
-				37782F1CF13741BCDBD9D10282C5128E /* CALayerBuilder.swift in Sources */,
-				6CB33E2C8CB32911DCF1C1304FE3270C /* Convert.swift in Sources */,
-				1F34B704773720153810D1AE6A74D3AA /* DefineFunctionTransform.swift in Sources */,
-				34CEA5AC39358F21C61273CD27EECCBA /* DefineVariableTransform.swift in Sources */,
-				ADD4EBE0156339BF8667A6D8F7892AFD /* Directive.swift in Sources */,
-				7831A01E0A37B780D1760B5B6E43330A /* DirectiveTransform.swift in Sources */,
-				A7D5771153C9CCE739A604F89F5D4079 /* Document.swift in Sources */,
-				E4FD4932A9AAEE6EF68F5599B5DB8273 /* Expansion.swift in Sources */,
-				C7107969F536803938434D76421EF882 /* Extensions.swift in Sources */,
-				F9309D81030FCCA4B18D227172C3AE4B /* FunctionExpansion.swift in Sources */,
-				15DD5AF34CB5178DC68354CFE925CC36 /* Hardware.swift in Sources */,
-				9267D47A7E934072D5F587EB433573CD /* IncludeExpansion.swift in Sources */,
-				BA893E25E786B204474C516DFAF1FC4C /* LayerBuilder.swift in Sources */,
-				2CA8B0F5ADF6178EFFEFA4DE91954529 /* Layout.swift in Sources */,
-				E87227AA4F2A1A3DA60E297436ECE827 /* LayoutDebugger.swift in Sources */,
-				756823775874E982277FD64F39E42235 /* LayoutError.swift in Sources */,
-				EFF3FC6F0E35BC104E7C57D5F2B0DBEB /* LayoutFragment.swift in Sources */,
-				977E80424A64C2E4205B58C8167F5A2F /* LayoutLayerFragment.swift in Sources */,
-				F1BBD0AC1713DDF4FD075323762859B4 /* LayoutViewController.swift in Sources */,
-				3B8F867D14F5237081FD10ACF3142E34 /* LayoutViewFragment.swift in Sources */,
-				60131ACA450C3D5640D09A52DA22F298 /* Line.swift in Sources */,
-				59B7FFC0F7732D4E930406E52D758939 /* OculusReparo-dummy.m in Sources */,
-				38AE50B415B173124F14E629E618D85D /* Parser.swift in Sources */,
-				7325FA03D9C2C971A6CAC10C12E97121 /* Position.swift in Sources */,
-				DBD6B6061AC410BAF65B446EED6F32E6 /* ReduceTransform.swift in Sources */,
-				C1FEB3C47324D739435210AD41D9F18F /* ReparoError.swift in Sources */,
-				2179B75F9404F636991F7771136F3528 /* ReparoReader.swift in Sources */,
-				83A0AE1D1D634D3B009A01D7 /* AnchorType.swift in Sources */,
-				ED77361AC82184A6615550FE37CEDA61 /* ReplaceVariableTransform.swift in Sources */,
-				D5DFE7E1A770E682DB33E2287168F346 /* Scope.swift in Sources */,
-				4CBC45F5401B6A9E879D58DC33A8C7B1 /* Section.swift in Sources */,
-				5E6C53DF7AA0A3591BB30D4D3978A277 /* StateMachine.swift in Sources */,
-				E0D49E6626F05E1A1D2A0530D86B8B73 /* Transform.swift in Sources */,
-				873553006D5885F013C08E08D66C01DA /* UIButtonBuilder.swift in Sources */,
-				8197597BBDEEDEED5EF3FABEC6EAADF4 /* UICollectionViewBuilder.swift in Sources */,
-				AB1C7BCA40E2669854C2A7D2A19B4A83 /* UIImageReader.swift in Sources */,
-				1221A974777808F4836E66FB87A7049E /* UIImageViewBuilder.swift in Sources */,
-				281AE0E5AB0040AFC4E0D9ECA98D8028 /* UILabelBuilder.swift in Sources */,
-				DBE9AD6DDE0A7974575F296D57677BCA /* UIScrollViewBuilder.swift in Sources */,
-				71A777CB04E61EBD4FBDA7C99ACD8576 /* UISliderBuilder.swift in Sources */,
-				7F9B43774B860974A2438F35A4CD923F /* UITableViewBuilder.swift in Sources */,
-				40830F9599C0C0C46013955F6E9983D9 /* UITextFieldBuilder.swift in Sources */,
-				7731D01C240A813A5D6219C377641CD2 /* UIViewBuilder.swift in Sources */,
-				2D23F42FB02F90254D6E269FE1EC117E /* ViewBuilder.swift in Sources */,
+				F3509CA06AAC785A17DBA7E245314B5A /* AnchorType.swift in Sources */,
+				24F9E2B85BAF27A32870B4569FAA73EF /* BundleReader.swift in Sources */,
+				4B2C3DFC4E6F49AA5EFE591C526A4F00 /* CALayerBuilder.swift in Sources */,
+				806DAE481869D56A9D3B869AF030715C /* Convert.swift in Sources */,
+				CE6378A63DFD08B08408EE1CF9B86D82 /* DefineFunctionTransform.swift in Sources */,
+				9DE283C4023395C4527F8CFF01B896B0 /* DefineVariableTransform.swift in Sources */,
+				F1F465196DC068CC85BD8E681F9DBA6A /* Directive.swift in Sources */,
+				7C369377C01EFC89D98E37C9FFFC3488 /* DirectiveTransform.swift in Sources */,
+				C9E3B093621934A7261F9E3384D08CB0 /* Document.swift in Sources */,
+				DEAC93381099070994911CC5107F1F76 /* Expansion.swift in Sources */,
+				03E441AACA10462E015360F053CBF494 /* Extensions.swift in Sources */,
+				AD6837AFC36D2DA58A444FCCADFC805E /* FunctionExpansion.swift in Sources */,
+				151D0FCA9E1666ACB7965985D76803BE /* Hardware.swift in Sources */,
+				D9531B5D0272121755FFD8A858D97DC6 /* IncludeExpansion.swift in Sources */,
+				D5B12A7D997F73B5B516ED9FDE5EB279 /* LayerBuilder.swift in Sources */,
+				77A7A14EDF1E2E7ED27FEA047FBB14A8 /* Layout.swift in Sources */,
+				0BEC48F05C1752B14C41C37541302DD7 /* LayoutDebugger.swift in Sources */,
+				2E1AAECC6D414677271DB647FB74EA49 /* LayoutError.swift in Sources */,
+				20C0288E03C18DC89CC5B56A9BF133BD /* LayoutFragment.swift in Sources */,
+				2DF9211438D09EB6BC3CB0C2FFD0FA4D /* LayoutLayerFragment.swift in Sources */,
+				D90DC59A4BD2051DFBA36BB639DFC2A3 /* LayoutViewController.swift in Sources */,
+				9CAAF8B098CEBC75831FC079B1B52A67 /* LayoutViewFragment.swift in Sources */,
+				47E8EFE500C530DB8517E6FABED375F1 /* Line.swift in Sources */,
+				D0C885C2D1F6E9563DFB3679C85D111B /* OculusReparo-dummy.m in Sources */,
+				440D4E1E4F36F02634CD117B04ACA2F0 /* Parser.swift in Sources */,
+				B7172B85B1BC2C030955F75B9793A69D /* Position.swift in Sources */,
+				993FDA12085CC02C8280032DA61E71A4 /* ReduceTransform.swift in Sources */,
+				4A8371AF49A41A35F455AAA0C244E533 /* ReparoError.swift in Sources */,
+				1450D2D580B0CEBAC7149EDA78C5187C /* ReparoReader.swift in Sources */,
+				0FA05AFB8F96527DD42F3809727341A8 /* ReplaceVariableTransform.swift in Sources */,
+				2B9679B145D1C8B0AC7276BED7708353 /* Scope.swift in Sources */,
+				BC50D0E5D1F65A5D6AB6C11478A3FC5F /* Section.swift in Sources */,
+				BB4A87D555E9CAF44FC244D18AE4A4A3 /* StateMachine.swift in Sources */,
+				5C73AEC251F5FD45219501CA661B9C6D /* Transform.swift in Sources */,
+				BAF6772BE703758A78318CD80E03CBF2 /* UIButtonBuilder.swift in Sources */,
+				F3E4B2C3303DEE7B31A1BB1211E09C7C /* UICollectionViewBuilder.swift in Sources */,
+				DA8B065C5FBEFC24ED4509695D5C50D1 /* UIImageReader.swift in Sources */,
+				44ED98A7F8EC8CD601BF88D50ED55DB7 /* UIImageViewBuilder.swift in Sources */,
+				5852B6C41BF0B46C4DFF8D5D08422785 /* UILabelBuilder.swift in Sources */,
+				4E8B1C29849CCEB739E0B781F459F4E0 /* UILayoutView.swift in Sources */,
+				4406F6B198E0F0AFBF446148E5F777AE /* UIScrollViewBuilder.swift in Sources */,
+				3B36ACA3E7E43A0BCC72481E096DA207 /* UISliderBuilder.swift in Sources */,
+				B39A89197437F1D58269B0071A867E7E /* UITableViewBuilder.swift in Sources */,
+				5352A8CF83D3EB2B3A096DCA8F4CDD38 /* UITextFieldBuilder.swift in Sources */,
+				A37B5B0058FB4F5D36CBFDE1F6C2E9B1 /* UIViewBuilder.swift in Sources */,
+				A1DB92B3CC5253FBBA7A56868B36E687 /* ViewBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,7 +1066,7 @@
 		7B629D23274E13110DF4B9A29CAE005E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OculusReparo;
-			target = F275B71EED2A93235CCC4FEE8E51E293 /* OculusReparo */;
+			target = 10BE0B0DB5A4D2B76275B4A2CBD95C76 /* OculusReparo */;
 			targetProxy = A4E84F8110714A6C8B6940A3C479B8EF /* PBXContainerItemProxy */;
 		};
 		7F0313344CBBCDCED3FEA1721C003193 /* PBXTargetDependency */ = {
@@ -1074,7 +1078,142 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		034014829C1E4434983CF3A690C12017 /* Debug */ = {
+		1EF3C1FAAFEF46B3F4F3685E8DA51E01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDDAB16DBABB35A05A1BBF1401E18EC9 /* OculusReparo.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/OculusReparo/OculusReparo-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OculusReparo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/OculusReparo/OculusReparo.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = OculusReparo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2E4278F94F9E3F39D7D5B2AAB2B8E1B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 313AB39D5913E6E923B1EAF51E3711E7 /* Pods-OculusReparo_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-OculusReparo_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-OculusReparo_Tests/Pods-OculusReparo_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_OculusReparo_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2FAA9351DD05F5BF1079AE9E820443DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E052842F42DC8D0E94098F30B97904DB /* Pods-OculusReparo_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-OculusReparo_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-OculusReparo_Example/Pods-OculusReparo_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_OculusReparo_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3890CA6E4C487B26F462BEFC9FF3C47A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E124D19BC9A195791938A5946C03B103 /* Nimble.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Nimble;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1092,6 +1231,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1111,50 +1251,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		515273B299885D845C865D8BBE020974 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E41FA87EDBD1C96BC0118C75B945871 /* Pods-OculusReparo_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-OculusReparo_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-OculusReparo_Tests/Pods-OculusReparo_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_OculusReparo_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		5474B0763EBAC35B068C8A8C4154E88A /* Debug */ = {
+		5E4F4B033476BB53BBE0237105FB9BBA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D90C7EF12BFF57324CAB1F99C968C0BF /* Quick.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -1174,50 +1283,20 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		8EC206719DB7003652C9D63035B0AA47 /* Release */ = {
+		5F7F61A4CBAC0EA07ED3F6D724F919A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21E2CFD367D621869D901C5A8FB84750 /* Pods-OculusReparo_Example.release.xcconfig */;
+			baseConfigurationReference = E124D19BC9A195791938A5946C03B103 /* Nimble.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-OculusReparo_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-OculusReparo_Example/Pods-OculusReparo_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_OculusReparo_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		94494C6B5D33AEFE81B8A944FA7F6554 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E052842F42DC8D0E94098F30B97904DB /* Pods-OculusReparo_Example.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -1226,34 +1305,98 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-OculusReparo_Example/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-OculusReparo_Example/Pods-OculusReparo_Example.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_OculusReparo_Example;
+				PRODUCT_NAME = Nimble;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		BA7386075BF76BCF78BF6F1AA9A44617 /* Release */ = {
+		9EF4007BF61DEC88249EAC92DE80F999 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 313AB39D5913E6E923B1EAF51E3711E7 /* Pods-OculusReparo_Tests.release.xcconfig */;
+			baseConfigurationReference = FDDAB16DBABB35A05A1BBF1401E18EC9 /* OculusReparo.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/OculusReparo/OculusReparo-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OculusReparo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/OculusReparo/OculusReparo.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = OculusReparo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AC994D97CCF6358CE18D3DB8E384AE72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D90C7EF12BFF57324CAB1F99C968C0BF /* Quick.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Quick/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Quick;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AFC5AFF9A4DD7936EB63A89D18F6C70A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E41FA87EDBD1C96BC0118C75B945871 /* Pods-OculusReparo_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1266,7 +1409,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-OculusReparo_Tests/Pods-OculusReparo_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1274,13 +1417,14 @@
 				PRODUCT_NAME = Pods_OculusReparo_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		C7E474A03CAE21F1CB6046E7344C59BD /* Release */ = {
+		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1298,6 +1442,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1312,17 +1457,20 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		CA37C45D21FE3E9278B67F21C492B502 /* Release */ = {
+		CFF72DEC9BE4B8DB957F580C3AA5BC0F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D90C7EF12BFF57324CAB1F99C968C0BF /* Quick.xcconfig */;
+			baseConfigurationReference = 21E2CFD367D621869D901C5A8FB84750 /* Pods-OculusReparo_Example.release.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -1331,73 +1479,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Quick/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Quick;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CCF8E3155C67FA9F29BD42432A665CE0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDDAB16DBABB35A05A1BBF1401E18EC9 /* OculusReparo.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OculusReparo/OculusReparo-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/OculusReparo/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-OculusReparo_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/OculusReparo/OculusReparo.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = OculusReparo;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D136996600E31F365F763213EFA35139 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E124D19BC9A195791938A5946C03B103 /* Nimble.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-OculusReparo_Example/Pods-OculusReparo_Example.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Nimble;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_OculusReparo_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1405,74 +1498,24 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		D8413287627B51518031E0463FA9D065 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDDAB16DBABB35A05A1BBF1401E18EC9 /* OculusReparo.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OculusReparo/OculusReparo-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/OculusReparo/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/OculusReparo/OculusReparo.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = OculusReparo;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		F14745E2F2D90E33DB7401B9ED7C5F16 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E124D19BC9A195791938A5946C03B103 /* Nimble.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Nimble;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		006A84CB53EDB3C2F4E6A6891242E8C5 /* Build configuration list for PBXNativeTarget "OculusReparo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EF4007BF61DEC88249EAC92DE80F999 /* Debug */,
+				1EF3C1FAAFEF46B3F4F3685E8DA51E01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		155ACC40E9805E951418B25BD305E800 /* Build configuration list for PBXNativeTarget "Pods-OculusReparo_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				515273B299885D845C865D8BBE020974 /* Debug */,
-				BA7386075BF76BCF78BF6F1AA9A44617 /* Release */,
+				AFC5AFF9A4DD7936EB63A89D18F6C70A /* Debug */,
+				2E4278F94F9E3F39D7D5B2AAB2B8E1B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1480,8 +1523,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				034014829C1E4434983CF3A690C12017 /* Debug */,
-				C7E474A03CAE21F1CB6046E7344C59BD /* Release */,
+				59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */,
+				B7324857C38B065FEB1EEE3105C2367A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1489,17 +1532,8 @@
 		5FE57A1C8E467D246D7D1BCB203A09DC /* Build configuration list for PBXNativeTarget "Nimble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F14745E2F2D90E33DB7401B9ED7C5F16 /* Debug */,
-				D136996600E31F365F763213EFA35139 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		73EF70965B97E29E69AC5A16C8A53575 /* Build configuration list for PBXNativeTarget "OculusReparo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CCF8E3155C67FA9F29BD42432A665CE0 /* Debug */,
-				D8413287627B51518031E0463FA9D065 /* Release */,
+				5F7F61A4CBAC0EA07ED3F6D724F919A8 /* Debug */,
+				3890CA6E4C487B26F462BEFC9FF3C47A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1507,8 +1541,8 @@
 		7D92D8F0A465271763B77D04794634C7 /* Build configuration list for PBXNativeTarget "Quick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5474B0763EBAC35B068C8A8C4154E88A /* Debug */,
-				CA37C45D21FE3E9278B67F21C492B502 /* Release */,
+				5E4F4B033476BB53BBE0237105FB9BBA /* Debug */,
+				AC994D97CCF6358CE18D3DB8E384AE72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1516,8 +1550,8 @@
 		CCE3853DC867BE9642A5695C118FCDBB /* Build configuration list for PBXNativeTarget "Pods-OculusReparo_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				94494C6B5D33AEFE81B8A944FA7F6554 /* Debug */,
-				8EC206719DB7003652C9D63035B0AA47 /* Release */,
+				2FAA9351DD05F5BF1079AE9E820443DB /* Debug */,
+				CFF72DEC9BE4B8DB957F580C3AA5BC0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

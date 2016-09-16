@@ -56,6 +56,8 @@ public class UIButtonBuilder : ViewBuilder {
             switch align.lowercaseString {
             case "left":
                 button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+            case "right":
+                button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
             default:
                 break;
             }
