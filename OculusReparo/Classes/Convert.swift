@@ -65,22 +65,29 @@ public class Convert {
         return UIColor(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
     
-    public static func getFontWeight(weight: String?) throws -> CGFloat {
+    public static func getFontWeight(section: Section, key: String) throws -> CGFloat {
+        let weight = section.getValue(key)
+        
         guard let name = weight?.lowercaseString else {
             return UIFontWeightRegular
         }
         
         switch name {
-        case "ultra-light": return UIFontWeightUltraLight;
-        case "thin": return UIFontWeightThin;
-        case "light": return UIFontWeightLight;
-        case "regular": return UIFontWeightRegular;
-        case "medium": return UIFontWeightMedium;
-        case "semi-bold": return UIFontWeightSemibold;
-        case "bold": return UIFontWeightBold;
-        case "heavy": return UIFontWeightHeavy;
-        default:
-            throw LayoutError.UnknownFontWeight("Unknown font weight: \(name)")
+            case "ultra-light": return UIFontWeightUltraLight;
+            case "thin": return UIFontWeightThin;
+            case "light": return UIFontWeightLight;
+            case "regular": return UIFontWeightRegular;
+            case "medium": return UIFontWeightMedium;
+            case "semi-bold": return UIFontWeightSemibold;
+            case "bold": return UIFontWeightBold;
+            case "heavy": return UIFontWeightHeavy;
+            default:
+                let message = "Unknown font weight: \(name)\n\nValid values are: 'ultra-light', 'thin', 'light', 'regular', 'medium', 'semi-bold', 'bold' and 'heavy'"
+                let filename = section.getFilename(key) ?? ""
+                let lineNumber = section.getLineNumber(key)
+                let info = LayoutErrorInfo(message: message, filename: filename, lineNumber: lineNumber)
+                
+                throw LayoutError.ConfigurationError(info)
         }
     }
     

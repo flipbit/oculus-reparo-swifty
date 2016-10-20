@@ -89,8 +89,8 @@ extension UIView {
             layout.handleLayoutError("Controller root view is not set")
         } catch LayoutError.InvalidConfiguration(let message) {
             layout.handleLayoutError(message)
-        } catch LayoutError.MissingViewPosition(let message) {
-            layout.handleLayoutError(message)
+        } catch LayoutError.ConfigurationError(let info) {
+            layout.handleLayoutError(info.message)
         } catch LayoutError.MissingModelProperty(let message) {
             layout.handleLayoutError(message)
         } catch ReparoError.InvalidColorString(let message) {
@@ -108,4 +108,19 @@ extension UIView {
         return result
     }
     
+}
+
+extension CGRect {
+    public func add(x x: CGFloat = 0, y: CGFloat = 0, width: CGFloat = 0, height: CGFloat = 0) -> CGRect {
+        return CGRect(x: self.origin.x + x, y: self.origin.y + y, width: self.width + width, height: self.height + height)
+    }
+    
+    public func resize(x x: CGFloat? = nil, y: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil) -> CGRect {
+        let x = x ?? self.origin.x
+        let y = y ?? self.origin.y
+        let h = height ?? self.height
+        let w = width ?? self.width
+        
+        return CGRect(x: x, y: y, width: w, height: h)
+    }
 }

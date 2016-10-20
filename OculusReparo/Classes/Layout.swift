@@ -5,7 +5,7 @@ public class Layout {
     static public var layerBuilders: [LayerBuilder] = []
     static public var viewBuilders: [ViewBuilder] = []
     static public var imageLoader: UIImageLoader = MainBundleImageLoader()
-    static public var debugger: LayoutDebugger?
+    static public var debugger: LayoutDebugger? = ConsoleLayoutDebugger()
     
     static private var initialized = false
 
@@ -31,23 +31,28 @@ public class Layout {
     
     public var needsLayout: Bool {
         if laidOut == false {
+            print ("Yep: not laid out")
             return true
         }
         
         if let view = view {
             if view.bounds.height != bounds.height {
+                print ("Yep: \(view.bounds.height) != \(bounds.height)")
                 return true
             }
             
             if view.bounds.width != bounds.width {
+                print ("Yep: \(view.bounds.width) != \(bounds.width)")
                 return true
             }
         }
         
         if orientation != Hardware.orientation {
+            print ("Yep: \(orientation) != \(Hardware.orientation)")
             return true
         }
         
+        print ("Nope: laid out")
         return false
     }
     
@@ -69,6 +74,7 @@ public class Layout {
             Layout.viewBuilders.append(UIScrollViewBuilder())
             Layout.viewBuilders.append(UITextFieldBuilder())
             Layout.viewBuilders.append(UICollectionViewBuilder())
+            Layout.viewBuilders.append(UIActivityIndicatorBuilder())
 
             // Layer builders
             Layout.layerBuilders.append(CALayerBuilder())

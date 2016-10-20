@@ -140,6 +140,26 @@ public class Section : Line {
         }
         return ifMissing
     }
+
+    public func getLineNumber(name: String) -> Int {
+        for line in lines {
+            if line.key == name {
+                return line.lineNumber
+            }
+        }
+
+        return 0
+    }
+
+    public func getFilename(name: String) -> String? {
+        for line in lines {
+            if line.key == name {
+                return line.filename
+            }
+        }
+        
+        return nil
+    }
     
     public func getFloat(name: String) -> Float? {
         let value = getValue(name)
@@ -166,7 +186,7 @@ public class Section : Line {
     }
     
     public func getUIColor(name: String) throws -> UIColor? {
-        return try getUIColor(name, ifMissing: UIColor.clearColor())
+        return try getUIColor(name, ifMissing: nil)
     }
     
     public func getUIColor(name: String, ifMissing: UIColor?) throws -> UIColor? {

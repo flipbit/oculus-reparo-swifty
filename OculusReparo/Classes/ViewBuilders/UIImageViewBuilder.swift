@@ -29,6 +29,25 @@ public class UIImageViewBuilder : ViewBuilder {
                 imageView.image = image
             }
         }
+
+        if let filename = layout.getValue("image-file") {
+            let frameworkBundle = NSBundle.mainBundle()
+            if let imagePath = frameworkBundle.pathForResource(filename, ofType: "") {
+                if var image = UIImage(contentsOfFile: imagePath) {
+                    if color != nil {
+                        imageView.tintColor = color
+                    
+                        image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                    }
+                
+                    imageView.image = image
+                }
+            }
+            
+        }
+
+        
+        imageView.contentMode = UIViewContentMode.Top
         
         return imageView;
     }

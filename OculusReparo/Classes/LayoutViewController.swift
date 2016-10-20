@@ -7,7 +7,7 @@ public class LayoutViewController : UIViewController {
     public func getViewName() -> String {
         let type = String(self.dynamicType)
         
-        return type.stringByReplacingOccurrencesOfString("Controller", withString: "") + ".txt"
+        return type.stringByReplacingOccurrencesOfString("Controller", withString: "") + ".layout"
     }
     
     public override func viewDidLayoutSubviews() {

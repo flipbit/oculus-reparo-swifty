@@ -72,7 +72,7 @@ public class ViewBuilder {
             view.frame = try getFrame(layout, view: view, parent: parent, instance: instance)
         }
 
-        view.backgroundColor = try layout.getUIColor("background-color")
+        view.backgroundColor = try layout.getUIColor("background-color", ifMissing: UIColor.clearColor())
         view.layer.zPosition = layout.getCGFloat("z-position", ifMissing: 0)
         view.layer.cornerRadius = layout.getCGFloat("corner-radius", ifMissing: 0)
         view.layer.borderColor = try layout.getCGColor("border-color")

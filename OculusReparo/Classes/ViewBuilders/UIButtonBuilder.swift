@@ -18,7 +18,7 @@ public class UIButtonBuilder : ViewBuilder {
         
         // Font
         let size = layout.getCGFloat("font-size", ifMissing: 17)
-        let weight = try Convert.getFontWeight(layout.getValue("font-weight"))
+        let weight = try Convert.getFontWeight(layout, key: "font-weight")
         button.titleLabel?.font = UIFont.systemFontOfSize(size, weight: weight)
         
         if let title = layout.getValue("title") {

@@ -1,19 +1,23 @@
-//
-//  OculusReparoError.swift
-//  OculusReparo
-//
-//  Created by Chris on 10/07/2016.
-//  Copyright © 2016 flipbit.co.uk. All rights reserved.
-//
-
 import Foundation
 
 enum LayoutError: ErrorType {
-    case MissingViewPosition(String)
+    case ConfigurationError(LayoutErrorInfo)
     case MissingRootView
     case MissingModelProperty(String)
     case UnknownFontWeight(String)
     case InvalidInsetFormat(String)
     case InvalidTextAlignment(String)
     case InvalidConfiguration(String)
+}
+
+public class LayoutErrorInfo {
+    let message: String
+    let filename: String
+    let lineNumber: Int
+    
+    init(message: String, filename: String, lineNumber: Int) {
+        self.message = message
+        self.filename = filename
+        self.lineNumber = lineNumber
+    }
 }

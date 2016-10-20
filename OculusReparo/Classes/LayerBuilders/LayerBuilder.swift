@@ -57,7 +57,11 @@ public class LayerBuilder {
     
     public func getPosition(layout: Section, parent: CALayer) throws -> Position {
         guard let config = layout.getSection("position") else {
-            throw LayoutError.MissingViewPosition("[\(layout.key) is missing a Position section (line: \(layout.lineNumber))")
+            let message = "[\(layout.key) is missing a Position section"
+            
+            let info = LayoutErrorInfo(message: message, filename: layout.filename, lineNumber: layout.lineNumber)
+            
+            throw LayoutError.ConfigurationError(info)
         }
         
         return try Position(section: config, parent: parent)

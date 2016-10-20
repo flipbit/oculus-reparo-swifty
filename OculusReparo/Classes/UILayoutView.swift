@@ -6,7 +6,7 @@ public class UILayoutView : UIView {
         let layout = Layout()
         layout.view = self
         layout.eventTarget = self
-        layout.model =  self
+        layout.model = self
         
         return layout
     }()
