@@ -31,28 +31,23 @@ public class Layout {
     
     public var needsLayout: Bool {
         if laidOut == false {
-            print ("Yep: not laid out")
             return true
         }
         
         if let view = view {
             if view.bounds.height != bounds.height {
-                print ("Yep: \(view.bounds.height) != \(bounds.height)")
                 return true
             }
             
             if view.bounds.width != bounds.width {
-                print ("Yep: \(view.bounds.width) != \(bounds.width)")
                 return true
             }
         }
         
         if orientation != Hardware.orientation {
-            print ("Yep: \(orientation) != \(Hardware.orientation)")
             return true
         }
         
-        print ("Nope: laid out")
         return false
     }
     
@@ -124,14 +119,14 @@ public class Layout {
         bounds = view.bounds.size
         orientation = Hardware.orientation
         
-        Layout.debugger?.info("Laying out view:")
-        Layout.debugger?.info("Screen Orientation : \(orientation)")
-        Layout.debugger?.info("View Height        : \(view.frame.height)")
-        Layout.debugger?.info("View Width         : \(view.frame.width)")
+        Layout.debugger?.debug("Laying out view:")
+        Layout.debugger?.debug("Screen Orientation : \(orientation)")
+        Layout.debugger?.debug("View Height        : \(view.frame.height)")
+        Layout.debugger?.debug("View Width         : \(view.frame.width)")
         
-        Layout.debugger?.info("\(directives.count) Directives:")
+        Layout.debugger?.debug("\(directives.count) Directives:")
         for directive in directives {
-            Layout.debugger?.info("  \(directive)")
+            Layout.debugger?.debug("  \(directive)")
         }                
         
         self.filename = filename

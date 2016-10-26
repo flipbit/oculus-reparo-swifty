@@ -25,12 +25,12 @@ public class LayerBuilder {
         
         if instance.hasLayer(layerId) {
             layer = instance.findLayer(layerId) as! T
-            Layout.debugger?.info("Found layer: \(layerId)")
+            Layout.debugger?.debug("Found layer: \(layerId)")
         } else {
             layer = T()
             let fragment = LayoutLayerFragment(layer: layer, id: layerId, configuration: layout)
             instance.layerFragments[layerId] = fragment
-            Layout.debugger?.info("Created layer: \(layerId)")
+            Layout.debugger?.debug("Created layer: \(layerId)")
             
             if let model = instance.model where layout.hasValue("id") {
                 if model.respondsToSelector(Selector("\(layerId)")) {
@@ -72,7 +72,7 @@ public class LayerBuilder {
         let lastSiblingFrame = position.getLastSiblingLayerFrame(layer)
         let frame = position.toFrame(lastSiblingFrame)
         
-        Layout.debugger?.info(" -> Set frame: \(frame)")
+        Layout.debugger?.debug(" -> Set frame: \(frame)")
         
         return frame
     }

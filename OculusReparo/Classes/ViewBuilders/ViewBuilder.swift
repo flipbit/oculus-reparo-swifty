@@ -27,7 +27,7 @@ public class ViewBuilder {
                 throw LayoutError.InvalidConfiguration("Duplicate view id: \(id)")
             }
             view = instance.findView(id) as! T
-            Layout.debugger?.info("Found view: \(id)")
+            Layout.debugger?.debug("Found view: \(id)")
         } else {
             view = T()
             let fragment = LayoutViewFragment(view: view, id: id, configuration: layout)
@@ -39,7 +39,7 @@ public class ViewBuilder {
                 }
             }
             
-            Layout.debugger?.info("Created view: \(id)")
+            Layout.debugger?.debug("Created view: \(id)")
         }
 
         return try initialize(view, layout: layout, instance: instance, parent: parent)
@@ -107,7 +107,7 @@ public class ViewBuilder {
             frame = position.toFrame(lastSiblingFrame)
         }
         
-        Layout.debugger?.info(" -> Set frame: \(frame)")
+        Layout.debugger?.debug(" -> Set frame: \(frame)")
         
         return frame
     }
