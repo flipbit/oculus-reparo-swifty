@@ -10,11 +10,16 @@ public class UITextFieldBuilder : ViewBuilder {
         let size = layout.getCGFloat("font-size", ifMissing: 17)
         let weight = try Convert.getFontWeight(layout, key: "font-weight")
         
-        label.text = layout.getValue("text") ?? ""
+        label.text = layout.getString("text", ifMissing: "")
         label.textColor = try layout.getUIColor("text-color")
         label.font = UIFont.systemFontOfSize(size, weight: weight)
-        label.textAlignment = try Convert.getTextAlignment(layout.getValue("text-alignment"), or: NSTextAlignment.Left)
-        label.placeholder = layout.getValue("placeholder") ?? ""
+        label.textAlignment = try Convert.getTextAlignment(layout.getString("text-alignment"), or: NSTextAlignment.Left)
+        label.placeholder = layout.getString("placeholder", ifMissing: "")
+        label.secureTextEntry = try layout.getBool("secure-text-entry", ifMissing: false)
+        
+        if let line = layout.getLine("return-key") {
+            label.returnKeyType = try Convert.getReturnKeyType(line)
+        }
         
         return label;
     }

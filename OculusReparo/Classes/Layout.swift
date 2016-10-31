@@ -6,6 +6,7 @@ public class Layout {
     static public var viewBuilders: [ViewBuilder] = []
     static public var imageLoader: UIImageLoader = MainBundleImageLoader()
     static public var debugger: LayoutDebugger? = ConsoleLayoutDebugger()
+    static public var constrainer: LayoutConstrainer? = LayoutConstrainer()
     
     static private var initialized = false
 
@@ -149,130 +150,7 @@ public class Layout {
     }
     
     public func addConstraints() throws {
-        for key in viewFragments.keys {
-            if let fragment = viewFragments[key] {
-                try addConstraints(fragment)
-            }
-        }
-    }
-    
-    public func addConstraints(fragment: LayoutViewFragment) throws {
-        let config = fragment.configuration, view = fragment.view
-        
-        let tlbr = [AnchorType.Top, AnchorType.Left, AnchorType.Bottom, AnchorType.Right, AnchorType.CenterX, AnchorType.CenterY]
-        
-        for anchor in tlbr {
-            if let section = config.getSection(anchor.rawValue) {
-                let anchorToViewId = section.getValue("to", ifMissing: "@parent") ?? "@parent"
-                let constant = section.getCGFloat("constant", ifMissing: 0)
-                let to = try Convert.getViewIdAndAnchor(anchorToViewId, defaultIdView: "@parent", defaultAnchor: anchor)
-                var anchorToView: UIView?
-                
-                switch to.viewId.lowercaseString {
-                case "@parent":
-                    anchorToView = view.superview
-                    
-                case "@next":
-                    anchorToView = findNextSubview(view)
-                    
-                case "@last":
-                    anchorToView = findLastSubview(view)
-                    
-                default:
-                    anchorToView = findView(to.viewId)
-                }
-                
-                if anchorToView == nil {
-                    throw LayoutError.InvalidConfiguration("Unable to find view to anchor to: \(to.viewId)")
-                }
-                
-                addConstraint(on: view, to: anchorToView!, onAnchor: anchor, toAnchor: to.anchor, constant: constant)
-            }
-            
-            else if config.hasValue(anchor.rawValue) {
-                let constant = config.getCGFloat(anchor.rawValue, ifMissing: 0)
-                let parent = view.superview!
-                
-                addConstraint(on: view, to: parent, onAnchor: anchor, toAnchor: anchor, constant: constant)
-            }
-        }
-    }
-    
-    func findNextSubview(view: UIView) -> UIView? {
-        guard let superview = view.superview else {
-            return nil
-        }
-        
-        var next = false
-        
-        for subview in superview.subviews {
-            if subview === view {
-                next = true
-            }
-            
-            else if next {
-                return subview
-            }
-        }
-        
-        return nil
-    }
-
-    func findLastSubview(view: UIView) -> UIView? {
-        guard let superview = view.superview else {
-            return nil
-        }
-        
-        var last: UIView? = nil
-        
-        for subview in superview.subviews {
-            if subview === view {
-                return last
-            }
-                
-            last = subview
-        }
-        
-        return nil
-    }
-
-    func addConstraint(on on: UIView, to: UIView, onAnchor: AnchorType, toAnchor: AnchorType, constant: CGFloat) {
-        let onAnchor = getAnchor(on, anchor: onAnchor)
-        let toAnchor = getAnchor(to, anchor: toAnchor)
-        
-        if on.translatesAutoresizingMaskIntoConstraints {
-            on.translatesAutoresizingMaskIntoConstraints = false
-            
-            if on.frame != CGRectZero {
-                if on.frame.height != 0 {
-                    on.heightAnchor.constraintEqualToConstant(on.frame.height).active = true
-                }
-                if on.frame.width != 0 {
-                    on.widthAnchor.constraintEqualToConstant(on.frame.width).active = true
-                }
-                on.frame = CGRectZero
-            }
-        }
-        
-        onAnchor.constraintEqualToAnchor(toAnchor, constant: constant).active = true
-    }
-    
-    func getAnchor(view: UIView, anchor: AnchorType) -> NSLayoutAnchor {
-        switch (anchor) {
-        case .Bottom:
-            return view.bottomAnchor
-        case .Left:
-            return view.leftAnchor
-        case .Right:
-            return view.rightAnchor
-        case .Top:
-            return view.topAnchor
-        case .CenterY:
-            return view.centerYAnchor
-        case .CenterX:
-            return view.centerXAnchor
-        }
-        
+        try Layout.constrainer?.add(self)
     }
     
     func debug(layout: Document) {

@@ -46,6 +46,108 @@ extension UIViewController {
 
 extension UIView {
     /**
+     Gets the next UIView on the same level in the view hierarchy
+     
+     - Returns:     A UIView, or nil if the current view is the last
+                    view on the current level
+     */
+    func findNextSibling() -> UIView? {
+        guard let superview = self.superview else {
+            return nil
+        }
+        
+        var next = false
+        
+        for subview in superview.subviews {
+            if subview === self {
+                next = true
+            }
+                
+            else if next {
+                return subview
+            }
+        }
+        
+        return nil
+    }
+
+    /**
+     Gets the next UIView on the same level in the view hierarchy, or the
+     parent view if the view is the last view.
+     
+     - Returns:     A UIView, or the parent UIView if the current view is the
+                    last view on the current level
+     */
+    func findNextSiblingOrSuperview() -> UIView? {
+        guard let superview = self.superview else {
+            return nil
+        }
+        
+        var next = false
+        
+        for subview in superview.subviews {
+            if subview === self {
+                next = true
+            }
+                
+            else if next {
+                return subview
+            }
+        }
+        
+        return superview
+    }
+    
+    /**
+     Gets the previous UIView on the same level in the view hierarchy
+     
+     - Returns:     A UIView, or nil if the current view is the first
+                    view on the current level
+     */
+    func findPreviousSibling() -> UIView? {
+        guard let superview = self.superview else {
+            return nil
+        }
+        
+        var last: UIView? = nil
+        
+        for subview in superview.subviews {
+            if subview === self {
+                return last
+            }
+            
+            last = subview
+        }
+        
+        return nil
+    }
+
+    /**
+     Gets the previous UIView on the same level in the view hierarchy, of the
+     parent view if the view is the first view
+     
+     - Returns:     A UIView, or the parent UIView if the current view is the
+                    first view on the current level
+     */
+    func findPreviousSiblingOrSuperview() -> UIView? {
+        guard let superview = self.superview else {
+            return nil
+        }
+        
+        var last: UIView? = nil
+        
+        for subview in superview.subviews {
+            if subview === self {
+                return last ?? superview
+            }
+            
+            last = subview
+        }
+        
+        return superview
+    }
+    
+    /**
      Layouts the view using the given filename
      
      - Parameter filename:   The name of the file containing the view

@@ -66,7 +66,7 @@ public class Convert {
     }
     
     public static func getFontWeight(section: Section, key: String) throws -> CGFloat {
-        let weight = section.getValue(key)
+        let weight = section.getString(key)
         
         guard let name = weight?.lowercaseString else {
             return UIFontWeightRegular
@@ -112,6 +112,31 @@ public class Convert {
 
     }
 
+    public static func getReturnKeyType(line: Line) throws -> UIReturnKeyType {
+        let type = (line.value ?? "").lowercaseString
+        switch type {
+        case "continue":                return .Continue
+        case "default":                 return .Default
+        case "done":                    return .Done
+        case "emergencycall":           return .EmergencyCall
+        case "go":                      return .Go
+        case "google":                  return .Google
+        case "join":                    return .Join
+        case "next":                    return .Next
+        case "route":                   return .Route
+        case "search":                  return .Search
+        case "send":                    return .Send
+        case "yahoo":                   return .Yahoo
+        default:
+            let message = "Unknown UIReturnKeyType: \(type)\n\nValid values are:\n\n - Continue\n - Default\n - Done\n - EmergencyCall\n - Go\n - Google\n -Join\n -Next\n -Route\n -Search\n -Send\n -Yahoo'"
+            let filename = line.filename
+            let lineNumber = line.lineNumber
+            let info = LayoutErrorInfo(message: message, filename: filename, lineNumber: lineNumber)
+            
+            throw LayoutError.ConfigurationError(info)
+        }
+    }
+    
     public static func getPadding(input: String?) throws -> (top: String, left: String, bottom: String, right: String) {
         return try getPadding(input, type: "Padding", format: "(top) (left) (bottom) (right)'")
     }

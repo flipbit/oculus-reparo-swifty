@@ -17,10 +17,10 @@ public class UIScrollViewBuilder : ViewBuilder {
 
         // Set content size
         if let position = try getPosition(layout, parent: parent) {
-            let width = layout.getValue("content-width", ifMissing: "100%")
+            let width = layout.getString("content-width", ifMissing: "100%")
             let w = position.getDimension(width, parent: parent.frame.width)
             
-            let height = layout.getValue("content-height", ifMissing: "100%")
+            let height = layout.getString("content-height", ifMissing: "100%")
             let h = position.getDimension(height, parent: parent.frame.height)
             
             scroll.contentSize = CGSize(width: w, height: h)

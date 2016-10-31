@@ -18,7 +18,7 @@ public class UIImageViewBuilder : ViewBuilder {
         
         let color = try layout.getUIColor("tint-color")
         
-        if let bundle = layout.getValue("image-bundle") {
+        if let bundle = layout.getString("image-bundle") {
             if var image = try Layout.imageLoader.loadImage(named: bundle) {
                 if color != nil {
                     imageView.tintColor = color
@@ -30,7 +30,7 @@ public class UIImageViewBuilder : ViewBuilder {
             }
         }
 
-        if let filename = layout.getValue("image-file") {
+        if let filename = layout.getString("image-file") {
             let frameworkBundle = NSBundle.mainBundle()
             if let imagePath = frameworkBundle.pathForResource(filename, ofType: "") {
                 if var image = UIImage(contentsOfFile: imagePath) {

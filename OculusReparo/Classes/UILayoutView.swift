@@ -7,6 +7,7 @@ public class UILayoutView : UIView {
         layout.view = self
         layout.eventTarget = self
         layout.model = self
+        layout.filename = self.getViewName()
         
         return layout
     }()
@@ -23,6 +24,16 @@ public class UILayoutView : UIView {
                 print("Layout View Error!")
             }
         }
+    }
+    
+    /**
+     Returns the name of the layout file to use for the cell.
+     This value is not used if the filename is specified in the cell
+     constructor.
+     If not overridden, this will be: [class name].layout
+     */
+    public func getViewName() -> String {
+        return String(self.dynamicType) + ".layout"
     }
     
     public func viewWillLayout() {

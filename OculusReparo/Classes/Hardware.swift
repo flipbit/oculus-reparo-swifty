@@ -68,6 +68,7 @@ public class Hardware {
         case Device.iPhone6Plus:            return DeviceType.iPhone
         case Device.iPhone6s:               return DeviceType.iPhone
         case Device.iPhone6sPlus:           return DeviceType.iPhone
+        case Device.iPhoneSE:                return DeviceType.iPhone
         case Device.Simulator:              return DeviceType.Simulator
         default:                            return DeviceType.Unknown
         }

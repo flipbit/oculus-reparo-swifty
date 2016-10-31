@@ -19,8 +19,8 @@ public class LayerBuilder {
         var layer: T
         
         var layerId = layout.path
-        if layout.hasValue("id") {
-            layerId = layout.getValue("id")!
+        if let id = layout.getString("id") {
+            layerId = id
         }
         
         if instance.hasLayer(layerId) {

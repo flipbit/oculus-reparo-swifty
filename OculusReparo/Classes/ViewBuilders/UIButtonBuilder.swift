@@ -21,11 +21,11 @@ public class UIButtonBuilder : ViewBuilder {
         let weight = try Convert.getFontWeight(layout, key: "font-weight")
         button.titleLabel?.font = UIFont.systemFontOfSize(size, weight: weight)
         
-        if let title = layout.getValue("title") {
+        if let title = layout.getString("title") {
             button.setTitle(title, forState: UIControlState.Normal)
         }
 
-        if let bundle = layout.getValue("image-bundle") {
+        if let bundle = layout.getString("image-bundle") {
             if let image = try Layout.imageLoader.loadImage(named: bundle) {
                 button.setImage(image, forState: UIControlState.Normal)
             }
@@ -39,20 +39,20 @@ public class UIButtonBuilder : ViewBuilder {
             button.setTitleColor(color, forState: UIControlState.Normal)
         }
         
-        if let touched = layout.getValue("on-touch"), eventTarget = instance.eventTarget {
+        if let touched = layout.getString("on-touch"), eventTarget = instance.eventTarget {
             button.addTarget(eventTarget, action: Selector(touched), forControlEvents: UIControlEvents.TouchUpInside)
             button.addTarget(eventTarget, action: Selector(touched), forControlEvents: UIControlEvents.TouchUpOutside)
         }
         
-        if let insets = try Convert.getEdgeInsets(layout.getValue("title-edge-insets")) {
+        if let insets = try Convert.getEdgeInsets(layout.getString("title-edge-insets")) {
             button.titleEdgeInsets = insets
         }
         
-        if let insets = try Convert.getEdgeInsets(layout.getValue("image-edge-insets")) {
+        if let insets = try Convert.getEdgeInsets(layout.getString("image-edge-insets")) {
             button.imageEdgeInsets = insets
         }
         
-        if let align = layout.getValue("text-alignment") {
+        if let align = layout.getString("text-alignment") {
             switch align.lowercaseString {
             case "left":
                 button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left

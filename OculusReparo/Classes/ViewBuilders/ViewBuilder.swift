@@ -18,8 +18,8 @@ public class ViewBuilder {
         var view: T
         
         var id = layout.path
-        if layout.hasValue("id") {
-            id = layout.getValue("id")!
+        if let viewId = layout.getString("id") {
+            id = viewId
         }
         
         if instance.hasView(id) {
@@ -47,8 +47,8 @@ public class ViewBuilder {
     
     public func initialize<T: UIView>(view: T, layout: Section, instance: Layout, parent: UIView) throws -> T {
         var id = layout.path
-        if layout.hasValue("id") {
-            id = layout.getValue("id")!
+        if let viewId = layout.getString("id") {
+            id = viewId
         }
         
         if !instance.hasView(id) {
@@ -81,7 +81,7 @@ public class ViewBuilder {
         view.clipsToBounds = try layout.getBool("clips-to-bounds")
         view.hidden = try layout.getBool("hidden")
         view.userInteractionEnabled = try layout.getBool("user-interaction-enabled", ifMissing: true)
-        view.accessibilityIdentifier = layout.getValue("accessibility-identifier")
+        view.accessibilityIdentifier = layout.getString("accessibility-identifier")
         
         
         if view.superview == nil {

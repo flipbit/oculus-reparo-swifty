@@ -42,7 +42,7 @@ public class Section : Line {
     }
     
     override public var path: String {
-        if let id = getValue("id") {
+        if let id = getString("id") {
             return "#" + id
         } else {
             return super.path
@@ -127,12 +127,21 @@ public class Section : Line {
         
         return false
     }
-    
-    public func getValue(name: String) -> String? {
-        return getValue(name, ifMissing: nil)
+
+    public func getLine(name: String) -> Line? {
+        for line in lines {
+            if line.key == name {
+                return line
+            }
+        }
+        return nil
     }
     
-    public func getValue(name: String, ifMissing: String?) -> String? {
+    public func getString(name: String) -> String? {
+        return getString(name, ifMissing: nil)
+    }
+    
+    public func getString(name: String, ifMissing: String?) -> String? {
         for line in lines {
             if line.key == name {
                 return line.value
@@ -162,25 +171,25 @@ public class Section : Line {
     }
     
     public func getFloat(name: String) -> Float? {
-        let value = getValue(name)
+        let value = getString(name)
         
         return Convert.toFloat(value)
     }
     
     public func getFloat(name: String, ifMissing: Float) -> Float {
-        let value = getValue(name)
+        let value = getString(name)
         
         return Convert.toFloat(value, ifMissing: ifMissing)
     }
     
     public func getCGFloat(name: String) -> CGFloat? {
-        let value = getValue(name)
+        let value = getString(name)
         
         return Convert.toCGFloat(value)
     }
     
     public func getCGFloat(name: String, ifMissing: CGFloat) -> CGFloat {
-        let value = getValue(name)
+        let value = getString(name)
         
         return Convert.toCGFloat(value, ifMissing: ifMissing)
     }
@@ -190,7 +199,7 @@ public class Section : Line {
     }
     
     public func getUIColor(name: String, ifMissing: UIColor?) throws -> UIColor? {
-        if let value = getValue(name) {
+        if let value = getString(name) {
             return try Convert.toUIColor(value)
         }
         
@@ -202,7 +211,7 @@ public class Section : Line {
     }
     
     public func getCGColor(name: String, ifMissing: UIColor?) throws -> CGColor? {
-        if let value = getValue(name) {
+        if let value = getString(name) {
             return try Convert.toUIColor(value).CGColor
         }
         
@@ -215,7 +224,7 @@ public class Section : Line {
     
     public func getBool(name: String, ifMissing: Bool) throws -> Bool {
         if hasValue(name) {
-            if let value = getValue(name) {
+            if let value = getString(name) {
                 switch value.lowercaseString {
                 case "true": return true
                 case "false": return false

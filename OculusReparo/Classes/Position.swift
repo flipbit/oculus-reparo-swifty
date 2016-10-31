@@ -75,24 +75,24 @@ public class Position {
     }
     
     init(section: Section) throws {
-        top = section.getValue("top", ifMissing: "0")
-        left = section.getValue("left", ifMissing: "0")
-        width = section.getValue("width", ifMissing: "100%")
-        height = section.getValue("height", ifMissing: "100%")
+        top = section.getString("top", ifMissing: "0")
+        left = section.getString("left", ifMissing: "0")
+        width = section.getString("width", ifMissing: "100%")
+        height = section.getString("height", ifMissing: "100%")
         
-        if let align = section.getValue("horizontal-align", ifMissing: "left") {
+        if let align = section.getString("horizontal-align", ifMissing: "left") {
             horizontalAlignment = HorizontalAlignment(rawValue: align)!
         } else {
             horizontalAlignment = HorizontalAlignment.Left
         }
         
-        if let align = section.getValue("vertical-align", ifMissing: "top") {
+        if let align = section.getString("vertical-align", ifMissing: "top") {
             verticalAlignment = VerticalAlignment(rawValue: align)!
         } else {
             verticalAlignment = VerticalAlignment.Top
         }
         
-        if let padding = section.getValue("padding") {
+        if let padding = section.getString("padding") {
             let padding = try Convert.getPadding(padding)
             
             paddingTop = padding.top
@@ -101,12 +101,12 @@ public class Position {
             paddingRight = padding.right
         }
         
-        paddingTop = section.getValue("padding-top", ifMissing: paddingTop)
-        paddingLeft = section.getValue("padding-left", ifMissing: paddingLeft)
-        paddingRight = section.getValue("padding-right", ifMissing: paddingRight)
-        paddingBottom = section.getValue("padding-bottom", ifMissing: paddingBottom)
+        paddingTop = section.getString("padding-top", ifMissing: paddingTop)
+        paddingLeft = section.getString("padding-left", ifMissing: paddingLeft)
+        paddingRight = section.getString("padding-right", ifMissing: paddingRight)
+        paddingBottom = section.getString("padding-bottom", ifMissing: paddingBottom)
 
-        if let offset = section.getValue("offset") {
+        if let offset = section.getString("offset") {
             let offset = try Convert.getOffset(offset)
             
             offsetTop = offset.top
@@ -115,13 +115,21 @@ public class Position {
             offsetHeight = offset.height
         }
         
-        offsetTop = section.getValue("offset-top", ifMissing: offsetTop)
-        offsetLeft = section.getValue("offset-left", ifMissing: offsetLeft)
-        offsetWidth = section.getValue("offset-width", ifMissing: offsetWidth)
-        offsetHeight = section.getValue("offset-height", ifMissing: offsetHeight)
+        offsetTop = section.getString("offset-top", ifMissing: offsetTop)
+        offsetLeft = section.getString("offset-left", ifMissing: offsetLeft)
+        offsetWidth = section.getString("offset-width", ifMissing: offsetWidth)
+        offsetHeight = section.getString("offset-height", ifMissing: offsetHeight)
         
-        if let alignment = section.getValue("align") {
+        if let alignment = section.getString("align") {
             setAlignment(alignment)
+        }
+        
+        if !section.hasValue("width") && section.parent!.hasValue("snap-right") {
+            width = "0"
+        }
+ 
+        if !section.hasValue("top") && section.parent!.hasValue("snap-top") {
+            top = "0"
         }
     }
     
