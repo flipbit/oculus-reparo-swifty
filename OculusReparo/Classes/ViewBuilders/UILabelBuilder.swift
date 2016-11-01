@@ -16,6 +16,11 @@ public class UILabelBuilder : ViewBuilder {
         label.textColor = try layout.getUIColor("text-color")
         label.font = UIFont.systemFontOfSize(size, weight: weight)
         label.textAlignment = try Convert.getTextAlignment(layout.getString("text-alignment"))
+        label.adjustsFontSizeToFitWidth = try layout.getBool("adjusts-font-size-to-fit-width", ifMissing: false)
+        
+        if let factor = layout.getCGFloat("minimum-scale-factor") {
+            label.minimumScaleFactor = factor
+        }
         
         return label;
     }
