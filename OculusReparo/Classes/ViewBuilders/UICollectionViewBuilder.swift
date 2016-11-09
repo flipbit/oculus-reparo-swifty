@@ -19,8 +19,8 @@ public class UICollectionViewBuilder : ViewBuilder {
         
         try initialize(collection, layout: layout, instance: instance, parent: parent)
         
-        collection.bounces = try layout.getBool("bounces", ifMissing: true)
-        collection.scrollEnabled = try layout.getBool("scroll-enabled", ifMissing: true)
+        collection.bounces = try layout.getBool("bounces", or: true)
+        collection.scrollEnabled = try layout.getBool("scroll-enabled", or: true)
         
         return collection;
     }

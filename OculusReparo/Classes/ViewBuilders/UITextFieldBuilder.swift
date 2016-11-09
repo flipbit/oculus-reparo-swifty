@@ -6,21 +6,35 @@ public class UITextFieldBuilder : ViewBuilder {
     }
     
     override public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
-        let label: UITextField = try initialize(layout, instance: instance, parent: parent)
+        let field: UITextField = try initialize(layout, instance: instance, parent: parent)
         let size = layout.getCGFloat("font-size", ifMissing: 17)
         let weight = try Convert.getFontWeight(layout, key: "font-weight")
         
-        label.text = layout.getString("text", ifMissing: "")
-        label.textColor = try layout.getUIColor("text-color")
-        label.font = UIFont.systemFontOfSize(size, weight: weight)
-        label.textAlignment = try Convert.getTextAlignment(layout.getString("text-alignment"), or: NSTextAlignment.Left)
-        label.placeholder = layout.getString("placeholder", ifMissing: "")
-        label.secureTextEntry = try layout.getBool("secure-text-entry", ifMissing: false)
+        field.text = layout.getString("text", ifMissing: "")
+        field.textColor = try layout.getUIColor("text-color")
+        field.font = UIFont.systemFontOfSize(size, weight: weight)
+        field.textAlignment = try Convert.getTextAlignment(layout.getString("text-alignment"), or: NSTextAlignment.Left)
+        field.placeholder = layout.getString("placeholder", ifMissing: "")
+        field.secureTextEntry = try layout.getBool("secure-text-entry", or: false)
         
         if let line = layout.getLine("return-key") {
-            label.returnKeyType = try Convert.getReturnKeyType(line)
+            field.returnKeyType = try Convert.getReturnKeyType(line)
         }
         
-        return label;
+        if let autocorrect = try layout.getBool("auto-correction") {
+            if autocorrect {
+                field.autocorrectionType = .Yes
+            } else {
+                field.autocorrectionType = .No
+            }
+        } else {
+            field.autocorrectionType = .Default
+        }
+
+        if let line = layout.getLine("auto-capitalization") {
+            field.autocapitalizationType = try Convert.getUITextAutocapitalizationType(line)
+        }
+        
+        return field;
     }
 }

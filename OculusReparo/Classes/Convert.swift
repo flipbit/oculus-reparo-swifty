@@ -136,6 +136,23 @@ public class Convert {
             throw LayoutError.ConfigurationError(info)
         }
     }
+
+    public static func getUITextAutocapitalizationType(line: Line) throws -> UITextAutocapitalizationType {
+        let type = (line.value ?? "").lowercaseString
+        switch type {
+        case "all":                     return .AllCharacters
+        case "none":                    return .None
+        case "sentances":               return .Sentences
+        case "words":                   return .Words
+        default:
+            let message = "Unknown UITextAutocapitalizationType: \(type)\n\nValid values are:\n\n - All\n - None\n - Sentances\n - Words"
+            let filename = line.filename
+            let lineNumber = line.lineNumber
+            let info = LayoutErrorInfo(message: message, filename: filename, lineNumber: lineNumber)
+            
+            throw LayoutError.ConfigurationError(info)
+        }
+    }
     
     public static func getPadding(input: String?) throws -> (top: String, left: String, bottom: String, right: String) {
         return try getPadding(input, type: "Padding", format: "(top) (left) (bottom) (right)'")

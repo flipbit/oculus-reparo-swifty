@@ -218,11 +218,15 @@ public class Section : Line {
         return ifMissing?.CGColor
     }
 
-    public func getBool(name: String) throws -> Bool {
-        return try getBool(name, ifMissing: false)
+    public func getBool(name: String) throws -> Bool? {
+        if hasValue(name) {
+            return try getBool(name, or: false)
+        }
+        
+        return nil
     }
     
-    public func getBool(name: String, ifMissing: Bool) throws -> Bool {
+    public func getBool(name: String, or: Bool) throws -> Bool {
         if hasValue(name) {
             if let value = getString(name) {
                 switch value.lowercaseString {
@@ -238,7 +242,7 @@ public class Section : Line {
         } else if hasValue("!" + name) {
             return false                        // check for "!" value
         } else {
-            return ifMissing
+            return or
         }
     }
     

@@ -8,10 +8,10 @@ public class UITableViewBuilder : ViewBuilder {
     override public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
         let table: UITableView = try initialize(layout, instance: instance, parent: parent)
         
-        table.bounces = try layout.getBool("bounces", ifMissing: true)
-        table.scrollEnabled = try layout.getBool("scroll-enabled", ifMissing: true)
+        table.bounces = try layout.getBool("bounces", or: true)
+        table.scrollEnabled = try layout.getBool("scroll-enabled", or: true)
                 
-        if try layout.getBool("set-delegate") {
+        if try layout.getBool("set-delegate", or: false) {
             if let delegate = instance.eventTarget as? UITableViewDelegate {
                 table.delegate = delegate
             } else {

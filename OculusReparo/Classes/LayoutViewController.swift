@@ -42,7 +42,7 @@ public class LayoutViewController : UIViewController {
     override public func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
-        Layout.debugger?.info("Trait collection changed.")
+        Layout.debugger?.debug("Trait collection changed.")
        
         if layout.laidOut {
             relayoutViews()

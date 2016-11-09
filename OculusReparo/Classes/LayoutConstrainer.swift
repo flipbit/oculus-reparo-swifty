@@ -61,6 +61,20 @@ public class LayoutConstrainer {
         snapLeft(view, config: config)
         snapRight(view, config: config)
         snapTop(view, config: config)
+        
+        // parent-snap-left
+        parentSnapLeft(view, config: config)
+    }
+
+    private func parentSnapLeft(view: UIView, config: Section) {
+        if config.hasValue("snap-left-parent") {
+            if let to = view.superview {
+                let toAnchor = AnchorType.Left
+                let constant = config.getCGFloat("snap-left-parent", ifMissing: 0)
+            
+                addConstraint(on: view, to: to, onAnchor: .Left, toAnchor: toAnchor, constant: constant)
+            }
+        }
     }
     
     private func snapLeft(view: UIView, config: Section) {

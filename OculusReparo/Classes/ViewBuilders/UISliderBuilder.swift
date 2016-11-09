@@ -11,7 +11,7 @@ public class UISliderBuilder : ViewBuilder {
         slider.minimumValue = layout.getFloat("minimum-value", ifMissing: 0)
         slider.maximumValue = layout.getFloat("maximum-value", ifMissing: 100)
         slider.value = layout.getFloat("value", ifMissing: 0)
-        slider.continuous = try layout.getBool("continuous", ifMissing: false)
+        slider.continuous = try layout.getBool("continuous", or: false)
         
         if let color = try layout.getUIColor("tint-color") {
                 slider.tintColor = color

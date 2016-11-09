@@ -78,9 +78,9 @@ public class ViewBuilder {
         view.layer.borderColor = try layout.getCGColor("border-color")
         view.layer.borderWidth = layout.getCGFloat("border-width", ifMissing: 0)
         view.layer.opacity = layout.getFloat("opacity", ifMissing: 1)
-        view.clipsToBounds = try layout.getBool("clips-to-bounds")
-        view.hidden = try layout.getBool("hidden")
-        view.userInteractionEnabled = try layout.getBool("user-interaction-enabled", ifMissing: true)
+        view.clipsToBounds = try layout.getBool("clips-to-bounds", or: false)
+        view.hidden = try layout.getBool("hidden", or: false)
+        view.userInteractionEnabled = try layout.getBool("user-interaction-enabled", or: true)
         view.accessibilityIdentifier = layout.getString("accessibility-identifier")
         
         

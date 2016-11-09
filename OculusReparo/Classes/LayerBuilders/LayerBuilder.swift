@@ -46,7 +46,7 @@ public class LayerBuilder {
         layer.borderColor = try layout.getCGColor("border-color")
         layer.borderWidth = layout.getCGFloat("border-width", ifMissing: 0)
         layer.opacity = layout.getFloat("opacity", ifMissing: 1)
-        layer.hidden = try layout.getBool("hidden")
+        layer.hidden = try layout.getBool("hidden", or: false)
         
         if layer.superlayer == nil {
             parent.addSublayer(layer)
