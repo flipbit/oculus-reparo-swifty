@@ -34,6 +34,10 @@ public class UITextFieldBuilder : ViewBuilder {
         if let line = layout.getLine("auto-capitalization") {
             field.autocapitalizationType = try Convert.getUITextAutocapitalizationType(line)
         }
+
+        if let line = layout.getLine("keyboard-type") {
+            field.keyboardType = try Convert.getUIKeyboardType(line)
+        }
         
         return field;
     }

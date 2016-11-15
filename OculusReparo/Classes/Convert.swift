@@ -154,6 +154,51 @@ public class Convert {
         }
     }
     
+    public static func getUIKeyboardType(line: Line) throws -> UIKeyboardType {
+        let type = (line.value ?? "").lowercaseString
+        switch type {
+        case "ascii-capable":               return .ASCIICapable
+        case "ascii-capable-number":
+            if #available(iOS 10.0, *) {
+                return .ASCIICapableNumberPad
+            } else {
+                return .ASCIICapable
+            }
+        case "decimal":                     return .DecimalPad
+        case "default":                     return .Default
+        case "email-address":               return .EmailAddress
+        case "name-phone":                  return .NamePhonePad
+        case "number":                      return .NumberPad
+        case "numbers-and-punctuation":     return .NumbersAndPunctuation
+        case "phone":                      return .PhonePad
+        case "twitter":                     return .Twitter
+        case "url":                         return .URL
+        case "web-search":                  return .WebSearch
+        default:
+            let message = "Unknown UIKeyboardType: \(type)"
+            let filename = line.filename
+            let lineNumber = line.lineNumber
+            let info = LayoutErrorInfo(message: message, filename: filename, lineNumber: lineNumber)
+            info.append("")
+            info.append("Valid values are:")
+            info.append("")
+            info.append("- ascii-capable")
+            info.append("- ascii-capable-number")
+            info.append("- decimal")
+            info.append("- default")
+            info.append("- email-address")
+            info.append("- name-phone")
+            info.append("- number")
+            info.append("- numbers-and-punctuation")
+            info.append("- phone")
+            info.append("- twitter")
+            info.append("- url")
+            info.append("- web-search")
+            
+            throw LayoutError.ConfigurationError(info)
+        }
+    }
+    
     public static func getPadding(input: String?) throws -> (top: String, left: String, bottom: String, right: String) {
         return try getPadding(input, type: "Padding", format: "(top) (left) (bottom) (right)'")
     }

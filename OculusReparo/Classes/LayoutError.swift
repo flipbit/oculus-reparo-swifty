@@ -11,7 +11,7 @@ enum LayoutError: ErrorType {
 }
 
 public class LayoutErrorInfo {
-    let message: String
+    var message: String
     let filename: String
     let lineNumber: Int
     
@@ -19,5 +19,13 @@ public class LayoutErrorInfo {
         self.message = message
         self.filename = filename
         self.lineNumber = lineNumber
+    }
+    
+    func append(line: String) {
+        if message.characters.count > 0 {
+            message = "\(message)\n"
+        }
+        
+        message = "\(message)\(line)"
     }
 }
