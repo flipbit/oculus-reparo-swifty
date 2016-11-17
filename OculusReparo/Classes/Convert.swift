@@ -199,6 +199,28 @@ public class Convert {
         }
     }
     
+    public static func getUITextSpellCheckingType(line: Line) throws -> UITextSpellCheckingType {
+        let type = (line.value ?? "").lowercaseString
+        switch type {
+        case "ascii-capable":               return .Default
+        case "decimal":                     return .No
+        case "default":                     return .Yes
+        default:
+            let message = "Unknown UITextSpellCheckingType: \(type)"
+            let filename = line.filename
+            let lineNumber = line.lineNumber
+            let info = LayoutErrorInfo(message: message, filename: filename, lineNumber: lineNumber)
+            info.append("")
+            info.append("Valid values are:")
+            info.append("")
+            info.append("- default")
+            info.append("- yes")
+            info.append("- no")
+            
+            throw LayoutError.ConfigurationError(info)
+        }
+    }
+    
     public static func getPadding(input: String?) throws -> (top: String, left: String, bottom: String, right: String) {
         return try getPadding(input, type: "Padding", format: "(top) (left) (bottom) (right)'")
     }

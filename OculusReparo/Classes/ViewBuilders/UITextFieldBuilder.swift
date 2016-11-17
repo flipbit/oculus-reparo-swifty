@@ -38,6 +38,12 @@ public class UITextFieldBuilder : ViewBuilder {
         if let line = layout.getLine("keyboard-type") {
             field.keyboardType = try Convert.getUIKeyboardType(line)
         }
+
+        /*
+        if let line = layout.getLine("spell-checking-type", "spell-checking", "spelling") {
+            field.spellCheckingType = try Convert.getUITextSpellCheckingType(line)
+        }
+        */
         
         return field;
     }

@@ -128,10 +128,12 @@ public class Section : Line {
         return false
     }
 
-    public func getLine(name: String) -> Line? {
-        for line in lines {
-            if line.key == name {
-                return line
+    public func getLine(names: String...) -> Line? {
+        for name in names {
+            for line in lines {
+                if line.key == name {
+                    return line
+                }
             }
         }
         return nil
