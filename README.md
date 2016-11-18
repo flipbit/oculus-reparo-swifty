@@ -149,7 +149,7 @@ class TrafficLightsController : LayoutViewController {
 
 ## Supported Featues
 
-* UIViews and CALayers
+* [UIViews and CALayers](https://github.com/flipbit/oculus-reparo-swifty/wiki/UIView-and-CALayers)
 * Nesting elements
 * Model binding
 * Event binding
