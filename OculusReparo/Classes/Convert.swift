@@ -220,6 +220,48 @@ public class Convert {
             throw LayoutError.ConfigurationError(info)
         }
     }
+
+    public static func getUIViewContentMode(line: Line) throws -> UIViewContentMode {
+        let type = (line.value ?? "").lowercaseString
+        switch type {
+        case "bottom":                      return .Bottom
+        case "bottom-left":                 return .BottomLeft
+        case "bottom-right":                return .BottomRight
+        case "center":                      return .Center
+        case "left":                        return .Left
+        case "redraw":                      return .Redraw
+        case "right":                       return .Right
+        case "scale-aspect-fill":           return .ScaleAspectFill
+        case "scale-aspect-fit":            return .ScaleAspectFit
+        case "scale-to-fill":               return .ScaleToFill
+        case "top":                         return .Top
+        case "top-left":                    return .TopLeft
+        case "top-right":                   return .TopRight
+        default:
+            let message = "Unknown UIViewContentMode: \(type)"
+            let filename = line.filename
+            let lineNumber = line.lineNumber
+            let info = LayoutErrorInfo(message: message, filename: filename, lineNumber: lineNumber)
+            info.append("")
+            info.append("Valid values are:")
+            info.append("")
+            info.append("- bottom")
+            info.append("- bottom-left")
+            info.append("- bottom-right")
+            info.append("- center")
+            info.append("- left")
+            info.append("- redraw")
+            info.append("- right")
+            info.append("- scale-aspect-fill")
+            info.append("- scale-aspect-fit")
+            info.append("- scale-to-fill")
+            info.append("- top")
+            info.append("- top-left")
+            info.append("- top-right")
+            
+            throw LayoutError.ConfigurationError(info)
+        }
+    }
     
     public static func getPadding(input: String?) throws -> (top: String, left: String, bottom: String, right: String) {
         return try getPadding(input, type: "Padding", format: "(top) (left) (bottom) (right)'")

@@ -46,8 +46,11 @@ public class UIImageViewBuilder : ViewBuilder {
             
         }
 
-        
-        imageView.contentMode = UIViewContentMode.Top
+        if let line = layout.getLine("content-mode") {
+            let contentMode = try Convert.getUIViewContentMode(line)
+            
+            imageView.contentMode = contentMode
+        }
         
         return imageView;
     }

@@ -43,6 +43,12 @@ public class UILayoutCell : UITableViewCell {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    /**
+     Occurs once before the initial layout
+     */
+    public func viewInitialLayout() {
+    }
     
     /**
      Occurs before the cell's view is laid out
@@ -73,6 +79,10 @@ public class UILayoutCell : UITableViewCell {
         super.layoutSubviews()
         
         if layout.needsLayout {
+            if layout.laidOut == false {
+                viewInitialLayout()
+            }
+            
             viewWillLayout()
             
             do {

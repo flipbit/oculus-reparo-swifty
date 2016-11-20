@@ -32,6 +32,17 @@ public class UITableViewBuilder : ViewBuilder {
             }
         }
         
+        if layout.hasValue("section-index-color") {
+            table.sectionIndexColor = try layout.getUIColor("section-index-color")
+        }
+
+        if layout.hasValue("section-index-background-color") {
+            table.sectionIndexBackgroundColor = try layout.getUIColor("section-index-background-color")
+        }
+        if layout.hasValue("section-index-tracking-background-color") {
+            table.sectionIndexTrackingBackgroundColor = try layout.getUIColor("section-index-tracking-background-color")
+        }
+        
         return table;
     }
 }
