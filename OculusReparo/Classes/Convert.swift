@@ -170,7 +170,7 @@ public class Convert {
         case "name-phone":                  return .NamePhonePad
         case "number":                      return .NumberPad
         case "numbers-and-punctuation":     return .NumbersAndPunctuation
-        case "phone":                      return .PhonePad
+        case "phone":                       return .PhonePad
         case "twitter":                     return .Twitter
         case "url":                         return .URL
         case "web-search":                  return .WebSearch

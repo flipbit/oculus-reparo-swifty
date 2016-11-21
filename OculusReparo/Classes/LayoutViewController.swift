@@ -25,8 +25,11 @@ public class LayoutViewController : UIViewController {
             
             viewWillLayout()
             do {
-                try! layout.apply()
+                try layout.apply()
+                
                 viewDidLayout()
+            } catch LayoutError.ConfigurationError(let info) {
+                Layout.debugger?.error(info)
             } catch {
                 print("Layout error")
             }
