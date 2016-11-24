@@ -47,7 +47,13 @@ public class UILayoutCell : UITableViewCell {
     /**
      Occurs once before the initial layout
      */
-    public func viewInitialLayout() {
+    public func willInitLayout() {
+    }
+
+    /**
+     Occurs once after the initial layout
+     */
+    public func didInitLayout() {
     }
     
     /**
@@ -79,8 +85,8 @@ public class UILayoutCell : UITableViewCell {
         super.layoutSubviews()
         
         if layout.needsLayout {
-            if layout.laidOut == false {
-                viewInitialLayout()
+            if layout.laidOutCount == 0 {
+                willInitLayout()
             }
             
             viewWillLayout()
@@ -93,6 +99,10 @@ public class UILayoutCell : UITableViewCell {
                 assertionFailure("Fatal Layout Error!")
             } catch {
                 assertionFailure("Fatal Layout Error: \(error)")
+            }
+            
+            if layout.laidOutCount == 1 {
+                didInitLayout()
             }
             
             viewDidLayout()

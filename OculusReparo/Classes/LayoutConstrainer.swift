@@ -43,7 +43,9 @@ public class LayoutConstrainer {
                 }
                 
                 if anchorToView == nil {
-                    throw LayoutError.InvalidConfiguration("Unable to find view to anchor to: \(to.viewId)")
+                    let info = LayoutErrorInfo(message: "Unable to find view to anchor to: \(to.viewId)", filename: section.filename, lineNumber: section.lineNumber)
+                    
+                    throw LayoutError.ConfigurationError(info)
                 }
                 
                 addConstraint(on: view, to: anchorToView!, onAnchor: anchor, toAnchor: to.anchor, constant: constant)
@@ -63,9 +65,22 @@ public class LayoutConstrainer {
         snapTop(view, config: config)
         
         // parent-snap-left
+        parentSnapTop(view, config: config)
         parentSnapLeft(view, config: config)
+        parentSnapRight(view, config: config)
     }
 
+    private func parentSnapTop(view: UIView, config: Section) {
+        if config.hasValue("snap-parent-top") {
+            if let to = view.superview {
+                let toAnchor = AnchorType.Top
+                let constant = config.getCGFloat("snap-parent-top", ifMissing: 0)
+                
+                addConstraint(on: view, to: to, onAnchor: .Top, toAnchor: toAnchor, constant: constant)
+            }
+        }
+    }
+    
     private func parentSnapLeft(view: UIView, config: Section) {
         if config.hasValue("snap-left-parent") {
             if let to = view.superview {
@@ -73,6 +88,17 @@ public class LayoutConstrainer {
                 let constant = config.getCGFloat("snap-left-parent", ifMissing: 0)
             
                 addConstraint(on: view, to: to, onAnchor: .Left, toAnchor: toAnchor, constant: constant)
+            }
+        }
+    }
+
+    private func parentSnapRight(view: UIView, config: Section) {
+        if config.hasValue("snap-parent-right") {
+            if let to = view.superview {
+                let toAnchor = AnchorType.Right
+                let constant = config.getCGFloat("snap-parent-right", ifMissing: 0) * -1
+                
+                addConstraint(on: view, to: to, onAnchor: .Right, toAnchor: toAnchor, constant: constant)
             }
         }
     }

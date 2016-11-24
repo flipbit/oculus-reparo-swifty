@@ -12,6 +12,11 @@ public class Layout {
 
     private var orientation = Hardware.orientation
     
+    private var _laidOutCount = 0
+    public var laidOutCount: Int {
+        return _laidOutCount
+    }
+    
     private var _laidOut = false
     public var laidOut: Bool {
         return _laidOut
@@ -115,12 +120,11 @@ public class Layout {
         guard let view = view else {
             throw LayoutError.MissingRootView
         }
-        
-        
+                
         bounds = view.bounds.size
         orientation = Hardware.orientation
         
-        Layout.debugger?.debug("Laying out view:")
+        Layout.debugger?.debug("Laying out view    : \(filename)")
         Layout.debugger?.debug("Screen Orientation : \(orientation)")
         Layout.debugger?.debug("View Height        : \(view.frame.height)")
         Layout.debugger?.debug("View Width         : \(view.frame.width)")
@@ -147,6 +151,8 @@ public class Layout {
         }
         
         _laidOut = true
+        
+        _laidOutCount = _laidOutCount + 1
     }
     
     public func addConstraints() throws {

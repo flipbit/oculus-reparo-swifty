@@ -23,22 +23,51 @@ public class LayoutViewController : UIViewController {
                 layout.filename = getViewName()
             }
             
+            if layout.laidOutCount == 0 {
+                willInitLayout()
+            }
+            
             viewWillLayout()
+            
             do {
                 try layout.apply()
-                
-                viewDidLayout()
             } catch LayoutError.ConfigurationError(let info) {
                 Layout.debugger?.error(info)
+                
+                assertionFailure("Fatal Layout Error!")
             } catch {
-                print("Layout error")
+                assertionFailure("Fatal Layout Error: \(error)")
             }
+            
+            if layout.laidOutCount == 1 {
+                didInitLayout()
+            }
+            
+            viewDidLayout()
         }
     }
 
+    /**
+     Occurs once before the initial layout
+     */
+    public func willInitLayout() {
+    }
+    
+    /**
+     Occurs once after the initial layout
+     */
+    public func didInitLayout() {
+    }
+    
+    /**
+     Occurs before the cell's view is laid out
+     */
     public func viewWillLayout() {
     }
     
+    /**
+     Occurs after the cell's view is laid out
+     */
     public func viewDidLayout() {
     }
         

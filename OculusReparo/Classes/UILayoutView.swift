@@ -16,13 +16,27 @@ public class UILayoutView : UIView {
         super.layoutSubviews()
         
         if layout.needsLayout {
-            do {
-                viewWillLayout()
-                try layout.apply()
-                viewDidLayout()
-            } catch {
-                print("Layout View Error!")
+            if layout.laidOutCount == 0 {
+                willInitLayout()
             }
+            
+            viewWillLayout()
+            
+            do {
+                try layout.apply()
+            } catch LayoutError.ConfigurationError(let info) {
+                Layout.debugger?.error(info)
+                
+                assertionFailure("Fatal Layout Error!")
+            } catch {
+                assertionFailure("Fatal Layout Error: \(error)")
+            }
+
+            if layout.laidOutCount == 1 {
+                didInitLayout()
+            }
+            
+            viewDidLayout()
         }
     }
     
@@ -34,6 +48,18 @@ public class UILayoutView : UIView {
      */
     public func getViewName() -> String {
         return String(self.dynamicType) + ".layout"
+    }
+    
+    /**
+     Occurs once before the initial layout
+     */
+    public func willInitLayout() {
+    }
+    
+    /**
+     Occurs once after the initial layout
+     */
+    public func didInitLayout() {
     }
     
     public func viewWillLayout() {
