@@ -64,44 +64,43 @@ public class LayoutConstrainer {
         snapRight(view, config: config)
         snapTop(view, config: config)
         
-        // parent-snap-left
+        // parent snap-to
         parentSnapTop(view, config: config)
         parentSnapLeft(view, config: config)
         parentSnapRight(view, config: config)
+        parentSnapBottom(view, config: config)
     }
 
+    private func parentSnapBottom(view: UIView, config: Section) {
+        parentSnap(view, config: config, name: "snap-parent-bottom", anchor: .Bottom, invert: true)
+    }
+    
     private func parentSnapTop(view: UIView, config: Section) {
-        if config.hasValue("snap-parent-top") {
+        parentSnap(view, config: config, name: "snap-parent-top", anchor: .Top, invert: false)
+    }
+    
+    private func parentSnapLeft(view: UIView, config: Section) {
+        parentSnap(view, config: config, name: "snap-parent-left", anchor: .Left, invert: false)
+    }
+
+    private func parentSnapRight(view: UIView, config: Section) {
+        parentSnap(view, config: config, name: "snap-parent-right", anchor: .Right, invert: true)
+    }
+    
+    private func parentSnap(view: UIView, config: Section, name: String, anchor: AnchorType, invert: Bool) {
+        if config.hasValue(name) {
             if let to = view.superview {
-                let toAnchor = AnchorType.Top
-                let constant = config.getCGFloat("snap-parent-top", ifMissing: 0)
+                var constant = config.getCGFloat(name, ifMissing: 0)
                 
-                addConstraint(on: view, to: to, onAnchor: .Top, toAnchor: toAnchor, constant: constant)
+                if invert {
+                   constant = constant * -1
+                }
+                
+                addConstraint(on: view, to: to, onAnchor: anchor, toAnchor: anchor, constant: constant)
             }
         }
     }
     
-    private func parentSnapLeft(view: UIView, config: Section) {
-        if config.hasValue("snap-left-parent") {
-            if let to = view.superview {
-                let toAnchor = AnchorType.Left
-                let constant = config.getCGFloat("snap-left-parent", ifMissing: 0)
-            
-                addConstraint(on: view, to: to, onAnchor: .Left, toAnchor: toAnchor, constant: constant)
-            }
-        }
-    }
-
-    private func parentSnapRight(view: UIView, config: Section) {
-        if config.hasValue("snap-parent-right") {
-            if let to = view.superview {
-                let toAnchor = AnchorType.Right
-                let constant = config.getCGFloat("snap-parent-right", ifMissing: 0) * -1
-                
-                addConstraint(on: view, to: to, onAnchor: .Right, toAnchor: toAnchor, constant: constant)
-            }
-        }
-    }
     
     private func snapLeft(view: UIView, config: Section) {
         if config.hasValue("snap-left") {
