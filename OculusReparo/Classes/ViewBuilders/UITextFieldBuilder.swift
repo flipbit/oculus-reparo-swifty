@@ -17,6 +17,10 @@ public class UITextFieldBuilder : ViewBuilder {
         field.placeholder = layout.getString("placeholder", ifMissing: "")
         field.secureTextEntry = try layout.getBool("secure-text-entry", or: false)
         
+        if let color = try layout.getUIColor("placeholder-color", ifMissing: nil), placeholder = field.placeholder {
+            field.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName : color])
+        }
+        
         if let line = layout.getLine("return-key") {
             field.returnKeyType = try Convert.getReturnKeyType(line)
         }
