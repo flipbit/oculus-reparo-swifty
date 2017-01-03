@@ -1,8 +1,8 @@
 import UIKit
 
 
-public class UILayoutView : UIView {
-    lazy public var layout: Layout = {
+open class UILayoutView : UIView {
+    lazy open var layout: Layout = {
         let layout = Layout()
         layout.view = self
         layout.eventTarget = self
@@ -12,7 +12,7 @@ public class UILayoutView : UIView {
         return layout
     }()
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         if layout.needsLayout {
@@ -24,7 +24,7 @@ public class UILayoutView : UIView {
             
             do {
                 try layout.apply()
-            } catch LayoutError.ConfigurationError(let info) {
+            } catch LayoutError.configurationError(let info) {
                 Layout.debugger?.error(info)
                 
                 assertionFailure("Fatal Layout Error!")
@@ -46,25 +46,25 @@ public class UILayoutView : UIView {
      constructor.
      If not overridden, this will be: [class name].layout
      */
-    public func getViewName() -> String {
-        return String(self.dynamicType) + ".layout"
+    open func getViewName() -> String {
+        return String(describing: type(of: self)) + ".layout"
     }
     
     /**
      Occurs once before the initial layout
      */
-    public func willInitLayout() {
+    open func willInitLayout() {
     }
     
     /**
      Occurs once after the initial layout
      */
-    public func didInitLayout() {
+    open func didInitLayout() {
     }
     
-    public func viewWillLayout() {
+    open func viewWillLayout() {
     }
     
-    public func viewDidLayout() {
+    open func viewDidLayout() {
     }
 }

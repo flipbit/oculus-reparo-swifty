@@ -3,11 +3,11 @@ import OculusReparo
 import UIKit
 
 /// UITableViewCell that renders it's contents using OculusReparo
-public class UILayoutCell : UITableViewCell {
+open class UILayoutCell : UITableViewCell {
     /**
      The cell's Layout instance
      */
-    public var layout: Layout
+    open var layout: Layout
 
     /**
      Creates a new UILayoutCell instance
@@ -17,7 +17,7 @@ public class UILayoutCell : UITableViewCell {
     public init(reuseIdentifier: String) {
         layout = Layout()
         
-        super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
+        super.init(style: UITableViewCellStyle.default, reuseIdentifier: reuseIdentifier)
         
         layout.view = self
         layout.filename = getViewName()
@@ -32,7 +32,7 @@ public class UILayoutCell : UITableViewCell {
     public init(layoutName: String, reuseIdentifier: String) {
         layout = Layout(filename: layoutName)
         
-        super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
+        super.init(style: UITableViewCellStyle.default, reuseIdentifier: reuseIdentifier)
         
         layout.view = self
     }
@@ -47,25 +47,25 @@ public class UILayoutCell : UITableViewCell {
     /**
      Occurs once before the initial layout
      */
-    public func willInitLayout() {
+    open func willInitLayout() {
     }
 
     /**
      Occurs once after the initial layout
      */
-    public func didInitLayout() {
+    open func didInitLayout() {
     }
     
     /**
      Occurs before the cell's view is laid out
      */
-    public func viewWillLayout() {
+    open func viewWillLayout() {
     }
     
     /**
      Occurs after the cell's view is laid out
      */
-    public func viewDidLayout() {
+    open func viewDidLayout() {
     }
     
     /**
@@ -74,14 +74,14 @@ public class UILayoutCell : UITableViewCell {
      constructor.
      If not overridden, this will be: [class name].layout
      */
-    public func getViewName() -> String {
-        return String(self.dynamicType) + ".layout"
+    open func getViewName() -> String {
+        return String(describing: type(of: self)) + ".layout"
     }
     
     /**
      Laysout the cell's subviews
      */
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         if layout.needsLayout {
@@ -93,7 +93,7 @@ public class UILayoutCell : UITableViewCell {
             
             do {
                 try layout.apply()
-            } catch LayoutError.ConfigurationError(let info) {
+            } catch LayoutError.configurationError(let info) {
                 Layout.debugger?.error(info)
                 
                 assertionFailure("Fatal Layout Error!")

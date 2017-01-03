@@ -1,12 +1,12 @@
 import Foundation
 import UIKit
 
-public class UIScrollViewBuilder : ViewBuilder {
-    override public func canBuild(layout: Section) -> Bool {
+open class UIScrollViewBuilder : ViewBuilder {
+    override open func canBuild(_ layout: Section) -> Bool {
         return layout.key == "scroll"
     }
     
-    override public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
+    override open func build(_ layout: Section, instance: Layout, parent: UIView) throws -> UIView {
         let scroll: UIScrollView = try initialize(layout, instance: instance, parent: parent)
         
 
@@ -15,12 +15,12 @@ public class UIScrollViewBuilder : ViewBuilder {
 
         // Paging
         if layout.hasValue("paging-enabled") {
-            scroll.pagingEnabled = try layout.getBool("paging-enabled", or: true)
+            scroll.isPagingEnabled = try layout.getBool("paging-enabled", or: true)
         }
 
         // Scrolling
         if layout.hasValue("scroll-enabled") {
-            scroll.scrollEnabled = try layout.getBool("scroll-enabled", or: true)
+            scroll.isScrollEnabled = try layout.getBool("scroll-enabled", or: true)
         }
 
         // Bouncing

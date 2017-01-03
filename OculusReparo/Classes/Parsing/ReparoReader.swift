@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol ReparoReader {
-    func readFile(filename: String) throws -> String?
+    func readFile(_ filename: String) throws -> String?
     
-    func readIncludeFile(filename: String) throws -> String?
+    func readIncludeFile(_ filename: String) throws -> String?
 }

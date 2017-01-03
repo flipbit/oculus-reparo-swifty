@@ -1,41 +1,41 @@
 import Foundation
 import UIKit
 
-public class Layout {
-    static public var layerBuilders: [LayerBuilder] = []
-    static public var viewBuilders: [ViewBuilder] = []
-    static public var imageLoader: UIImageLoader = MainBundleImageLoader()
-    static public var debugger: LayoutDebugger? = ConsoleLayoutDebugger()
-    static public var constrainer: LayoutConstrainer? = LayoutConstrainer()
+open class Layout {
+    static open var layerBuilders: [LayerBuilder] = []
+    static open var viewBuilders: [ViewBuilder] = []
+    static open var imageLoader: UIImageLoader = MainBundleImageLoader()
+    static open var debugger: LayoutDebugger? = ConsoleLayoutDebugger()
+    static open var constrainer: LayoutConstrainer? = LayoutConstrainer()
     
-    static private var initialized = false
+    static fileprivate var initialized = false
 
-    private var orientation = Hardware.orientation
+    fileprivate var orientation = Hardware.orientation
     
-    private var _laidOutCount = 0
-    public var laidOutCount: Int {
+    fileprivate var _laidOutCount = 0
+    open var laidOutCount: Int {
         return _laidOutCount
     }
     
-    private var _laidOut = false
-    public var laidOut: Bool {
+    fileprivate var _laidOut = false
+    open var laidOut: Bool {
         return _laidOut
     }
 
-    public var bounds: CGSize = CGSizeZero
+    open var bounds: CGSize = CGSize.zero
     
-    public var variables: [String: AnyObject]
-    public var directives: [String]
-    public var model: NSObject?
-    public var eventTarget: AnyObject?
-    public var view: UIView?
-    public var filename: String?
+    open var variables: [String: AnyObject]
+    open var directives: [String]
+    open var model: NSObject?
+    open var eventTarget: AnyObject?
+    open var view: UIView?
+    open var filename: String?
     
     
-    public var viewFragments = [String: LayoutViewFragment]()
-    public var layerFragments = [String: LayoutLayerFragment]()
+    open var viewFragments = [String: LayoutViewFragment]()
+    open var layerFragments = [String: LayoutLayerFragment]()
     
-    public var needsLayout: Bool {
+    open var needsLayout: Bool {
         if laidOut == false {
             return true
         }
@@ -112,13 +112,13 @@ public class Layout {
         self.filename = filename
     }
     
-    public func apply() throws {
+    open func apply() throws {
         try apply(filename!)
     }
     
-    public func apply(filename: String) throws {
+    open func apply(_ filename: String) throws {
         guard let view = view else {
-            throw LayoutError.MissingRootView
+            throw LayoutError.missingRootView
         }
                 
         bounds = view.bounds.size
@@ -155,12 +155,12 @@ public class Layout {
         _laidOutCount = _laidOutCount + 1
     }
     
-    public func addConstraints() throws {
+    open func addConstraints() throws {
         try Layout.constrainer?.add(self)
     }
     
-    func debug(layout: Document) {
-        let lines = layout.toString().componentsSeparatedByString("\n")
+    func debug(_ layout: Document) {
+        let lines = layout.toString().components(separatedBy: "\n")
         
         print("")
         print("Layout: \(lines.count) lines.")
@@ -177,41 +177,41 @@ public class Layout {
         print("")
     }
     
-    public func clearDirective(directive: String) {
-        let index = directives.indexOf(directive)
+    open func clearDirective(_ directive: String) {
+        let index = directives.index(of: directive)
         if let index = index {
-            directives.removeAtIndex(index)
+            directives.remove(at: index)
         }
     }
 
-    public func clearVariable(name: String) {
-        let index = variables.indexForKey(name)
+    open func clearVariable(_ name: String) {
+        let index = variables.index(forKey: name)
         if let index = index {
-            variables.removeAtIndex(index)
+            variables.remove(at: index)
         }
     }
     
-    public func addVariable(name: String, value: String) {
-        variables[name] = value
+    open func addVariable(_ name: String, value: String) {
+        variables[name] = value as AnyObject?
     }
     
-    public func addVariable(name: String, value: UIColor) {
-        variables[name] = Convert.getHexColor(value)
+    open func addVariable(_ name: String, value: UIColor) {
+        variables[name] = Convert.getHexColor(value) as AnyObject?
     }
     
-    public func addVariable(name: String, value: Int) {
-        variables[name] = String(value)
+    open func addVariable(_ name: String, value: Int) {
+        variables[name] = String(value) as AnyObject?
     }
     
-    public func addVariable(name: String, value: Float) {
-        variables[name] = String(value)
+    open func addVariable(_ name: String, value: Float) {
+        variables[name] = String(value) as AnyObject?
     }
     
-    public func find<T>(viewId: String) -> T {
+    open func find<T>(_ viewId: String) -> T {
         return findView(viewId) as! T
     }
     
-    public func findView(viewId: String) -> UIView? {
+    open func findView(_ viewId: String) -> UIView? {
         if viewFragments[viewId] != nil {
             return viewFragments[viewId]?.view
         }
@@ -219,11 +219,11 @@ public class Layout {
         return nil
     }
     
-    public func hasView(viewId: String) -> Bool {
+    open func hasView(_ viewId: String) -> Bool {
         return viewFragments[viewId] != nil
     }
     
-    public func findLayer(layerId: String) -> CALayer? {
+    open func findLayer(_ layerId: String) -> CALayer? {
         if layerFragments[layerId] != nil {
             return layerFragments[layerId]?.layer
         }
@@ -231,35 +231,35 @@ public class Layout {
         return nil
     }
     
-    public func hasLayer(layerId: String) -> Bool {
+    open func hasLayer(_ layerId: String) -> Bool {
         return layerFragments[layerId] != nil
     }
     
-    public func handleLayoutError(message: String) {
+    open func handleLayoutError(_ message: String) {
         if let view = view {
             for subview in view.subviews {
                 subview.removeFromSuperview()
             }
 
-            view.backgroundColor = UIColor.whiteColor()
+            view.backgroundColor = UIColor.white
 
             let header = UIView()
-            header.backgroundColor = UIColor.redColor()
+            header.backgroundColor = UIColor.red
             header.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 60)
             view.addSubview(header)
             
             let title = UILabel()
             title.frame = CGRect(x: 8, y: 30, width: view.frame.width - 16, height: 30)
-            title.textColor = UIColor.whiteColor()
-            title.backgroundColor = UIColor.redColor()
+            title.textColor = UIColor.white
+            title.backgroundColor = UIColor.red
             title.text = "Error Processing Layout"
-            title.font = UIFont.boldSystemFontOfSize(17)
+            title.font = UIFont.boldSystemFont(ofSize: 17)
             header.addSubview(title)
             
             let label = UILabel()
             label.frame = CGRect(x: 8, y: 68, width: view.frame.width - 16, height: view.frame.height - 68)
-            label.textColor = UIColor.redColor()
-            label.backgroundColor = UIColor.whiteColor()
+            label.textColor = UIColor.red
+            label.backgroundColor = UIColor.white
             label.text = message
             label.font = UIFont(name: "Courier", size: 15)
             label.numberOfLines = 100
@@ -270,25 +270,25 @@ public class Layout {
         }
     }
     
-    static public func generateErrorMessage(layout: Section, key: String?) -> String {
+    static open func generateErrorMessage(_ layout: Section, key: String?) -> String {
         var message = "\n\nError occured at:\n\n"
         
         if let key = layout.key {
-            message.appendContentsOf("Section name      : \(key)\n")
+            message.append("Section name      : \(key)\n")
         }
         
         if let key = key {
             for line in layout.lines {
                 if line.key == key {
-                    message.appendContentsOf("Line path         : \(line.path)\n")
-                    message.appendContentsOf("Line key          : \(key)\n")
+                    message.append("Line path         : \(line.path)\n")
+                    message.append("Line key          : \(key)\n")
                     
                     if let value = line.value {
-                        message.appendContentsOf("Line value        : \(value)\n")
+                        message.append("Line value        : \(value)\n")
                     }
                     
-                    message.appendContentsOf("Filename          : \(line.filename)\n")
-                    message.appendContentsOf("Line number       : \(line.lineNumber)\n\n")
+                    message.append("Filename          : \(line.filename)\n")
+                    message.append("Line number       : \(line.lineNumber)\n\n")
                 }
             }
         }
@@ -299,11 +299,11 @@ public class Layout {
     /**
      Registers the given builder
     */
-    static public func register(builder: ViewBuilder) {
+    static open func register(_ builder: ViewBuilder) {
         Layout.viewBuilders.append(builder)
     }
     
-    private func setProperties(layout: Section, view: UIView) throws {
+    fileprivate func setProperties(_ layout: Section, view: UIView) throws {
         if let properties = layout.getSection("layout") {
             view.backgroundColor = try properties.getUIColor("background-color")
             
@@ -316,7 +316,7 @@ public class Layout {
         }
     }
     
-    private func build(layout: Section, parent: UIView) throws {
+    fileprivate func build(_ layout: Section, parent: UIView) throws {
         for builder in Layout.viewBuilders {
             if (builder.canBuild(layout)) {
                 let view = try builder.build(layout, instance: self, parent: parent)
@@ -342,7 +342,7 @@ public class Layout {
         }
     }
     
-    private func build(layout: Section, parent: CALayer) throws {
+    fileprivate func build(_ layout: Section, parent: CALayer) throws {
         for builder in Layout.layerBuilders {
             if (builder.canBuild(layout)) {
                 let layer = try builder.build(layout, instance: self, parent: parent)

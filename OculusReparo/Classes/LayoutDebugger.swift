@@ -22,39 +22,39 @@ public protocol LayoutDebugger {
      
      - Parameter message:   The information message
      */
-    func debug(message: String)
+    func debug(_ message: String)
     
     /**
      Prints the given info message to the console
      
      - Parameter message:   The information message
      */
-    func info(message: String)
+    func info(_ message: String)
     
     /**
      Prints the given LayoutErrorInfo object to the console
      
      - Parameter info:       The layout error information
      */
-    func error(info: LayoutErrorInfo)
+    func error(_ info: LayoutErrorInfo)
 }
 
 /// Class to print layout information and errors to the console
-public class ConsoleLayoutDebugger : LayoutDebugger {
+open class ConsoleLayoutDebugger : LayoutDebugger {
     /**
      Determines whether to show debugging messages
      */
-    public var showDebugMessages = false
+    open var showDebugMessages = false
     
     /**
      Determines whether to show informational messages
      */
-    public var showInfoMessages = true
+    open var showInfoMessages = true
 
     /**
      Determines whether to show error messages
      */
-    public var showErrorMessages = true
+    open var showErrorMessages = true
     
     public init() {
     }
@@ -64,7 +64,7 @@ public class ConsoleLayoutDebugger : LayoutDebugger {
      
      - Parameter message:   The information message
      */
-    public func debug(message: String) {
+    open func debug(_ message: String) {
         if showDebugMessages {
             print(message)
         }
@@ -75,7 +75,7 @@ public class ConsoleLayoutDebugger : LayoutDebugger {
      
      - Parameter message:   The information message
      */
-    public func info(message: String) {
+    open func info(_ message: String) {
         if showInfoMessages {
             print(message)
         }
@@ -86,7 +86,7 @@ public class ConsoleLayoutDebugger : LayoutDebugger {
      
      - Parameter info:       The layout error information
      */
-    public func error(info: LayoutErrorInfo) {
+    open func error(_ info: LayoutErrorInfo) {
         if showErrorMessages {
             print("")
             print("----------")

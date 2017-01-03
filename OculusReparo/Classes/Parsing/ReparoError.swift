@@ -8,10 +8,10 @@
 
 import Foundation
 
-public enum ReparoError: ErrorType {
-    case InvalidConfigurationLine(String)
-    case InvalidColorString(String)
-    case MissingConfigurationFile(String)
-    case RecursiveIncludeDetected
-    case MissingSectionEnd(String)
+public enum ReparoError: Error {
+    case invalidConfigurationLine(String)
+    case invalidColorString(String)
+    case missingConfigurationFile(String)
+    case recursiveIncludeDetected
+    case missingSectionEnd(String)
 }

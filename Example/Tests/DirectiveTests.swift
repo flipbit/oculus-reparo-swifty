@@ -32,38 +32,38 @@ class DirectiveSpec: QuickSpec {
             it("returns the correct resolution parts") {
                 var parts = try! Directive(name: "height = 100").getResolutionParts()
                 
-                expect(parts.dimension).to(equal(Directive.Dimension.Height))
-                expect(parts.equality).to(equal(Directive.Equality.Equal))
+                expect(parts.dimension).to(equal(Directive.Dimension.height))
+                expect(parts.equality).to(equal(Directive.Equality.equal))
                 expect(parts.value).to(equal(100))
                 
                 parts = try! Directive(name: "width == 250.0").getResolutionParts()
                 
-                expect(parts.dimension).to(equal(Directive.Dimension.Width))
-                expect(parts.equality).to(equal(Directive.Equality.Equal))
+                expect(parts.dimension).to(equal(Directive.Dimension.width))
+                expect(parts.equality).to(equal(Directive.Equality.equal))
                 expect(parts.value).to(equal(250))
                 
                 parts = try! Directive(name: "width <= 1.1").getResolutionParts()
                 
-                expect(parts.dimension).to(equal(Directive.Dimension.Width))
-                expect(parts.equality).to(equal(Directive.Equality.LessThanOrEqual))
+                expect(parts.dimension).to(equal(Directive.Dimension.width))
+                expect(parts.equality).to(equal(Directive.Equality.lessThanOrEqual))
                 expect(parts.value).to(equal(1.1))
                 
                 parts = try! Directive(name: "width < 1").getResolutionParts()
                 
-                expect(parts.dimension).to(equal(Directive.Dimension.Width))
-                expect(parts.equality).to(equal(Directive.Equality.LessThan))
+                expect(parts.dimension).to(equal(Directive.Dimension.width))
+                expect(parts.equality).to(equal(Directive.Equality.lessThan))
                 expect(parts.value).to(equal(1))
                 
                 parts = try! Directive(name: "width >= 2").getResolutionParts()
                 
-                expect(parts.dimension).to(equal(Directive.Dimension.Width))
-                expect(parts.equality).to(equal(Directive.Equality.GreaterThanOrEqual))
+                expect(parts.dimension).to(equal(Directive.Dimension.width))
+                expect(parts.equality).to(equal(Directive.Equality.greaterThanOrEqual))
                 expect(parts.value).to(equal(2))
                 
                 parts = try! Directive(name: "width>3").getResolutionParts()
                 
-                expect(parts.dimension).to(equal(Directive.Dimension.Width))
-                expect(parts.equality).to(equal(Directive.Equality.GreaterThan))
+                expect(parts.dimension).to(equal(Directive.Dimension.width))
+                expect(parts.equality).to(equal(Directive.Equality.greaterThan))
                 expect(parts.value).to(equal(3))
             }
             

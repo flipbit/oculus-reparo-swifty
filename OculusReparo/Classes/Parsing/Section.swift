@@ -8,10 +8,10 @@
 
 import Foundation
 
-public class Section : Line {
-    public var lines: [Line]
+open class Section : Line {
+    open var lines: [Line]
     
-    override public var isASection: Bool {
+    override open var isASection: Bool {
         return true
     }
     
@@ -24,7 +24,7 @@ public class Section : Line {
         key = line.key
         value = line.value
         index = line.index
-        directives.appendContentsOf(line.directives)
+        directives.append(contentsOf: line.directives)
     }
     
     public init(filename: String)
@@ -41,7 +41,7 @@ public class Section : Line {
         super.init(filename: filename, lineNumber: 0)
     }
     
-    override public var path: String {
+    override open var path: String {
         if let id = getString("id") {
             return "#" + id
         } else {
@@ -49,7 +49,7 @@ public class Section : Line {
         }
     }
     
-    override public var sections: [Section] {
+    override open var sections: [Section] {
         var results: [Section] = []
         
         for line in lines {
@@ -61,8 +61,8 @@ public class Section : Line {
         return results
     }
     
-    override public func toString(pad: Int = 0) -> String {
-        var string = String(count: pad, repeatedValue: (" " as Character))
+    override open func toString(_ pad: Int = 0) -> String {
+        var string = String(repeating: String((" " as Character)), count: pad)
         
         if key != nil {
             string += key!
@@ -92,12 +92,12 @@ public class Section : Line {
             string += "\(line.toString(pad + 4))\n"
         }
         
-        string += String(count: pad, repeatedValue: (" " as Character)) + "}"
+        string += String(repeating: String((" " as Character)), count: pad) + "}"
         
         return string
     }
     
-    override public func clone() -> Line {
+    override open func clone() -> Line {
         let clone = Section(line: super.clone())
 
         for line in lines {
@@ -111,14 +111,14 @@ public class Section : Line {
         return clone
     }
     
-    public func addLine(line: Line) {
+    open func addLine(_ line: Line) {
         line.parent = self
         line.index = lines.count + 1
         
         lines.append(line)
     }
 
-    public func hasValue(name: String) -> Bool {
+    open func hasValue(_ name: String) -> Bool {
         for line in lines {
             if line.key == name {
                 return true
@@ -128,7 +128,7 @@ public class Section : Line {
         return false
     }
 
-    public func getLine(names: String...) -> Line? {
+    open func getLine(_ names: String...) -> Line? {
         for name in names {
             for line in lines {
                 if line.key == name {
@@ -139,11 +139,11 @@ public class Section : Line {
         return nil
     }
     
-    public func getString(name: String) -> String? {
+    open func getString(_ name: String) -> String? {
         return getString(name, ifMissing: nil)
     }
     
-    public func getString(name: String, ifMissing: String?) -> String? {
+    open func getString(_ name: String, ifMissing: String?) -> String? {
         for line in lines {
             if line.key == name {
                 return line.value
@@ -152,7 +152,7 @@ public class Section : Line {
         return ifMissing
     }
 
-    public func getLineNumber(name: String) -> Int {
+    open func getLineNumber(_ name: String) -> Int {
         for line in lines {
             if line.key == name {
                 return line.lineNumber
@@ -162,7 +162,7 @@ public class Section : Line {
         return 0
     }
 
-    public func getFilename(name: String) -> String? {
+    open func getFilename(_ name: String) -> String? {
         for line in lines {
             if line.key == name {
                 return line.filename
@@ -172,35 +172,35 @@ public class Section : Line {
         return nil
     }
     
-    public func getFloat(name: String) -> Float? {
+    open func getFloat(_ name: String) -> Float? {
         let value = getString(name)
         
         return Convert.toFloat(value)
     }
     
-    public func getFloat(name: String, ifMissing: Float) -> Float {
+    open func getFloat(_ name: String, ifMissing: Float) -> Float {
         let value = getString(name)
         
         return Convert.toFloat(value, ifMissing: ifMissing)
     }
     
-    public func getCGFloat(name: String) -> CGFloat? {
+    open func getCGFloat(_ name: String) -> CGFloat? {
         let value = getString(name)
         
         return Convert.toCGFloat(value)
     }
     
-    public func getCGFloat(name: String, ifMissing: CGFloat) -> CGFloat {
+    open func getCGFloat(_ name: String, ifMissing: CGFloat) -> CGFloat {
         let value = getString(name)
         
         return Convert.toCGFloat(value, ifMissing: ifMissing)
     }
     
-    public func getUIColor(name: String) throws -> UIColor? {
+    open func getUIColor(_ name: String) throws -> UIColor? {
         return try getUIColor(name, ifMissing: nil)
     }
     
-    public func getUIColor(name: String, ifMissing: UIColor?) throws -> UIColor? {
+    open func getUIColor(_ name: String, ifMissing: UIColor?) throws -> UIColor? {
         if let value = getString(name) {
             return try Convert.toUIColor(value)
         }
@@ -208,19 +208,19 @@ public class Section : Line {
         return ifMissing
     }
     
-    public func getCGColor(name: String) throws -> CGColor? {
-        return try getUIColor(name, ifMissing: UIColor.clearColor())?.CGColor
+    open func getCGColor(_ name: String) throws -> CGColor? {
+        return try getUIColor(name, ifMissing: UIColor.clear)?.cgColor
     }
     
-    public func getCGColor(name: String, ifMissing: UIColor?) throws -> CGColor? {
+    open func getCGColor(_ name: String, ifMissing: UIColor?) throws -> CGColor? {
         if let value = getString(name) {
-            return try Convert.toUIColor(value).CGColor
+            return try Convert.toUIColor(value).cgColor
         }
         
-        return ifMissing?.CGColor
+        return ifMissing?.cgColor
     }
 
-    public func getBool(name: String) throws -> Bool? {
+    open func getBool(_ name: String) throws -> Bool? {
         if hasValue(name) {
             return try getBool(name, or: false)
         }
@@ -228,15 +228,15 @@ public class Section : Line {
         return nil
     }
     
-    public func getBool(name: String, or: Bool) throws -> Bool {
+    open func getBool(_ name: String, or: Bool) throws -> Bool {
         if hasValue(name) {
             if let value = getString(name) {
-                switch value.lowercaseString {
+                switch value.lowercased() {
                 case "true": return true
                 case "false": return false
                 case "1": return true
                 case "0": return false
-                default: throw ReparoError.InvalidColorString("Invalid boolean value: '\(value)'")
+                default: throw ReparoError.invalidColorString("Invalid boolean value: '\(value)'")
                 }
             } else {
                 return true                     // if empty, return true
@@ -248,11 +248,11 @@ public class Section : Line {
         }
     }
     
-    public func getSection(name: String) -> Section? {
+    open func getSection(_ name: String) -> Section? {
         return getSection(name, recurse: false)
     }
     
-    public func getSection(name: String, recurse: Bool) -> Section? {
+    open func getSection(_ name: String, recurse: Bool) -> Section? {
         var results = getSections(name, recurse: recurse)
         
         if results.count > 0 {
@@ -262,15 +262,15 @@ public class Section : Line {
         }
     }
     
-    public func getSections(name: String) -> [Section] {
+    open func getSections(_ name: String) -> [Section] {
         return getSections(name, recurse: false)
     }
     
-    public func getSections(name: String, recurse: Bool) -> [Section] {
+    open func getSections(_ name: String, recurse: Bool) -> [Section] {
         return getSections(name, recurse: recurse, search: lines)
     }
     
-    private func getSections(name: String, recurse: Bool, search: [Line]) -> [Section] {
+    fileprivate func getSections(_ name: String, recurse: Bool, search: [Line]) -> [Section] {
         var results: [Section] = []
         
         for line in search {
@@ -282,7 +282,7 @@ public class Section : Line {
                 if recurse {
                     let children = getSections(name, recurse: recurse, search: section.lines)
                     
-                    results.appendContentsOf(children)
+                    results.append(contentsOf: children)
                 }
             }
         }

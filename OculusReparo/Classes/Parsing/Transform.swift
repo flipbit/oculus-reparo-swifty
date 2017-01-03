@@ -23,5 +23,5 @@ public protocol Transform {
      
      - Returns:             The transformed configuration line
      */
-    func transform(line: Line, scope: Scope) throws -> (line: Line?, scope: Scope)
+    func transform(_ line: Line, scope: Scope) throws -> (line: Line?, scope: Scope)
 }

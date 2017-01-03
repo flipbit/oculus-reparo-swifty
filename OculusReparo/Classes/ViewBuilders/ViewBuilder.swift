@@ -1,20 +1,20 @@
 import Foundation
 import UIKit
 
-public class ViewBuilder {
+open class ViewBuilder {
     public init() {
     }
     
-    public func canBuild(layout: Section) -> Bool {
+    open func canBuild(_ layout: Section) -> Bool {
         assertionFailure("You must override the canBuild() method")
         return false
     }
     
-    public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
-        throw LayoutError.InvalidConfiguration("You must override the build() method")
+    open func build(_ layout: Section, instance: Layout, parent: UIView) throws -> UIView {
+        throw LayoutError.invalidConfiguration("You must override the build() method")
     }
     
-    public func initialize<T: UIView>(layout: Section, instance: Layout, parent: UIView) throws -> T {
+    open func initialize<T: UIView>(_ layout: Section, instance: Layout, parent: UIView) throws -> T {
         var view: T
         
         var id = layout.path
@@ -24,7 +24,7 @@ public class ViewBuilder {
         
         if instance.hasView(id) {
             if instance.laidOut == false {
-                throw LayoutError.InvalidConfiguration("Duplicate view id: \(id)")
+                throw LayoutError.invalidConfiguration("Duplicate view id: \(id)")
             }
             view = instance.findView(id) as! T
             Layout.debugger?.debug("Found view: \(id)")
@@ -33,8 +33,8 @@ public class ViewBuilder {
             let fragment = LayoutViewFragment(view: view, id: id, configuration: layout)
             instance.viewFragments[id] = fragment
             
-            if let model = instance.model where layout.hasValue("id") {
-                if model.respondsToSelector(Selector("\(id)")) {
+            if let model = instance.model, layout.hasValue("id") {
+                if model.responds(to: Selector("\(id)")) {
                     model.setValue(view, forKey: id)
                 }
             }
@@ -45,7 +45,7 @@ public class ViewBuilder {
         return try initialize(view, layout: layout, instance: instance, parent: parent)
     }
     
-    public func initialize<T: UIView>(view: T, layout: Section, instance: Layout, parent: UIView) throws -> T {
+    open func initialize<T: UIView>(_ view: T, layout: Section, instance: Layout, parent: UIView) throws -> T {
         var id = layout.path
         if let viewId = layout.getString("id") {
             id = viewId
@@ -55,8 +55,8 @@ public class ViewBuilder {
             let fragment = LayoutViewFragment(view: view, id: id, configuration: layout)
             instance.viewFragments[id] = fragment
             
-            if let model = instance.model where layout.hasValue("id") {
-                if model.respondsToSelector(Selector("\(id)")) {
+            if let model = instance.model, layout.hasValue("id") {
+                if model.responds(to: Selector("\(id)")) {
                     model.setValue(view, forKey: id)
                 }
             }
@@ -72,15 +72,15 @@ public class ViewBuilder {
             view.frame = try getFrame(layout, view: view, parent: parent, instance: instance)
         }
 
-        view.backgroundColor = try layout.getUIColor("background-color", ifMissing: UIColor.clearColor())
+        view.backgroundColor = try layout.getUIColor("background-color", ifMissing: UIColor.clear)
         view.layer.zPosition = layout.getCGFloat("z-position", ifMissing: 0)
         view.layer.cornerRadius = layout.getCGFloat("corner-radius", ifMissing: 0)
         view.layer.borderColor = try layout.getCGColor("border-color")
         view.layer.borderWidth = layout.getCGFloat("border-width", ifMissing: 0)
         view.layer.opacity = layout.getFloat("opacity", ifMissing: 1)
         view.clipsToBounds = try layout.getBool("clips-to-bounds", or: false)
-        view.hidden = try layout.getBool("hidden", or: false)
-        view.userInteractionEnabled = try layout.getBool("user-interaction-enabled", or: true)
+        view.isHidden = try layout.getBool("hidden", or: false)
+        view.isUserInteractionEnabled = try layout.getBool("user-interaction-enabled", or: true)
         view.accessibilityIdentifier = layout.getString("accessibility-identifier")
         
         
@@ -91,7 +91,7 @@ public class ViewBuilder {
         return view
     }
 
-    public func getPosition(layout: Section, parent: UIView) throws -> Position? {
+    open func getPosition(_ layout: Section, parent: UIView) throws -> Position? {
         if let config = layout.getSection("position") {
             return try Position(section: config, parent: parent)
         }
@@ -99,8 +99,8 @@ public class ViewBuilder {
         return nil
     }
     
-    public func getFrame(layout: Section, view: UIView, parent: UIView, instance: Layout) throws -> CGRect {
-        var frame = CGRectZero
+    open func getFrame(_ layout: Section, view: UIView, parent: UIView, instance: Layout) throws -> CGRect {
+        var frame = CGRect.zero
         
         if let position = try getPosition(layout, parent: parent) {
             let lastSiblingFrame = position.getLastSiblingViewFrame(view)

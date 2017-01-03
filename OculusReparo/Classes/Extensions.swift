@@ -16,13 +16,13 @@ extension UIViewController {
      
      - Returns:              An Layout instance
      */
-    public func createLayout(filename: String) -> Layout {
+    public func createLayout(_ filename: String) -> Layout {
         let oculus = Layout(filename: filename, controller: self)
         
         return oculus
     }
     
-    public func createLayout(filename: String, model: NSObject) -> Layout {
+    public func createLayout(_ filename: String, model: NSObject) -> Layout {
         let oculus = Layout(filename: filename, controller: self)
         
         oculus.model = model        
@@ -30,7 +30,7 @@ extension UIViewController {
         return oculus
     }
     
-    public func createLayout(filename: String, model: NSObject, eventTarget: AnyObject) -> Layout {
+    public func createLayout(_ filename: String, model: NSObject, eventTarget: AnyObject) -> Layout {
         let oculus = Layout(filename: filename, controller: self)
         
         oculus.model = model
@@ -39,7 +39,7 @@ extension UIViewController {
         return oculus
     }
     
-    public func applyLayout(layout: Layout) -> Bool {
+    public func applyLayout(_ layout: Layout) -> Bool {
         return UIView.applyLayout(layout)
     }
 }
@@ -154,13 +154,13 @@ extension UIView {
      
      - Returns:              An Layout instance
      */
-    public func createLayout(filename: String) -> Layout {
+    public func createLayout(_ filename: String) -> Layout {
         let oculus = Layout(filename: filename, view: self)
         
         return oculus
     }
     
-    public func createLayout(filename: String, model: NSObject) -> Layout {
+    public func createLayout(_ filename: String, model: NSObject) -> Layout {
         let oculus = Layout(filename: filename, view: self)
         
         oculus.model = model
@@ -168,7 +168,7 @@ extension UIView {
         return oculus
     }
     
-    public func createLayout(filename: String, model: NSObject, eventTarget: AnyObject) -> Layout {
+    public func createLayout(_ filename: String, model: NSObject, eventTarget: AnyObject) -> Layout {
         let oculus = Layout(filename: filename, view: self)
         
         oculus.model = model
@@ -177,31 +177,31 @@ extension UIView {
         return oculus
     }
 
-    public func applyLayout(layout: Layout) -> Bool {
+    public func applyLayout(_ layout: Layout) -> Bool {
         return UIView.applyLayout(layout)
     }
     
-    public static func applyLayout(layout: Layout) -> Bool {
+    public static func applyLayout(_ layout: Layout) -> Bool {
         var result = false
         do {
             try layout.apply()
             
             result = true
-        } catch LayoutError.MissingRootView {
+        } catch LayoutError.missingRootView {
             layout.handleLayoutError("Controller root view is not set")
-        } catch LayoutError.InvalidConfiguration(let message) {
+        } catch LayoutError.invalidConfiguration(let message) {
             layout.handleLayoutError(message)
-        } catch LayoutError.ConfigurationError(let info) {
+        } catch LayoutError.configurationError(let info) {
             layout.handleLayoutError(info.message)
-        } catch LayoutError.MissingModelProperty(let message) {
+        } catch LayoutError.missingModelProperty(let message) {
             layout.handleLayoutError(message)
-        } catch ReparoError.InvalidColorString(let message) {
+        } catch ReparoError.invalidColorString(let message) {
             layout.handleLayoutError(message)
-        } catch ReparoError.InvalidConfigurationLine(let message) {
+        } catch ReparoError.invalidConfigurationLine(let message) {
             layout.handleLayoutError(message)
-        } catch ReparoError.MissingConfigurationFile(let message) {
+        } catch ReparoError.missingConfigurationFile(let message) {
             layout.handleLayoutError(message)
-        } catch ReparoError.RecursiveIncludeDetected {
+        } catch ReparoError.recursiveIncludeDetected {
             layout.handleLayoutError("Recursive include file detected.")
         } catch let error as NSError {
             layout.handleLayoutError(error.localizedDescription)
@@ -213,11 +213,11 @@ extension UIView {
 }
 
 extension CGRect {
-    public func add(x x: CGFloat = 0, y: CGFloat = 0, width: CGFloat = 0, height: CGFloat = 0) -> CGRect {
+    public func add(x: CGFloat = 0, y: CGFloat = 0, width: CGFloat = 0, height: CGFloat = 0) -> CGRect {
         return CGRect(x: self.origin.x + x, y: self.origin.y + y, width: self.width + width, height: self.height + height)
     }
     
-    public func resize(x x: CGFloat? = nil, y: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil) -> CGRect {
+    public func resize(x: CGFloat? = nil, y: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil) -> CGRect {
         let x = x ?? self.origin.x
         let y = y ?? self.origin.y
         let h = height ?? self.height

@@ -1,4 +1,4 @@
-public class DefineVariableTransform : Transform {
+open class DefineVariableTransform : Transform {
     /**
      Performs variable substitution on the given configuration lines
      
@@ -9,13 +9,13 @@ public class DefineVariableTransform : Transform {
      
      - Returns:              The transformed configuration lines
      */
-    public func transform(line: Line, scope: Scope) throws -> (line: Line?, scope: Scope) {
+    open func transform(_ line: Line, scope: Scope) throws -> (line: Line?, scope: Scope) {
         if let key = line.key {
             if key.hasPrefix("@set") && key.characters.count > 5 {
-                var name = key.substringFromIndex(key.startIndex.advancedBy(5))
-                name = name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                var name = key.substring(from: key.characters.index(key.startIndex, offsetBy: 5))
+                name = name.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                 if let value = line.value {
-                    scope.variables[name] = value
+                    scope.variables[name] = value as AnyObject?
                 }
                 
                 return (nil, scope)

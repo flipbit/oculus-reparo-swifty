@@ -1,7 +1,7 @@
 import Foundation
 
-public class ReduceTransform : Transform {
-    public func transform(line: Line, scope: Scope) throws -> (line: Line?, scope: Scope) {
+open class ReduceTransform : Transform {
+    open func transform(_ line: Line, scope: Scope) throws -> (line: Line?, scope: Scope) {
         return (line, scope)
         /*
         var transformed: [Line] = []

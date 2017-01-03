@@ -1,7 +1,7 @@
 import Foundation
 
-public class Hardware {
-    static private var deviceInstance: Device?
+open class Hardware {
+    static fileprivate var deviceInstance: Device?
     
     static var device: Device {
         if deviceInstance != nil {
@@ -12,7 +12,7 @@ public class Hardware {
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
         let identifier = machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8 where value != 0 else { return identifier }
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
         
@@ -46,7 +46,7 @@ public class Hardware {
         
         return deviceInstance!
     }
-    public static var deviceType: DeviceType {
+    open static var deviceType: DeviceType {
         switch device {
         case Device.AppleTV:                return DeviceType.AppleTV
         case Device.iPad2:                  return DeviceType.iPad
@@ -75,7 +75,7 @@ public class Hardware {
     }
     
     static var screenSize: ScreenSize {
-        let size = UIScreen.mainScreen().bounds
+        let size = UIScreen.main.bounds
         var width = size.width
         var height = size.height
         
@@ -112,7 +112,7 @@ public class Hardware {
     }
     
     static var orientation: String {
-        if UIDevice.currentDevice().orientation.isPortrait {
+        if UIDevice.current.orientation.isPortrait {
             return "portrait"
         } else {
             return "landscape"

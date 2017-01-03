@@ -316,7 +316,7 @@ class StateMachineTests: XCTestCase {
         do {
             try machine.read()
             XCTAssertFalse(true, "Should of failed")
-        } catch ReparoError.InvalidConfigurationLine {
+        } catch ReparoError.invalidConfigurationLine {
             XCTAssertTrue(true, "Error was thrown")
         } catch {
             XCTAssertFalse(true, "Wrong error type thrown")
@@ -397,7 +397,7 @@ class StateMachineTests: XCTestCase {
         do {
             try machine.read()
             XCTAssertFalse(true, "Should of failed")
-        } catch ReparoError.InvalidConfigurationLine {
+        } catch ReparoError.invalidConfigurationLine {
             XCTAssertTrue(true, "Error was thrown")
         } catch {
             XCTAssertFalse(true, "Wrong error type thrown")

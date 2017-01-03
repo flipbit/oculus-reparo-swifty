@@ -14,6 +14,6 @@ class ExampleController : LayoutViewController {
     func onBack() {
         navigationController?.setNavigationBarHidden(false, animated: true)
         
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
     }
 }

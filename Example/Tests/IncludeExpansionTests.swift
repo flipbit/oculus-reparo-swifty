@@ -12,7 +12,7 @@ class IncludeExpansionSpec: BaseParserSpec {
                 config.debug()
                 let first = config.getSection("first")!
                 
-                expect(first.getValue("font-weight")).to(equal("bold"))
+                expect(first.getString("font-weight")).to(equal("bold"))
             }
         }
         
@@ -23,11 +23,11 @@ class IncludeExpansionSpec: BaseParserSpec {
                 
                 expect(sections.count).to(equal(5))
                 
-                expect(sections[0].getValue("font-weight")).to(equal("bold"))
-                expect(sections[1].getValue("font-weight")).to(equal("bold"))
-                expect(sections[2].getValue("font-weight")).to(equal("bold"))
-                expect(sections[3].getValue("font-weight")).to(equal("bold"))
-                expect(sections[4].getValue("font-weight")).to(equal("bold"))
+                expect(sections[0].getString("font-weight")).to(equal("bold"))
+                expect(sections[1].getString("font-weight")).to(equal("bold"))
+                expect(sections[2].getString("font-weight")).to(equal("bold"))
+                expect(sections[3].getString("font-weight")).to(equal("bold"))
+                expect(sections[4].getString("font-weight")).to(equal("bold"))
                 
                 config.debug()
             }
@@ -40,19 +40,19 @@ class IncludeExpansionSpec: BaseParserSpec {
                 
                 expect(sections.count).to(equal(6))
                 
-                expect(sections[0].getValue("font-weight")).to(equal("bold"))
-                expect(sections[1].getValue("font-weight")).to(equal("bold"))
-                expect(sections[2].getValue("font-weight")).to(equal("bold"))
-                expect(sections[3].getValue("font-weight")).to(equal("bold"))
-                expect(sections[4].getValue("font-weight")).to(equal("bold"))
-                expect(sections[5].getValue("font-weight")).to(equal("bold"))
+                expect(sections[0].getString("font-weight")).to(equal("bold"))
+                expect(sections[1].getString("font-weight")).to(equal("bold"))
+                expect(sections[2].getString("font-weight")).to(equal("bold"))
+                expect(sections[3].getString("font-weight")).to(equal("bold"))
+                expect(sections[4].getString("font-weight")).to(equal("bold"))
+                expect(sections[5].getString("font-weight")).to(equal("bold"))
                 
                 config.debug()
             }
         }
         
         describe("when parsing recursive includes") {
-            expect{ try parser.parseFile("RecursiveIncludeFile") }.to(throwError(ReparoError.RecursiveIncludeDetected))
+            expect{ try parser.parseFile("RecursiveIncludeFile") }.to(throwError(ReparoError.recursiveIncludeDetected))
             /*
             do {
                 try

@@ -8,7 +8,7 @@ class EachTransformSpec: BaseParserSpec {
         
         describe("when parsing an each loop") {
             it("is iterated for a string array") {
-                parser.variables["names"] = ["alice", "bob", "sue"]
+                //parser.variables["names"] = ["alice", "bob", "sue"]
                 
                 let config = try! parser.parseFile("Each")
                 
@@ -22,11 +22,12 @@ class EachTransformSpec: BaseParserSpec {
             }
             
             it("is iterated for a complex model") {
+                /*
                 parser.variables["persons"] =
                     [Model(name: "alice", age: 10),
                      Model(name: "bob", age: 20),
                      Model(name: "sue", age: 30)]
-                
+                */
                 let config = try! parser.parseFile("EachComplex")
                 
                 config.debug()
@@ -35,12 +36,12 @@ class EachTransformSpec: BaseParserSpec {
                 
                 expect(persons.count).to(equal(3))
                 
-                expect(persons[0].getValue("name")).to(equal("alice"))
-                expect(persons[0].getValue("age")).to(equal("10"))
-                expect(persons[1].getValue("name")).to(equal("bob"))
-                expect(persons[1].getValue("age")).to(equal("20"))
-                expect(persons[2].getValue("name")).to(equal("sue"))
-                expect(persons[2].getValue("age")).to(equal("30"))
+                expect(persons[0].getString("name")).to(equal("alice"))
+                expect(persons[0].getString("age")).to(equal("10"))
+                expect(persons[1].getString("name")).to(equal("bob"))
+                expect(persons[1].getString("age")).to(equal("20"))
+                expect(persons[2].getString("name")).to(equal("sue"))
+                expect(persons[2].getString("age")).to(equal("30"))
             }
 
         }

@@ -1,6 +1,6 @@
 import Foundation
 
-public class Position {
+open class Position {
     public enum HorizontalAlignment : String {
         case Left = "left"
         case Center = "center"
@@ -13,10 +13,10 @@ public class Position {
         case Bottom = "bottom"
     }
     
-    private var parentView: UIView?
-    private var parentLayer: CALayer?
+    fileprivate var parentView: UIView?
+    fileprivate var parentLayer: CALayer?
     
-    private var parentFrame: CGRect {
+    fileprivate var parentFrame: CGRect {
         if parentView != nil {
             return parentView!.frame
         } else {
@@ -133,7 +133,7 @@ public class Position {
         }
     }
     
-    func toFrame(lastSiblingFrame: CGRect) -> CGRect {
+    func toFrame(_ lastSiblingFrame: CGRect) -> CGRect {
         // Get dimensions (absolute or percentage)
         var x = getDimension(left, parent: parentFrame.size.width)
         var y = getDimension(top, parent: parentFrame.size.height)
@@ -216,14 +216,14 @@ public class Position {
         return CGRect(x: x, y: y, width: w, height: h)
     }
     
-    public func getDimension(dimension: String?, parent: CGFloat) -> CGFloat {
+    open func getDimension(_ dimension: String?, parent: CGFloat) -> CGFloat {
         var result: CGFloat = 0
         
         if dimension != nil {
-            var cleaned = dimension!.stringByReplacingOccurrencesOfString("+", withString: "")
+            var cleaned = dimension!.replacingOccurrences(of: "+", with: "")
             
             if cleaned.hasSuffix("%") {
-                cleaned = dimension!.stringByReplacingOccurrencesOfString("%", withString: "")
+                cleaned = dimension!.replacingOccurrences(of: "%", with: "")
                 let percent = toFloat(cleaned)
                 result = (parent / CGFloat(100.0)) * percent
             } else {
@@ -234,7 +234,7 @@ public class Position {
         return result
     }
     
-    public func getLastSiblingViewFrame(view: UIView) -> CGRect {
+    open func getLastSiblingViewFrame(_ view: UIView) -> CGRect {
         var last: UIView?
         
         // Check parent view sublayers
@@ -242,7 +242,7 @@ public class Position {
             for sibling in parent.subviews {
                 if sibling === view {
                     if last == nil {
-                        return CGRectZero
+                        return CGRect.zero
                     } else {
                         return last!.frame
                     }
@@ -258,18 +258,18 @@ public class Position {
             }
         }
                 
-        return CGRectZero
+        return CGRect.zero
     }
     
-    public func getLastSiblingLayerFrame(layer: CALayer) -> CGRect {
+    open func getLastSiblingLayerFrame(_ layer: CALayer) -> CGRect {
         var last: CALayer?
         
         // Check parent view sublayers
-        if let parent = parentView,siblings = parent.layer.sublayers  {
+        if let parent = parentView,let siblings = parent.layer.sublayers  {
             for sibling in siblings {
                 if sibling === layer {
                     if last == nil {
-                        return CGRectZero
+                        return CGRect.zero
                     } else {
                         return last!.frame
                     }
@@ -280,11 +280,11 @@ public class Position {
         }
 
         // Check parent layer sublayers
-        if let parent = parentLayer, siblings = parent.sublayers {
+        if let parent = parentLayer, let siblings = parent.sublayers {
             for sibling in siblings {
                 if sibling === layer {
                     if last == nil {
-                        return CGRectZero
+                        return CGRect.zero
                     } else {
                         return last!.frame
                     }
@@ -295,48 +295,48 @@ public class Position {
         }
         
         // Doesn't exist: Check for parent view siblings
-        if let parent = parentView,siblings = parent.layer.sublayers  {
+        if let parent = parentView,let siblings = parent.layer.sublayers  {
             if siblings.count > 0 {
                 return siblings.last!.frame
             }
         }
         
         // Doesn't exist: Check for parent layer siblings
-        if let parent = parentLayer, siblings = parent.sublayers {
+        if let parent = parentLayer, let siblings = parent.sublayers {
             if siblings.count > 0 {
                 return siblings.last!.frame
             }
         }
         
         // Return empty rect
-        return CGRectZero
+        return CGRect.zero
     }
     
-    private func setAlignment(alignment: String) {
-        let lower = alignment.lowercaseString
-        if lower.rangeOfString("left") != nil {
+    fileprivate func setAlignment(_ alignment: String) {
+        let lower = alignment.lowercased()
+        if lower.range(of: "left") != nil {
             horizontalAlignment = HorizontalAlignment.Left
         }
-        if lower.rangeOfString("center") != nil {
+        if lower.range(of: "center") != nil {
             horizontalAlignment = HorizontalAlignment.Center
         }
-        if lower.rangeOfString("right") != nil {
+        if lower.range(of: "right") != nil {
             horizontalAlignment = HorizontalAlignment.Right
         }
-        if lower.rangeOfString("top") != nil {
+        if lower.range(of: "top") != nil {
             verticalAlignment = VerticalAlignment.Top
         }
-        if lower.rangeOfString("middle") != nil {
+        if lower.range(of: "middle") != nil {
             verticalAlignment = VerticalAlignment.Middle
         }
-        if lower.rangeOfString("bottom") != nil {
+        if lower.range(of: "bottom") != nil {
             verticalAlignment = VerticalAlignment.Bottom
         }
     }
     
-    private func toFloat(input: String?) -> CGFloat {
+    fileprivate func toFloat(_ input: String?) -> CGFloat {
         if input != nil {
-            if let n = NSNumberFormatter().numberFromString(input!) {
+            if let n = NumberFormatter().number(from: input!) {
                 return CGFloat(n)
             }
         }

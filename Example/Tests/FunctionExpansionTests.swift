@@ -15,11 +15,11 @@ class FunctionTransformSpec: BaseParserSpec {
                 
                 let bob = persons[0]
                 
-                expect(bob.getValue("name")).to(equal("bob"))
+                expect(bob.getString("name")).to(equal("bob"))
                 
                 let alice = persons[1]
                 
-                expect(alice.getValue("name")).to(equal("alice"))
+                expect(alice.getString("name")).to(equal("alice"))
                 
                 config.debug()
             }

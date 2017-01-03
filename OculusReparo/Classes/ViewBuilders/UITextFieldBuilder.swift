@@ -1,23 +1,23 @@
 import Foundation
 
-public class UITextFieldBuilder : ViewBuilder {
-    override public func canBuild(layout: Section) -> Bool {
+open class UITextFieldBuilder : ViewBuilder {
+    override open func canBuild(_ layout: Section) -> Bool {
         return layout.key == "text-field"
     }
     
-    override public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
+    override open func build(_ layout: Section, instance: Layout, parent: UIView) throws -> UIView {
         let field: UITextField = try initialize(layout, instance: instance, parent: parent)
         let size = layout.getCGFloat("font-size", ifMissing: 17)
         let weight = try Convert.getFontWeight(layout, key: "font-weight")
         
         field.text = layout.getString("text", ifMissing: "")
         field.textColor = try layout.getUIColor("text-color")
-        field.font = UIFont.systemFontOfSize(size, weight: weight)
-        field.textAlignment = try Convert.getTextAlignment(layout.getString("text-alignment"), or: NSTextAlignment.Left)
+        field.font = UIFont.systemFont(ofSize: size, weight: weight)
+        field.textAlignment = try Convert.getTextAlignment(layout.getString("text-alignment"), or: NSTextAlignment.left)
         field.placeholder = layout.getString("placeholder", ifMissing: "")
-        field.secureTextEntry = try layout.getBool("secure-text-entry", or: false)
+        field.isSecureTextEntry = try layout.getBool("secure-text-entry", or: false)
         
-        if let color = try layout.getUIColor("placeholder-color", ifMissing: nil), placeholder = field.placeholder {
+        if let color = try layout.getUIColor("placeholder-color", ifMissing: nil), let placeholder = field.placeholder {
             field.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName : color])
         }
         
@@ -27,12 +27,12 @@ public class UITextFieldBuilder : ViewBuilder {
         
         if let autocorrect = try layout.getBool("auto-correction") {
             if autocorrect {
-                field.autocorrectionType = .Yes
+                field.autocorrectionType = .yes
             } else {
-                field.autocorrectionType = .No
+                field.autocorrectionType = .no
             }
         } else {
-            field.autocorrectionType = .Default
+            field.autocorrectionType = .default
         }
 
         if let line = layout.getLine("auto-capitalization") {

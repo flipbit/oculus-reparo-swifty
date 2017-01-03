@@ -1,5 +1,5 @@
-public class FunctionExpansion : Expansion {
-    public func expand(line: Line, scope: Scope, parser: Parser) throws -> [Line]? {
+open class FunctionExpansion : Expansion {
+    open func expand(_ line: Line, scope: Scope, parser: Parser) throws -> [Line]? {
         // Line must have a key
         guard let key = line.key else {
             return nil
@@ -11,7 +11,7 @@ public class FunctionExpansion : Expansion {
         }
         
         // Set function name
-        let name = key.substringFromIndex(key.startIndex.advancedBy(1))
+        let name = key.substring(from: key.characters.index(key.startIndex, offsetBy: 1))
         
         // Check function exists
         guard let function = scope.functions[name] else {
@@ -21,8 +21,8 @@ public class FunctionExpansion : Expansion {
         // Add function arguments
         if let arguments = line as? Section {
             for argument in arguments.lines {
-                if let key = argument.key, value = argument.value {
-                    scope.variables[key] = value
+                if let key = argument.key, let value = argument.value {
+                    scope.variables[key] = value as AnyObject?
                 }
             }
         }

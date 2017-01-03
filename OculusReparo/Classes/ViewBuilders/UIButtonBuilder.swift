@@ -8,26 +8,26 @@
 
 import Foundation
 
-public class UIButtonBuilder : ViewBuilder {
-    override public func canBuild(layout: Section) -> Bool {
+open class UIButtonBuilder : ViewBuilder {
+    override open func canBuild(_ layout: Section) -> Bool {
         return layout.key == "button"
     }
     
-    override public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
+    override open func build(_ layout: Section, instance: Layout, parent: UIView) throws -> UIView {
         let button: UIButton = try initialize(layout, instance: instance, parent: parent)
         
         // Font
         let size = layout.getCGFloat("font-size", ifMissing: 17)
         let weight = try Convert.getFontWeight(layout, key: "font-weight")
-        button.titleLabel?.font = UIFont.systemFontOfSize(size, weight: weight)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: size, weight: weight)
         
         if let title = layout.getString("title") {
-            button.setTitle(title, forState: UIControlState.Normal)
+            button.setTitle(title, for: UIControlState())
         }
 
         if let bundle = layout.getString("image-bundle") {
             if let image = try Layout.imageLoader.loadImage(named: bundle) {
-                button.setImage(image, forState: UIControlState.Normal)
+                button.setImage(image, for: UIControlState())
             }
         }
         
@@ -36,12 +36,12 @@ public class UIButtonBuilder : ViewBuilder {
         }
         
         if let color = try layout.getUIColor("title-color") {
-            button.setTitleColor(color, forState: UIControlState.Normal)
+            button.setTitleColor(color, for: UIControlState())
         }
         
-        if let touched = layout.getString("on-touch"), eventTarget = instance.eventTarget {
-            button.addTarget(eventTarget, action: Selector(touched), forControlEvents: UIControlEvents.TouchUpInside)
-            button.addTarget(eventTarget, action: Selector(touched), forControlEvents: UIControlEvents.TouchUpOutside)
+        if let touched = layout.getString("on-touch"), let eventTarget = instance.eventTarget {
+            button.addTarget(eventTarget, action: Selector(touched), for: UIControlEvents.touchUpInside)
+            button.addTarget(eventTarget, action: Selector(touched), for: UIControlEvents.touchUpOutside)
         }
         
         if let insets = try Convert.getEdgeInsets(layout.getString("title-edge-insets")) {
@@ -53,11 +53,11 @@ public class UIButtonBuilder : ViewBuilder {
         }
         
         if let align = layout.getString("text-alignment") {
-            switch align.lowercaseString {
+            switch align.lowercased() {
             case "left":
-                button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+                button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
             case "right":
-                button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
+                button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
             default:
                 break;
             }

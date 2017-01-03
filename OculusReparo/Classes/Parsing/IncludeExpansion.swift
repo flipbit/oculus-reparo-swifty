@@ -1,12 +1,12 @@
-public class IncludeExpansion : Expansion {
-    public func expand(line: Line, scope: Scope, parser: Parser) throws -> [Line]? {
+open class IncludeExpansion : Expansion {
+    open func expand(_ line: Line, scope: Scope, parser: Parser) throws -> [Line]? {
         // Line must have a key
         guard let key = line.key else {
             return nil
         }
         
         // Key must be "@include"
-        if key.caseInsensitiveCompare("@include") != NSComparisonResult.OrderedSame {
+        if key.caseInsensitiveCompare("@include") != ComparisonResult.orderedSame {
             return nil
         }
 
@@ -20,7 +20,7 @@ public class IncludeExpansion : Expansion {
         
         // Check exists
         if include == nil {
-            throw ReparoError.MissingConfigurationFile(filename)
+            throw ReparoError.missingConfigurationFile(filename)
         }
         
         // Parse include

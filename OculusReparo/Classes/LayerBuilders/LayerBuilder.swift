@@ -1,21 +1,21 @@
 import Foundation
 import UIKit
 
-public class LayerBuilder {
+open class LayerBuilder {
     public init() {
     }
     
-    public func canBuild(layout: Section) -> Bool {
+    open func canBuild(_ layout: Section) -> Bool {
         assertionFailure("You must override the canBuild() method")
         return false
     }
     
-    public func build(layout: Section, instance: Layout, parent: CALayer) throws -> CALayer {
+    open func build(_ layout: Section, instance: Layout, parent: CALayer) throws -> CALayer {
         assertionFailure("You must override the build() method")
         return CALayer()
     }
     
-    public func initialize<T: CALayer>(layout: Section, instance: Layout, parent: CALayer) throws -> T {
+    open func initialize<T: CALayer>(_ layout: Section, instance: Layout, parent: CALayer) throws -> T {
         var layer: T
         
         var layerId = layout.path
@@ -32,8 +32,8 @@ public class LayerBuilder {
             instance.layerFragments[layerId] = fragment
             Layout.debugger?.debug("Created layer: \(layerId)")
             
-            if let model = instance.model where layout.hasValue("id") {
-                if model.respondsToSelector(Selector("\(layerId)")) {
+            if let model = instance.model, layout.hasValue("id") {
+                if model.responds(to: Selector("\(layerId)")) {
                     model.setValue(layer, forKey: layerId)
                 }
             }
@@ -46,7 +46,7 @@ public class LayerBuilder {
         layer.borderColor = try layout.getCGColor("border-color")
         layer.borderWidth = layout.getCGFloat("border-width", ifMissing: 0)
         layer.opacity = layout.getFloat("opacity", ifMissing: 1)
-        layer.hidden = try layout.getBool("hidden", or: false)
+        layer.isHidden = try layout.getBool("hidden", or: false)
         
         if layer.superlayer == nil {
             parent.addSublayer(layer)
@@ -55,19 +55,19 @@ public class LayerBuilder {
         return layer
     }
     
-    public func getPosition(layout: Section, parent: CALayer) throws -> Position {
+    open func getPosition(_ layout: Section, parent: CALayer) throws -> Position {
         guard let config = layout.getSection("position") else {
             let message = "[\(layout.key) is missing a Position section"
             
             let info = LayoutErrorInfo(message: message, filename: layout.filename, lineNumber: layout.lineNumber)
             
-            throw LayoutError.ConfigurationError(info)
+            throw LayoutError.configurationError(info)
         }
         
         return try Position(section: config, parent: parent)
     }
     
-    public func getFrame(layout: Section, layer: CALayer, parent: CALayer, instance: Layout) throws -> CGRect {
+    open func getFrame(_ layout: Section, layer: CALayer, parent: CALayer, instance: Layout) throws -> CGRect {
         let position = try getPosition(layout, parent: parent)
         let lastSiblingFrame = position.getLastSiblingLayerFrame(layer)
         let frame = position.toFrame(lastSiblingFrame)

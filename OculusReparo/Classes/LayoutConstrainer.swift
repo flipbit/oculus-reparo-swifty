@@ -2,11 +2,11 @@ import Foundation
 import UIKit
 
 /// Applies AutoLayout constraints to Layout
-public class LayoutConstrainer {
+open class LayoutConstrainer {
     public init() {        
     }
     
-    public func add(layout: Layout) throws {
+    open func add(_ layout: Layout) throws {
         for key in layout.viewFragments.keys {
             if let fragment = layout.viewFragments[key] {
                 try add(layout, fragment: fragment)
@@ -14,11 +14,11 @@ public class LayoutConstrainer {
         }
     }
 
-    func add(layout: Layout, fragment: LayoutViewFragment) throws {
+    func add(_ layout: Layout, fragment: LayoutViewFragment) throws {
         let config = fragment.configuration, view = fragment.view
         
         // Anchor types
-        let tlbr = [AnchorType.Top, AnchorType.Left, AnchorType.Bottom, AnchorType.Right, AnchorType.CenterX, AnchorType.CenterY]
+        let tlbr = [LayoutAnchorType.Top, LayoutAnchorType.Left, LayoutAnchorType.Bottom, LayoutAnchorType.Right, LayoutAnchorType.CenterX, LayoutAnchorType.CenterY]
         
         // Check for anchors
         for anchor in tlbr {
@@ -28,7 +28,7 @@ public class LayoutConstrainer {
                 let to = try Convert.getViewIdAndAnchor(anchorToViewId, defaultIdView: "@parent", defaultAnchor: anchor)
                 var anchorToView: UIView?
                 
-                switch to.viewId.lowercaseString {
+                switch to.viewId.lowercased() {
                 case "@parent":
                     anchorToView = view.superview
                     
@@ -45,7 +45,7 @@ public class LayoutConstrainer {
                 if anchorToView == nil {
                     let info = LayoutErrorInfo(message: "Unable to find view to anchor to: \(to.viewId)", filename: section.filename, lineNumber: section.lineNumber)
                     
-                    throw LayoutError.ConfigurationError(info)
+                    throw LayoutError.configurationError(info)
                 }
                 
                 addConstraint(on: view, to: anchorToView!, onAnchor: anchor, toAnchor: to.anchor, constant: constant)
@@ -71,23 +71,23 @@ public class LayoutConstrainer {
         parentSnapBottom(view, config: config)
     }
 
-    private func parentSnapBottom(view: UIView, config: Section) {
+    fileprivate func parentSnapBottom(_ view: UIView, config: Section) {
         parentSnap(view, config: config, name: "snap-parent-bottom", anchor: .Bottom, invert: true)
     }
     
-    private func parentSnapTop(view: UIView, config: Section) {
+    fileprivate func parentSnapTop(_ view: UIView, config: Section) {
         parentSnap(view, config: config, name: "snap-parent-top", anchor: .Top, invert: false)
     }
     
-    private func parentSnapLeft(view: UIView, config: Section) {
+    fileprivate func parentSnapLeft(_ view: UIView, config: Section) {
         parentSnap(view, config: config, name: "snap-parent-left", anchor: .Left, invert: false)
     }
 
-    private func parentSnapRight(view: UIView, config: Section) {
+    fileprivate func parentSnapRight(_ view: UIView, config: Section) {
         parentSnap(view, config: config, name: "snap-parent-right", anchor: .Right, invert: true)
     }
     
-    private func parentSnap(view: UIView, config: Section, name: String, anchor: AnchorType, invert: Bool) {
+    fileprivate func parentSnap(_ view: UIView, config: Section, name: String, anchor: LayoutAnchorType, invert: Bool) {
         if config.hasValue(name) {
             if let to = view.superview {
                 var constant = config.getCGFloat(name, ifMissing: 0)
@@ -102,58 +102,60 @@ public class LayoutConstrainer {
     }
     
     
-    private func snapLeft(view: UIView, config: Section) {
+    fileprivate func snapLeft(_ view: UIView, config: Section) {
         if config.hasValue("snap-left") {
             let to = view.findPreviousSiblingOrSuperview()!
-            let toAnchor = to === view.superview ? AnchorType.Left : AnchorType.Right
+            let toAnchor = to === view.superview ? LayoutAnchorType.Left : LayoutAnchorType.Right
             let constant = config.getCGFloat("snap-left", ifMissing: 0)
             
             addConstraint(on: view, to: to, onAnchor: .Left, toAnchor: toAnchor, constant: constant)
         }
     }
     
-    private func snapRight(view: UIView, config: Section) {
+    fileprivate func snapRight(_ view: UIView, config: Section) {
         if config.hasValue("snap-right") {
             let to = view.findNextSiblingOrSuperview()!
-            let toAnchor = to === view.superview ? AnchorType.Right : AnchorType.Left
+            let toAnchor = to === view.superview ? LayoutAnchorType.Right : LayoutAnchorType.Left
             let constant = config.getCGFloat("snap-right", ifMissing: 0) * -1
             
             addConstraint(on: view, to: to, onAnchor: .Right, toAnchor: toAnchor, constant: constant)
         }
     }
 
-    private func snapTop(view: UIView, config: Section) {
+    fileprivate func snapTop(_ view: UIView, config: Section) {
         if config.hasValue("snap-top") {
             let to = view.findPreviousSiblingOrSuperview()!
-            let toAnchor = to === view.superview ? AnchorType.Top : AnchorType.Bottom
+            let toAnchor = to === view.superview ? LayoutAnchorType.Top : LayoutAnchorType.Bottom
             let constant = config.getCGFloat("snap-top", ifMissing: 0)
             
             addConstraint(on: view, to: to, onAnchor: .Top, toAnchor: toAnchor, constant: constant)
         }
     }
     
-    func addConstraint(on on: UIView, to: UIView, onAnchor: AnchorType, toAnchor: AnchorType, constant: CGFloat) {
+    func addConstraint(on: UIView, to: UIView, onAnchor: LayoutAnchorType, toAnchor: LayoutAnchorType, constant: CGFloat) {
+        /*
         let onAnchor = getAnchor(on, anchor: onAnchor)
         let toAnchor = getAnchor(to, anchor: toAnchor)
         
         if on.translatesAutoresizingMaskIntoConstraints {
             on.translatesAutoresizingMaskIntoConstraints = false
             
-            if on.frame != CGRectZero {
+            if on.frame != CGRect.zero {
                 if on.frame.height != 0 {
-                    on.heightAnchor.constraintEqualToConstant(on.frame.height).active = true
+                    on.heightAnchor.constraint(equalToConstant: on.frame.height).isActive = true
                 }
                 if on.frame.width != 0 {
-                    on.widthAnchor.constraintEqualToConstant(on.frame.width).active = true
+                    on.widthAnchor.constraint(equalToConstant: on.frame.width).isActive = true
                 }
-                on.frame = CGRectZero
+                on.frame = CGRect.zero
             }
         }
         
-        onAnchor.constraintEqualToAnchor(toAnchor, constant: constant).active = true
+        onAnchor.constraint(equalTo: toAnchor, constant: constant).isActive = true
+         */
     }
-    
-    func getAnchor(view: UIView, anchor: AnchorType) -> NSLayoutAnchor {
+    /*
+    func getAnchor(_ view: UIView, anchor: LayoutAnchorType) -> NSLayoutAnchor<AnyObject> {
         switch (anchor) {
         case .Bottom:
             return view.bottomAnchor
@@ -168,6 +170,6 @@ public class LayoutConstrainer {
         case .CenterX:
             return view.centerXAnchor
         }
-        
     }
+     */
 }

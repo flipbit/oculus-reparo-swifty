@@ -9,18 +9,18 @@ public protocol Expansion {
      
      - Returns:             The transformed configuration line
      */
-    func expand(line: Line, scope: Scope, parser: Parser) throws -> [Line]?
+    func expand(_ line: Line, scope: Scope, parser: Parser) throws -> [Line]?
 }
 
-public class EachExpansion : Expansion {
-    public func expand(line: Line, scope: Scope, parser: Parser) throws -> [Line]? {
+open class EachExpansion : Expansion {
+    open func expand(_ line: Line, scope: Scope, parser: Parser) throws -> [Line]? {
         // Line must have a key
         guard let key = line.key else {
             return nil
         }
         
         // Key must be "@each"
-        if key.caseInsensitiveCompare("@each") != NSComparisonResult.OrderedSame {
+        if key.caseInsensitiveCompare("@each") != ComparisonResult.orderedSame {
             return nil
         }
 
@@ -36,12 +36,12 @@ public class EachExpansion : Expansion {
 
         // Get variable
         guard let variable = scope.variables[value] else {
-            throw ReparoError.InvalidConfigurationLine("Missing variable for each loop: \(value)")
+            throw ReparoError.invalidConfigurationLine("Missing variable for each loop: \(value)")
         }
 
         // Cast to array
         guard let list = variable as? [AnyObject] else {
-            throw ReparoError.InvalidConfigurationLine("Each variable must be an array: \(value)")
+            throw ReparoError.invalidConfigurationLine("Each variable must be an array: \(value)")
         }
 
         // Set variable name
@@ -50,7 +50,7 @@ public class EachExpansion : Expansion {
         //    name = name.substringToIndex(name.endIndex.advancedBy(-2))
         //} else
         if name.hasSuffix("s") && name.characters.count > 2 {
-            name = name.substringToIndex(name.endIndex.advancedBy(-1))
+            name = name.substring(to: name.characters.index(name.endIndex, offsetBy: -1))
         }
         
         var expanded = [Line]()
@@ -72,7 +72,7 @@ public class EachExpansion : Expansion {
             // Transform loop iteration
             lines = try parser.transform(lines, scope: scope)
             
-            expanded.appendContentsOf(lines)
+            expanded.append(contentsOf: lines)
         }
         
         return expanded

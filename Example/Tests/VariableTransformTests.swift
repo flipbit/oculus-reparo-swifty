@@ -11,14 +11,14 @@ class VariableTransformSpec: BaseParserSpec {
                 let config = try! parser.parseFile("Variable")
                 let person = config.getSection("person")!
                 
-                expect(person.getValue("name")).to(equal("bob"))
+                expect(person.getString("name")).to(equal("bob"))
             }
             
             it("values in quotes are ignored") {
                 let config = try! parser.parseFile("VariableQuoted")
                 let person = config.getSection("person")!
                 
-                expect(person.getValue("name")).to(equal("@name"))
+                expect(person.getString("name")).to(equal("@name"))
             }
             
             it("complex values are parsed") {
@@ -27,7 +27,7 @@ class VariableTransformSpec: BaseParserSpec {
                 
                 let config = try! parser.parseFile("VariableComplex")
                 
-                expect(config.getValue("name")).to(equal("jude"))
+                expect(config.getString("name")).to(equal("jude"))
             }
         }
     }

@@ -1,8 +1,8 @@
 /**
  Declares resuable function blocks
  */
-public class DefineFunctionTransform : Transform {
-    public func transform(line: Line, scope: Scope) throws -> (line: Line?, scope: Scope) {
+open class DefineFunctionTransform : Transform {
+    open func transform(_ line: Line, scope: Scope) throws -> (line: Line?, scope: Scope) {
         
         // Line must be a section
         guard let section = line as? Section else {
@@ -15,13 +15,13 @@ public class DefineFunctionTransform : Transform {
         }
 
         // Key must be "@define"
-        if key.caseInsensitiveCompare("@define") != NSComparisonResult.OrderedSame {
+        if key.caseInsensitiveCompare("@define") != ComparisonResult.orderedSame {
             return (line, scope)
         }
 
         // Section must have a value
         guard let value = section.value else {
-            throw ReparoError.InvalidConfigurationLine("Function doesn't have a name: \(section.lineNumber)")
+            throw ReparoError.invalidConfigurationLine("Function doesn't have a name: \(section.lineNumber)")
         }
 
         // Assign function to scope

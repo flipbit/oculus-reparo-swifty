@@ -14,7 +14,7 @@ class DirectiveTransformSpec: BaseParserSpec {
                 let config = try! parser.parseFile("Directive")
                 let person = config.getSection("person")!
                 
-                expect(person.getValue("name")).to(equal("alice"))
+                expect(person.getString("name")).to(equal("alice"))
             }
             
             it("when parser directive is iPad") {
@@ -24,7 +24,7 @@ class DirectiveTransformSpec: BaseParserSpec {
                 let config = try! parser.parseFile("Directive")
                 let person = config.getSection("person")!
                 
-                expect(person.getValue("name")).to(equal("bob"))
+                expect(person.getString("name")).to(equal("bob"))
             }
         }
         
@@ -36,7 +36,7 @@ class DirectiveTransformSpec: BaseParserSpec {
                 let config = try! parser.parseFile("DirectiveSections")
                 let person = config.getSection("person")!
                 
-                expect(person.getValue("name")).to(equal("bob"))
+                expect(person.getString("name")).to(equal("bob"))
             }
             
             it("when parser directive is iPhone6") {
@@ -46,7 +46,7 @@ class DirectiveTransformSpec: BaseParserSpec {
                 let config = try! parser.parseFile("DirectiveSections")
                 let person = config.getSection("person")!
                 
-                expect(person.getValue("name")).to(equal("terry"))
+                expect(person.getString("name")).to(equal("terry"))
             }
         }
         
@@ -58,7 +58,7 @@ class DirectiveTransformSpec: BaseParserSpec {
                 let config = try! parser.parseFile("DirectiveNot")
                 let person = config.getSection("person")!
                 
-                expect(person.getValue("name")).to(equal("alice"))
+                expect(person.getString("name")).to(equal("alice"))
             }
             
             it("when parser has no directives") {
@@ -67,7 +67,7 @@ class DirectiveTransformSpec: BaseParserSpec {
                 let config = try! parser.parseFile("DirectiveNot")
                 let person = config.getSection("person")!
                 
-                expect(person.getValue("name")).to(equal("charles"))
+                expect(person.getString("name")).to(equal("charles"))
             }
         }
     }

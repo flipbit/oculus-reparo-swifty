@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class Directive {
-    public var name: String
-    public var not: Bool
+open class Directive {
+    open var name: String
+    open var not: Bool
     
     public init(name: String) {
         self.name = name
@@ -22,13 +22,13 @@ public class Directive {
         self.not = not
     }
     
-    public func clone() -> Directive {
+    open func clone() -> Directive {
         return Directive(name: name, not: not)
     }
     
-    public var isResolutionDirective: Bool {
-        let trimmed = trim(name).lowercaseString
-        let hasEquality = trimmed.containsString("=") || trimmed.containsString("<") || trimmed.containsString(">")
+    open var isResolutionDirective: Bool {
+        let trimmed = trim(name).lowercased()
+        let hasEquality = trimmed.contains("=") || trimmed.contains("<") || trimmed.contains(">")
         
         if trimmed.hasPrefix("width") {
             return hasEquality
@@ -41,67 +41,67 @@ public class Directive {
         return false
     }
     
-    public func getResolutionParts() throws -> (dimension: Dimension, equality: Equality, value: CGFloat) {
+    open func getResolutionParts() throws -> (dimension: Dimension, equality: Equality, value: CGFloat) {
         var dimension: Dimension
         var equality: Equality
         var value: CGFloat
         
-        var toProcess = trim(name.lowercaseString)
+        var toProcess = trim(name.lowercased())
 
         // Width?
         if toProcess.hasPrefix("width") {
-            dimension = Dimension.Width
-            toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(5))
+            dimension = Dimension.width
+            toProcess = toProcess.substring(from: toProcess.characters.index(toProcess.startIndex, offsetBy: 5))
         }
         
         // Height?
         else if name.hasPrefix("height") {
-            dimension = Dimension.Height
-            toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(6))
+            dimension = Dimension.height
+            toProcess = toProcess.substring(from: toProcess.characters.index(toProcess.startIndex, offsetBy: 6))
         }
         
         else {
-            throw LayoutError.InvalidConfiguration("Invalid resolution directive: \(name)\nDimension must be either 'width' or 'height'")
+            throw LayoutError.invalidConfiguration("Invalid resolution directive: \(name)\nDimension must be either 'width' or 'height'")
         }
         
         toProcess = trim(toProcess)
 
         // Equals
         if toProcess.hasPrefix("==") {
-            equality = Equality.Equal
-            toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(2))
+            equality = Equality.equal
+            toProcess = toProcess.substring(from: toProcess.characters.index(toProcess.startIndex, offsetBy: 2))
         }
         else if toProcess.hasPrefix("=") {
-            equality = Equality.Equal
-            toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(1))
+            equality = Equality.equal
+            toProcess = toProcess.substring(from: toProcess.characters.index(toProcess.startIndex, offsetBy: 1))
         }
 
         // Greater than or equal
         else if toProcess.hasPrefix(">=") {
-            equality = Equality.GreaterThanOrEqual
-            toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(2))
+            equality = Equality.greaterThanOrEqual
+            toProcess = toProcess.substring(from: toProcess.characters.index(toProcess.startIndex, offsetBy: 2))
         }
             
         // Greater than
         else if toProcess.hasPrefix(">") {
-            equality = Equality.GreaterThan
-            toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(1))
+            equality = Equality.greaterThan
+            toProcess = toProcess.substring(from: toProcess.characters.index(toProcess.startIndex, offsetBy: 1))
         }
             
         // Less than or equal
         else if toProcess.hasPrefix("<=") {
-            equality = Equality.LessThanOrEqual
-            toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(2))
+            equality = Equality.lessThanOrEqual
+            toProcess = toProcess.substring(from: toProcess.characters.index(toProcess.startIndex, offsetBy: 2))
         }
             
         // Less than
         else if toProcess.hasPrefix("<") {
-            equality = Equality.LessThan
-            toProcess = toProcess.substringFromIndex(toProcess.startIndex.advancedBy(1))
+            equality = Equality.lessThan
+            toProcess = toProcess.substring(from: toProcess.characters.index(toProcess.startIndex, offsetBy: 1))
         }
 
         else {
-            throw LayoutError.InvalidConfiguration("Invalid resolution directive: \(name)\nEquality must be either '=', '>', '>=', '<' or '<='")
+            throw LayoutError.invalidConfiguration("Invalid resolution directive: \(name)\nEquality must be either '=', '>', '>=', '<' or '<='")
         }
 
         toProcess = trim(toProcess)
@@ -109,61 +109,61 @@ public class Directive {
         let numerics = keepNumerics(toProcess)
         
         if numerics != toProcess {
-            throw LayoutError.InvalidConfiguration("Invalid resolution directive: \(name)\nValue must be a positive numeric value")
+            throw LayoutError.invalidConfiguration("Invalid resolution directive: \(name)\nValue must be a positive numeric value")
         }
         
         if let converted = Convert.toCGFloat(numerics) {
             value = converted
         } else {
-            throw LayoutError.InvalidConfiguration("Invalid resolution directive: \(name)\nUnable to convert value to a numeric value")
+            throw LayoutError.invalidConfiguration("Invalid resolution directive: \(name)\nUnable to convert value to a numeric value")
         }
         
         return (dimension, equality, value)
     }
     
-    public func satisfiedBy(screenSize: CGSize) throws -> Bool {
+    open func satisfiedBy(_ screenSize: CGSize) throws -> Bool {
         let parts = try getResolutionParts()
         
         var toCompare: CGFloat
         
-        if parts.dimension == Dimension.Height {
+        if parts.dimension == Dimension.height {
             toCompare = screenSize.height
         } else {
             toCompare = screenSize.width
         }
         
         switch parts.equality {
-        case Equality.Equal:
+        case Equality.equal:
             return toCompare == parts.value
-        case Equality.LessThan:
+        case Equality.lessThan:
             return toCompare < parts.value
-        case Equality.LessThanOrEqual:
+        case Equality.lessThanOrEqual:
             return toCompare <= parts.value
-        case Equality.GreaterThan:
+        case Equality.greaterThan:
             return toCompare > parts.value
-        case Equality.GreaterThanOrEqual:
+        case Equality.greaterThanOrEqual:
             return toCompare >= parts.value
         }
     }
     
-    func trim(value: String) -> String {
-        return value.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    func trim(_ value: String) -> String {
+        return value.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 
-    func keepNumerics(value: String) -> String {
-        return value.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "1234567890.").invertedSet)
+    func keepNumerics(_ value: String) -> String {
+        return value.trimmingCharacters(in: CharacterSet(charactersIn: "1234567890.").inverted)
     }
     
     public enum Dimension {
-        case Width
-        case Height
+        case width
+        case height
     }
     
     public enum Equality {
-        case Equal
-        case LessThan
-        case LessThanOrEqual
-        case GreaterThan
-        case GreaterThanOrEqual
+        case equal
+        case lessThan
+        case lessThanOrEqual
+        case greaterThan
+        case greaterThanOrEqual
     }
 }

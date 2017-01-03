@@ -8,17 +8,17 @@
 
 import Foundation
 
-public class Line {
-    public var key: String?
-    public var value: String?
-    public var filename: String
-    public var lineNumber: Int
-    public var directives: [Directive]
-    public var parent: Section?
-    public var index: Int
-    public var quoted: Bool
+open class Line {
+    open var key: String?
+    open var value: String?
+    open var filename: String
+    open var lineNumber: Int
+    open var directives: [Directive]
+    open var parent: Section?
+    open var index: Int
+    open var quoted: Bool
     
-    public var isASection: Bool {
+    open var isASection: Bool {
         return false
     }
     
@@ -35,11 +35,11 @@ public class Line {
         self.lineNumber = lineNumber
     }
     
-    public var sections: [Section] {
+    open var sections: [Section] {
         return []
     }
     
-    public var path: String {
+    open var path: String {
         let key = self.key ?? ""
         
         if (parent != nil) {
@@ -49,7 +49,7 @@ public class Line {
         return "/\(key)[\(index)]"
     }
     
-    public func clone() -> Line {
+    open func clone() -> Line {
         let clone = Line(filename: filename, lineNumber: lineNumber)
         
         clone.key = key
@@ -64,8 +64,8 @@ public class Line {
         return clone
     }
     
-    public func toString(pad: Int = 0) -> String {
-        var string = String(count: pad, repeatedValue: (" " as Character))
+    open func toString(_ pad: Int = 0) -> String {
+        var string = String(repeating: String((" " as Character)), count: pad)
         
         if key != nil {
             string += key!

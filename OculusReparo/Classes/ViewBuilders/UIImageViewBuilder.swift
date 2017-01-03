@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class UIImageViewBuilder : ViewBuilder {
-    override public func canBuild(layout: Section) -> Bool {
+open class UIImageViewBuilder : ViewBuilder {
+    override open func canBuild(_ layout: Section) -> Bool {
         return layout.key == "image"
     }
     
-    override public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
+    override open func build(_ layout: Section, instance: Layout, parent: UIView) throws -> UIView {
         let imageView: UIImageView = try initialize(layout, instance: instance, parent: parent)
         
         let color = try layout.getUIColor("tint-color")
@@ -23,7 +23,7 @@ public class UIImageViewBuilder : ViewBuilder {
                 if color != nil {
                     imageView.tintColor = color
                     
-                    image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                    image = image.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
                 }
                 
                 imageView.image = image
@@ -31,13 +31,13 @@ public class UIImageViewBuilder : ViewBuilder {
         }
 
         if let filename = layout.getString("image-file") {
-            let frameworkBundle = NSBundle.mainBundle()
-            if let imagePath = frameworkBundle.pathForResource(filename, ofType: "") {
+            let frameworkBundle = Bundle.main
+            if let imagePath = frameworkBundle.path(forResource: filename, ofType: "") {
                 if var image = UIImage(contentsOfFile: imagePath) {
                     if color != nil {
                         imageView.tintColor = color
                     
-                        image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                        image = image.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
                     }
                 
                     imageView.image = image

@@ -1,49 +1,49 @@
 import Foundation
 
-public class UISliderBuilder : ViewBuilder {
-    override public func canBuild(layout: Section) -> Bool {
+open class UISliderBuilder : ViewBuilder {
+    override open func canBuild(_ layout: Section) -> Bool {
         return layout.key == "slider"
     }
     
-    override public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
+    override open func build(_ layout: Section, instance: Layout, parent: UIView) throws -> UIView {
         let slider: UISlider = try initialize(layout, instance: instance, parent: parent)
         
         slider.minimumValue = layout.getFloat("minimum-value", ifMissing: 0)
         slider.maximumValue = layout.getFloat("maximum-value", ifMissing: 100)
         slider.value = layout.getFloat("value", ifMissing: 0)
-        slider.continuous = try layout.getBool("continuous", or: false)
+        slider.isContinuous = try layout.getBool("continuous", or: false)
         
         if let color = try layout.getUIColor("tint-color") {
                 slider.tintColor = color
         }
         
-        if let changed = layout.getString("changed"), eventTarget = instance.eventTarget {
-            slider.addTarget(eventTarget, action: Selector(changed), forControlEvents: UIControlEvents.ValueChanged)
+        if let changed = layout.getString("changed"), let eventTarget = instance.eventTarget {
+            slider.addTarget(eventTarget, action: Selector(changed), for: UIControlEvents.valueChanged)
         }
         
-        if let changed = layout.getString("touch-up-inside"), eventTarget = instance.eventTarget {
-            slider.addTarget(eventTarget, action: Selector(changed), forControlEvents: UIControlEvents.TouchUpInside)
+        if let changed = layout.getString("touch-up-inside"), let eventTarget = instance.eventTarget {
+            slider.addTarget(eventTarget, action: Selector(changed), for: UIControlEvents.touchUpInside)
         }
         
-        if let changed = layout.getString("touch-up-outside"), eventTarget = instance.eventTarget {
-            slider.addTarget(eventTarget, action: Selector(changed), forControlEvents: UIControlEvents.TouchUpOutside)
+        if let changed = layout.getString("touch-up-outside"), let eventTarget = instance.eventTarget {
+            slider.addTarget(eventTarget, action: Selector(changed), for: UIControlEvents.touchUpOutside)
         }
         
         if let image = layout.getString("thumb-image") {
             if let image = try Layout.imageLoader.loadImage(named: image) {
-                slider.setThumbImage(image, forState: .Normal)
+                slider.setThumbImage(image, for: UIControlState())
             }
         }
 
         if let image = layout.getString("maximum-track-image") {
             if let image = try Layout.imageLoader.loadImage(named: image) {
-                slider.setMaximumTrackImage(image, forState: .Normal)
+                slider.setMaximumTrackImage(image, for: UIControlState())
             }
         }
         
         if let image = layout.getString("minimum-track-image") {
             if let image = try Layout.imageLoader.loadImage(named: image) {
-                slider.setMinimumTrackImage(image, forState: .Normal)
+                slider.setMinimumTrackImage(image, for: UIControlState())
             }
         }
         

@@ -1,28 +1,28 @@
 import Foundation
 
-public class UITableViewBuilder : ViewBuilder {
-    override public func canBuild(layout: Section) -> Bool {
+open class UITableViewBuilder : ViewBuilder {
+    override open func canBuild(_ layout: Section) -> Bool {
         return layout.key == "table"
     }
     
-    override public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
+    override open func build(_ layout: Section, instance: Layout, parent: UIView) throws -> UIView {
         let table: UITableView = try initialize(layout, instance: instance, parent: parent)
         
         table.bounces = try layout.getBool("bounces", or: true)
-        table.scrollEnabled = try layout.getBool("scroll-enabled", or: true)
+        table.isScrollEnabled = try layout.getBool("scroll-enabled", or: true)
                 
         if try layout.getBool("set-delegate", or: false) {
             if let delegate = instance.eventTarget as? UITableViewDelegate {
                 table.delegate = delegate
             } else {
-                throw LayoutError.InvalidConfiguration("Event target is not a UITableViewDelegate")
+                throw LayoutError.invalidConfiguration("Event target is not a UITableViewDelegate")
             }
         }
         
         if instance.laidOut {
             if let indexes = table.indexPathsForVisibleRows {
                 for index in indexes {
-                    if let cell = table.cellForRowAtIndexPath(index) {
+                    if let cell = table.cellForRow(at: index) {
                         if cell.frame.width != table.frame.width {
                             cell.frame = CGRect(x: cell.frame.origin.x, y: cell.frame.origin.y, width: table.frame.width, height: cell.frame.height)
                             cell.setNeedsDisplay()

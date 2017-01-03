@@ -1,16 +1,16 @@
 import Foundation
 import UIKit
 
-public class LayoutViewController : UIViewController {
-    public let layout = Layout()
+open class LayoutViewController : UIViewController {
+    open let layout = Layout()
     
-    public func getViewName() -> String {
-        let type = String(self.dynamicType)
+    open func getViewName() -> String {
+        let type = String(describing: type(of: self))
         
-        return type.stringByReplacingOccurrencesOfString("Controller", withString: "") + ".layout"
+        return type.replacingOccurrences(of: "Controller", with: "") + ".layout"
     }
     
-    public override func viewDidLayoutSubviews() {
+    open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()        
         
         if layout.needsLayout {
@@ -31,7 +31,7 @@ public class LayoutViewController : UIViewController {
             
             do {
                 try layout.apply()
-            } catch LayoutError.ConfigurationError(let info) {
+            } catch LayoutError.configurationError(let info) {
                 Layout.debugger?.error(info)
                 
                 assertionFailure("Fatal Layout Error!")
@@ -50,28 +50,28 @@ public class LayoutViewController : UIViewController {
     /**
      Occurs once before the initial layout
      */
-    public func willInitLayout() {
+    open func willInitLayout() {
     }
     
     /**
      Occurs once after the initial layout
      */
-    public func didInitLayout() {
+    open func didInitLayout() {
     }
     
     /**
      Occurs before the cell's view is laid out
      */
-    public func viewWillLayout() {
+    open func viewWillLayout() {
     }
     
     /**
      Occurs after the cell's view is laid out
      */
-    public func viewDidLayout() {
+    open func viewDidLayout() {
     }
         
-    override public func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
         Layout.debugger?.debug("Trait collection changed.")

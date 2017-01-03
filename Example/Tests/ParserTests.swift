@@ -110,7 +110,7 @@ class ParserTests: BaseParserTests {
         do {
             try parser.parseFile("InvalidLineInRoot")
             XCTAssertFalse(true, "Should of failed")
-        } catch ReparoError.InvalidConfigurationLine {
+        } catch ReparoError.invalidConfigurationLine {
             XCTAssertTrue(true, "Error was thrown")
         } catch {
             XCTAssertFalse(true, "Wrong error type thrown")
@@ -121,7 +121,7 @@ class ParserTests: BaseParserTests {
         do {
             try parser.parseFile("InvalidLineInSection")
             XCTAssertFalse(true, "Should of failed")
-        } catch ReparoError.InvalidConfigurationLine {
+        } catch ReparoError.invalidConfigurationLine {
             XCTAssertTrue(true, "Error was thrown")
         } catch {
             XCTAssertFalse(true, "Wrong error type thrown")

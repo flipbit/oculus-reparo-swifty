@@ -1,16 +1,16 @@
 import Foundation
 
-enum LayoutError: ErrorType {
-    case ConfigurationError(LayoutErrorInfo)
-    case MissingRootView
-    case MissingModelProperty(String)
-    case UnknownFontWeight(String)
-    case InvalidInsetFormat(String)
-    case InvalidTextAlignment(String)
-    case InvalidConfiguration(String)
+enum LayoutError: Error {
+    case configurationError(LayoutErrorInfo)
+    case missingRootView
+    case missingModelProperty(String)
+    case unknownFontWeight(String)
+    case invalidInsetFormat(String)
+    case invalidTextAlignment(String)
+    case invalidConfiguration(String)
 }
 
-public class LayoutErrorInfo {
+open class LayoutErrorInfo {
     var message: String
     let filename: String
     let lineNumber: Int
@@ -21,7 +21,7 @@ public class LayoutErrorInfo {
         self.lineNumber = lineNumber
     }
     
-    func append(line: String) {
+    func append(_ line: String) {
         if message.characters.count > 0 {
             message = "\(message)\n"
         }

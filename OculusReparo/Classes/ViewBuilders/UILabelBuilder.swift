@@ -1,12 +1,12 @@
 import Foundation
 import UIKit
 
-public class UILabelBuilder : ViewBuilder {
-    override public func canBuild(layout: Section) -> Bool {
+open class UILabelBuilder : ViewBuilder {
+    override open func canBuild(_ layout: Section) -> Bool {
         return layout.key == "label"
     }
     
-    override public func build(layout: Section, instance: Layout, parent: UIView) throws -> UIView {
+    override open func build(_ layout: Section, instance: Layout, parent: UIView) throws -> UIView {
         let label: UILabel = try initialize(layout, instance: instance, parent: parent)
         let size = layout.getCGFloat("font-size", ifMissing: 17)
         let weight = try Convert.getFontWeight(layout, key: "font-weight")
@@ -14,7 +14,7 @@ public class UILabelBuilder : ViewBuilder {
         label.numberOfLines = Int(layout.getString("lines", ifMissing: "0")!)!
         label.text = layout.getString("text")
         label.textColor = try layout.getUIColor("text-color")
-        label.font = UIFont.systemFontOfSize(size, weight: weight)
+        label.font = UIFont.systemFont(ofSize: size, weight: weight)
         label.textAlignment = try Convert.getTextAlignment(layout.getString("text-alignment"))
         label.adjustsFontSizeToFitWidth = try layout.getBool("adjusts-font-size-to-fit-width", or: false)
         

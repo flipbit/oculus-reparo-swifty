@@ -1,7 +1,7 @@
 import UIKit
 
-public class LayoutLayerFragment : LayoutFragment {
-    public var layer: CALayer
+open class LayoutLayerFragment : LayoutFragment {
+    open var layer: CALayer
     
     public init(layer: CALayer, id: String, configuration: Section) {
         self.layer = layer

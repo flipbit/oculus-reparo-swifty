@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class Document : Section {
-    override public var path: String {
+open class Document : Section {
+    override open var path: String {
         return ""
     }
     
-    public override func toString(pad: Int = 0) -> String {
+    open override func toString(_ pad: Int = 0) -> String {
         var string = ""
         
         for line in lines {
@@ -23,8 +23,8 @@ public class Document : Section {
         return string
     }
     
-    public func debug() {
-        let lines = toString().componentsSeparatedByString("\n")
+    open func debug() {
+        let lines = toString().components(separatedBy: "\n")
         
         for line in lines {
             print(line)

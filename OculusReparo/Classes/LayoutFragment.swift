@@ -1,6 +1,6 @@
-public class LayoutFragment {
-    public var configuration: Section
-    public var id: String
+open class LayoutFragment {
+    open var configuration: Section
+    open var id: String
     
     public init(id: String, configuration: Section) {
         self.id = id

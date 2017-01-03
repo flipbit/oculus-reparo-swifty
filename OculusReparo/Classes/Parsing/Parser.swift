@@ -3,20 +3,20 @@ import UIKit
 /**
  Parser to read Reparo configuration files
  */
-public class Parser {
-    public var variables: [String: AnyObject]
-    public var directives: [String]
-    public var transforms: [Transform]
-    public var expansions: [Expansion]
-    public var screenSize: CGSize
-    public var reader: ReparoReader
+open class Parser {
+    open var variables: [String: AnyObject]
+    open var directives: [String]
+    open var transforms: [Transform]
+    open var expansions: [Expansion]
+    open var screenSize: CGSize
+    open var reader: ReparoReader
     
     public init() {
         variables = [:]
         directives = []
         transforms = []
         expansions = []
-        screenSize = CGSizeZero
+        screenSize = CGSize.zero
         
         transforms.append(DirectiveTransform())
         transforms.append(DefineFunctionTransform())
@@ -55,11 +55,11 @@ public class Parser {
      
      - Returns:             A configuration document object
      */
-    public func parseFile(filename: String) throws -> Document {
+    open func parseFile(_ filename: String) throws -> Document {
         if let input = try reader.readFile(filename) {
             return try parseString(input, filename: filename)
         } else {
-            throw ReparoError.MissingConfigurationFile(filename)
+            throw ReparoError.missingConfigurationFile(filename)
         }
     }
     
@@ -73,7 +73,7 @@ public class Parser {
      
      - Returns:              A configuration document object
      */
-    public func parseString(input: String, filename: String) throws -> Document {
+    open func parseString(_ input: String, filename: String) throws -> Document {
         let scope = Scope(parser: self)
         return try parseString(input, filename: filename, scope: scope)
     }
@@ -89,7 +89,7 @@ public class Parser {
      
      - Returns:              A configuration document object
      */
-    public func parseString(input: String, filename: String, scope: Scope) throws -> Document {
+    open func parseString(_ input: String, filename: String, scope: Scope) throws -> Document {
         var document = Document(filename: filename)
         
         let machine = StateMachine(input: input, filename: filename)
@@ -122,7 +122,7 @@ public class Parser {
         return document
     }
     
-    private func parseSection(section: Section, machine: StateMachine) throws -> Section {
+    fileprivate func parseSection(_ section: Section, machine: StateMachine) throws -> Section {
         var index = 1
         var seenEnd = false
         while !machine.empty {
@@ -134,7 +134,7 @@ public class Parser {
             }
 
             if data.endOfDocument {
-                throw ReparoError.MissingSectionEnd("Section end is missing: \(section.key) Line: \(section.lineNumber)")
+                throw ReparoError.missingSectionEnd("Section end is missing: \(section.key) Line: \(section.lineNumber)")
             }            
             
             if var line = data.line {
@@ -152,16 +152,16 @@ public class Parser {
         
         if !seenEnd {
             if section.key != nil {
-                throw ReparoError.MissingSectionEnd("Section end is missing: \(section.key) Line: \(section.lineNumber)")
+                throw ReparoError.missingSectionEnd("Section end is missing: \(section.key) Line: \(section.lineNumber)")
             } else {
-                throw ReparoError.MissingSectionEnd("Section end is missing: Line: \(section.lineNumber)")
+                throw ReparoError.missingSectionEnd("Section end is missing: Line: \(section.lineNumber)")
             }
         }
         
         return section
     }
     
-    func transform(document: Document, scope: Scope) throws -> Document {
+    func transform(_ document: Document, scope: Scope) throws -> Document {
         let result = Document(filename: document.filename)
         
         result.lines = try transform(document.lines, scope: scope)
@@ -177,7 +177,7 @@ public class Parser {
         return result
     }
     
-    func transform(section: Section, scope: Scope) throws -> Section {
+    func transform(_ section: Section, scope: Scope) throws -> Section {
         let result = Section(line: section)
         
         result.lines = try transform(section.lines, scope: scope)
@@ -193,14 +193,14 @@ public class Parser {
         return result
     }
     
-    func transform(lines: [Line], scope: Scope) throws -> [Line] {
+    func transform(_ lines: [Line], scope: Scope) throws -> [Line] {
         var result = [Line]()
         var local = scope
         
         local.depth += 1
         
         if local.depth > 255 {
-            throw ReparoError.RecursiveIncludeDetected
+            throw ReparoError.recursiveIncludeDetected
         }
         
         loop: for line in lines {
@@ -224,13 +224,13 @@ public class Parser {
             
             let expanded = try expand(transformed!, scope: local)
             
-            result.appendContentsOf(expanded)
+            result.append(contentsOf: expanded)
         }
         
         return result
     }
     
-    func expand(line: Line, scope: Scope) throws -> [Line] {
+    func expand(_ line: Line, scope: Scope) throws -> [Line] {
         for expansion in expansions {
             if let lines = try expansion.expand(line, scope: scope, parser: self) {
                 return lines

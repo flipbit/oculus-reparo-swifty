@@ -1,4 +1,4 @@
-public enum AnchorType : String {
+public enum LayoutAnchorType : String {
     case Top = "anchor-top"
     case Bottom = "anchor-bottom"
     case Left = "anchor-left"

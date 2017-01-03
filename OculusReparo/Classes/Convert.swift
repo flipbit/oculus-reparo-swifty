@@ -1,10 +1,10 @@
 import Foundation
 import UIKit
 
-public class Convert {
-    static func toFloat(input: String?) -> Float? {
+open class Convert {
+    static func toFloat(_ input: String?) -> Float? {
         if let input = input {
-            if let n = NSNumberFormatter().numberFromString(input) {
+            if let n = NumberFormatter().number(from: input) {
                 return Float(n)
             }
         }
@@ -12,9 +12,9 @@ public class Convert {
         return nil
     }
     
-    static func toFloat(input: String?, ifMissing: Float) -> Float {
+    static func toFloat(_ input: String?, ifMissing: Float) -> Float {
         if let input = input {
-            if let n = NSNumberFormatter().numberFromString(input) {
+            if let n = NumberFormatter().number(from: input) {
                 return Float(n)
             }
         }
@@ -22,9 +22,9 @@ public class Convert {
         return ifMissing
     }
     
-    static func toCGFloat(input: String?) -> CGFloat? {
+    static func toCGFloat(_ input: String?) -> CGFloat? {
         if let input = input {
-            if let n = NSNumberFormatter().numberFromString(input) {
+            if let n = NumberFormatter().number(from: input) {
                 return CGFloat(n)
             }
         }
@@ -32,9 +32,9 @@ public class Convert {
         return nil
     }
     
-    static func toCGFloat(input: String?, ifMissing: CGFloat) -> CGFloat {
+    static func toCGFloat(_ input: String?, ifMissing: CGFloat) -> CGFloat {
         if let input = input {
-            if let n = NSNumberFormatter().numberFromString(input) {
+            if let n = NumberFormatter().number(from: input) {
                 return CGFloat(n)
             }
         }
@@ -42,14 +42,14 @@ public class Convert {
         return ifMissing
     }
     
-    static func toUIColor(input: String?) throws -> UIColor {
+    static func toUIColor(_ input: String?) throws -> UIColor {
         if (input == nil) {
-            return UIColor.clearColor()
+            return UIColor.clear
         }
         
-        let hex = input!.stringByTrimmingCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
+        let hex = input!.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
-        NSScanner(string: hex).scanHexInt(&int)
+        Scanner(string: hex).scanHexInt32(&int)
         let a, r, g, b: UInt32
         switch hex.characters.count {
         case 3: // RGB (12-bit)
@@ -59,16 +59,16 @@ public class Convert {
         case 8: // ARGB (32-bit)
             (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         default:
-            throw ReparoError.InvalidColorString("\(input!) is an invalid hex color string.")
+            throw ReparoError.invalidColorString("\(input!) is an invalid hex color string.")
         }
         
         return UIColor(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
     
-    public static func getFontWeight(section: Section, key: String) throws -> CGFloat {
+    open static func getFontWeight(_ section: Section, key: String) throws -> CGFloat {
         let weight = section.getString(key)
         
-        guard let name = weight?.lowercaseString else {
+        guard let name = weight?.lowercased() else {
             return UIFontWeightRegular
         }
         
@@ -87,93 +87,93 @@ public class Convert {
                 let lineNumber = section.getLineNumber(key)
                 let info = LayoutErrorInfo(message: message, filename: filename, lineNumber: lineNumber)
                 
-                throw LayoutError.ConfigurationError(info)
+                throw LayoutError.configurationError(info)
         }
     }
     
-    public static func getTextAlignment(alignment: String?) throws -> NSTextAlignment {
-        return try getTextAlignment(alignment, or: NSTextAlignment.Center)
+    open static func getTextAlignment(_ alignment: String?) throws -> NSTextAlignment {
+        return try getTextAlignment(alignment, or: NSTextAlignment.center)
     }
     
-    public static func getTextAlignment(alignment: String?, or: NSTextAlignment) throws -> NSTextAlignment {
-        guard let alignment = alignment?.lowercaseString else {
+    open static func getTextAlignment(_ alignment: String?, or: NSTextAlignment) throws -> NSTextAlignment {
+        guard let alignment = alignment?.lowercased() else {
             return or
         }
         
         switch alignment {
-        case "left": return NSTextAlignment.Left
-        case "center": return NSTextAlignment.Center
-        case "right": return NSTextAlignment.Right
-        case "justified": return NSTextAlignment.Justified
-        case "natural": return NSTextAlignment.Natural
+        case "left": return NSTextAlignment.left
+        case "center": return NSTextAlignment.center
+        case "right": return NSTextAlignment.right
+        case "justified": return NSTextAlignment.justified
+        case "natural": return NSTextAlignment.natural
         default:
-            throw LayoutError.InvalidTextAlignment("Unknown alignment: '\(alignment)'\nValid values are: 'left', 'center', 'right', 'justified' and 'natural''")
+            throw LayoutError.invalidTextAlignment("Unknown alignment: '\(alignment)'\nValid values are: 'left', 'center', 'right', 'justified' and 'natural''")
         }
 
     }
 
-    public static func getReturnKeyType(line: Line) throws -> UIReturnKeyType {
-        let type = (line.value ?? "").lowercaseString
+    open static func getReturnKeyType(_ line: Line) throws -> UIReturnKeyType {
+        let type = (line.value ?? "").lowercased()
         switch type {
-        case "continue":                return .Continue
-        case "default":                 return .Default
-        case "done":                    return .Done
-        case "emergencycall":           return .EmergencyCall
-        case "go":                      return .Go
-        case "google":                  return .Google
-        case "join":                    return .Join
-        case "next":                    return .Next
-        case "route":                   return .Route
-        case "search":                  return .Search
-        case "send":                    return .Send
-        case "yahoo":                   return .Yahoo
+        case "continue":                return .continue
+        case "default":                 return .default
+        case "done":                    return .done
+        case "emergencycall":           return .emergencyCall
+        case "go":                      return .go
+        case "google":                  return .google
+        case "join":                    return .join
+        case "next":                    return .next
+        case "route":                   return .route
+        case "search":                  return .search
+        case "send":                    return .send
+        case "yahoo":                   return .yahoo
         default:
             let message = "Unknown UIReturnKeyType: \(type)\n\nValid values are:\n\n - Continue\n - Default\n - Done\n - EmergencyCall\n - Go\n - Google\n -Join\n -Next\n -Route\n -Search\n -Send\n -Yahoo'"
             let filename = line.filename
             let lineNumber = line.lineNumber
             let info = LayoutErrorInfo(message: message, filename: filename, lineNumber: lineNumber)
             
-            throw LayoutError.ConfigurationError(info)
+            throw LayoutError.configurationError(info)
         }
     }
 
-    public static func getUITextAutocapitalizationType(line: Line) throws -> UITextAutocapitalizationType {
-        let type = (line.value ?? "").lowercaseString
+    open static func getUITextAutocapitalizationType(_ line: Line) throws -> UITextAutocapitalizationType {
+        let type = (line.value ?? "").lowercased()
         switch type {
-        case "all":                     return .AllCharacters
-        case "none":                    return .None
-        case "sentances":               return .Sentences
-        case "words":                   return .Words
+        case "all":                     return .allCharacters
+        case "none":                    return .none
+        case "sentances":               return .sentences
+        case "words":                   return .words
         default:
             let message = "Unknown UITextAutocapitalizationType: \(type)\n\nValid values are:\n\n - All\n - None\n - Sentances\n - Words"
             let filename = line.filename
             let lineNumber = line.lineNumber
             let info = LayoutErrorInfo(message: message, filename: filename, lineNumber: lineNumber)
             
-            throw LayoutError.ConfigurationError(info)
+            throw LayoutError.configurationError(info)
         }
     }
     
-    public static func getUIKeyboardType(line: Line) throws -> UIKeyboardType {
-        let type = (line.value ?? "").lowercaseString
+    open static func getUIKeyboardType(_ line: Line) throws -> UIKeyboardType {
+        let type = (line.value ?? "").lowercased()
         switch type {
-        case "ascii-capable":               return .ASCIICapable
+        case "ascii-capable":               return .asciiCapable
         case "ascii-capable-number":
             if #available(iOS 10.0, *) {
-                return .ASCIICapableNumberPad
+                return .asciiCapableNumberPad
             } else {
-                return .ASCIICapable
+                return .asciiCapable
             }
-        case "decimal":                     return .DecimalPad
-        case "default":                     return .Default
-        case "email-address":               return .EmailAddress
-        case "name-phone":                  return .NamePhonePad
-        case "number":                      return .NumberPad
-        case "numbers-and-punctuation":     return .NumbersAndPunctuation
-        case "phone":                       return .PhonePad
-        case "twitter":                     return .Twitter
+        case "decimal":                     return .decimalPad
+        case "default":                     return .default
+        case "email-address":               return .emailAddress
+        case "name-phone":                  return .namePhonePad
+        case "number":                      return .numberPad
+        case "numbers-and-punctuation":     return .numbersAndPunctuation
+        case "phone":                       return .phonePad
+        case "twitter":                     return .twitter
         case "url":                         return .URL
-        case "web-search":                  return .WebSearch
+        case "web-search":                  return .webSearch
         default:
             let message = "Unknown UIKeyboardType: \(type)"
             let filename = line.filename
@@ -195,16 +195,16 @@ public class Convert {
             info.append("- url")
             info.append("- web-search")
             
-            throw LayoutError.ConfigurationError(info)
+            throw LayoutError.configurationError(info)
         }
     }
     
-    public static func getUITextSpellCheckingType(line: Line) throws -> UITextSpellCheckingType {
-        let type = (line.value ?? "").lowercaseString
+    open static func getUITextSpellCheckingType(_ line: Line) throws -> UITextSpellCheckingType {
+        let type = (line.value ?? "").lowercased()
         switch type {
-        case "ascii-capable":               return .Default
-        case "decimal":                     return .No
-        case "default":                     return .Yes
+        case "ascii-capable":               return .default
+        case "decimal":                     return .no
+        case "default":                     return .yes
         default:
             let message = "Unknown UITextSpellCheckingType: \(type)"
             let filename = line.filename
@@ -217,26 +217,26 @@ public class Convert {
             info.append("- yes")
             info.append("- no")
             
-            throw LayoutError.ConfigurationError(info)
+            throw LayoutError.configurationError(info)
         }
     }
 
-    public static func getUIViewContentMode(line: Line) throws -> UIViewContentMode {
-        let type = (line.value ?? "").lowercaseString
+    open static func getUIViewContentMode(_ line: Line) throws -> UIViewContentMode {
+        let type = (line.value ?? "").lowercased()
         switch type {
-        case "bottom":                      return .Bottom
-        case "bottom-left":                 return .BottomLeft
-        case "bottom-right":                return .BottomRight
-        case "center":                      return .Center
-        case "left":                        return .Left
-        case "redraw":                      return .Redraw
-        case "right":                       return .Right
-        case "scale-aspect-fill":           return .ScaleAspectFill
-        case "scale-aspect-fit":            return .ScaleAspectFit
-        case "scale-to-fill":               return .ScaleToFill
-        case "top":                         return .Top
-        case "top-left":                    return .TopLeft
-        case "top-right":                   return .TopRight
+        case "bottom":                      return .bottom
+        case "bottom-left":                 return .bottomLeft
+        case "bottom-right":                return .bottomRight
+        case "center":                      return .center
+        case "left":                        return .left
+        case "redraw":                      return .redraw
+        case "right":                       return .right
+        case "scale-aspect-fill":           return .scaleAspectFill
+        case "scale-aspect-fit":            return .scaleAspectFit
+        case "scale-to-fill":               return .scaleToFill
+        case "top":                         return .top
+        case "top-left":                    return .topLeft
+        case "top-right":                   return .topRight
         default:
             let message = "Unknown UIViewContentMode: \(type)"
             let filename = line.filename
@@ -259,26 +259,26 @@ public class Convert {
             info.append("- top-left")
             info.append("- top-right")
             
-            throw LayoutError.ConfigurationError(info)
+            throw LayoutError.configurationError(info)
         }
     }
     
-    public static func getPadding(input: String?) throws -> (top: String, left: String, bottom: String, right: String) {
+    open static func getPadding(_ input: String?) throws -> (top: String, left: String, bottom: String, right: String) {
         return try getPadding(input, type: "Padding", format: "(top) (left) (bottom) (right)'")
     }
     
-    public static func getOffset(input: String?) throws -> (top: String, left: String, width: String, height: String) {
+    open static func getOffset(_ input: String?) throws -> (top: String, left: String, width: String, height: String) {
         let offsets = try getPadding(input, type: "Offset", format: "(top) (left) (width) (height)'")
         
         return (offsets.top, offsets.left, offsets.bottom, offsets.right)
     }
     
-    private static func getPadding(input: String?, type: String, format: String) throws -> (top: String, left: String, bottom: String, right: String) {
+    fileprivate static func getPadding(_ input: String?, type: String, format: String) throws -> (top: String, left: String, bottom: String, right: String) {
         guard let input = input else {
             return ("0", "0", "0", "0")
         }
         
-        let parts = input.componentsSeparatedByString(" ")
+        let parts = input.components(separatedBy: " ")
         
         var top: String = ""
         var left: String = ""
@@ -306,21 +306,21 @@ public class Convert {
             bottom = parts[0]
             right = parts[0]
         } else {
-            throw LayoutError.InvalidInsetFormat("\(type) invalid: '\(input)'.  \(type) must be in the format '\(format))'")
+            throw LayoutError.invalidInsetFormat("\(type) invalid: '\(input)'.  \(type) must be in the format '\(format))'")
         }
         
         return (top, left, bottom, right)
     }
     
-    public static func getEdgeInsets(input: String?) throws -> UIEdgeInsets? {
+    open static func getEdgeInsets(_ input: String?) throws -> UIEdgeInsets? {
         guard let input = input else {
             return nil
         }
         
-        let parts = input.componentsSeparatedByString(" ")
+        let parts = input.components(separatedBy: " ")
         
         if parts.count != 4 {
-            throw LayoutError.InvalidInsetFormat("Invalid insets: '\(input)'.  Insets must be in the format '0 0 0 0'")
+            throw LayoutError.invalidInsetFormat("Invalid insets: '\(input)'.  Insets must be in the format '0 0 0 0'")
         }
         
         let top = Convert.toCGFloat(parts[0], ifMissing: 0)
@@ -331,7 +331,7 @@ public class Convert {
         return UIEdgeInsetsMake(top, left, bottom, right)
     }
 
-    public static func getHexColor(color: UIColor) -> String {
+    open static func getHexColor(_ color: UIColor) -> String {
         var r:CGFloat = 0
         var g:CGFloat = 0
         var b:CGFloat = 0
@@ -344,28 +344,28 @@ public class Convert {
         return NSString(format:"#%06x", rgb) as String
     }
     
-    public static func getViewIdAndAnchor(input: String?, defaultIdView: String, defaultAnchor: AnchorType) throws -> (viewId: String, anchor: AnchorType) {
+    open static func getViewIdAndAnchor(_ input: String?, defaultIdView: String, defaultAnchor: LayoutAnchorType) throws -> (viewId: String, anchor: LayoutAnchorType) {
         // nil check
         guard let input = input else {
             return (defaultIdView, defaultAnchor)
         }
         
         // check if anchor supplied
-        guard let index = input.rangeOfString(".") else {
+        guard let index = input.range(of: ".") else {
             return (input, defaultAnchor)
         }
         
-        let viewId = input.substringToIndex(index.startIndex)
-        var anchorRaw = input.substringFromIndex(index.endIndex).lowercaseString
+        let viewId = input.substring(to: index.lowerBound)
+        var anchorRaw = input.substring(from: index.upperBound).lowercased()
         
-        if anchorRaw.containsString("center") == false {
+        if anchorRaw.contains("center") == false {
             anchorRaw = "anchor-" + anchorRaw
         }
         
-        if let anchor = AnchorType(rawValue: anchorRaw) {
+        if let anchor = LayoutAnchorType(rawValue: anchorRaw) {
             return (viewId, anchor)
         } else {
-            throw LayoutError.InvalidConfiguration("Invalid Anchor Type: \(anchorRaw)")
+            throw LayoutError.invalidConfiguration("Invalid Anchor Type: \(anchorRaw)")
         }
         
         
