@@ -133,7 +133,6 @@ open class LayoutConstrainer {
     }
     
     func addConstraint(on: UIView, to: UIView, onAnchor: LayoutAnchorType, toAnchor: LayoutAnchorType, constant: CGFloat) {
-        /*
         let onAnchor = getAnchor(on, anchor: onAnchor)
         let toAnchor = getAnchor(to, anchor: toAnchor)
         
@@ -151,25 +150,48 @@ open class LayoutConstrainer {
             }
         }
         
-        onAnchor.constraint(equalTo: toAnchor, constant: constant).isActive = true
-         */
-    }
-    /*
-    func getAnchor(_ view: UIView, anchor: LayoutAnchorType) -> NSLayoutAnchor<AnyObject> {
-        switch (anchor) {
-        case .Bottom:
-            return view.bottomAnchor
-        case .Left:
-            return view.leftAnchor
-        case .Right:
-            return view.rightAnchor
-        case .Top:
-            return view.topAnchor
-        case .CenterY:
-            return view.centerYAnchor
-        case .CenterX:
-            return view.centerXAnchor
+        if let onX = onAnchor.x {
+            if let toX = toAnchor.x {
+                onX.constraint(equalTo: toX, constant: constant).isActive = true
+            }
+        }
+        
+        if let onY = onAnchor.y {
+            if let toY = toAnchor.y {
+                onY.constraint(equalTo: toY, constant: constant).isActive = true
+            }
         }
     }
-     */
+    
+    fileprivate func getAnchor(_ view: UIView, anchor: LayoutAnchorType) -> Axis {
+        switch (anchor) {
+        case .Bottom:
+            return Axis(y: view.bottomAnchor)
+        case .Left:
+            return Axis(x: view.leftAnchor)
+        case .Right:
+            return Axis(x: view.rightAnchor)
+        case .Top:
+            return Axis(y: view.topAnchor)
+        case .CenterY:
+            return Axis(y: view.centerYAnchor)
+        case .CenterX:
+            return Axis(x: view.centerXAnchor)
+        }
+    }
+    
+    fileprivate class Axis {
+        let y: NSLayoutYAxisAnchor?
+        let x: NSLayoutXAxisAnchor?
+        
+        init(x: NSLayoutXAxisAnchor) {
+            self.x = x
+            self.y = nil
+        }
+        
+        init(y: NSLayoutYAxisAnchor) {
+            self.x = nil
+            self.y = y
+        }
+    }
 }
