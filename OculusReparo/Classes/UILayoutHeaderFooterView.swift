@@ -3,25 +3,27 @@ import OculusReparo
 import UIKit
 
 /// UITableViewCell that renders it's contents using OculusReparo
-open class UILayoutCell : UITableViewCell {
+open class UILayoutHeaderFooterView : UITableViewHeaderFooterView {
     /**
      The cell's Layout instance
      */
     open var layout: Layout
-
+    
     /**
      Creates a new UILayoutCell instance
      
      - Parameter reuseIdentifier:   The cell reuse identifier
      */
-    public init(reuseIdentifier: String) {
+    public override init(reuseIdentifier: String?) {
         layout = Layout()
         
-        super.init(style: UITableViewCellStyle.default, reuseIdentifier: reuseIdentifier)
+        super.init(reuseIdentifier: reuseIdentifier)
         
         layout.view = contentView
         layout.filename = getViewName()
+        
     }
+    
     
     /**
      Creates a new UILayoutCell instance
@@ -32,7 +34,7 @@ open class UILayoutCell : UITableViewCell {
     public init(layoutName: String, reuseIdentifier: String) {
         layout = Layout(filename: layoutName)
         
-        super.init(style: UITableViewCellStyle.default, reuseIdentifier: reuseIdentifier)
+        super.init(reuseIdentifier: reuseIdentifier)
         
         layout.view = contentView
     }
@@ -43,13 +45,13 @@ open class UILayoutCell : UITableViewCell {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     /**
      Occurs once before the initial layout
      */
     open func willInitLayout() {
     }
-
+    
     /**
      Occurs once after the initial layout
      */
