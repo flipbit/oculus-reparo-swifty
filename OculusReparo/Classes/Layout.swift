@@ -76,6 +76,7 @@ open class Layout {
             Layout.viewBuilders.append(UITextFieldBuilder())
             Layout.viewBuilders.append(UICollectionViewBuilder())
             Layout.viewBuilders.append(UIActivityIndicatorBuilder())
+            Layout.viewBuilders.append(UIWebViewBuilder())
 
             // Layer builders
             Layout.layerBuilders.append(CALayerBuilder())

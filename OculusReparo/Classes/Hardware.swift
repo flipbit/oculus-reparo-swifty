@@ -3,7 +3,7 @@ import Foundation
 open class Hardware {
     static fileprivate var deviceInstance: Device?
     
-    static var device: Device {
+    open static var device: Device {
         if deviceInstance != nil {
             return deviceInstance!
         }
