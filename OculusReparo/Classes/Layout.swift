@@ -5,6 +5,7 @@ open class Layout {
     static open var layerBuilders: [LayerBuilder] = []
     static open var viewBuilders: [ViewBuilder] = []
     static open var imageLoader: UIImageLoader = MainBundleImageLoader()
+    static open var transformer: LayoutTransformer = LayoutTransformer()
     static open var debugger: LayoutDebugger? = ConsoleLayoutDebugger()
     static open var constrainer: LayoutConstrainer? = LayoutConstrainer()
     
@@ -136,11 +137,13 @@ open class Layout {
         }                
         
         self.filename = filename
-        
+
+        _ = Layout.transformer.transform(layout: self)
+
         let parser = Parser(layout: self)
         
         let layout = try parser.parseFile(filename)
-                
+        
         try setProperties(layout, view: view)
         
         for section in layout.sections {

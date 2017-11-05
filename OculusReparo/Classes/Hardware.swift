@@ -38,7 +38,7 @@ open class Hardware {
         case "iPad4,4", "iPad4,5", "iPad4,6":           deviceInstance = Device.iPadMini2; break
         case "iPad4,7", "iPad4,8", "iPad4,9":           deviceInstance = Device.iPadMini3; break
         case "iPad5,1", "iPad5,2":                      deviceInstance = Device.iPadMini4; break
-        case "iPad6,3", "iPad6,4", "iPad6,7", "iPad6,8":deviceInstance = Device.iPadPro; break
+        case "iPad6,3", "iPad6,4", "iPad6,7", "iPad6,8", "iPad7,3":deviceInstance = Device.iPadPro; break
         case "AppleTV5,3":                              deviceInstance = Device.AppleTV; break
         case "i386", "x86_64":                          deviceInstance = Device.Simulator; break
         default:                                        deviceInstance = Device.Unknown; break
