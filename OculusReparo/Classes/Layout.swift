@@ -74,6 +74,7 @@ open class Layout {
             Layout.viewBuilders.append(UIImageViewBuilder())
             Layout.viewBuilders.append(UITableViewBuilder())
             Layout.viewBuilders.append(UIScrollViewBuilder())
+            Layout.viewBuilders.append(UISearchBarBuilder())
             Layout.viewBuilders.append(UITextFieldBuilder())
             Layout.viewBuilders.append(UICollectionViewBuilder())
             Layout.viewBuilders.append(UIActivityIndicatorBuilder())
